@@ -1,0 +1,56 @@
+spring:
+  profiles:
+    active: prod
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "loggers,logfile,health,info,metrics"
+server:
+  port: 8433
+  ssl:
+      key-store-type: JKS
+      key-store-password: policy_agent
+      key-store: config/keystore.jks
+      key-password: policy_agent
+      key-alias: policy_agent
+logging:
+  level:
+    ROOT: WARN
+    org.onap: WARN
+    org.springframework: WARN
+    org.springframework.data: WARN
+    org.springframework.web.reactive.function.client.ExchangeFunctions: WARN
+    org.onap.dcaegen2.collectors.datafile: INFO
+
+  file:
+    name: /var/log/ONAP/application.log
+app:
+  filepath: config/datafile_endpoints_test.json
+  collected-files-path: "/tmp/onap_datafile/"
+   # KAFKA boostrap servers. This is only needed if there are Information Types that uses a kafkaInputTopic
+  # several redundant boostrap servers can be specified, separated by a comma ','.
+  kafka:
+    bootstrap-servers: localhost:9092
+    # output topic
+    collected-file-topic: collected-file
+    client-id: datafile-1
+    # input topic
+    file-ready-event-topic: file-ready
+  sftp:
+    known-hosts-file-path:
+    strict-host-key-checking: false
+  ssl:
+     key-store-password-file: /opt/app/datafile/config/ftps_keystore.pass
+     key-store: /opt/app/datafile/config/ftps_keystore.p12
+     trust-store-password-file: /opt/app/datafile/config/truststore.pass
+     trust-store: /opt/app/datafile/config/truststore.jks
+  s3:
+    endpointOverride:
+    accessKeyId:
+    secretAccessKey:
+    bucket:
+    locksBucket:
+springdoc:
+  show-actuator: true
+  swagger-ui.disable-swagger-default-url: true
