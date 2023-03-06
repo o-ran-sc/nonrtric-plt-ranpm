@@ -1,0 +1,24 @@
+{
+   "types": [
+      {
+         "id": "ExampleInformationType1",
+         "dmaapTopicUrl": "/events/unauthenticated.VES_NOTIFICATION_OUTPUT/OpenDcae-c12/C12",
+         "useHttpProxy": true
+      },
+      {
+         "id": "ExampleInformationType2",
+         "kafkaInputTopic": "TutorialTopic",
+         "useHttpProxy": false
+      },
+      {
+         "id": "PmDataOverKafka",
+         "kafkaInputTopic": "FileReadyEvent",
+         "dataType": "PmData",
+         "inputJobType": "xml-file-data-to-filestore",
+         "inputJobDefinition": {
+            "anyParameter1": "FileReadyEvent",
+            "anyParameter2": "whatEver"
+         }
+      }
+   ]
+}

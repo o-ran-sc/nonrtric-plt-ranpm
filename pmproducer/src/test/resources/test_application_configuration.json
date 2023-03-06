@@ -1,0 +1,18 @@
+{
+   "types": [
+      {
+         "id": "PmDataOverKafka",
+         "kafkaInputTopic": "FileReadyEvent",
+         "inputJobType": "xml-file-data-to-filestore",
+         "inputJobDefinition": {
+            "kafkaOutputTopic": "FileReadyEvent",
+            "filestore-output-bucket": "pm-files-json",
+            "filterType": "pmdata",
+            "filter": {
+               "inputCompression": "xml.gz",
+               "outputCompression": "none"
+            }
+         }
+      }
+   ]
+}
