@@ -1,0 +1,86 @@
+{
+   "$schema": "http://json-schema.org/draft-04/schema#",
+   "type": "object",
+   "additionalProperties": false,
+   "properties": {
+      "filter": {
+         "type": "object",
+         "additionalProperties": false,
+         "properties": {
+            "sourceNames": {
+               "type": "array",
+               "items": [
+                  {
+                     "type": "string"
+                  }
+               ]
+            },
+            "measObjInstIds": {
+               "type": "array",
+               "items": [
+                  {
+                     "type": "string"
+                  }
+               ]
+            },
+            "measTypeSpecs": {
+               "type": "array",
+               "items": [
+                  {
+                     "type": "object",
+                     "properties": {
+                        "measuredObjClass": {
+                           "type": "string"
+                        },
+                        "measTypes": {
+                           "type": "array",
+                           "items": [
+                              {
+                                 "type": "string"
+                              }
+                           ]
+                        }
+                     },
+                     "required": [
+                        "measuredObjClass"
+                     ]
+                  }
+               ]
+            },
+            "measuredEntityDns": {
+               "type": "array",
+               "items": [
+                  {
+                     "type": "string"
+                  }
+               ]
+            },
+            "pmRopStartTime": {
+               "type": "string"
+            },
+            "pmRopEndTime": {
+               "type": "string"
+            }
+         }
+      },    
+      "deliveryInfo": {
+         "type": "object",
+         "additionalProperties": false,
+         "properties": {
+            "topic": {
+               "type": "string"
+            },
+            "bootStrapServers": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "topic"
+         ]
+      }
+   },
+   "required": [
+      "filter", "deliveryInfo"  
+   ]
+}
+
