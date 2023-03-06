@@ -16,6 +16,75 @@
       "message": "* Is this just for collecting? If so,, should the directory name be something like \u0027datafilecollector\u0027 rather than \u0027datafile\u0027\n\n* Can you add a readme or something with a brief summary of the differences from the ONAP DFC ... or at least mention somewhere that this is a fork/extension of the ONAP version? \n\n* Please update the license test to 2023\n\n* I will try create the Jenkins job for verify, stage, release etc. \n\nThanks. ",
       "revId": "861964483d3adea6f063134150282b527a0e87d9",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d20935f5_4c8b0652",
+        "filename": "datafile/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-03-06T12:29:21Z",
+      "side": 1,
+      "message": "If this is significantly different from the ONAP version, then maybe change the groupid to org.o-ran-sc.nonrtric.plt.ranpm ?\nOSC nexus probably shouldn\u0027t really serve ONAP maven artifacts?",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 60
+      },
+      "revId": "861964483d3adea6f063134150282b527a0e87d9",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b928543a_4df402f8",
+        "filename": "datafile/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-03-06T12:29:21Z",
+      "side": 1,
+      "message": "suggest something like nonrtric-plt-ranpm-datafile or datafilecollector, etc.",
+      "range": {
+        "startLine": 223,
+        "startChar": 49,
+        "endLine": 223,
+        "endChar": 63
+      },
+      "revId": "861964483d3adea6f063134150282b527a0e87d9",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f273d7c_adad9774",
+        "filename": "datafile/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-03-06T12:29:21Z",
+      "side": 1,
+      "message": "as above",
+      "range": {
+        "startLine": 251,
+        "startChar": 49,
+        "endLine": 251,
+        "endChar": 62
+      },
+      "revId": "861964483d3adea6f063134150282b527a0e87d9",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }
