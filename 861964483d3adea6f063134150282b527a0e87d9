@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44f62b62_556f9d53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-03-06T12:18:30Z",
+      "side": 1,
+      "message": "* Is this just for collecting? If so,, should the directory name be something like \u0027datafilecollector\u0027 rather than \u0027datafile\u0027\n\n* Can you add a readme or something with a brief summary of the differences from the ONAP DFC ... or at least mention somewhere that this is a fork/extension of the ONAP version? \n\n* Please update the license test to 2023\n\n* I will try create the Jenkins job for verify, stage, release etc. \n\nThanks. ",
+      "revId": "861964483d3adea6f063134150282b527a0e87d9",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
