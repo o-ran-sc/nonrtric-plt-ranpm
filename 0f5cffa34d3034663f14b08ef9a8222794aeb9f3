@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e52a4818_6532ffe7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-03-07T18:23:02Z",
+      "side": 1,
+      "message": "Verifies in Sandbox: https://jenkins.o-ran-sc.org/sandbox/view/All/job/nonrtric-plt-ranpm-pmproducer-maven-docker-verify-master-mvn36-openjdk17/1/\nWill recheck when job is available",
+      "revId": "0f5cffa34d3034663f14b08ef9a8222794aeb9f3",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
