@@ -16,6 +16,75 @@
       "message": "Verifies in Sandbox: https://jenkins.o-ran-sc.org/sandbox/view/All/job/nonrtric-plt-ranpm-pmproducer-maven-docker-verify-master-mvn36-openjdk17/1/\nWill recheck when job is available",
       "revId": "0f5cffa34d3034663f14b08ef9a8222794aeb9f3",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5134e427_122db265",
+        "filename": "pmproducer/INFO.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-03-07T18:30:13Z",
+      "side": 1,
+      "message": "Remove this file. \ninfo.yaml in repo root overrides this.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 21
+      },
+      "revId": "0f5cffa34d3034663f14b08ef9a8222794aeb9f3",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "676d1842_ae1b86ce",
+        "filename": "pmproducer/LICENSE.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-03-07T18:30:13Z",
+      "side": 1,
+      "message": "Can remove this file. \nOnly needed at root of repo, not in each folder",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 55
+      },
+      "revId": "0f5cffa34d3034663f14b08ef9a8222794aeb9f3",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "875dc97a_e1f6eb60",
+        "filename": "pmproducer/tox.ini",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-03-07T18:30:13Z",
+      "side": 1,
+      "message": "I think this file can be removed. \nI think tox configurations for docs should be in the repo root? ... and no docs here yet.",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "0f5cffa34d3034663f14b08ef9a8222794aeb9f3",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }
