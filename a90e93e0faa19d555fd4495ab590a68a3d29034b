@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec690152_a2446e4a",
+        "filename": "datafilecollector/pom.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-03-07T18:18:57Z",
+      "side": 1,
+      "message": "Seems to be a few dependencies not used. \nSuggest \n\u003e mvn dependency:analyze    etc.",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 55
+      },
+      "revId": "a90e93e0faa19d555fd4495ab590a68a3d29034b",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81b5b176_89edc546",
         "filename": "datafilecollector/pom.xml",
         "patchSetId": 8
@@ -19,6 +42,29 @@
         "startChar": 9,
         "endLine": 185,
         "endChar": 16
+      },
+      "revId": "a90e93e0faa19d555fd4495ab590a68a3d29034b",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d737599_68278f19",
+        "filename": "datafilecollector/pom.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-03-07T18:18:57Z",
+      "side": 1,
+      "message": "Causes an ssh warning - host gerrit.o-ran-sc.org unknown \n\nmaybe try instead \n                \u003cgroupId\u003eio.github.git-commit-id\u003c/groupId\u003e\n                \u003cartifactId\u003egit-commit-id-maven-plugin\u003c/artifactId\u003e\n                \u003cversion\u003e5.0.0\u003c/version\u003e\n\nOr ignore for now :-)",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 61
       },
       "revId": "a90e93e0faa19d555fd4495ab590a68a3d29034b",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
