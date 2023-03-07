@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9480fca2_ebc39945",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-03-07T18:20:50Z",
+      "side": 1,
+      "message": "Verifies in Sandbox. https://jenkins.o-ran-sc.org/sandbox/view/All/job/nonrtric-plt-ranpm-datafilecollector-maven-docker-verify-master-mvn36-openjdk17/6/\nWill recheck when job is available ",
+      "revId": "a90e93e0faa19d555fd4495ab590a68a3d29034b",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec690152_a2446e4a",
