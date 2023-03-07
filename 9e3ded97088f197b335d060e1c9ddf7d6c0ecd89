@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0221263_0e8a0869",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-03-07T18:21:58Z",
+      "side": 1,
+      "message": "Verifies in sandbox: https://jenkins.o-ran-sc.org/sandbox/view/All/job/nonrtric-plt-ranpm-influxlogger-maven-docker-verify-master-mvn36-openjdk17/1/console \nWill recheck when job is available ",
+      "revId": "9e3ded97088f197b335d060e1c9ddf7d6c0ecd89",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
