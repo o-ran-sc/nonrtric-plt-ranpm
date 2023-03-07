@@ -24,6 +24,30 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ae205f9_d85afbee",
+        "filename": "datafilecollector/Dockerfile",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000262
+      },
+      "writtenOn": "2023-03-07T08:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "629e33cd_50ebd792",
+      "range": {
+        "startLine": 3,
+        "startChar": 17,
+        "endLine": 3,
+        "endChar": 22
+      },
+      "revId": "19e336a4db13a52b3075345d9fc9bc59f5c691e4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "896eb03b_6a748e49",
@@ -47,6 +71,30 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cdb3968_21688aed",
+        "filename": "datafilecollector/Dockerfile",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000262
+      },
+      "writtenOn": "2023-03-07T08:56:16Z",
+      "side": 1,
+      "message": "jdk17 is needed.",
+      "parentUuid": "896eb03b_6a748e49",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 56
+      },
+      "revId": "19e336a4db13a52b3075345d9fc9bc59f5c691e4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3559944_599a4aa4",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-03-06T22:56:25Z",
       "side": 1,
       "message": "Not just PNFs I guess?",
+      "range": {
+        "startLine": 3,
+        "startChar": 71,
+        "endLine": 3,
+        "endChar": 74
+      },
+      "revId": "19e336a4db13a52b3075345d9fc9bc59f5c691e4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be29db12_53ae1148",
+        "filename": "datafilecollector/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000262
+      },
+      "writtenOn": "2023-03-07T08:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3559944_599a4aa4",
       "range": {
         "startLine": 3,
         "startChar": 71,
