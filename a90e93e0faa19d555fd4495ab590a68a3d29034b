@@ -65,6 +65,30 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec79efb2_c3549779",
+        "filename": "datafilecollector/pom.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-03-08T11:35:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4816d18e_719bd73a",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 55
+      },
+      "revId": "a90e93e0faa19d555fd4495ab590a68a3d29034b",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81b5b176_89edc546",
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "Lets do that in a separate commit.",
       "parentUuid": "7d737599_68278f19",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 61
+      },
+      "revId": "a90e93e0faa19d555fd4495ab590a68a3d29034b",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc318d61_988fa1f7",
+        "filename": "datafilecollector/pom.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-03-08T11:35:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "52741e78_3ca597e8",
       "range": {
         "startLine": 265,
         "startChar": 0,
