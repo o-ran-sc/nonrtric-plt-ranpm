@@ -41,6 +41,30 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83555a83_0692931d",
+        "filename": "pmproducer/INFO.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000262
+      },
+      "writtenOn": "2023-03-08T09:02:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5134e427_122db265",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 21
+      },
+      "revId": "0f5cffa34d3034663f14b08ef9a8222794aeb9f3",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "676d1842_ae1b86ce",
@@ -64,6 +88,30 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0fadf68_cf345cf4",
+        "filename": "pmproducer/LICENSE.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000262
+      },
+      "writtenOn": "2023-03-08T09:02:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "676d1842_ae1b86ce",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 55
+      },
+      "revId": "0f5cffa34d3034663f14b08ef9a8222794aeb9f3",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "875dc97a_e1f6eb60",
@@ -77,6 +125,30 @@
       "writtenOn": "2023-03-07T18:30:13Z",
       "side": 1,
       "message": "I think this file can be removed. \nI think tox configurations for docs should be in the repo root? ... and no docs here yet.",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "0f5cffa34d3034663f14b08ef9a8222794aeb9f3",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "016cb8f3_b51256f4",
+        "filename": "pmproducer/tox.ini",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000262
+      },
+      "writtenOn": "2023-03-08T09:02:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "875dc97a_e1f6eb60",
       "range": {
         "startLine": 17,
         "startChar": 1,
