@@ -45,7 +45,6 @@ import org.onap.dcaegen2.collectors.datafile.model.FilePublishInformation;
 import org.onap.dcaegen2.collectors.datafile.model.FileReadyMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import reactor.core.publisher.Flux;
@@ -90,7 +89,6 @@ public class CollectAndReportFiles {
      *
      * @param applicationConfiguration - application configuration
      */
-    @Autowired
     public CollectAndReportFiles(AppConfig applicationConfiguration) {
         this.appConfig = applicationConfiguration;
         this.kafkaSender = KafkaSender.create(kafkaSenderOptions());

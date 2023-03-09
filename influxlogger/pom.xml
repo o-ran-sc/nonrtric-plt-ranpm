@@ -57,6 +57,7 @@
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <swagger-codegen-maven-plugin.version>3.0.11</swagger-codegen-maven-plugin.version>
         <springdoc.version>2.0.2</springdoc.version>
+        <springdoc.openapi-ui.version>1.6.14</springdoc.openapi-ui.version>
         <exec.skip>true</exec.skip>
     </properties>
     <dependencies>
@@ -68,7 +69,7 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
-            <version>${springdoc.version}</version>
+            <version>${springdoc.openapi-ui.version}</version>
         </dependency>
         <dependency>
             <groupId>com.influxdb</groupId>
@@ -118,12 +119,6 @@
         </dependency>
         <!-- TEST -->
         <!-- https://mvnrepository.com/artifact/com.github.erosb/everit-json-schema -->
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
-            <version>1.6.3</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>com.github.erosb</groupId>
             <artifactId>everit-json-schema</artifactId>

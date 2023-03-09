@@ -31,7 +31,7 @@
     </parent>
     <groupId>org.o-ran-sc.nonrtric.plt</groupId>
     <artifactId>pmproducer</artifactId>
-    <version>1.3.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
@@ -56,10 +56,9 @@
         <docker-maven-plugin>0.30.0</docker-maven-plugin>
         <sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
-        <exec.skip>true</exec.skip>
-        <protobuf.version>4.0.0-rc-2</protobuf.version>
-        <protobuf-java-format.version>1.4</protobuf-java-format.version>
         <springdoc.version>2.0.2</springdoc.version>
+        <springdoc.openapi-ui.version>1.6.14</springdoc.openapi-ui.version>
+        <exec.skip>true</exec.skip>
     </properties>
     <dependencies>
         <dependency>
@@ -70,22 +69,7 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
-            <version>${springdoc.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.protobuf</groupId>
-            <artifactId>protobuf-java</artifactId>
-            <version>${protobuf.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.googlecode.protobuf-java-format</groupId>
-            <artifactId>protobuf-java-format</artifactId>
-            <version>${protobuf-java-format.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.protobuf</groupId>
-            <artifactId>protobuf-java-util</artifactId>
-            <version>3.21.5</version>
+            <version>${springdoc.openapi-ui.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -130,12 +114,6 @@
         </dependency>
         <!-- TEST -->
         <!-- https://mvnrepository.com/artifact/com.github.erosb/everit-json-schema -->
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
-            <version>1.6.3</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>com.github.erosb</groupId>
             <artifactId>everit-json-schema</artifactId>
