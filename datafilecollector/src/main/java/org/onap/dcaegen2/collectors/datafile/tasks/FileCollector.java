@@ -17,12 +17,12 @@
 
 package org.onap.dcaegen2.collectors.datafile.tasks;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.Optional;
 
-import org.apache.commons.io.FileUtils;
 import org.onap.dcaegen2.collectors.datafile.commons.FileCollectClient;
 import org.onap.dcaegen2.collectors.datafile.commons.Scheme;
 import org.onap.dcaegen2.collectors.datafile.configuration.AppConfig;
@@ -103,7 +103,7 @@ public class FileCollector {
 
         try (FileCollectClient currentClient = createClient(fileData)) {
             currentClient.open();
-            FileUtils.forceMkdirParent(localFile.toFile());
+            Files.createDirectories(localFile.getParent());
             currentClient.collectFile(remoteFile, localFile);
             counters.incNoOfCollectedFiles();
             return Mono.just(Optional.of(createFilePublishInformation(fileData)));

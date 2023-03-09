@@ -414,6 +414,5 @@ public class HttpClientResponseHelper {
         @Override
         public void setParams(HttpParams params) {
         }
-
     };
 }
