@@ -95,6 +95,10 @@ public class AppConfig {
     @Value("${app.s3.locksBucket:}")
     private String s3LocksBucket;
 
+    @Value("${app.number-of-worker-treads:200}")
+    @Getter
+    private int noOfWorkerThreads;
+
     public String getS3LocksBucket() {
         return s3LocksBucket.isEmpty() ? s3Bucket : s3LocksBucket;
     }

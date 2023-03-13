@@ -28,7 +28,9 @@ logging:
 app:
   filepath: config/datafile_endpoints_test.json
   collected-files-path: "/tmp/onap_datafile/"
-   # KAFKA boostrap servers. This is only needed if there are Information Types that uses a kafkaInputTopic
+  # Numer of worker threads. Increased number may increase throughput, but will require more executing resources.
+  number-of-worker-treads: 200
+  # KAFKA boostrap servers.
   # several redundant boostrap servers can be specified, separated by a comma ','.
   kafka:
     bootstrap-servers: localhost:9092
