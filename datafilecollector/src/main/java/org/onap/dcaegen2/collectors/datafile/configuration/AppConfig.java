@@ -40,9 +40,6 @@ public class AppConfig {
     @Value("#{systemEnvironment}")
     Properties systemEnvironment;
 
-    @Value("${app.filepath}")
-    String filepath;
-
     @Value("${app.kafka.bootstrap-servers:}")
     private String kafkaBootStrapServers;
 
