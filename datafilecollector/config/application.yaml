@@ -26,8 +26,7 @@ logging:
   file:
     name: /var/log/ONAP/application.log
 app:
-  filepath: config/datafile_endpoints_test.json
-  collected-files-path: "/tmp/onap_datafile/"
+  collected-files-path: "/tmp/oran_datafile/"
   # Numer of worker threads. Increased number may increase throughput, but will require more executing resources.
   number-of-worker-treads: 200
   # KAFKA boostrap servers.

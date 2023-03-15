@@ -26,26 +26,26 @@ EXPOSE 8084 8435
 
 ARG JAR
 
-WORKDIR /opt/app/pm_producer-service
-RUN mkdir -p /var/log/pm_producer-service
-RUN mkdir -p /opt/app/pm_producer-service/etc/cert/
-RUN mkdir -p /var/pm_producer-service
+WORKDIR /opt/app/pm-producer-service
+RUN mkdir -p /var/log/pm-producer-service
+RUN mkdir -p /opt/app/pm-producer-service/etc/cert/
+RUN mkdir -p /var/pm-producer-service
 
-ADD /config/application.yaml /opt/app/pm_producer-service/config/application.yaml
-ADD /config/application_configuration.json /opt/app/pm_producer-service/data/application_configuration.json_example
-ADD /config/keystore.jks /opt/app/pm_producer-service/etc/cert/keystore.jks
-ADD /config/truststore.jks /opt/app/pm_producer-service/etc/cert/truststore.jks
+ADD /config/application.yaml /opt/app/pm-producer-service/config/application.yaml
+ADD /config/application_configuration.json /opt/app/pm-producer-service/data/application_configuration.json_example
+ADD /config/keystore.jks /opt/app/pm-producer-service/etc/cert/keystore.jks
+ADD /config/truststore.jks /opt/app/pm-producer-service/etc/cert/truststore.jks
 
 ARG user=nonrtric
 ARG group=nonrtric
 
 RUN groupadd $user && \
     useradd -r -g $group $user
-RUN chown -R $user:$group /opt/app/pm_producer-service
-RUN chown -R $user:$group /var/log/pm_producer-service
-RUN chown -R $user:$group /var/pm_producer-service
+RUN chown -R $user:$group /opt/app/pm-producer-service
+RUN chown -R $user:$group /var/log/pm-producer-service
+RUN chown -R $user:$group /var/pm-producer-service
 
 USER ${user}
 
-ADD target/${JAR} /opt/app/pm_producer-service/pm_producer.jar
-CMD ["java", "-jar", "/opt/app/pm_producer-service/pm_producer.jar"]
+ADD target/${JAR} /opt/app/pm-producer-service/pmproducer.jar
+CMD ["java", "-jar", "/opt/app/pm-producer-service/pmproducer.jar"]

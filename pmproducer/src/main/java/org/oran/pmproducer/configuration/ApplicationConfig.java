@@ -85,7 +85,7 @@ public class ApplicationConfig {
     private String icsBaseUrl;
 
     @Getter
-    @Value("${app.pm_producer-base-url}")
+    @Value("${app.pm-producer-base-url}")
     private String selfUrl;
 
     @Getter
