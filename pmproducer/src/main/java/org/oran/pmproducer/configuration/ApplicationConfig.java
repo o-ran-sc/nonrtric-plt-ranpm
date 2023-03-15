@@ -85,12 +85,8 @@ public class ApplicationConfig {
     private String icsBaseUrl;
 
     @Getter
-    @Value("${app.pm_producer-base-url}")
+    @Value("${app.pm-producer-base-url}")
     private String selfUrl;
-
-    @Getter
-    @Value("${app.dmaap-base-url}")
-    private String dmaapBaseUrl;
 
     @Getter
     @Value("${app.kafka.bootstrap-servers:}")

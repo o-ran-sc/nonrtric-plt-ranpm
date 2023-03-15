@@ -125,11 +125,6 @@ class IntegrationWithKafka {
         }
 
         @Override
-        public String getDmaapBaseUrl() {
-            return thisProcessUrl();
-        }
-
-        @Override
         public String getSelfUrl() {
             return thisProcessUrl();
         }

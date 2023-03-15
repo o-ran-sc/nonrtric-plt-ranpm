@@ -49,7 +49,7 @@ logging:
     file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level]  %logger{20} - %msg%n"
 
   file:
-    name: /var/log/pm_producer-service/application.log
+    name: /var/log/pm-producer-service/application.log
 server:
    # Configuration of the HTTP/REST server. The parameters are defined and handeled by the springboot framework.
    # See springboot documentation.
@@ -58,7 +58,7 @@ server:
   ssl:
     key-store-type: JKS
     key-store-password: policy_agent
-    key-store: /opt/app/pm_producer-service/etc/cert/keystore.jks
+    key-store: /opt/app/pm-producer-service/etc/cert/keystore.jks
     key-password: policy_agent
     key-alias: policy_agent
   shutdown: "graceful"
@@ -69,18 +69,15 @@ app:
     # Note that the same keystore as for the server is used.
     trust-store-used: false
     trust-store-password: policy_agent
-    trust-store: /opt/app/pm_producer-service/etc/cert/truststore.jks
+    trust-store: /opt/app/pm-producer-service/etc/cert/truststore.jks
     # Configuration of usage of HTTP Proxy for the southbound accesses.
     # The HTTP proxy (if configured) will only be used for accessing NearRT RIC:s
     http.proxy-host:
     http.proxy-port: 0
   ics-base-url: https://localhost:8434
-  # Location of the component configuration file. The file will only be used if the Consul database is not used;
-  # configuration from the Consul will override the file.
-  configuration-filepath: /opt/app/pm_producer-service/data/application_configuration.json
-  dmaap-base-url: http://dradmin:dradmin@localhost:2222
+
   # The url used to adress this component. This is used as a callback url sent to other components.
-  pm_producer-base-url: https://localhost:8435
+  pm-producer-base-url: https://localhost:8435
   # KAFKA boostrap servers. This is only needed if there are Information Types that uses a kafkaInputTopic
   # several redundant boostrap servers can be specified, separated by a comma ','.
   kafka:
