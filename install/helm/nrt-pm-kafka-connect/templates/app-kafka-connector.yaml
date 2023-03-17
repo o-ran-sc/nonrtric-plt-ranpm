@@ -1,0 +1,46 @@
+#  ============LICENSE_START===============================================
+#  Copyright (C) 2023 Nordix Foundation. All rights reserved.
+#  ========================================================================
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#  ============LICENSE_END=================================================
+#
+
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaConnector
+metadata:
+  name: influx2-sink-connector
+  namespace: nonrtric
+  labels:
+    strimzi.io/cluster: pm-connect-cluster
+spec:
+  class: org.custom.camel.kafkaconnector.influxdb2.CamelInfluxdb2SinkConnector
+  tasksMax: 1
+  config:
+    topics: pmreports
+    errors.deadletterqueue.topic.name: pmreports-dl
+    errors.deadletterqueue.topic.replication.factor: 1
+    key.converter: org.apache.kafka.connect.storage.StringConverter
+    value.converter: org.apache.kafka.connect.json.JsonConverter
+    key.converter.schemas.enable: false
+    value.converter.schemas.enable: false
+    key.ignore: true
+    auto.create: true
+    transforms: t1
+    transforms.t1.type: org.custom.camel.kafkaconnector.influxdb2.transform.points.Influxdb2PmsTransform$Value
+    transforms.t1.measurement.name: pms_data
+    camel.beans.influxdb2: "${file:/opt/kafka/external-configuration/influxdb2-connection-bean/influxdb2.properties:influxdb2_connection_bean}"
+    camel.sink.path.connectionBean: influxdb2
+    camel.sink.endpoint.bucket: ts_pms_metrics
+    camel.sink.endpoint.org: est
+    camel.sink.endpoint.operation: insert
+    camel.sink.endpoint.autoCreateBucket: true
