@@ -1,5 +1,5 @@
 #  ============LICENSE_START===============================================
-#  Copyright (C) 2023-2022 Nordix Foundation. All rights reserved.
+#  Copyright (C) 2022-2023 Nordix Foundation. All rights reserved.
 #  ========================================================================
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -75,6 +75,8 @@ app:
     http.proxy-host:
     http.proxy-port: 0
   ics-base-url: https://localhost:8434
+  # Location of the component configuration file.
+  configuration-filepath: /opt/app/pm_producer-service/data/application_configuration.json
 
   # The url used to adress this component. This is used as a callback url sent to other components.
   pm-producer-base-url: https://localhost:8435
