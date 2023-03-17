@@ -1,0 +1,67 @@
+#  ============LICENSE_START===============================================
+#  Copyright (C) 2023 Nordix Foundation. All rights reserved.
+#  ========================================================================
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#  ============LICENSE_END=================================================
+#
+
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: pmlog
+  namespace: nonrtric
+  labels:
+    run: pmlog
+spec:
+  replicas: 1
+  serviceName: pmlog
+  selector:
+    matchLabels:
+      run: pmlog
+  template:
+    metadata:
+      labels:
+        run: pmlog
+    spec:
+      volumes:
+        - name: pmlog-app-cm
+          configMap:
+            name: pmlog-app-cm
+        - name: pmlog-job-cm
+          configMap:
+            name: pmlog-job-cm
+      containers:
+      - name: pmlog
+        image: nexus3.o-ran-sc.org:10004/o-ran-sc/nonrtric-plt-pmlog:1.0.0
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 8084
+        - name: https
+          containerPort: 8436
+        volumeMounts:
+        - name: pmlog-app-cm
+          mountPath: /opt/app/pmlog-service/config/application.yaml
+          subPath: application.yaml
+        - name: pmlog-job-cm
+          mountPath: /opt/app/pmlog-service/config/jobDefinition.json
+          subPath: jobDefinition.json
+        env:
+        - name: APP_INFLUX_ACCESS-TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: influxdb-api-token
+              key: token
+
+

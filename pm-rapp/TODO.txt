@@ -1,0 +1,11 @@
+
+pm-rapp
+=======
+Dockerfile
+- Remove ref to ubuntu image (if distroless image work ok)
+
+
+
+install/helm
+============
+Uncomment RA in helm/nrt-pm/charts/ics/templates/app-ra-ap.yaml  when all components uses auth bearer towards ICS

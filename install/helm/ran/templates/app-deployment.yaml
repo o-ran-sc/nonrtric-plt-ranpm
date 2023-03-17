@@ -1,0 +1,93 @@
+#  ============LICENSE_START===============================================
+#  Copyright (C) 2023 Nordix Foundation. All rights reserved.
+#  ========================================================================
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#  ============LICENSE_END=================================================
+#
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: pm-https-server
+  namespace: ran
+  labels:
+    run: pm-https-server
+spec:
+  replicas: 1    # Max 10 = number of generated certs unique ...
+  serviceName: pm-https-server
+  selector:
+    matchLabels:
+      run: pm-https-server
+  template:
+    metadata:
+      labels:
+        run: pm-https-server
+    spec:
+      volumes:
+        - name: tmp-vol
+          configMap:
+            name: pm-https-server-cm
+        - name: cert-vol
+          emptyDir: {}
+        - name: ne-files-vol
+          configMap:
+            name: ne-files
+        - name: template-files-vol
+          configMap:
+            name: template-files
+      initContainers:
+      - name: init
+        image: alpine:latest
+        imagePullPolicy: IfNotPresent
+        command: ["ash","-c"]
+        args: ["cp /tmp/certs/copy-certs.sh /tmp && cd /tmp && chmod u+x copy-certs.sh && ./copy-certs.sh"]
+        volumeMounts:
+        - name: tmp-vol
+          mountPath: /tmp/certs
+        - name: cert-vol
+          mountPath: /certs
+        securityContext:
+          runAsUser: 0
+      containers:
+      - name: pm-https-server
+        image: pm-https-server:latest
+        imagePullPolicy: Never
+        ports:
+        - name: http
+          containerPort: 80
+        - name: https
+          containerPort: 443
+        env:
+        # If env is specified, the given file is returned for any call to the "/files/<filename>"" url
+        # If env is missing, the file in the call to "/files/<filename> url must exist in the server
+        - name: ALWAYS_RETURN
+          value: /ne-files/pm.xml.gz
+        # Env must be specified if genetated files use. The value shall spefify the first timestamp of a series of pm files
+        # If a file with a timestamp less than the below will return 404
+        # Timestamp shall be gvien with date.time where minutes has values 00,15,45 and the given timezone
+        # Example: 20230220.1300 - denotes a first file name of 20230220.1300+0100-1315+0100_<node-name>.xml.gz
+        - name: GENERATED_FILE_START_TIME
+          value: "20230220.1300"
+        # Timezone to use for generated files. If not given, timezone 0000 will be used
+        # Shall inlcude +/- sign for the timezone value
+        - name: GENERATED_FILE_TIMEZONE
+          value: "+0100"
+        volumeMounts:
+        - name: cert-vol
+          mountPath: /certs
+        - name: tmp-vol
+          mountPath: /tmp/certs
+        - name: ne-files-vol
+          mountPath: /ne-files
+        - name: template-files-vol
+          mountPath: /template-files

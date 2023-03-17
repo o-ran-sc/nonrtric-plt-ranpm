@@ -1,0 +1,15 @@
+{
+    "info_type_id": "PmData",
+    "job_owner": "console",
+    "job_result_uri": "",
+    "job_definition": {
+       "filterType": "pmdata",
+       "filter": {
+
+       },
+       "deliveryInfo": {
+          "topic": "pmreports",
+          "bootStrapServers": "kafka-1-kafka-bootstrap.nonrtric:9092"
+       }
+    }
+ }
