@@ -19,7 +19,25 @@
 # SPDX-License-Identifier: Apache-2.0
 # ============LICENSE_END=========================================================
 #
-FROM openjdk:17-jdk-slim
+FROM openjdk:17-jdk as jre-build
+
+RUN $JAVA_HOME/bin/jlink \
+--verbose \
+--add-modules ALL-MODULE-PATH \
+--strip-debug \
+--no-man-pages \
+--no-header-files \
+--compress=2 \
+--output /customjre
+
+# Use debian base image (same as openjdk uses)
+FROM debian:11-slim
+
+ENV JAVA_HOME=/jre
+ENV PATH="${JAVA_HOME}/bin:${PATH}"
+
+#copy JRE from the base image
+COPY --from=jre-build /customjre $JAVA_HOME
 
 EXPOSE 8100 8433
 
@@ -48,4 +66,4 @@ RUN mkdir -p /var/log/ONAP /opt/app/datafile/etc/cert/ && \
 USER $user
 
 COPY --chown=$user:$group /target/datafile-app-server.jar /opt/app/datafile/
-ENTRYPOINT ["java", "-jar", "/opt/app/datafile/datafile-app-server.jar"]
+CMD ["/jre/bin/java", "-jar", "/opt/app/datafile/datafile-app-server.jar"]
