@@ -44,7 +44,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.oran.pmproducer.clients.AsyncRestClient;
 import org.oran.pmproducer.clients.AsyncRestClientFactory;
-import org.oran.pmproducer.clients.SecurityContext;
 import org.oran.pmproducer.configuration.ApplicationConfig;
 import org.oran.pmproducer.configuration.WebClientConfig;
 import org.oran.pmproducer.configuration.WebClientConfig.HttpProxyConfig;
@@ -52,6 +51,7 @@ import org.oran.pmproducer.controllers.ProducerCallbacksController;
 import org.oran.pmproducer.controllers.ProducerCallbacksController.StatisticsCollection;
 import org.oran.pmproducer.datastore.DataStore;
 import org.oran.pmproducer.filter.PmReportFilter;
+import org.oran.pmproducer.oauth2.SecurityContext;
 import org.oran.pmproducer.r1.ConsumerJobInfo;
 import org.oran.pmproducer.repository.InfoType;
 import org.oran.pmproducer.repository.InfoTypes;
@@ -87,8 +87,9 @@ import reactor.kafka.sender.SenderRecord;
         "app.pm-files-path=./src/test/resources/", //
         "app.s3.locksBucket=ropfilelocks", //
         "app.pm-files-path=/tmp/dmaapadaptor", //
-        "app.s3.bucket=dmaaptest" //
-}) //
+        "app.s3.bucket=dmaaptest", //
+        "app.auth-token-file=src/test/resources/jwtToken.b64", //
+        "app.kafka.use-oath-token=false"}) //
 class IntegrationWithKafka {
 
     final static String PM_TYPE_ID = "PmDataOverKafka";
@@ -321,6 +322,10 @@ class IntegrationWithKafka {
         props.put(ProducerConfig.ACKS_CONFIG, "all");
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, ByteArraySerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, ByteArraySerializer.class);
+
+        // Security
+        this.applicationConfig.addKafkaSecurityProps(props);
+
         return SenderOptions.create(props);
     }
 
