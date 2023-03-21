@@ -53,7 +53,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.mockito.ArgumentCaptor;
 import org.oran.pmproducer.clients.AsyncRestClient;
 import org.oran.pmproducer.clients.AsyncRestClientFactory;
-import org.oran.pmproducer.clients.SecurityContext;
 import org.oran.pmproducer.configuration.ApplicationConfig;
 import org.oran.pmproducer.configuration.WebClientConfig;
 import org.oran.pmproducer.configuration.WebClientConfig.HttpProxyConfig;
@@ -64,6 +63,7 @@ import org.oran.pmproducer.filter.FilteredData;
 import org.oran.pmproducer.filter.PmReport;
 import org.oran.pmproducer.filter.PmReportFilter;
 import org.oran.pmproducer.filter.PmReportFilter.FilterData;
+import org.oran.pmproducer.oauth2.SecurityContext;
 import org.oran.pmproducer.r1.ConsumerJobInfo;
 import org.oran.pmproducer.r1.ProducerJobInfo;
 import org.oran.pmproducer.repository.InfoType;
@@ -233,11 +233,6 @@ class ApplicationTest {
 
     private String baseUrl() {
         return "https://localhost:" + this.applicationConfig.getLocalServerHttpPort();
-    }
-
-    private String quote(String str) {
-        final String q = "\"";
-        return q + str.replace(q, "\\\"") + q;
     }
 
     private Object toJson(String json) {
