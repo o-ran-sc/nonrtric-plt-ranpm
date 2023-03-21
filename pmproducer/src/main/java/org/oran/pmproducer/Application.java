@@ -37,7 +37,6 @@ public class Application {
 
     private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
-    private long configFileLastModification = 0;
     private static ConfigurableApplicationContext applicationContext;
 
     public static void main(String[] args) {
@@ -67,4 +66,5 @@ public class Application {
         thread.setDaemon(false);
         thread.start();
     }
+
 }

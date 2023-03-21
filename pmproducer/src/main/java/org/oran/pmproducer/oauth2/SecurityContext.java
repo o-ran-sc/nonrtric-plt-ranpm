@@ -18,12 +18,13 @@
  * ========================LICENSE_END===================================
  */
 
-package org.oran.pmproducer.clients;
+package org.oran.pmproducer.oauth2;
 
 import java.lang.invoke.MethodHandles;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import lombok.Getter;
 import lombok.Setter;
 
 import org.slf4j.Logger;
@@ -44,10 +45,14 @@ public class SecurityContext {
 
     private String authToken = "";
 
+    @Getter
+    private static SecurityContext instance;
+
     @Setter
     private Path authTokenFilePath;
 
-    public SecurityContext(@Value("${app.auth-token-file:}") String authTokenFilename) {
+    public SecurityContext(@Value("${app.auth-token-file}") String authTokenFilename) {
+        instance = this;
         if (!authTokenFilename.isEmpty()) {
             this.authTokenFilePath = Path.of(authTokenFilename);
         }
@@ -59,12 +64,14 @@ public class SecurityContext {
 
     public synchronized String getBearerAuthToken() {
         if (!isConfigured()) {
+            logger.warn("No configuration for auth token");
             return "";
         }
         try {
             long lastModified = authTokenFilePath.toFile().lastModified();
             if (tokenTimestamp == 0 || lastModified != this.tokenTimestamp) {
                 this.authToken = Files.readString(authTokenFilePath);
+                this.authToken = this.authToken.trim();
                 this.tokenTimestamp = lastModified;
             }
         } catch (Exception e) {

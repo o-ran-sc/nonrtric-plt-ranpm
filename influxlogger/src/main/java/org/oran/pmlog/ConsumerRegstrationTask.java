@@ -26,8 +26,8 @@ import lombok.Getter;
 
 import org.oran.pmlog.clients.AsyncRestClient;
 import org.oran.pmlog.clients.AsyncRestClientFactory;
-import org.oran.pmlog.clients.SecurityContext;
 import org.oran.pmlog.configuration.ApplicationConfig;
+import org.oran.pmlog.oauth2.SecurityContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -84,6 +84,15 @@ app:
     max-poll-records: 500
     group-id: kafkaGroupId
     client-id: kafkaClientId
+    # Configues if oath2 tokens shall be used. If set to true, auth-token-file must also be configured
+    use-oath-token: false
+    ssl:
+      key-store-type: PEM
+      key-store-location:
+      # key password is needed if the private key is encrypted
+      key-store-password:
+      trust-store-type: PEM
+      trust-store-location:
   influx:
     url: http://localhost:8086
     access-token: xmrt1YobMTl-Nx-a8iiO6fC8xJc5BvKZLSU8U18VfAYza4N0YHTFrLy15W4Ss2bxXhgX95qagxsBJ0GCBSFveQ==
@@ -95,5 +104,7 @@ app:
     database: pm_data
   ics-base-url: https://localhost:8434
   consumer-job-id: "pmlog"
+  # If the file name is empty, no authorization token is used
+  auth-token-file:
 
 
