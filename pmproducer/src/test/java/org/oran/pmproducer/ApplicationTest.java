@@ -257,9 +257,10 @@ class ApplicationTest {
     }
 
     private void waitForRegistration() {
+        producerRegistrationTask.registerTypesAndProducer().block();
         // Register producer, Register types
         await().untilAsserted(() -> assertThat(icsSimulatorController.testResults.registrationInfo).isNotNull());
-        producerRegistrationTask.supervisionTask().block();
+        producerRegistrationTask.registerTypesAndProducer().block();
 
         assertThat(icsSimulatorController.testResults.registrationInfo.supportedTypeIds).hasSize(this.types.size());
         assertThat(producerRegistrationTask.isRegisteredInIcs()).isTrue();
@@ -427,23 +428,6 @@ class ApplicationTest {
         ConsumerJobInfo jobInfo = consumerJobInfo("PmDataOverKafka", "EI_PM_JOB_ID", toJson(paramJson));
         this.icsSimulatorController.addJob(jobInfo, JOB_ID, restClient());
         await().untilAsserted(() -> assertThat(this.jobs.size()).isEqualTo(1));
-    }
-
-    @Test
-    void testReRegister() throws Exception {
-        // Wait foir register types and producer
-        waitForRegistration();
-
-        // Clear the registration, should trigger a re-register
-        icsSimulatorController.testResults.reset();
-        producerRegistrationTask.supervisionTask().block();
-        await().untilAsserted(() -> assertThat(icsSimulatorController.testResults.registrationInfo).isNotNull());
-        assertThat(icsSimulatorController.testResults.registrationInfo.supportedTypeIds).hasSize(this.types.size());
-
-        // Just clear the registerred types, should trigger a re-register
-        icsSimulatorController.testResults.types.clear();
-        await().untilAsserted(() -> assertThat(icsSimulatorController.testResults.registrationInfo.supportedTypeIds)
-                .hasSize(this.types.size()));
     }
 
     @Test
