@@ -21,7 +21,7 @@ logging:
     org.springframework: WARN
     org.springframework.data: WARN
     org.springframework.web.reactive.function.client.ExchangeFunctions: WARN
-    org.onap.dcaegen2.collectors.datafile: INFO
+    org.oran.datafile: INFO
 
   file:
     name: /var/log/ONAP/application.log
@@ -31,6 +31,8 @@ app:
   number-of-worker-treads: 200
   # KAFKA boostrap servers.
   # several redundant boostrap servers can be specified, separated by a comma ','.
+   # If the file name is empty, no authorization token is used
+  auth-token-file:
   kafka:
     bootstrap-servers: localhost:9092
     # output topic
@@ -38,6 +40,15 @@ app:
     client-id: datafile-1
     # input topic
     file-ready-event-topic: file-ready
+      # Configues if oath2 tokens shall be used. If set to true, auth-token-file must also be configured
+    use-oath-token: false
+    ssl:
+      key-store-type: PEM
+      key-store-location:
+      # key password is needed if the private key is encrypted
+      key-store-password:
+      trust-store-type: PEM
+      trust-store-location:
   sftp:
     known-hosts-file-path:
     strict-host-key-checking: false

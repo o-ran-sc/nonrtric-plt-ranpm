@@ -157,7 +157,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <finalName>${project.artifactId}</finalName>
-                    <mainClass>org.onap.dcaegen2.collectors.datafile.MainApp</mainClass>
+                    <mainClass>org.oran.datafile.MainApp</mainClass>
                 </configuration>
                 <executions>
                     <execution>
