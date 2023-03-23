@@ -36,4 +36,8 @@ public class ServiceException extends Exception {
         this.httpStatus = httpStatus;
     }
 
+    public ServiceException(String message) {
+        this(message, HttpStatus.I_AM_A_TEAPOT);
+    }
+
 }

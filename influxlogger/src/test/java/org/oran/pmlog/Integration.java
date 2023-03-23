@@ -58,7 +58,9 @@ import reactor.kafka.sender.SenderRecord;
         "server.ssl.key-store=./config/keystore.jks", //
         "app.webclient.trust-store=./config/truststore.jks", //
         "app.configuration-filepath=./src/test/resources/test_application_configuration.json", //
-        "app.pm-files-path=./src/test/resources/" //
+        "app.pm-files-path=./src/test/resources/", //
+        "app.auth-token-file=src/test/resources/jwtToken.b64", //
+        "app.kafka.use-oath-token=false" //
 }) //
 class Integration {
 
@@ -114,6 +116,7 @@ class Integration {
         props.put(ProducerConfig.ACKS_CONFIG, "all");
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, ByteArraySerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, ByteArraySerializer.class);
+        this.applicationConfig.addKafkaSecurityProps(props);
         return SenderOptions.create(props);
     }
 

@@ -89,6 +89,7 @@ public class KafkaTopicListener {
         consumerProps.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
 
         consumerProps.put(ConsumerConfig.CLIENT_ID_CONFIG, clientId + "_" + applicationConfig.getKafkaGroupId());
+        this.applicationConfig.addKafkaSecurityProps(consumerProps);
 
         return ReceiverOptions.<byte[], byte[]>create(consumerProps)
                 .subscription(Collections.singleton(this.applicationConfig.getKafkaInputTopic()));

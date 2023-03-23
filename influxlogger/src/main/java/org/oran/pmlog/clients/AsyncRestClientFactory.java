@@ -43,6 +43,7 @@ import javax.net.ssl.KeyManagerFactory;
 
 import org.oran.pmlog.configuration.WebClientConfig;
 import org.oran.pmlog.configuration.WebClientConfig.HttpProxyConfig;
+import org.oran.pmlog.oauth2.SecurityContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.ResourceUtils;

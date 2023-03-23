@@ -36,4 +36,9 @@ public class ServiceException extends Exception {
         this.httpStatus = httpStatus;
     }
 
+    public ServiceException(String message) {
+        super(message);
+        this.httpStatus = HttpStatus.BAD_REQUEST;
+    }
+
 }

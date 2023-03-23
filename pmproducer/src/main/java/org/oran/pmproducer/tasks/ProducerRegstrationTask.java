@@ -32,10 +32,10 @@ import lombok.Getter;
 
 import org.oran.pmproducer.clients.AsyncRestClient;
 import org.oran.pmproducer.clients.AsyncRestClientFactory;
-import org.oran.pmproducer.clients.SecurityContext;
 import org.oran.pmproducer.configuration.ApplicationConfig;
 import org.oran.pmproducer.controllers.ProducerCallbacksController;
 import org.oran.pmproducer.exceptions.ServiceException;
+import org.oran.pmproducer.oauth2.SecurityContext;
 import org.oran.pmproducer.r1.ConsumerJobInfo;
 import org.oran.pmproducer.r1.ProducerInfoTypeInfo;
 import org.oran.pmproducer.r1.ProducerRegistrationInfo;

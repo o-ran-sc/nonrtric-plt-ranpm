@@ -29,13 +29,12 @@ import java.util.Vector;
 
 import lombok.Getter;
 
-import org.oran.pmproducer.clients.AsyncRestClientFactory;
-import org.oran.pmproducer.clients.SecurityContext;
 import org.oran.pmproducer.configuration.ApplicationConfig;
 import org.oran.pmproducer.exceptions.ServiceException;
 import org.oran.pmproducer.filter.FilterFactory;
 import org.oran.pmproducer.filter.FilteredData;
 import org.oran.pmproducer.filter.PmReportFilter;
+import org.oran.pmproducer.oauth2.SecurityContext;
 import org.oran.pmproducer.repository.Job.Parameters;
 import org.oran.pmproducer.repository.Job.Parameters.KafkaDeliveryInfo;
 import org.oran.pmproducer.tasks.TopicListener.DataFromTopic;
@@ -117,13 +116,11 @@ public class Jobs {
     private Map<String, Job> allJobs = new HashMap<>();
     private MultiMap<Job> jobsByType = new MultiMap<>();
     private Map<String, JobGroup> jobGroups = new HashMap<>(); // Key is Topic
-    private final AsyncRestClientFactory restclientFactory;
     private final List<Observer> observers = new ArrayList<>();
     private final ApplicationConfig appConfig;
 
     public Jobs(@Autowired ApplicationConfig applicationConfig, @Autowired SecurityContext securityContext,
             @Autowired ApplicationConfig appConfig) {
-        restclientFactory = new AsyncRestClientFactory(applicationConfig.getWebClientConfig(), securityContext);
         this.appConfig = appConfig;
     }
 
