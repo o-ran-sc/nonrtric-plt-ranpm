@@ -17,14 +17,14 @@
  * ============LICENSE_END=========================================================
  */
 
-package org.oran.datafile.scheme;
+package org.oran.datafile.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
-import org.oran.datafile.commons.Scheme;
 import org.oran.datafile.exceptions.DatafileTaskException;
+import org.oran.datafile.model.FileData.Scheme;
 
 public class SchemeTest {
 

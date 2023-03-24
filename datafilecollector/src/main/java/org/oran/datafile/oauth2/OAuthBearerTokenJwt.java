@@ -17,9 +17,6 @@
 
 package org.oran.datafile.oauth2;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-
 import java.util.Base64;
 import java.util.HashSet;
 import java.util.Set;
@@ -46,8 +43,7 @@ public class OAuthBearerTokenJwt implements OAuthBearerToken {
         String scope = "";
     }
 
-    public static OAuthBearerTokenJwt create(String tokenRaw)
-        throws DatafileTaskException, JsonMappingException, JsonProcessingException {
+    public static OAuthBearerTokenJwt create(String tokenRaw) throws DatafileTaskException {
         String[] chunks = tokenRaw.split("\\.");
         Base64.Decoder decoder = Base64.getUrlDecoder();
         if (chunks.length < 2) {
@@ -56,7 +52,7 @@ public class OAuthBearerTokenJwt implements OAuthBearerToken {
         }
         String payloadStr = new String(decoder.decode(chunks[1]));
         JwtTokenBody token = gson.fromJson(payloadStr, JwtTokenBody.class);
-        logger.error("Token: {}", token);
+        logger.debug("Token: {}", token);
         return new OAuthBearerTokenJwt(token, tokenRaw);
     }
 

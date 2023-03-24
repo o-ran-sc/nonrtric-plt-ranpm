@@ -39,9 +39,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.oran.datafile.commons.FileServerData;
 import org.oran.datafile.exceptions.DatafileTaskException;
-import org.oran.datafile.service.HttpUtils;
+import org.oran.datafile.model.FileServerData;
 
 import reactor.core.publisher.Flux;
 import reactor.netty.http.client.HttpClientConfig;

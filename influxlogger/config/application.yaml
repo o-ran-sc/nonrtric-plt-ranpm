@@ -84,7 +84,7 @@ app:
     max-poll-records: 500
     group-id: kafkaGroupId
     client-id: kafkaClientId
-    # Configues if oath2 tokens shall be used. If set to true, auth-token-file must also be configured
+    # Configures if oath2 tokens shall be used. If set to true, auth-token-file must also be configured
     use-oath-token: false
     ssl:
       key-store-type: PEM

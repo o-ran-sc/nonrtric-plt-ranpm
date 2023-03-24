@@ -24,7 +24,6 @@ import java.time.Duration;
 import java.util.Optional;
 
 import org.oran.datafile.commons.FileCollectClient;
-import org.oran.datafile.commons.Scheme;
 import org.oran.datafile.configuration.AppConfig;
 import org.oran.datafile.configuration.CertificateConfig;
 import org.oran.datafile.exceptions.DatafileTaskException;
@@ -123,7 +122,7 @@ public class FileCollector {
     }
 
     private void incFailedAttemptsCounter(FileData fileData) {
-        if (Scheme.isFtpScheme(fileData.scheme())) {
+        if (FileData.Scheme.isFtpScheme(fileData.scheme())) {
             counters.incNoOfFailedFtpAttempts();
         } else {
             counters.incNoOfFailedHttpAttempts();

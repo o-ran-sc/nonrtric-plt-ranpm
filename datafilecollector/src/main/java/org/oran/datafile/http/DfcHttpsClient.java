@@ -38,10 +38,9 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.util.EntityUtils;
 import org.oran.datafile.commons.FileCollectClient;
-import org.oran.datafile.commons.FileServerData;
 import org.oran.datafile.exceptions.DatafileTaskException;
 import org.oran.datafile.exceptions.NonRetryableDatafileTaskException;
-import org.oran.datafile.service.HttpUtils;
+import org.oran.datafile.model.FileServerData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

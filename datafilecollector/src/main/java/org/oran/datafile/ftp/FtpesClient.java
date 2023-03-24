@@ -22,7 +22,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.GeneralSecurityException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -39,10 +41,9 @@ import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPReply;
 import org.apache.commons.net.ftp.FTPSClient;
 import org.oran.datafile.commons.FileCollectClient;
-import org.oran.datafile.commons.FileServerData;
-import org.oran.datafile.commons.SecurityUtil;
 import org.oran.datafile.exceptions.DatafileTaskException;
 import org.oran.datafile.exceptions.NonRetryableDatafileTaskException;
+import org.oran.datafile.model.FileServerData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.FileSystemResource;
@@ -195,7 +196,7 @@ public class FtpesClient implements FileCollectClient {
         throws KeyStoreException, NoSuchAlgorithmException, IOException, CertificateException {
         synchronized (FtpesClient.class) {
             if (theTrustManager == null && trustedCaPath != null) {
-                String trustedCaPassword = SecurityUtil.getTruststorePasswordFromFile(trustedCaPasswordPath);
+                String trustedCaPassword = Files.readString(Paths.get((trustedCaPasswordPath)));
                 theTrustManager = createTrustManager(trustedCaPath, trustedCaPassword);
             }
             return theTrustManager;
@@ -207,7 +208,7 @@ public class FtpesClient implements FileCollectClient {
 
         synchronized (FtpesClient.class) {
             if (theKeyManager == null) {
-                String keyCertPassword = SecurityUtil.getKeystorePasswordFromFile(keyCertPasswordPath);
+                String keyCertPassword = Files.readString(Paths.get((keyCertPasswordPath)));
                 theKeyManager = createKeyManager(keyCertPath, keyCertPassword);
             }
             return theKeyManager;

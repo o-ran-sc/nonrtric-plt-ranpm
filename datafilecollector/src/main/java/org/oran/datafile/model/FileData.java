@@ -33,10 +33,9 @@ import lombok.Builder;
 
 import org.apache.hc.core5.http.NameValuePair;
 import org.apache.hc.core5.net.URIBuilder;
-import org.oran.datafile.commons.FileServerData;
-import org.oran.datafile.commons.FileServerData.FileServerDataBuilder;
-import org.oran.datafile.commons.Scheme;
 import org.oran.datafile.configuration.AppConfig;
+import org.oran.datafile.exceptions.DatafileTaskException;
+import org.oran.datafile.model.FileServerData.FileServerDataBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -47,6 +46,43 @@ import org.slf4j.LoggerFactory;
  */
 @Builder
 public class FileData {
+
+    public enum Scheme {
+        FTPES, SFTP, HTTP, HTTPS;
+
+        public static final String DFC_DOES_NOT_SUPPORT_PROTOCOL_ERROR_MSG = "DFC does not support protocol ";
+        public static final String SUPPORTED_PROTOCOLS_ERROR_MESSAGE =
+            ". Supported protocols are FTPeS, sFTP, HTTP and HTTPS";
+
+        /**
+         * Get a <code>Scheme</code> from a string.
+         *
+         * @param schemeString the string to convert to <code>Scheme</code>.
+         * @return The corresponding <code>Scheme</code>
+         * @throws DatafileTaskException if the value of the string doesn't match any
+         *         defined scheme.
+         */
+        public static Scheme getSchemeFromString(String schemeString) throws DatafileTaskException {
+            Scheme result;
+            if ("FTPES".equalsIgnoreCase(schemeString)) {
+                result = Scheme.FTPES;
+            } else if ("SFTP".equalsIgnoreCase(schemeString)) {
+                result = Scheme.SFTP;
+            } else if ("HTTP".equalsIgnoreCase(schemeString)) {
+                result = Scheme.HTTP;
+            } else if ("HTTPS".equalsIgnoreCase(schemeString)) {
+                result = Scheme.HTTPS;
+            } else {
+                throw new DatafileTaskException(
+                    DFC_DOES_NOT_SUPPORT_PROTOCOL_ERROR_MSG + schemeString + SUPPORTED_PROTOCOLS_ERROR_MESSAGE);
+            }
+            return result;
+        }
+
+        public static boolean isFtpScheme(Scheme scheme) {
+            return scheme == SFTP || scheme == FTPES;
+        }
+    }
 
     private static final Logger logger = LoggerFactory.getLogger(FileData.class);
 

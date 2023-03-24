@@ -26,9 +26,9 @@ import com.jcraft.jsch.SftpException;
 import java.nio.file.Path;
 
 import org.oran.datafile.commons.FileCollectClient;
-import org.oran.datafile.commons.FileServerData;
 import org.oran.datafile.exceptions.DatafileTaskException;
 import org.oran.datafile.exceptions.NonRetryableDatafileTaskException;
+import org.oran.datafile.model.FileServerData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -18,6 +18,7 @@ package org.oran.datafile.http;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -37,7 +38,6 @@ import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.apache.http.ssl.SSLContexts;
-import org.oran.datafile.commons.SecurityUtil;
 import org.oran.datafile.exceptions.DatafileTaskException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -107,7 +107,7 @@ public class HttpsClientConnectionManagerUtil {
     private static SSLContextBuilder supplyKeyInfo(String keyCertPath, String keyCertPasswordPath,
         SSLContextBuilder sslBuilder) throws IOException, KeyStoreException, NoSuchAlgorithmException,
         CertificateException, UnrecoverableKeyException {
-        String keyPass = SecurityUtil.getKeystorePasswordFromFile(keyCertPasswordPath);
+        String keyPass = Files.readString(Paths.get((keyCertPasswordPath)));
         KeyStore keyFile = createKeyStore(keyCertPath, keyPass);
         return sslBuilder.loadKeyMaterial(keyFile, keyPass.toCharArray());
     }
@@ -130,7 +130,7 @@ public class HttpsClientConnectionManagerUtil {
     private static SSLContextBuilder supplyTrustInfo(String trustedCaPath, String trustedCaPasswordPath,
         SSLContextBuilder sslBuilder)
         throws NoSuchAlgorithmException, KeyStoreException, CertificateException, IOException {
-        String trustPass = SecurityUtil.getTruststorePasswordFromFile(trustedCaPasswordPath);
+        String trustPass = Files.readString(Paths.get((trustedCaPasswordPath)));
         File trustStoreFile = new File(trustedCaPath);
         return sslBuilder.loadTrustMaterial(trustStoreFile, trustPass.toCharArray());
     }

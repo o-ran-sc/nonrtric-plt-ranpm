@@ -40,7 +40,7 @@ app:
     client-id: datafile-1
     # input topic
     file-ready-event-topic: file-ready
-      # Configues if oath2 tokens shall be used. If set to true, auth-token-file must also be configured
+      # Configures if oath2 tokens shall be used. If set to true, auth-token-file must also be configured
     use-oath-token: false
     ssl:
       key-store-type: PEM

@@ -17,14 +17,14 @@
  * ============LICENSE_END========================================================================
  */
 
-package org.oran.datafile.service;
+package org.oran.datafile.http;
 
 import java.util.Base64;
 import java.util.List;
 
 import org.apache.hc.core5.http.NameValuePair;
 import org.apache.http.HttpStatus;
-import org.oran.datafile.commons.FileServerData;
+import org.oran.datafile.model.FileServerData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

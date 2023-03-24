@@ -15,7 +15,7 @@
  * ============LICENSE_END========================================================================
  */
 
-package org.oran.datafile.service;
+package org.oran.datafile.http;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -27,7 +27,7 @@ import java.util.List;
 import org.apache.hc.core5.http.NameValuePair;
 import org.apache.hc.core5.net.URIBuilder;
 import org.junit.jupiter.api.Test;
-import org.oran.datafile.commons.FileServerData;
+import org.oran.datafile.model.FileServerData;
 
 class HttpUtilsTest {
 

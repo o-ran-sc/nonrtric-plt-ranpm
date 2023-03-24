@@ -32,7 +32,6 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.header.Header;
 import org.apache.kafka.common.header.internals.RecordHeader;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.oran.datafile.commons.Scheme;
 import org.oran.datafile.configuration.AppConfig;
 import org.oran.datafile.configuration.CertificateConfig;
 import org.oran.datafile.datastore.DataStore;
@@ -258,7 +257,7 @@ public class CollectAndReportFiles {
         Path localFilePath = fileData.getLocalFilePath(this.appConfig);
         logger.error("File fetching failed, path {}, reason: {}", fileData.remoteFilePath(), t.getMessage());
         deleteFile(localFilePath);
-        if (Scheme.isFtpScheme(fileData.scheme())) {
+        if (FileData.Scheme.isFtpScheme(fileData.scheme())) {
             counters.incNoOfFailedFtp();
         } else {
             counters.incNoOfFailedHttp();

@@ -15,7 +15,7 @@
  * ============LICENSE_END========================================================================
  */
 
-package org.oran.datafile.commons;
+package org.oran.datafile.model;
 
 import java.util.ArrayList;
 import java.util.List;

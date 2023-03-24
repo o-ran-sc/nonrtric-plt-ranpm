@@ -24,10 +24,9 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 
 import org.oran.datafile.commons.FileCollectClient;
-import org.oran.datafile.commons.FileServerData;
 import org.oran.datafile.exceptions.DatafileTaskException;
 import org.oran.datafile.exceptions.NonRetryableDatafileTaskException;
-import org.oran.datafile.service.HttpUtils;
+import org.oran.datafile.model.FileServerData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
