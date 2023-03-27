@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b38383e_c01628c3",
+        "filename": "https-server/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000262
+      },
+      "writtenOn": "2023-03-27T13:30:24Z",
+      "side": 1,
+      "message": "Is there any particular reason why the defer is not in the line after the \"open\"? \nI think it might be easier to read if it is always in the same place (?).\nGeneric comment.",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 17
+      },
+      "revId": "ae59f5395c9bc5ae257020261b235fb58795cf08",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0dd7703_6a93c880",
+        "filename": "https-server/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000262
+      },
+      "writtenOn": "2023-03-27T13:30:24Z",
+      "side": 1,
+      "message": "generated",
+      "range": {
+        "startLine": 124,
+        "startChar": 18,
+        "endLine": 124,
+        "endChar": 26
+      },
+      "revId": "ae59f5395c9bc5ae257020261b235fb58795cf08",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d6d7bd5_7059a65f",
+        "filename": "install/helm/nrt-base-1/charts/client/Chart.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000262
+      },
+      "writtenOn": "2023-03-27T13:30:24Z",
+      "side": 1,
+      "message": "maybe better to call it kafka-client or something?",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 12
+      },
+      "revId": "ae59f5395c9bc5ae257020261b235fb58795cf08",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a94249a_b0692673",
+        "filename": "install/helm/nrt-base-1/charts/kowl/templates/app-deployment.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000262
+      },
+      "writtenOn": "2023-03-27T13:30:24Z",
+      "side": 1,
+      "message": "Generic comment; it seem like it has changed name from kowl to \"Redpanda Console\".",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 12
+      },
+      "revId": "ae59f5395c9bc5ae257020261b235fb58795cf08",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60c781fd_e19fb969",
+        "filename": "install/helm/nrt-pm-log/templates/app-statefulset.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000262
+      },
+      "writtenOn": "2023-03-27T13:30:24Z",
+      "side": 1,
+      "message": "Should this be a deployment? Or does it not matter?",
+      "revId": "ae59f5395c9bc5ae257020261b235fb58795cf08",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0788335a_5c491abc",
+        "filename": "install/helm/nrt-pm-rapp/config/jobDefinition.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000262
+      },
+      "writtenOn": "2023-03-27T13:30:24Z",
+      "side": 1,
+      "message": "I do not understand what a pm-rapp is but should really the topic be empty?",
+      "range": {
+        "startLine": 6,
+        "startChar": 5,
+        "endLine": 6,
+        "endChar": 29
+      },
+      "revId": "ae59f5395c9bc5ae257020261b235fb58795cf08",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2edea8d_d8e4645b",
+        "filename": "install/helm/nrt-pm/charts/ics/templates/app-deployment.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000262
+      },
+      "writtenOn": "2023-03-27T13:30:24Z",
+      "side": 1,
+      "message": "Should this on the other hand be a stateful set?",
+      "revId": "ae59f5395c9bc5ae257020261b235fb58795cf08",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
