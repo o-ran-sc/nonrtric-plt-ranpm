@@ -41,6 +41,30 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60e69f10_f386aa46",
+        "filename": "https-server/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000261
+      },
+      "writtenOn": "2023-03-30T11:46:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "170ba1fa_817bae9f",
+      "range": {
+        "startLine": 6,
+        "startChar": 27,
+        "endLine": 6,
+        "endChar": 37
+      },
+      "revId": "17eb5b13f94e3f1f051cd8404337e245dfd47873",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfb33794_a740b497",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-03-21T09:05:06Z",
       "side": 1,
       "message": "should be consistent with timestamp on line 29",
+      "range": {
+        "startLine": 27,
+        "startChar": 55,
+        "endLine": 27,
+        "endChar": 65
+      },
+      "revId": "17eb5b13f94e3f1f051cd8404337e245dfd47873",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "beff34ab_2eb18365",
+        "filename": "https-server/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000261
+      },
+      "writtenOn": "2023-03-30T11:46:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfb33794_a740b497",
       "range": {
         "startLine": 27,
         "startChar": 55,
@@ -87,6 +135,30 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "961d0f2a_571217ea",
+        "filename": "install/helm/nrt-pm-kafka-connect/templates/app-kafka-connect.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000261
+      },
+      "writtenOn": "2023-03-30T11:46:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2e013ec_71b116ab",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 28
+      },
+      "revId": "17eb5b13f94e3f1f051cd8404337e245dfd47873",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13857c54_783f88b7",
@@ -100,6 +172,30 @@
       "writtenOn": "2023-03-21T09:05:06Z",
       "side": 1,
       "message": "you could remove these lines",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 34
+      },
+      "revId": "17eb5b13f94e3f1f051cd8404337e245dfd47873",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04257644_197fcac5",
+        "filename": "install/helm/nrt-pm/charts/kafka-producer-pm-json2influx/templates/app-statefulset.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000261
+      },
+      "writtenOn": "2023-03-30T11:46:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13857c54_783f88b7",
       "range": {
         "startLine": 39,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0afa99b2_778727ac",
+        "filename": "install/helm/nrt-pm/charts/kafka-producer-pm-json2kafka/templates/app-statefulset.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000261
+      },
+      "writtenOn": "2023-03-30T11:46:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c454d5b4_d3911707",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 34
+      },
+      "revId": "17eb5b13f94e3f1f051cd8404337e245dfd47873",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95f2fecc_fb749193",
@@ -146,6 +266,30 @@
       "writtenOn": "2023-03-21T09:05:06Z",
       "side": 1,
       "message": "you could remove these lines",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 34
+      },
+      "revId": "17eb5b13f94e3f1f051cd8404337e245dfd47873",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a5ad44b_9cad5620",
+        "filename": "install/helm/nrt-pm/charts/kafka-producer-pm-xml2json/templates/app-statefulset.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000261
+      },
+      "writtenOn": "2023-03-30T11:46:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95f2fecc_fb749193",
       "range": {
         "startLine": 39,
         "startChar": 0,
@@ -179,6 +323,30 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed9c17f4_d354aa63",
+        "filename": "install/helm/ran/templates/app-deployment.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000261
+      },
+      "writtenOn": "2023-03-30T11:46:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a41dd349_d42f4d9d",
+      "range": {
+        "startLine": 82,
+        "startChar": 16,
+        "endLine": 82,
+        "endChar": 24
+      },
+      "revId": "17eb5b13f94e3f1f051cd8404337e245dfd47873",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16e09747_d2c4afa0",
@@ -192,6 +360,30 @@
       "writtenOn": "2023-03-21T09:05:06Z",
       "side": 1,
       "message": "Script",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "17eb5b13f94e3f1f051cd8404337e245dfd47873",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d3d05ef_d703f9bd",
+        "filename": "install/scripts/populate_keycloak.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000261
+      },
+      "writtenOn": "2023-03-30T11:46:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16e09747_d2c4afa0",
       "range": {
         "startLine": 20,
         "startChar": 2,

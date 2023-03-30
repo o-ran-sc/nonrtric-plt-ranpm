@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "36437375_eaef0d6a",
+        "filename": "https-server/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000261
+      },
+      "writtenOn": "2023-03-30T11:46:06Z",
+      "side": 1,
+      "message": "If there is an error, the var \"gr\" is empty (nil) at row 96.",
+      "parentUuid": "8b38383e_c01628c3",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 17
+      },
+      "revId": "ae59f5395c9bc5ae257020261b235fb58795cf08",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0dd7703_6a93c880",
         "filename": "https-server/main.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-27T13:30:24Z",
       "side": 1,
       "message": "generated",
+      "range": {
+        "startLine": 124,
+        "startChar": 18,
+        "endLine": 124,
+        "endChar": 26
+      },
+      "revId": "ae59f5395c9bc5ae257020261b235fb58795cf08",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4b996bc_bfb34aa0",
+        "filename": "https-server/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000261
+      },
+      "writtenOn": "2023-03-30T11:46:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0dd7703_6a93c880",
       "range": {
         "startLine": 124,
         "startChar": 18,
@@ -70,6 +118,30 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1b56097_6f19397d",
+        "filename": "install/helm/nrt-base-1/charts/client/Chart.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000261
+      },
+      "writtenOn": "2023-03-30T11:46:06Z",
+      "side": 1,
+      "message": "The image is a kafka-image but the container also contains curl etc.\nChange to kafka-client",
+      "parentUuid": "7d6d7bd5_7059a65f",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 12
+      },
+      "revId": "ae59f5395c9bc5ae257020261b235fb58795cf08",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a94249a_b0692673",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-03-27T13:30:24Z",
       "side": 1,
       "message": "Generic comment; it seem like it has changed name from kowl to \"Redpanda Console\".",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 12
+      },
+      "revId": "ae59f5395c9bc5ae257020261b235fb58795cf08",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d3cc0fe_7b28435c",
+        "filename": "install/helm/nrt-base-1/charts/kowl/templates/app-deployment.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000261
+      },
+      "writtenOn": "2023-03-30T11:46:06Z",
+      "side": 1,
+      "message": "Change name to redpanda-console and updated image. Good catch that kowl is the old name.",
+      "parentUuid": "7a94249a_b0692673",
       "range": {
         "startLine": 21,
         "startChar": 1,
@@ -112,6 +208,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "129d67cb_12efef00",
+        "filename": "install/helm/nrt-pm-log/templates/app-statefulset.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000261
+      },
+      "writtenOn": "2023-03-30T11:46:06Z",
+      "side": 1,
+      "message": "pm-log should be possible to scale so it is a STS. It cannot be a deployment since each instance must be individually addressable by ICS.",
+      "parentUuid": "60c781fd_e19fb969",
+      "revId": "ae59f5395c9bc5ae257020261b235fb58795cf08",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0788335a_5c491abc",
         "filename": "install/helm/nrt-pm-rapp/config/jobDefinition.json",
         "patchSetId": 2
@@ -135,6 +249,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07ff0b05_1a5e9cf5",
+        "filename": "install/helm/nrt-pm-rapp/config/jobDefinition.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000261
+      },
+      "writtenOn": "2023-03-30T11:46:06Z",
+      "side": 1,
+      "message": "pm-rapp is an example rapp that register a subscription on pm data and dumps it out on std out (visible in the log).\nkafkaOutputTopic is set, before sending the job to ice, from an env var in the kube-yaml - so it is configurable.",
+      "parentUuid": "0788335a_5c491abc",
+      "range": {
+        "startLine": 6,
+        "startChar": 5,
+        "endLine": 6,
+        "endChar": 29
+      },
+      "revId": "ae59f5395c9bc5ae257020261b235fb58795cf08",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2edea8d_d8e4645b",
         "filename": "install/helm/nrt-pm/charts/ics/templates/app-deployment.yaml",
         "patchSetId": 2
@@ -146,6 +284,24 @@
       "writtenOn": "2023-03-27T13:30:24Z",
       "side": 1,
       "message": "Should this on the other hand be a stateful set?",
+      "revId": "ae59f5395c9bc5ae257020261b235fb58795cf08",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70223262_5069fe8e",
+        "filename": "install/helm/nrt-pm/charts/ics/templates/app-deployment.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000261
+      },
+      "writtenOn": "2023-03-30T11:46:06Z",
+      "side": 1,
+      "message": "ICS is a singleton - so could be a statefulset or deployment but max number instances is 1 so it does not really matter.",
+      "parentUuid": "b2edea8d_d8e4645b",
       "revId": "ae59f5395c9bc5ae257020261b235fb58795cf08",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
