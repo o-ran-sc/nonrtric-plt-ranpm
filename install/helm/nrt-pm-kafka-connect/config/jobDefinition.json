@@ -1,0 +1,16 @@
+{
+    "info_type_id": "json-file-data-from-filestore",
+    "job_owner": "console",
+    "job_result_uri": "",
+    "job_definition": {
+       "kafkaOutputTopic": "pmreports",
+       "filterType": "pmdata",
+       "filter": {
+
+       },
+       "deliveryInfo": {
+          "topic": "pmreports",
+          "bootStrapServers": "kafka-1-kafka-bootstrap.nonrtric:9097"
+       }
+    }
+ }

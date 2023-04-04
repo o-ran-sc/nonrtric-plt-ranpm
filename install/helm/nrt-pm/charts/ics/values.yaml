@@ -1,0 +1,19 @@
+#  ============LICENSE_START===============================================
+#  Copyright (C) 2023 Nordix Foundation. All rights reserved.
+#  ========================================================================
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#  ============LICENSE_END=================================================
+#
+
+# ics:
+#   nrtrealmjwks: '{"keys":[{"kid":"vq154xtZEuZMcvqblITYXjAl7sEv5TChqjFYnOvl-Qs","kty":"RSA","alg":"RSA-OAEP","use":"enc","n":"sIA9zpU5DhMYj9nhEfICUj61Fd7fFGbU2V80HL1Fqs4847bX3mhYPeX18Flin4qegcwBNRNoM48Zgt6lkUr1adyX0zKcppb6JoyBtDsULsHBYkRCRNmQoF8eFdpyTv_UTRY-75ttlNH6EuIFOs_FeUoNmG-2fssHd2vZ5FITKF8hXxorSIbq6trgiFXjGFT3__O8azZgC9A5pTB4TOhsZ3ZWRNyvRWjBRoArmIiHdEyXJDkPE8cUfe5rHYoQ_qec7lxudcybRnRvuGf5RN_lFImPuOKyJg-yQvTq1kABpMmM82AFB8hfuSEQhcgAu7bHqDIiK_hzZjFSGm3iV0BLWQ","e":"AQAB","x5c":["MIICqzCCAZMCBgGHD2mBFDANBgkqhkiG9w0BAQsFADAZMRcwFQYDVQQDDA5ub25ydHJpYy1yZWFsbTAeFw0yMzAzMjMxNjU4MDVaFw0zMzAzMjMxNjU5NDVaMBkxFzAVBgNVBAMMDm5vbnJ0cmljLXJlYWxtMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsIA9zpU5DhMYj9nhEfICUj61Fd7fFGbU2V80HL1Fqs4847bX3mhYPeX18Flin4qegcwBNRNoM48Zgt6lkUr1adyX0zKcppb6JoyBtDsULsHBYkRCRNmQoF8eFdpyTv/UTRY+75ttlNH6EuIFOs/FeUoNmG+2fssHd2vZ5FITKF8hXxorSIbq6trgiFXjGFT3//O8azZgC9A5pTB4TOhsZ3ZWRNyvRWjBRoArmIiHdEyXJDkPE8cUfe5rHYoQ/qec7lxudcybRnRvuGf5RN/lFImPuOKyJg+yQvTq1kABpMmM82AFB8hfuSEQhcgAu7bHqDIiK/hzZjFSGm3iV0BLWQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQBms1jABELD+S3VoWKNJ7ofcgmlE4FQOsm0WAqom+qOQ5aLhJrIMLdkxs29NvDuqogPROLPAwHM3Rt/BaQsNtE3onjzkvCbWVCRqYOhJ9aZLtbpRdjdcQGxhhtSaQJ32NqFJdzyYQWyngKp7OSAfGENUPmrtF8mTu07kKILKltZ2iolrjdAB1N1uPVqkCegOO6M25QpTV/gNc617kHBG/Lynz1L2OLMqZZlk+Abid56cHvdOUBoC06FDJIp2Sf/xH6XrMqrNFL1ESNVjkebKmnBoUHZOLbbFjqmnz2sTA4biyiXNCj/PcUcMR7rb5w6Dblyn81wxr149yzJGSj6aZso"],"x5t":"9tOJc9ltYCwApBvx-y0riMzrwpk","x5t#S256":"sNRZI8dGLC1_nP-fyNPToaHR4ydTvWwhMioigwLMhGI"},{"kid":"x33dFkus_3dTuSPmD1GDTFx1J7PhL0N-MDJ85gzIO-U","kty":"RSA","alg":"RS256","use":"sig","n":"pqwR-8kMXoS2I6mGgcEe0daODjS-aaJQ0XKT8r5JIYTQTxBUobaebm9MW8WFalRV5i6kUnjj6FP9MjB-MFSuIJZ34-Z0g3dQZ3rEy1tApdpVigpCZbGYDUkwZrsTIgn-oJ17ZL-slNsZtfOFA6DGmJmVaJRgy5UX_3-vtWNHYK62YoZ2YrXo4Nlmsu2sqJHSAR-83uqz_cvmmXsZL6EEdGBik1DwglLYSYqUdnteKSEH34MknQ7i1zkBooFUb8j40ZI-yBelUlpDdYO3Jj342gmaGS9216_jSb8FdMv__wAyJhjPP3jsOcrYDV7J1abxo6xnfzoLFWLMaJnn-mVBEw","e":"AQAB","x5c":["MIICqzCCAZMCBgGHD2mAJTANBgkqhkiG9w0BAQsFADAZMRcwFQYDVQQDDA5ub25ydHJpYy1yZWFsbTAeFw0yMzAzMjMxNjU4MDVaFw0zMzAzMjMxNjU5NDVaMBkxFzAVBgNVBAMMDm5vbnJ0cmljLXJlYWxtMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApqwR+8kMXoS2I6mGgcEe0daODjS+aaJQ0XKT8r5JIYTQTxBUobaebm9MW8WFalRV5i6kUnjj6FP9MjB+MFSuIJZ34+Z0g3dQZ3rEy1tApdpVigpCZbGYDUkwZrsTIgn+oJ17ZL+slNsZtfOFA6DGmJmVaJRgy5UX/3+vtWNHYK62YoZ2YrXo4Nlmsu2sqJHSAR+83uqz/cvmmXsZL6EEdGBik1DwglLYSYqUdnteKSEH34MknQ7i1zkBooFUb8j40ZI+yBelUlpDdYO3Jj342gmaGS9216/jSb8FdMv//wAyJhjPP3jsOcrYDV7J1abxo6xnfzoLFWLMaJnn+mVBEwIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQA9fkxUAWQYYE1ugKaDiJdWT/4XTxslOvnFCWXosSYroRm91Dq/m9a+iUFdufZ512O+mf42MyKGg1iHuYeB106fS0v02G2yMi1u4/aRYfpbUjzBOz++KIXTONXllxj/4j8qHTxp31rs5dp9wCsmR89MQxDMe7IyvHvspZc0JXI+//CHjTyPYDsvgQW9YMI9l4eXWt5RkPcGehF/P5Kp6SL6kkujIPQ3Xjpmgv1NT4K1YA7l82KqpvvIe1W6YittDZfgOU8lLrKYB2jlRN37p2boH/IojhE+WXuH6whHM887sFbt1/BhRpMWgCk5Ka3k11gvIhFsYRCGNbFtXJeprfd/"],"x5t":"uXcLL5bThM9rN9n-znXIOj0CcWk","x5t#S256":"JdvoOe2EklIoOxxjVNMBbj-8ypgAp9K77cMAQLR8G_s"}]}'

@@ -1,0 +1,14 @@
+{
+   "info_type_id": "json-file-data-from-filestore",
+   "job_owner": "console",
+   "status_notification_uri": "http://callback.nonrtric:80/post",
+   "job_definition": {
+      "kafkaOutputTopic": "",
+      "filterType": "pmdata",
+      "filter": {
+         "measTypes": [
+            "pmCounterNumber101"
+         ]
+      }
+   }
+}

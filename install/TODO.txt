@@ -1,0 +1,16 @@
+app versions in Chart.yaml
+
+Add parameters to config in values.yaml
+
+Handle password in secured secrets
+
+staging/release images (configurable?) and image pull policy
+
+use other minio user than admin for producers etc
+
+###############################
+
+mc alias set minio http://minio.nonrtric:9000   admin adminadmin
+
+mc admin user add minio testa testatesta
+

@@ -1,0 +1,10 @@
+
+pm-rapp
+=======
+Dockerfile
+- Remove ref to ubuntu image (if distroless image work ok)
+
+
+
+install/helm
+============
