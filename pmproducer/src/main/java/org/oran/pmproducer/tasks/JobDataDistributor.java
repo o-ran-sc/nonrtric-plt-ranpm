@@ -159,7 +159,7 @@ public class JobDataDistributor {
 
     private void sendLastStoredRecord() {
         String data = "{}";
-        FilteredData output = new FilteredData(this.jobGroup.getType().getId(), null, data.getBytes());
+        FilteredData output = new FilteredData("", this.jobGroup.getType().getId(), null, data.getBytes());
 
         sendToClient(output).subscribe();
     }
@@ -173,7 +173,7 @@ public class JobDataDistributor {
                 gzip.flush();
                 gzip.close();
                 byte[] zipped = out.toByteArray();
-                return new FilteredData(data.infoTypeId, data.key, zipped, true);
+                return new FilteredData(data.getSourceName(), data.infoTypeId, data.key, zipped, true);
             } catch (IOException e) {
                 logger.error("Unexpected exception when zipping: {}", e.getMessage());
                 return data;

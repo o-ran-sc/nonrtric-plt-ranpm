@@ -83,6 +83,7 @@ public class TopicListener {
 
         public static final String ZIPPED_PROPERTY = "gzip";
         public static final String TYPE_ID_PROPERTY = "type-id";
+        public static final String SOURCE_NAME_PROPERTY = "source-name";
 
         public boolean isZipped() {
             if (headers == null) {
@@ -97,16 +98,25 @@ public class TopicListener {
         }
 
         public String getTypeIdFromHeaders() {
+            return this.getStringProperty(TYPE_ID_PROPERTY);
+        }
+
+        public String getSourceNameFromHeaders() {
+            return this.getStringProperty(SOURCE_NAME_PROPERTY);
+        }
+
+        private String getStringProperty(String propertyName) {
             if (headers == null) {
                 return "";
             }
             for (Header h : headers) {
-                if (h.key().equals(TYPE_ID_PROPERTY)) {
+                if (h.key().equals(propertyName)) {
                     return new String(h.value());
                 }
             }
             return "";
         }
+
     }
 
     private static final Logger logger = LoggerFactory.getLogger(TopicListener.class);
