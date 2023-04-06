@@ -538,8 +538,8 @@
             "name": "Copyright (C) 2023 Nordix Foundation. Licensed under the Apache License.",
             "url": "http://www.apache.org/licenses/LICENSE-2.0"
         },
-        "description": "Reads data from DMaaP and Kafka and posts it further to information consumers",
-        "title": "Generic Dmaap and Kafka Information Producer",
+        "description": "Distributes PM Measuremenet Data to consumers",
+        "title": "PM Measuremenet Data Producer",
         "version": "1.0"
     },
     "tags": [{
