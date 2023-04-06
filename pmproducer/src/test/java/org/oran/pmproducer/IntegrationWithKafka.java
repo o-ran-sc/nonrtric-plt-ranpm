@@ -86,8 +86,8 @@ import reactor.kafka.sender.SenderRecord;
         "app.configuration-filepath=./src/test/resources/test_application_configuration.json", //
         "app.pm-files-path=./src/test/resources/", //
         "app.s3.locksBucket=ropfilelocks", //
-        "app.pm-files-path=/tmp/dmaapadaptor", //
-        "app.s3.bucket=dmaaptest", //
+        "app.pm-files-path=/tmp/pmproducer", //
+        "app.s3.bucket=pmproducertest", //
         "app.auth-token-file=src/test/resources/jwtToken.b64", //
         "app.kafka.use-oath-token=false"}) //
 class IntegrationWithKafka {

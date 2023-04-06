@@ -106,7 +106,7 @@ import reactor.test.StepVerifier;
         "app.webclient.trust-store=./config/truststore.jks", //
         "app.webclient.trust-store-used=true", //
         "app.configuration-filepath=./src/test/resources/test_application_configuration.json", //
-        "app.pm-files-path=/tmp/dmaapadaptor", //
+        "app.pm-files-path=/tmp/pmproducer", //
         "app.s3.endpointOverride=" //
 })
 class ApplicationTest {
