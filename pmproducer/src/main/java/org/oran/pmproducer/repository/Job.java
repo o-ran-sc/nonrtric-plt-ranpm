@@ -153,14 +153,9 @@ public class Job {
                 .typeId(type.getId()) //
                 .clientId(type.getKafkaClientId(appConfig)) //
                 .build();
-
     }
 
     public FilteredData filter(DataFromTopic data) {
-        if (filter == null) {
-            logger.debug("No filter used");
-            return new FilteredData(data.infoTypeId, data.key, data.value);
-        }
         return filter.filter(data);
     }
 }

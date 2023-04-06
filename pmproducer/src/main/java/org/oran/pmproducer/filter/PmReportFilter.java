@@ -193,7 +193,8 @@ public class PmReportFilter {
             if (reportFiltered == null) {
                 return FilteredData.empty();
             }
-            return new FilteredData(data.infoTypeId, data.key, gson.toJson(reportFiltered).getBytes());
+            return new FilteredData(reportFiltered.event.getCommonEventHeader().getSourceName(), data.infoTypeId,
+                    data.key, gson.toJson(reportFiltered).getBytes());
         } catch (Exception e) {
             logger.warn("Could not parse PM data. {}, reason: {}", data, e.getMessage());
             return FilteredData.empty();
