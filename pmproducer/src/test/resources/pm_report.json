@@ -19,7 +19,7 @@
             "measInfoList": [
                {
                   "measInfoId": {
-                     "sMeasInfoId": ""
+                     "sMeasInfoId": "PM=1,PmGroup=NRCellDU_GNBDU"
                   },
                   "measTypes": {
                      "sMeasTypesList": [
@@ -137,7 +137,7 @@
                },
                {
                   "measInfoId": {
-                     "sMeasInfoId": ""
+                     "sMeasInfoId": "PM=1,PmGroup=NRCellDU_GNBDU"
                   },
                   "measTypes": {
                      "sMeasTypesList": [
