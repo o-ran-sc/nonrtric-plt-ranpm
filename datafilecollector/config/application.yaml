@@ -29,11 +29,12 @@ app:
   collected-files-path: "/tmp/oran_datafile/"
   # Numer of worker threads. Increased number may increase throughput, but will require more executing resources.
   number-of-worker-treads: 200
-  # KAFKA boostrap servers.
-  # several redundant boostrap servers can be specified, separated by a comma ','.
+   # If specified, and authorization token will be loaded from file and inserted in each HTTP header when using HTTP/HTTPS.
    # If the file name is empty, no authorization token is used
   auth-token-file:
   kafka:
+    # KAFKA boostrap servers.
+    # several redundant boostrap servers can be specified, separated by a comma ','.
     bootstrap-servers: localhost:9092
     # output topic
     collected-file-topic: collected-file
@@ -58,11 +59,17 @@ app:
      trust-store-password-file: /opt/app/datafile/config/truststore.pass
      trust-store: /opt/app/datafile/config/truststore.jks
   s3:
-    endpointOverride:
-    accessKeyId:
-    secretAccessKey:
-    bucket:
-    locksBucket:
+    # S3 endpoint
+    endpointOverride: http://localhost:9000
+    # S3 access key ID
+    accessKeyId: miniostorage
+    # S3 password
+    secretAccessKey: secret
+    # The bucket to store collected files
+    bucket: ropfiles
+    # The bucket where DFC keeps lockfiles. This is to avoid that the same file is transfered more than once if
+    # several load sharing DFC instances are running.
+    locksBucket: dfclocks
 springdoc:
   show-actuator: true
   swagger-ui.disable-swagger-default-url: true

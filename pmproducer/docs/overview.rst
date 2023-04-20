@@ -67,12 +67,9 @@ Here follows an example of a resulting delivered PM report.
                "measInfoList":[
                   {
                      "measInfoId":{
-                        "sMeasInfoId":""
+                        "sMeasInfoId":"PM=1,PmGroup=NRCellDU_GNBDU"
                      },
                      "measTypes":{
-                        "map":{
-                           "succImmediateAssignProcs":1
-                        },
                         "sMeasTypesList":[
                            "succImmediateAssignProcs"
                         ]
