@@ -27,21 +27,24 @@ linkcheck_ignore = [
     'http://localhost.*',
     'http://127.0.0.1.*',
     'https://gerrit.o-ran-sc.org.*',
-    './pm-producer-api.html', #Generated file that doesn't exist at link check.
+    './pmlog-api.html', #Generated file that doesn't exist at link check.
 ]
 
-extensions = ['sphinxcontrib.redoc', 'sphinx.ext.intersphinx',]
+extensions = ['sphinx.ext.intersphinx','sphinxcontrib.redoc']
 
 redoc = [
             {
-                'name': 'PM Producer API',
-                'page': 'pm-producer-api',
-                'spec': '../api/api.json',
+                'name': 'Influx Logger API',
+                'page': 'pmlog-api',
+                'spec': '../api/pmlog-api.json',
                 'embed': True,
             }
         ]
 
 redoc_uri = 'https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js'
+
+
+
 
 #intershpinx mapping with other projects
 intersphinx_mapping = {}

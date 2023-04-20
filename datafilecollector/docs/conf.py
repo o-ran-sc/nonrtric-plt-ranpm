@@ -30,18 +30,8 @@ linkcheck_ignore = [
     './pm-producer-api.html', #Generated file that doesn't exist at link check.
 ]
 
-extensions = ['sphinxcontrib.redoc', 'sphinx.ext.intersphinx',]
+extensions = ['sphinx.ext.intersphinx',]
 
-redoc = [
-            {
-                'name': 'PM Producer API',
-                'page': 'pm-producer-api',
-                'spec': '../api/api.json',
-                'embed': True,
-            }
-        ]
-
-redoc_uri = 'https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js'
 
 #intershpinx mapping with other projects
 intersphinx_mapping = {}
