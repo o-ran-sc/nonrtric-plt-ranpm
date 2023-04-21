@@ -41,6 +41,30 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67c60106_888cc9f2",
+        "filename": "influxlogger/docs/overview.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000262
+      },
+      "writtenOn": "2023-04-21T08:37:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d1ced23_e3dd010a",
+      "range": {
+        "startLine": 45,
+        "startChar": 98,
+        "endLine": 45,
+        "endChar": 103
+      },
+      "revId": "43411d4bf0e477faa09e0c06022602778bd44019",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5512938_472e16b0",
@@ -77,6 +101,54 @@
       "writtenOn": "2023-04-21T07:56:41Z",
       "side": 1,
       "message": "\"the\" would be better",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 14
+      },
+      "revId": "43411d4bf0e477faa09e0c06022602778bd44019",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0ec0093_5b1cf219",
+        "filename": "influxlogger/docs/overview.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000262
+      },
+      "writtenOn": "2023-04-21T08:37:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5512938_472e16b0",
+      "range": {
+        "startLine": 46,
+        "startChar": 51,
+        "endLine": 46,
+        "endChar": 58
+      },
+      "revId": "43411d4bf0e477faa09e0c06022602778bd44019",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed554fa7_b2191e52",
+        "filename": "influxlogger/docs/overview.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000262
+      },
+      "writtenOn": "2023-04-21T08:37:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33c66cbe_f1e32dfa",
       "range": {
         "startLine": 46,
         "startChar": 8,
