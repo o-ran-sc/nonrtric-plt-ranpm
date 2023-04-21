@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "131df15e_0d2e171d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001589
+      },
+      "writtenOn": "2023-04-21T07:56:41Z",
+      "side": 1,
+      "message": "left some comments",
+      "revId": "43411d4bf0e477faa09e0c06022602778bd44019",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d1ced23_e3dd010a",
+        "filename": "influxlogger/docs/overview.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001589
+      },
+      "writtenOn": "2023-04-21T07:56:41Z",
+      "side": 1,
+      "message": "\"that\" would be better",
+      "range": {
+        "startLine": 45,
+        "startChar": 98,
+        "endLine": 45,
+        "endChar": 103
+      },
+      "revId": "43411d4bf0e477faa09e0c06022602778bd44019",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5512938_472e16b0",
+        "filename": "influxlogger/docs/overview.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001589
+      },
+      "writtenOn": "2023-04-21T07:56:41Z",
+      "side": 1,
+      "message": "\"use\" would be better",
+      "range": {
+        "startLine": 46,
+        "startChar": 51,
+        "endLine": 46,
+        "endChar": 58
+      },
+      "revId": "43411d4bf0e477faa09e0c06022602778bd44019",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33c66cbe_f1e32dfa",
+        "filename": "influxlogger/docs/overview.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001589
+      },
+      "writtenOn": "2023-04-21T07:56:41Z",
+      "side": 1,
+      "message": "\"the\" would be better",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 14
+      },
+      "revId": "43411d4bf0e477faa09e0c06022602778bd44019",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
