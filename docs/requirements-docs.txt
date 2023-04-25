@@ -1,0 +1,13 @@
+tox
+Sphinx
+doc8
+docutils
+setuptools
+six
+sphinx_rtd_theme
+sphinxcontrib-needs
+sphinxcontrib-swaggerdoc
+sphinx_bootstrap_theme
+sphinxcontrib-redoc
+lfdocs-conf
+sphinx-multiproject
