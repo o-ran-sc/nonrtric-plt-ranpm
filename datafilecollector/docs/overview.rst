@@ -10,25 +10,19 @@ Data File Collector
 Introduction
 ************
 
-The task of the Data File Collector is to collect files from traffical nodes in the RAN.
+The task of the Data File Collector is to collect OAM data files from RAN traffic-handling nodes.
 The main use case is:
 
-* The DFC received a File Ready VES event from a Kafka topic. This contains a list of all available files.
-
-* The DFC fetches files that are not already fectched from the traffical node. This is done using one of the supported file transfer protocols.
-
+* The DFC receives a "File Ready" VES event from a Kafka topic. This contains a list of all available files.
+* The DFC fetches files that are not already fetched from the relevant RAN traffic-handling nodes. This is done using one of the supported file transfer protocols.
 * Each file is stored in an S3 Object Store bucket or in the file system (in a persistent volume).
-
-* For each stored file, a file publish message is sent to a Kafka topic for further processing.
+* For each stored file, a "File Publish" message is sent to a Kafka topic for further processing.
 
 Supported file transfer protocols are:
 
 * SFTP
-
 * FTPES
-
 * HTTP
-
 * HTTPS
 
 
@@ -67,7 +61,7 @@ Here follows an example of the expected input object:
                "name":"A20220418.1900-1915_seliitdus00487.xml",
                "hashMap":{
                   "fileFormatType":"org.3GPP.32.435#measCollec",
-                  "location":"https://launchpad.net/ubuntu/+source/perf-tools-unstable/1.0+git7ffb3fd-1ubuntu1/+build/13630748/+files/perf-tools-unstable_1.0+git7ffb3fd-1ubuntu1_all.deb",
+                  "location":"https://gnb1.myran.org/pmfiles/",
                   "fileFormatVersion":"V10",
                   "compression":"gzip"
                }

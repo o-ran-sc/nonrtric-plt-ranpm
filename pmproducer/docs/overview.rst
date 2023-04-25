@@ -3,8 +3,8 @@
 .. Copyright (C) 2023 Nordix
 
 
-PM Producer
-~~~~~~~~~~~~~
+Non-RT RIC PM Producer
+~~~~~~~~~~~~~~~~~~~~~~
 
 ************
 Introduction
@@ -117,18 +117,18 @@ Here follows an example of a resulting delivered PM report.
 Sent Kafka headers
 ==================
 
-For each filtered result sent to a Kafka topic, there will the following proerties in the Kafa header:
+For each filtered result sent to a Kafka topic, there will the following properties in the Kafka header:
 
-* type-id, this propery is used to indicate the ID of the information type. The value is a string.
-* gzip, if this property exists the object is gzipped (otherwise not). The property has no value.
-* source-name, the name of the source traffical element for the measurements.
+* type-id, this property is used to indicate the ID of the information type. The value is a string.
+* gzip, if this property exists the object is gzip'ed (otherwise not). The property has no value.
+* source-name, the name of the source RAN traffic-handling element from which the measurements will originate.
 
 
 ******************
 Configuration File
 ******************
 
-The configuration file defines Kafka topics that should be listened to and registered as subscribeable information types.
+The configuration file defines Kafka topics that should be listened to and registered as information types which can be subscribed to.
 There is an example configuration file in config/application_configuration.json
 
 Each entry will be registered as a subscribe information type in ICS. The following attributes can be used in each entry:
@@ -272,8 +272,8 @@ The following properties are defined:
 
 * filter, the value of the filter expression. This selects which data to subscribe for. All fields are optional and excluding a field means that everything is selected.
 
-   * sourceNames, section of the names of the reporting traffical nodes
-   * measObjInstIds, selection of the measured resources. This is the Relative Distingusished Name of the MO that
+   * sourceNames, section of the names of the reporting RAN traffic-handling nodes
+   * measObjInstIds, selection of the measured resources. This is the Relative Distinguished Name (RDN) of the MO that
      has the counter.
      If a given value is contained in the filter definition, it will match (partial matching).
      For instance a value like "NRCellCU" will match "ManagedElement=seliitdus00487,GNBCUCPFunction=1,NRCellCU=32".
@@ -283,12 +283,12 @@ The following properties are defined:
       * measTypes, the name of the measurement type (counter). The measurement type name is only
         unique in the scope of an MO class (measured resource).
 
-   * measuredEntityDns, selection of DNs for the traffical elements.
+   * measuredEntityDns, selection of DNs for the RAN traffic-handling elements.
 
    * pmRopStartTime, if this parameter is specified already collected PM measurements files will be scanned to retrieve historical data.
      The start file is the time from when the information shall be returned.
      In this case, the query is only done for files from the given "sourceNames".
-     If this parameter is excluded, only "new" reports will be delivered as they are collected from the traffical nodes.
+     If this parameter is excluded, only "new" reports will be delivered as they are collected from the RAN traffic-handling nodes.
 
    * pmRopEndTime, for querying already collected PM measurements. Only relevant if pmRopStartTime.
      If this parameters is given, no reports will be sent as new files are collected.
@@ -324,7 +324,7 @@ Below follows examples of some filters.
    }
 
 Here follows an example of a filter that will
-match two counters from all cells in two traffical nodes.
+match two counters from all cells in two RAN traffic-handling nodes.
 
 .. code-block:: javascript
 

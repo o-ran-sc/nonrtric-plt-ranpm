@@ -2,8 +2,8 @@
 .. SPDX-License-Identifier: CC-BY-4.0
 .. Copyright (C) 2023 Nordix
 
-Non-RT RIC PM Producer
-======================
+Non-RT RIC Influx Logger
+========================
 
 .. toctree::
    :maxdepth: 2

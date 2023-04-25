@@ -1,18 +1,19 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 .. SPDX-License-Identifier: CC-BY-4.0
-.. Copyright (C) 2022 Nordix
+.. Copyright (C) 2023 Nordix
 
 Developer Guide
 ===============
 
 This document provides a quickstart for developers of the Non-RT RIC PM Producer.
 
-Additional developer guides are available on the `O-RAN SC NONRTRIC Developer wiki <https://wiki.o-ran-sc.org/display/RICNR/Release+E>`_.
+Additional developer guides are available on the `O-RAN SC NONRTRIC Developer wiki <https://wiki.o-ran-sc.org/display/RICNR>`_.
 
 PM Producer Service
----------------------
+-------------------
 
 The following properties in the application.yaml file have to be modified:
+
 * server.ssl.key-store=./config/keystore.jks
 * app.webclient.trust-store=./config/truststore.jks
 * app.configuration-filepath=./src/test/resources/test_application_configuration.json
