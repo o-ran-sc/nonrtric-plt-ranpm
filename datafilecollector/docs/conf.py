@@ -21,13 +21,10 @@ from docs_conf.conf import *
 
 branch = 'latest'
 
-language = 'en'
-
 linkcheck_ignore = [
     'http://localhost.*',
     'http://127.0.0.1.*',
     'https://gerrit.o-ran-sc.org.*',
-    './pm-producer-api.html', #Generated file that doesn't exist at link check.
 ]
 
 extensions = ['sphinx.ext.intersphinx',]
