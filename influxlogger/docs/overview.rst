@@ -11,7 +11,7 @@ Introduction
 ************
 
 The task of the Influx Logger is to receive PM Measurement reports from a Kafka topic and to
-store the mesurement in an Influx time serier database.
+store the measurements in an Influx time series database.
 
 
 .. image:: ./Architecture.png
@@ -38,9 +38,9 @@ Here follows an example of one Influx table which contains aggregated values for
    :width: 1000pt
 
 
-*****************************************
-Setting up the PM mesurement subscription
-*****************************************
+******************************************
+Setting up the PM measurement subscription
+******************************************
 
 The influx logger will create its data subscription automatically. This is done by reading a file that
 defines the data to log and which Kafka topic to use (1). The contents of this file is used to create
@@ -56,7 +56,7 @@ An example jobDefinition.json file: ":download:`link <../config/jobDefinition.js
 Input PM Measurement
 ********************
 
-The PM measuremenet information received from the Kafka topic is produced by the pmproducer.
+The PM measurement information received from the Kafka topic is produced by the pm-producer.
 Here follows an example of the expected input object:
 
 .. code-block:: javascript

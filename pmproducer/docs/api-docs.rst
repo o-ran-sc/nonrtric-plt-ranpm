@@ -17,8 +17,8 @@ API-Docs
 
 Here we describe the APIs to access the Non-RT PM Producer.
 
-PM Producer
-=============
+PM Producer API
+===============
 
 The PM Producer provides support for delivery of PM measurement data over Kafka.
 

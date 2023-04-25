@@ -15,10 +15,10 @@
 API-Docs
 ========
 
-Here we describe the APIs to access the Non-RIC Influx Logger.
+Here we describe the APIs to access the Non-RT RIC Influx Logger.
 
-Influx Logger
-=============
+Influx Logger API
+=================
 
 
 The API is also described in Swagger-JSON and YAML:

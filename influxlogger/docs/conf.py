@@ -17,11 +17,7 @@
 
 from docs_conf.conf import *
 
-#branch configuration
-
 branch = 'latest'
-
-language = 'en'
 
 linkcheck_ignore = [
     'http://localhost.*',
@@ -30,7 +26,7 @@ linkcheck_ignore = [
     './pmlog-api.html', #Generated file that doesn't exist at link check.
 ]
 
-extensions = ['sphinx.ext.intersphinx','sphinxcontrib.redoc']
+extensions = ['sphinx.ext.intersphinx','sphinxcontrib.redoc', 'sphinx.ext.autosectionlabel',]
 
 redoc = [
             {
@@ -42,9 +38,6 @@ redoc = [
         ]
 
 redoc_uri = 'https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js'
-
-
-
 
 #intershpinx mapping with other projects
 intersphinx_mapping = {}

@@ -7,10 +7,10 @@ Developer Guide
 
 This document provides a quickstart for developers of the Non-RT RIC Data File Collector.
 
-Additional developer guides are available on the `O-RAN SC NONRTRIC Developer wiki <https://wiki.o-ran-sc.org/display/RICNR/Release+E>`_.
+Additional developer guides are available on the `O-RAN SC NONRTRIC Developer wiki <https://wiki.o-ran-sc.org/display/RICNR>`_.
 
-Data File Collector
--------------------
+Data File Collector Service
+---------------------------
 
 The DFC is configured via the application.yaml file.
 

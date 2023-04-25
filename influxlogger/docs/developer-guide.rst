@@ -7,10 +7,10 @@ Developer Guide
 
 This document provides a quickstart for developers of the Non-RT RIC Influx Logger.
 
-Additional developer guides are available on the `O-RAN SC NONRTRIC Developer wiki <https://wiki.o-ran-sc.org/display/RICNR/Release+E>`_.
+Additional developer guides are available on the `O-RAN SC NONRTRIC Developer wiki <https://wiki.o-ran-sc.org/display/RICNR>`_.
 
-Influx Logger
--------------
+Influx Logger Service
+---------------------
 
 The component is configured via the application.yaml file.
 
