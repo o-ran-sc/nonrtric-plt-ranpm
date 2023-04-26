@@ -15,7 +15,10 @@
 #  ============LICENSE_END=================================================
 #
 
-from docs_conf import *
+# NB: This is the only conf.yaml file used by the upstream readthedocs job  (ref '.readthedoc.yaml') 
+#   Where possible include contents of the sub-folders' 'conf.yaml' files here if appropriate 
+
+from docs_conf.conf import *
 
 branch = 'latest'
 selfurl = 'https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-ranpm/en/%s' % branch
@@ -33,7 +36,7 @@ extensions = [
 
 #intershpinx mapping with other projects
 #intersphinx_mapping = {}
-## Note there is a circular dependency here - sub-project pages must exist before they can be checked 
+## Note there is a circular dependency here - sub-project pages must exist before they can be checked
 #intersphinx_mapping['influxlogger'] = ('%s/influxlogger' % selfurl, None)
 #intersphinx_mapping['datafilecollector'] = ('%s/datafilecollector' % selfurl, None)
 #intersphinx_mapping['pmproducer'] = ('%s/pmproducer' % selfurl, None)
