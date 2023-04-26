@@ -16,6 +16,24 @@
       "message": "Should the top level docs link link to the actual components? \nAnd perhaps be fixed so it looks better?",
       "revId": "ff7ea9da4f2c0f11c8441a16782e5f96bfea135d",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f540fc09_fcee4bab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-04-26T08:45:00Z",
+      "side": 1,
+      "message": "Yes. \nBut I can only link to them after there is a version is there already (or linkchecks will fail). This commit is an interim commit. Another will follow in a short while. \n\nAlso, Im not sure why the sphinx build is not picking up the ORAN template/theme (using the Python one instead ! :-O )\nI\u0027m guessing that I may need to do something else in the docs repo, or maybe a first version needs to be created to \u0027register\u0027 this site as an O-RAN site to have the template applied.",
+      "parentUuid": "c1e43090_879ef99c",
+      "revId": "ff7ea9da4f2c0f11c8441a16782e5f96bfea135d",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }
