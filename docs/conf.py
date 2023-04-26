@@ -16,7 +16,7 @@
 #
 
 # NB: This is the only conf.yaml file used by the upstream readthedocs job  (ref '.readthedocs.yaml') 
-#   Where possible include contents of the sub-folders' 'conf.yaml' files here if appropriate 
+#     Where possible include contents of the sub-folders' 'conf.yaml' files here if appropriate
 
 from docs_conf.conf import *
 

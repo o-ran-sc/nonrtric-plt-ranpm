@@ -36,7 +36,7 @@ build:
     - sphinx-build -W -b html --keep-going -n -d _readthedocs/tmp/doctrees  ./docs/ _readthedocs/html/
     - sphinx-build -W -b html --keep-going -n -d _readthedocs/tmp/doctrees  ./datafilecollector/docs/ _readthedocs/html/datafilecollector
     - sphinx-build -W -b html --keep-going -n -d _readthedocs/tmp/doctrees  ./influxlogger/docs/ _readthedocs/html/influxlogger
-    - sphinx-build -W -b html --keep-going -n -d _readthedocs/tmp/doctrees  _readthedocs/html/pmproducer
+    - sphinx-build -W -b html --keep-going -n -d _readthedocs/tmp/doctrees  ./pmproducer/docs/ _readthedocs/html/pmproducer
 
 python:
   install:
