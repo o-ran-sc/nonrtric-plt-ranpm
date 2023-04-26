@@ -2,13 +2,18 @@
 .. SPDX-License-Identifier: CC-BY-4.0
 .. Copyright (C) 2023 Nordix
 
-Non-RT RIC RAN PM Usecase/Functions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Non-RT RIC RAN PM Use-case/Functions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Perent repo Non-RT RIC RAN PM Usecase/Functions
+Parent repo Non-RT RIC RAN PM Use-case/Functions
 
 **************
 Implementation
 **************
 
-Implemented as multiple functions in sub directories
+Implemented as multiple functions in sub directories:
+
+* :doc:`Non-RT RIC - RAN PM - PM Producer (Documentation site) <pmproducer:index>`.
+* :doc:`Non-RT RIC - RAN PM - Influx Logger (Documentation site) <influxlogger:index>`.
+* :doc:`Non-RT RIC - RAN PM - PM Data File Collector (Documentation site) <datafilecollector:index>`.
+

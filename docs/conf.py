@@ -21,7 +21,8 @@
 from docs_conf.conf import *
 
 branch = 'latest'
-selfurl = 'https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-ranpm/en/%s' % branch
+baseurl = 'https://docs.o-ran-sc.org/projects/'
+selfurl = '%s/o-ran-sc-nonrtric-plt-ranpm/en/%s' %(baseurl, branch)
 
 linkcheck_ignore = [
     'http://localhost.*',
@@ -35,11 +36,12 @@ extensions = [
 ]
 
 #intershpinx mapping with other projects
-#intersphinx_mapping = {}
+intersphinx_mapping = {}
+intersphinx_mapping['nonrtric'] = ('%s/o-ran-sc-nonrtric/en/%s' %(baseurl, branch), None)
 ## Note there is a circular dependency here - sub-project pages must exist before they can be checked
-#intersphinx_mapping['influxlogger'] = ('%s/influxlogger' % selfurl, None)
-#intersphinx_mapping['datafilecollector'] = ('%s/datafilecollector' % selfurl, None)
-#intersphinx_mapping['pmproducer'] = ('%s/pmproducer' % selfurl, None)
+intersphinx_mapping['influxlogger'] = ('%s/influxlogger' % selfurl, None)
+intersphinx_mapping['datafilecollector'] = ('%s/datafilecollector' % selfurl, None)
+intersphinx_mapping['pmproducer'] = ('%s/pmproducer' % selfurl, None)
 
 
 intersphinx_disabled_reftypes = ["*"]
