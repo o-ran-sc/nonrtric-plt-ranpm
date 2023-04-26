@@ -1,0 +1,8 @@
+Verified+1: ORAN Jobbuilder <releng+oran-jobbuilder@linuxfoundation.org>
+Code-Review+2: John  Keeney <john.keeney@est.tech>
+Code-Review+1: Patrik Buhr <patrik.buhr@est.tech>
+Submitted-by: John  Keeney <john.keeney@est.tech>
+Submitted-at: Wed, 26 Apr 2023 08:48:55 +0000
+Reviewed-on: https://gerrit.o-ran-sc.org/r/c/nonrtric/plt/ranpm/+/10978
+Project: nonrtric/plt/ranpm
+Branch: refs/heads/master
