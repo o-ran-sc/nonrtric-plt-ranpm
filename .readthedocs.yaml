@@ -32,19 +32,18 @@ build:
   jobs:
     pre_build:
     - mkdir --parents _readthedocs/html/
-    - mkdir --parents _readthedocs/tmp/doctrees 
+    - mkdir --parents _readthedocs/tmp/doctrees
     - sphinx-build -W -b html --keep-going -n -d _readthedocs/tmp/doctrees  ./docs/ _readthedocs/html/
     - sphinx-build -W -b html --keep-going -n -d _readthedocs/tmp/doctrees  ./datafilecollector/docs/ _readthedocs/html/datafilecollector
     - sphinx-build -W -b html --keep-going -n -d _readthedocs/tmp/doctrees  ./influxlogger/docs/ _readthedocs/html/influxlogger
     - sphinx-build -W -b html --keep-going -n -d _readthedocs/tmp/doctrees  _readthedocs/html/pmproducer
 
 python:
-  version: 3.7
   install:
     - requirements: docs/requirements-docs.txt
-    - requirements: datafilecollector/docs/requirements-docs.txt 
-    - requirements: influxlogger/docs/requirements-docs.txt 
-    - requirements: pmproducer/docs/requirements-docs.txt 
+    - requirements: datafilecollector/docs/requirements-docs.txt
+    - requirements: influxlogger/docs/requirements-docs.txt
+    - requirements: pmproducer/docs/requirements-docs.txt
 
 sphinx:
   configuration: docs/conf.py
