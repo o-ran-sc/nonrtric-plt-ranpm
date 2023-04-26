@@ -39,7 +39,6 @@ build:
     - sphinx-build -W -b html --keep-going -n -d _readthedocs/tmp/doctrees  _readthedocs/html/pmproducer
 
 python:
-  version: 3.7
   install:
     - requirements: docs/requirements-docs.txt
     - requirements: datafilecollector/docs/requirements-docs.txt 
