@@ -5,7 +5,7 @@
 Non-RT RIC RAN PM Use-case/Functions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Parent repo Non-RT RIC RAN PM Use-case/Functions
+Parent repo Non-RT RIC RAN PM Use-case/Functions.
 
 **************
 Implementation
