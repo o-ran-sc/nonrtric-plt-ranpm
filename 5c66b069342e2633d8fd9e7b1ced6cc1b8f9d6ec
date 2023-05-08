@@ -16,6 +16,138 @@
       "message": "recheck",
       "revId": "5c66b069342e2633d8fd9e7b1ced6cc1b8f9d6ec",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c91415d6_c3c0a9b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001589
+      },
+      "writtenOn": "2023-05-08T14:13:08Z",
+      "side": 1,
+      "message": "I left a few comments",
+      "revId": "5c66b069342e2633d8fd9e7b1ced6cc1b8f9d6ec",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acc65a00_fc301dc0",
+        "filename": "docs/overview.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001589
+      },
+      "writtenOn": "2023-05-08T14:13:08Z",
+      "side": 1,
+      "message": "spelling",
+      "range": {
+        "startLine": 15,
+        "startChar": 35,
+        "endLine": 15,
+        "endChar": 46
+      },
+      "revId": "5c66b069342e2633d8fd9e7b1ced6cc1b8f9d6ec",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "916f0c35_f233bd3d",
+        "filename": "docs/overview.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001589
+      },
+      "writtenOn": "2023-05-08T14:13:08Z",
+      "side": 1,
+      "message": "\"A PM report (containing aggregated PM measurements over a time interval) is\nan XML file defined by 3GPP (TS 32.432 and 3GPP TS 32.435)\"\nwould be better",
+      "range": {
+        "startLine": 16,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 58
+      },
+      "revId": "5c66b069342e2633d8fd9e7b1ced6cc1b8f9d6ec",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a573b543_369c0729",
+        "filename": "docs/overview.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001589
+      },
+      "writtenOn": "2023-05-08T14:13:08Z",
+      "side": 1,
+      "message": "maybe specify where the files are stored.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 43
+      },
+      "revId": "5c66b069342e2633d8fd9e7b1ced6cc1b8f9d6ec",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f7cd0e3_16e8ce3a",
+        "filename": "docs/overview.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001589
+      },
+      "writtenOn": "2023-05-08T14:13:08Z",
+      "side": 1,
+      "message": "\"An rApp can then subscribe for chosen measurement types from resources in the network.\" might be better",
+      "range": {
+        "startLine": 18,
+        "startChar": 45,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "5c66b069342e2633d8fd9e7b1ced6cc1b8f9d6ec",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf5a0c2b_63c4ce6e",
+        "filename": "docs/overview.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001589
+      },
+      "writtenOn": "2023-05-08T14:13:08Z",
+      "side": 1,
+      "message": "This is a bit confusing.\nWhen you say object I\u0027m not sure if you mean a message indicating the report is available or the report itself.\nMaybe this would be better:\nA message indicating that a new PM report (in Json format) is available is put on a Kafka topic and picked up by the PM Data Producer.",
+      "range": {
+        "startLine": 71,
+        "startChar": 3,
+        "endLine": 71,
+        "endChar": 138
+      },
+      "revId": "5c66b069342e2633d8fd9e7b1ced6cc1b8f9d6ec",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }
