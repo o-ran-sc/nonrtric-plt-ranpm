@@ -11,12 +11,16 @@ Introduction
 ************
 
 The task of the Data File Collector is to collect OAM data files from RAN traffic-handling nodes.
-The main use case is:
+The main use case is (see also the picture below)):
 
-* The DFC receives a "File Ready" VES event from a Kafka topic. This contains a list of all available files.
-* The DFC fetches files that are not already fetched from the relevant RAN traffic-handling nodes. This is done using one of the supported file transfer protocols.
-* Each file is stored in an S3 Object Store bucket or in the file system (in a persistent volume).
-* For each stored file, a "File Publish" message is sent to a Kafka topic for further processing.
+* (1) The DFC receives a "File Ready" VES event from a Kafka topic. This contains a list of all available files.
+* (2) The DFC fetches files that are not already fetched from the relevant RAN traffic-handling nodes. This is done using one of the supported file transfer protocols.
+* (3) Each file is stored in an S3 Object Store bucket or in the file system (in a persistent volume).
+* (4) For each stored file, a "File Publish" message is sent to a Kafka topic for further processing.
+* (5) The "File Publish" message can be subscribed by other components, which can then read the fetched file and process it further.
+
+.. image:: ./Architecture.png
+   :width: 1000pt
 
 Supported file transfer protocols are:
 
@@ -25,11 +29,7 @@ Supported file transfer protocols are:
 * HTTP
 * HTTPS
 
-
 The service is implemented in Java Spring Boot.
-
-.. image:: ./Architecture.png
-   :width: 1000pt
 
 This product is a part of :doc:`NONRTRIC <nonrtric:index>`.
 
