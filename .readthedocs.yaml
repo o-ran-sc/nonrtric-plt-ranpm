@@ -37,6 +37,7 @@ build:
     - sphinx-build -W -b html --keep-going -n -d _readthedocs/tmp/doctrees/datafilecollector  ./datafilecollector/docs/ _readthedocs/html/datafilecollector
     - sphinx-build -W -b html --keep-going -n -d _readthedocs/tmp/doctrees/influxlogger  ./influxlogger/docs/ _readthedocs/html/influxlogger
     - sphinx-build -W -b html --keep-going -n -d _readthedocs/tmp/doctrees/pmproducer  ./pmproducer/docs/ _readthedocs/html/pmproducer
+    - sphinx-build -W -b html --keep-going -n -d _readthedocs/tmp/doctrees/kafka-pm-producer  ./kafka-pm-producer/docs/ _readthedocs/html/kafka-pm-producer
 
 python:
   install:
@@ -44,6 +45,7 @@ python:
     - requirements: datafilecollector/docs/requirements-docs.txt
     - requirements: influxlogger/docs/requirements-docs.txt
     - requirements: pmproducer/docs/requirements-docs.txt
+    - requirements: kafka-pm-producer/docs/requirements-docs.txt
 
 sphinx:
   configuration: docs/conf.py
