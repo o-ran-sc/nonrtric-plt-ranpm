@@ -77,6 +77,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c7ffafd_72dc8023",
+        "filename": "datafilecollector/docs/overview.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000262
+      },
+      "writtenOn": "2023-05-10T08:34:50Z",
+      "side": 1,
+      "message": "I repreased it slightly. But I want to say that it is the message that is subscribed to not the topic.",
+      "parentUuid": "ff4769bb_5ef99052",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 70
+      },
+      "revId": "d22fa83929547b24b1c3297cd951cdc48cfa426d",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17416408_ebb35fcd",
         "filename": "docs/overview.rst",
         "patchSetId": 3
@@ -88,6 +112,30 @@
       "writtenOn": "2023-05-10T07:26:58Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 15,
+        "startChar": 95,
+        "endLine": 15,
+        "endChar": 97
+      },
+      "revId": "d22fa83929547b24b1c3297cd951cdc48cfa426d",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee431013_0f29c999",
+        "filename": "docs/overview.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000262
+      },
+      "writtenOn": "2023-05-10T08:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17416408_ebb35fcd",
       "range": {
         "startLine": 15,
         "startChar": 95,
@@ -111,6 +159,30 @@
       "writtenOn": "2023-05-10T07:26:58Z",
       "side": 1,
       "message": "The files are collected",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 19
+      },
+      "revId": "d22fa83929547b24b1c3297cd951cdc48cfa426d",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2b609e6_5aaf77ff",
+        "filename": "docs/overview.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000262
+      },
+      "writtenOn": "2023-05-10T08:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9663756e_aeb6c412",
       "range": {
         "startLine": 18,
         "startChar": 0,
