@@ -99,7 +99,7 @@ PM Subscriber design time dependencies
 
 An rApp uses the ICS API, which is avaiable in `Non-RT RIC - Information Coordinator Service (Documentation site) <https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-informationcoordinatorservice/en/latest/>`_.
 
-The schema for the PM Mesaurement information jobs is defined in `Non-RT RIC - RAN PM - PM Producer (Documentation site) <pmproducer:index>`.
+The schema for the PM Mesaurement information jobs is defined in :doc:`Non-RT RIC - RAN PM - PM Producer (Documentation site) <pmproducer:index>`.
 This schema defines parameters used in the subscription (info job) and defines which measurements to subscribe for and on which
 kafka topic the information shall be delivered to.
 
