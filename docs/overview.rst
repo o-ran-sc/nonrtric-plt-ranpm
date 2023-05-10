@@ -67,7 +67,7 @@ The figure below gives an overview of the data flow through the components.
 4. The collected file is stored
 5. A File collected object is put on a Kafka topic and is picked up by the PM Data Converter.
 6. The file data is read from the file store.
-7. A PM report in json format is stored.
+7. A PM report in json format is stored (compressed with gzip).
 8. A message (a Json object) indicating that a new PM report (in Json format) is available is put on a Kafka topic and is picked up by the PM Data Producer.
 9. The PM data producer reads the Json file
 10. The subscribed PM data is sent to the PM data consumers (over Kafka). An rApp may be a PM data consumer.
@@ -99,7 +99,7 @@ PM Subscriber design time dependencies
 
 An rApp uses the ICS API, which is avaiable in `Non-RT RIC - Information Coordinator Service (Documentation site) <https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-informationcoordinatorservice/en/latest/>`_.
 
-The schema for the PM Mesaurement information jobs is defined in `Non-RT RIC - RAN PM - PM Producer (Documentation site) <pmproducer:index>`.
+The schema for the PM Mesaurement information jobs is defined in :doc:`Non-RT RIC - RAN PM - PM Producer (Documentation site) <pmproducer:index>`.
 This schema defines parameters used in the subscription (info job) and defines which measurements to subscribe for and on which
 kafka topic the information shall be delivered to.
 
