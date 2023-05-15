@@ -45,10 +45,9 @@ spec:
           emptyDir: {}
       containers:
       - name: pmlog
-        image: nexus3.o-ran-sc.org:10004/o-ran-sc/nonrtric-plt-pmlog:1.0.0
-        #image: o-ran-sc/nonrtric-plt-pmlog:1.0.0-SNAPSHOT
+#       image: nexus3.o-ran-sc.org:10004/o-ran-sc/nonrtric-plt-pmlog:1.0.0
+        image: nexus3.o-ran-sc.org:10003/o-ran-sc/nonrtric-plt-pmlog:1.0.0-SNAPSHOT
         imagePullPolicy: Always
-        #imagePullPolicy: Never
         ports:
         - name: http
           containerPort: 8084
@@ -64,7 +63,7 @@ spec:
         - mountPath: /token-cache
           name: token-cache-volume
         env:
-        - name: APP_INFLUX_ACCESS-TOKEN
+        - name: APP_INFLUX_ACCESSTOKEN
           valueFrom:
             secretKeyRef:
               name: influxdb-api-token

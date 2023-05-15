@@ -15,20 +15,22 @@
 #  ============LICENSE_END=================================================
 #
 
-FROM golang:1.19-bullseye AS build
+FROM golang:1.20.3-buster AS build
+
 WORKDIR /app
-COPY go.mod .
-COPY go.sum .
-RUN go mod download
+
 COPY main.go .
-RUN go build -o /kafka-pm-producer
+RUN go mod init main
+RUN go mod tidy
+
+RUN go build -o /pm-file-converter
 
 #Replaced distroless image with ubuntu for debug purpose
 #FROM gcr.io/distroless/base-debian11
 FROM ubuntu
 WORKDIR /
 ## Copy from "build" stage
-COPY --from=build /kafka-pm-producer .
+COPY --from=build /pm-file-converter .
 COPY server.key /server.key
 COPY server.crt /server.crt
 
@@ -36,4 +38,4 @@ COPY application_configuration.json /application_configuration.json
 
 ##Uncomment this when using distroless image
 #USER nonroot:nonroot
-ENTRYPOINT ["/kafka-pm-producer"]
+ENTRYPOINT ["/pm-file-converter"]

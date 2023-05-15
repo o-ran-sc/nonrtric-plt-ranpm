@@ -15,5 +15,11 @@
 #  ============LICENSE_END=================================================
 #
 
-dfc:
-  clientsecret: Akzki8aSLHL0GVNIx0k1wDrzbB56CVh1
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: msgrtrapi
+  namespace: nonrtric
+
+data:
+{{ (.Files.Glob "config/MsgRtrApi.properties").AsConfig | nindent 2 }}
