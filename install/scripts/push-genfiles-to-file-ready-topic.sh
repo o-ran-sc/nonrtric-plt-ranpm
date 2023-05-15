@@ -67,9 +67,9 @@ else
 fi
 
 chmod +x kafka-client-send-genfiles-file-ready.sh
-kubectl cp kafka-client-send-genfiles-file-ready.sh nonrtric/client:/home/appuser
+kubectl cp kafka-client-send-genfiles-file-ready.sh nonrtric/kafka-client:/home/appuser
 
-kubectl exec client -n nonrtric -- bash -c './kafka-client-send-genfiles-file-ready.sh '$NODE_COUNT' '$EVT_COUNT' '$NODE_NAME_BASE' '$FILE_EXT' '$TYPE' '$SRV_COUNT' '$HIST
+kubectl exec kafka-client -n nonrtric -- bash -c './kafka-client-send-genfiles-file-ready.sh file-ready '$NODE_COUNT' '$EVT_COUNT' '$NODE_NAME_BASE' '$FILE_EXT' '$TYPE' '$SRV_COUNT' '$HIST
 
 echo done
 

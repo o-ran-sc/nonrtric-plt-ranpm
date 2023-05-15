@@ -20,6 +20,9 @@
 # args: <job-id> <job-index-suffix> [<access-token>]
 # job file shall exist in file "".job.json"
 create_ics_job() {
+
+    ICS_PROXY_PORT=$(kubectl get svc -n nonrtric informationservice --output jsonpath='{.spec.ports[?(@.name=="http")].nodePort}')
+    echo "NodePort to ics: "$ICS_PROXY_PORT
     JOB=$(<.job.json)
     echo $JOB
     retcode=1
@@ -30,7 +33,7 @@ create_ics_job() {
         else
             __bearer="Authorization: Bearer $TOKEN"
         fi
-        STAT=$(curl -s -X PUT -w '%{http_code}' -H accept:application/json -H Content-Type:application/json http://$KHOST:$(kube_get_nodeport informationservice nonrtric http)/data-consumer/v1/info-jobs/job-$1"-"$2 --data-binary @.job.json -H "$__bearer" )
+        STAT=$(curl -s -X PUT -w '%{http_code}' -H accept:application/json -H Content-Type:application/json http://$KUBERNETESHOST:$ICS_PROXY_PORT/data-consumer/v1/info-jobs/job-$1"-"$2 --data-binary @.job.json -H "$__bearer" )
         retcode=$?
         echo "curl return code: $retcode"
         if [ $retcode -eq 0 ]; then

@@ -1,0 +1,17 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: zoo-entrance
+  name: zoo-entrance
+  namespace: nonrtric
+spec:
+  ports:
+    - name: zoo
+      port: 2181
+      protocol: TCP
+      targetPort: 2181
+  selector:
+    app: zoo-entrance
+  type: ClusterIP

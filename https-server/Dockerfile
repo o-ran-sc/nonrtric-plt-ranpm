@@ -15,12 +15,14 @@
 #  ============LICENSE_END=================================================
 #
 
-FROM golang:1.19-bullseye AS build
+FROM golang:1.20.3-buster AS build
+
 WORKDIR /app
-COPY go.mod .
-COPY go.sum .
-RUN go mod download
+
 COPY main.go .
+RUN go mod init main
+RUN go mod tidy
+
 RUN go build -o /pm-https-server
 
 #Replaced distroless image with ubuntu for debug purposes

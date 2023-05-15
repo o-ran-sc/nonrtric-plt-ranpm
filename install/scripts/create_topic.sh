@@ -37,7 +37,7 @@ create_topic() {
 
     echo "Creating topic: $topic with $partitions partition(s) in $kafka"
 
-    kubectl exec -it client -n nonrtric -- bash -c 'kafka-topics --create --topic '$topic'  --partitions '$partitions' --bootstrap-server '$kafka
+    kubectl exec -it kafka-client -n nonrtric -- bash -c 'kafka-topics --create --topic '$topic'  --partitions '$partitions' --bootstrap-server '$kafka
 
     return $?
 }

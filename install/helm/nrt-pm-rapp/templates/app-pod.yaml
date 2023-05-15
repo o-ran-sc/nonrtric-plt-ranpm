@@ -25,8 +25,12 @@ metadata:
 spec:
   containers:
   - name: pm-rapp
-    image: pm-rapp:latest
+    image: {{ .Values.global.extimagerepo }}pm-rapp:latest
+    {{- if .Values.global.extimagerepo }}
+    imagePullPolicy: Always
+    {{- else }}
     imagePullPolicy: Never
+    {{- end }}
     ports:
     - name: http
       containerPort: 80
