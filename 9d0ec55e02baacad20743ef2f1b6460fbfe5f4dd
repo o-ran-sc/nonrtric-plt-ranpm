@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "855220a4_94e21a8b",
+        "filename": "kafka-pm-producer/docs/conf.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-05-15T11:59:37Z",
+      "side": 1,
+      "message": "I guess this should be the same as the docker image for this function - but I don\u0027t think a docker image is created.",
+      "range": {
+        "startLine": 3,
+        "startChar": 22,
+        "endLine": 3,
+        "endChar": 37
+      },
+      "revId": "9d0ec55e02baacad20743ef2f1b6460fbfe5f4dd",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9ba333e_28a7c2c9",
+        "filename": "tox.ini",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-05-15T11:59:37Z",
+      "side": 1,
+      "message": "Should add a line for kafka-pm-producer at line 32, 38, 47  ?\n\nAlso need to update .readthedocs.yaml file in a similar way.",
+      "revId": "9d0ec55e02baacad20743ef2f1b6460fbfe5f4dd",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
