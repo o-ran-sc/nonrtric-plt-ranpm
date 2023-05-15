@@ -1,10 +1,14 @@
 
 
 
-# Build buundle
+# Build bundle
 
 tar cvf bundle.tar rules data.json
 gzip bundle.tar
+
+# Installation
+
+The bundle is installed as part of the install-nrt.sh script.
 
 
 ## License

@@ -30,7 +30,7 @@ create_ics_job() {
         else
             __bearer="Authorization: Bearer $TOKEN"
         fi
-        STAT=$(curl -s -X PUT -w '%{http_code}' -H accept:application/json -H Content-Type:application/json http://$KHOST:$(kube_get_nodeport informationservice nonrtric http)/data-consumer/v1/info-jobs/job-$1"-"$2 --data-binary @.job.json -H "$__bearer" )
+        STAT=$(curl -s -X PUT -w '%{http_code}' -H accept:application/json -H Content-Type:application/json http://$KUBERNETESHOST:$(kube_get_nodeport informationservice nonrtric http)/data-consumer/v1/info-jobs/job-$1"-"$2 --data-binary @.job.json -H "$__bearer" )
         retcode=$?
         echo "curl return code: $retcode"
         if [ $retcode -eq 0 ]; then

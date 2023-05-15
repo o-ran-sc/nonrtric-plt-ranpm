@@ -1,0 +1,21 @@
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  labels:
+    app: zoo-entrance
+  name: zoo-entrance
+spec:
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: zoo-entrance
+    ports:
+    - port: 2181
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      strimzi.io/name: kafka-1-zookeeper
+  policyTypes:
+  - Ingress

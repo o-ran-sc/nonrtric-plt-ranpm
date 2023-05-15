@@ -77,7 +77,7 @@ var gzipped_data = os.Getenv("GZIP")
 
 var log_payload = os.Getenv("LOG_PAYLOAD")
 
-// This are optional - if rapp is fethcing the token instead of the side car
+// These are optional - if rapp is fethcing the token instead of the side car
 var creds_grant_type = os.Getenv("CREDS_GRANT_TYPE")
 var creds_client_secret = os.Getenv("CREDS_CLIENT_SECRET")
 var creds_client_id = os.Getenv("CREDS_CLIENT_ID")
@@ -399,7 +399,7 @@ func send_http_request(jsonData []byte, method string, url string, contentType s
 	}
 	if jwt_file != "" || creds_service_url != "" {
 		if accessToken != "" {
-			req.Header.Add("authorization", accessToken)
+			req.Header.Set("Authorization", "Bearer "+accessToken)
 		} else {
 			log.Error("Cannot create http request for url: ", url, " - token missing")
 			return false, nil
@@ -455,7 +455,7 @@ func send_http_request(jsonData []byte, method string, url string, contentType s
 					}
 				}
 			} else {
-				log.Error("Bad response, method: ", method, " url: ", url, " resp: ", resp.StatusCode)
+				log.Error("Bad response, method: ", method, " url: ", url, " resp: ", resp.StatusCode, " resp: ", resp)
 			}
 		}
 	}
