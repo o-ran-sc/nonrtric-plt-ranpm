@@ -38,9 +38,9 @@ check_error() {
 echo "Creating client in keycloak"
 
 # Find host and port to keycloak
-export KHOST=$(kube_get_controlplane_host)
+export KUBERNETESHOST=$(kube_get_controlplane_host)
 if [ $? -ne 0 ]; then
-    echo $KHOST
+    echo $KUBERNETESHOST
     echo "Exiting"
     exit 1
 fi
@@ -62,7 +62,7 @@ export PMRAPP_CLIENT_SECRET=$(< .sec_nonrtric-realm_$cid)
 envsubst < helm/nrt-pm-rapp/values-template.yaml > helm/nrt-pm-rapp/values.yaml
 
 echo " helm install..."
-helm install --wait -n nonrtric nrt-pm-rapp helm/nrt-pm-rapp
+helm install --wait -f helm/global-values.yaml -n nonrtric nrt-pm-rapp helm/nrt-pm-rapp
 
 echo "done"
 

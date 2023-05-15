@@ -1,0 +1,204 @@
+<!--
+     ============LICENSE_START=======================================================
+     Copyright © 2019 AT&T Intellectual Property. All rights reserved.
+     Modifications Copyright © 2021-2022 Nordix Foundation
+     ================================================================================
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+           http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+     ============LICENSE_END=========================================================
+ -->
+
+<configuration scan="true" scanPeriod="3 seconds" debug="true">
+  <contextName>${module.ajsc.namespace.name}</contextName>
+  <jmxConfigurator />
+  <property name="logDirectory" value="${AJSC_HOME}/log" />
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{1024} - %msg%n
+      </pattern>
+    </encoder>
+  </appender>
+
+  <appender name="INFO" class="ch.qos.logback.core.ConsoleAppender">
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>INFO</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
+  </appender>
+
+  <appender name="DEBUG" class="ch.qos.logback.core.ConsoleAppender">
+
+    <encoder>
+      <pattern>"%d [%thread] %-5level %logger{1024} - %msg%n"</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="ERROR" class="ch.qos.logback.core.ConsoleAppender">
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>ERROR</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
+    <encoder>
+      <pattern>"%d [%thread] %-5level %logger{1024} - %msg%n"</pattern>
+    </encoder>
+  </appender>
+
+
+  <!-- Msgrtr related loggers -->
+  <logger name="org.onap.dmaap.dmf.mr.service" level="TRACE" />
+  <logger name="org.onap.dmaap.dmf.mr.service.impl" level="TRACE" />
+
+  <logger name="org.onap.dmaap.dmf.mr.resources" level="TRACE" />
+  <logger name="org.onap.dmaap.dmf.mr.resources.streamReaders" level="TRACE" />
+
+  <logger name="org.onap.dmaap.dmf.mr.backends" level="TRACE" />
+  <logger name="org.onap.dmaap.dmf.mr.backends.kafka" level="TRACE" />
+  <logger name="org.onap.dmaap.dmf.mr.backends.memory" level="TRACE" />
+
+  <logger name="org.onap.dmaap.dmf.mr.beans" level="TRACE" />
+
+  <logger name="org.onap.dmaap.dmf.mr.constants" level="TRACE" />
+
+  <logger name="org.onap.dmaap.dmf.mr.exception" level="TRACE" />
+
+  <logger name="org.onap.dmaap.dmf.mr.listener" level="TRACE" />
+
+  <logger name="org.onap.dmaap.dmf.mr.metabroker" level="TRACE" />
+
+  <logger name="org.onap.dmaap.dmf.mr.metrics.publisher" level="TRACE" />
+  <logger name="org.onap.dmaap.dmf.mr.metrics.publisher.impl" level="TRACE" />
+
+
+
+  <logger name="org.onap.dmaap.dmf.mr.security" level="TRACE" />
+  <logger name="org.onap.dmaap.dmf.mr.security.impl" level="TRACE" />
+
+  <logger name="org.onap.dmaap.dmf.mr.transaction" level="TRACE" />
+  <logger name="com.att.dmf.mr.transaction.impl" level="TRACE" />
+
+  <logger name="org.onap.dmaap.dmf.mr.metabroker" level="TRACE" />
+  <logger name="org.onap.dmaap.dmf.mr.metabroker" level="TRACE" />
+
+  <logger name="org.onap.dmaap.dmf.mr.utils" level="TRACE" />
+  <logger name="org.onap.dmaap.mr.filter" level="TRACE" />
+
+  <!--<logger name="com.att.nsa.cambria.*" level="TRACE" />-->
+
+  <!-- Msgrtr loggers in ajsc -->
+  <logger name="org.onap.dmaap.service" level="TRACE" />
+  <logger name="org.onap.dmaap" level="TRACE" />
+
+
+  <!-- Spring related loggers -->
+  <logger name="org.springframework" level="TRACE" additivity="false"/>
+  <logger name="org.springframework.beans" level="TRACE" additivity="false"/>
+  <logger name="org.springframework.web" level="TRACE" additivity="false" />
+  <logger name="com.blog.spring.jms" level="TRACE" additivity="false" />
+
+  <!-- AJSC Services (bootstrap services) -->
+  <logger name="ajsc" level="TRACE" additivity="false"/>
+  <logger name="ajsc.RouteMgmtService" level="TRACE" additivity="false"/>
+  <logger name="ajsc.ComputeService" level="TRACE" additivity="false" />
+  <logger name="ajsc.VandelayService" level="TRACE" additivity="false"/>
+  <logger name="ajsc.FilePersistenceService" level="TRACE" additivity="false"/>
+  <logger name="ajsc.UserDefinedJarService" level="TRACE" additivity="false" />
+  <logger name="ajsc.UserDefinedBeansDefService" level="TRACE" additivity="false" />
+  <logger name="ajsc.LoggingConfigurationService" level="TRACE" additivity="false" />
+
+  <!-- AJSC related loggers (DME2 Registration, csi logging, restlet, servlet
+    logging) -->
+  <logger name="ajsc.utils" level="TRACE" additivity="false"/>
+  <logger name="ajsc.utils.DME2Helper" level="TRACE" additivity="false" />
+  <logger name="ajsc.filters" level="TRACE" additivity="false" />
+  <logger name="ajsc.beans.interceptors" level="TRACE" additivity="false" />
+  <logger name="ajsc.restlet" level="TRACE" additivity="false" />
+  <logger name="ajsc.servlet" level="TRACE" additivity="false" />
+  <logger name="com.att" level="TRACE" additivity="false" />
+  <logger name="com.att.ajsc.csi.logging" level="TRACE" additivity="false" />
+  <logger name="com.att.ajsc.filemonitor" level="TRACE" additivity="false"/>
+
+  <logger name="com.att.nsa.dmaap.util" level="TRACE" additivity="false"/>
+  <logger name="com.att.cadi.filter" level="TRACE" additivity="false" />
+
+
+  <!-- Other Loggers that may help troubleshoot -->
+  <logger name="net.sf" level="TRACE" additivity="false" />
+  <logger name="org.apache.commons.httpclient" level="TRACE" additivity="false"/>
+  <logger name="org.apache.commons" level="TRACE" additivity="false" />
+  <logger name="org.apache.coyote" level="TRACE" additivity="false"/>
+  <logger name="org.apache.jasper" level="TRACE" additivity="false"/>
+
+  <!-- Camel Related Loggers (including restlet/servlet/jaxrs/cxf logging.
+    May aid in troubleshooting) -->
+  <logger name="org.apache.camel" level="TRACE" additivity="false" />
+  <logger name="org.apache.cxf" level="TRACE" additivity="false" />
+  <logger name="org.apache.camel.processor.interceptor" level="TRACE" additivity="false"/>
+  <logger name="org.apache.cxf.jaxrs.interceptor" level="TRACE" additivity="false" />
+  <logger name="org.apache.cxf.service" level="TRACE" additivity="false" />
+  <logger name="org.restlet" level="TRACE" additivity="false" />
+  <logger name="org.apache.camel.component.restlet" level="TRACE" additivity="false" />
+  <logger name="org.apache.kafka" level="TRACE" additivity="false" />
+  <logger name="org.apache.zookeeper" level="TRACE" additivity="false" />
+  <logger name="org.I0Itec.zkclient" level="TRACE" additivity="false" />
+
+  <!-- logback internals logging -->
+  <logger name="ch.qos.logback.classic" level="TRACE" additivity="false"/>
+  <logger name="ch.qos.logback.core" level="TRACE" additivity="false" />
+
+  <!-- logback jms appenders & loggers definition starts here -->
+  <!-- logback jms appenders & loggers definition starts here -->
+  <appender name="auditLogs" class="ch.qos.logback.core.ConsoleAppender">
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+    </filter>
+    <encoder>
+      <pattern>"%d [%thread] %-5level %logger{1024} - %msg%n"</pattern>
+    </encoder>
+  </appender>
+  <appender name="perfLogs" class="ch.qos.logback.core.ConsoleAppender">
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+    </filter>
+    <encoder>
+      <pattern>"%d [%thread] %-5level %logger{1024} - %msg%n"</pattern>
+    </encoder>
+  </appender>
+  <appender name="ASYNC-audit" class="ch.qos.logback.classic.AsyncAppender">
+    <queueSize>1000</queueSize>
+    <discardingThreshold>0</discardingThreshold>
+    <appender-ref ref="Audit-Record-Queue" />
+  </appender>
+
+  <logger name="AuditRecord" level="TRACE" additivity="FALSE">
+    <appender-ref ref="STDOUT" />
+  </logger>
+  <logger name="AuditRecord_DirectCall" level="TRACE" additivity="FALSE">
+    <appender-ref ref="STDOUT" />
+  </logger>
+  <appender name="ASYNC-perf" class="ch.qos.logback.classic.AsyncAppender">
+    <queueSize>1000</queueSize>
+    <discardingThreshold>0</discardingThreshold>
+    <appender-ref ref="Performance-Tracker-Queue" />
+  </appender>
+  <logger name="PerfTrackerRecord" level="TRACE" additivity="FALSE">
+    <appender-ref ref="ASYNC-perf" />
+    <appender-ref ref="perfLogs" />
+  </logger>
+  <!-- logback jms appenders & loggers definition ends here -->
+
+  <root level="TRACE">
+    <appender-ref ref="DEBUG" />
+    <appender-ref ref="ERROR" />
+    <appender-ref ref="INFO" />
+    <appender-ref ref="STDOUT" />
+  </root>
+
+</configuration>

@@ -17,4 +17,4 @@
 
 minio:
   opa:
-    decisionlogs: false
+    decisionlogs: true

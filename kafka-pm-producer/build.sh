@@ -18,14 +18,14 @@
 #
 
 #Build image from Dockerfile with/without custom image tag
-#Optionally push to external docker hub repo
+#Optionally push to external image repo
 
 print_usage() {
-    echo "Usage: build.sh no-push|bm|<docker-hub-repo-name> [<image-tag>]"
+    echo "Usage: build.sh no-push|<docker-hub-repo-name> [--tag <image-tag>]"
     exit 1
 }
 
-if [ $# -ne 1 ] && [ $# -ne 2 ]; then
+if [ $# -lt 1 ] || [ $# -gt 2 ]; then
     print_usage
 fi
 
@@ -38,15 +38,36 @@ else
     REPO=$1
     echo "Attempt to push built image to: "$REPO
 fi
+shift
+while [ $# -ne 0 ]; do
+    if [ $1 == "--tag" ]; then
+        shift
+        if [ -z "$1" ]; then
+            print_usage
+        fi
+        IMAGE_TAG=$1
+        echo "Setting image tag to: "$IMAGE_TAG
+        shift
+    else
+        echo "Unknown parameter: $1"
+        print_usage
+    fi
+done
 
-if [ "$2" != "" ]; then
-    IMAGE_TAG=$2
-fi
- echo "Setting image tag to: "$IMAGE_TAG
+./gen-cert.sh
 
 IMAGE=$IMAGE_NAME:$IMAGE_TAG
-echo "Building image $IMAGE"
+
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+CURRENT_PLATFORM=$(docker system info --format '{{.OSType}}/{{.Architecture}}')
+if [ $CURRENT_PLATFORM != $DOCKER_DEFAULT_PLATFORM ]; then
+    echo "Image may not work on the current platform: $CURRENT_PLATFORM, only platform $DOCKER_DEFAULT_PLATFORM supported"
+fi
+
+echo "Building image: $IMAGE with architecture: $DOCKER_DEFAULT_PLATFORM"
+
 docker build -t $IMAGE_NAME:$IMAGE_TAG .
+
 if [ $? -ne 0 ]; then
     echo "BUILD FAILED"
     exit 1

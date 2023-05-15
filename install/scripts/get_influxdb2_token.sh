@@ -32,6 +32,6 @@ get_influxdb2_token() {
 			sleep 1
 		fi
 	done
-	echo $__influxdb2_access_token
+	echo -n $__influxdb2_access_token
 	return 0
 }

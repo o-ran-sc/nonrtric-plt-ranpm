@@ -22,24 +22,25 @@ echo "script-home: "$SD
 cd $SD
 CWD=$PWD
 
-NODE_COUNT=$1
-EVT_COUNT=$2
-NODE_NAME_BASE=$3
-FILE_EXT=$4
-TYPE=$5
-SRV_COUNT=$6
-HIST=$7
+VARIANT=$1
+NODE_COUNT=$2
+EVT_COUNT=$3
+NODE_NAME_BASE=$4
+FILE_EXT=$5
+TYPE=$6
+SRV_COUNT=$7
+HIST=$8
 
 FTPES_PORT=2021
 SFTP_PORT=2022
 HTTPS_PORT=443
 
 print_usage() {
-    echo "Usage: kafka-client-send-genfiles-file-ready.sh <node-count> <num-of-events> <node-name-base> <file-extension> sftp|ftpes|https <num-servers> [hist]"
+    echo "Usage: kafka-client-send-genfiles-file-ready.sh ves|file-ready <node-count> <num-of-events> <node-name-base> <file-extension> sftp|ftpes|https <num-servers> [hist]"
     exit 1
 }
 echo $@
-if [ $# -lt 6 ] && [ $# -gt 7 ]; then
+if [ $# -lt 7 ] && [ $# -gt 8 ]; then
     print_usage
 fi
 
@@ -65,10 +66,16 @@ if [ ! -z "$HIST" ]; then
     fi
     HIST_LEN=96
 fi
+PUSHMSG=""
+if [ $VARIANT == "ves" ]; then
+    PUSHMSG="to ves-collector"
+elif [ $VARIANT == "file-ready" ]; then
+    PUSHMSG="to file-ready topic"
+fi
 
-# Unix time of 20230220.1300
+# Unix time of 20230515.0700
 # If the value is changed, make sure to set the same time to the env var GENERATED_FILE_START_TIME in kube-plt.yaml for the https-server
-BEGINTIME=1676898000
+BEGINTIME=1684134000
 # Time zone
 # If the value is changed, make sure to set the same value to the env var GENERATED_FILE_TIMEZONE in kube-plt.yaml for the https-server
 TIMEZONE="+0100"
@@ -84,6 +91,9 @@ for (( i=0; i<$EVT_COUNT; i++)); do
     if [ $CNTR -eq 0 ]; then
         rm .out.json
         touch .out.json
+        if [ $VARIANT == "ves" ]; then
+            echo '{"eventList": [' > .out.json
+        fi
     fi
 
     if [ "$HIST" == "" ]; then
@@ -102,10 +112,8 @@ for (( i=0; i<$EVT_COUNT; i++)); do
         if [ "$HIST" == "" ]; then
             NO="$NODE_NAME_BASE-$j"
 
-            #FN="A20000626.2315+0200-2330+0200_$NO-$i.$FILE_EXT"
             FN="A$ST$TIMEZONE-$ET${TIMEZONE}_$NO.$FILE_EXT"
             let SRV_ID=$j%$SRV_COUNT
-            #let SRV_ID=SRV_ID+1
             echo "NODE "$NO
             echo "FILENAME "$FN
 
@@ -123,13 +131,20 @@ for (( i=0; i<$EVT_COUNT; i++)); do
                 echo "HTTP SERVER "$SRV
                 URL="https://$SRV:$HTTPS_PORT/generatedfiles/$FN"
             fi
-            EVT='{"event":{"commonEventHeader":{"sequence":0,"eventName":"Noti_RnNode-Ericsson_FileReady","sourceName":"'$NO'","lastEpochMicrosec":'$CURTIMEMS',"startEpochMicrosec":'$STTIMEMS',"timeZoneOffset":"UTC'$TIMEZONE'","changeIdentifier":"PM_MEAS_FILES"},"notificationFields":{"notificationFieldsVersion":"notificationFieldsVersion","changeType":"FileReady","changeIdentifier":"PM_MEAS_FILES","arrayOfNamedHashMap":[{"name":"'$FN'","hashMap":{"fileFormatType":"org.3GPP.32.435#measCollec","location":"'$URL'","fileFormatVersion":"V10","compression":"gzip"}}]}}}'
+
+            if [ $VARIANT == "ves" ] && [ $CNTR -gt 0 ]; then
+                echo "," >> .out.json
+            fi
+            if [ $VARIANT == "ves" ]; then
+                EVT='{"commonEventHeader":{"domain":"notification","sequence":0,"eventName":"Noti_RnNode-Ericsson_FileReady","eventId":"FileReady_'$TCNTR'","priority":"Normal","version":"4.0.1","vesEventListenerVersion":"7.0.1","sourceName":"'$NO'","reportingEntityName":"'$NO'","lastEpochMicrosec":'$CURTIMEMS',"startEpochMicrosec":'$STTIMEMS',"timeZoneOffset":"UTC'$TIMEZONE'"},"notificationFields":{"notificationFieldsVersion":"2.0","changeType":"FileReady","changeIdentifier":"PM_MEAS_FILES","arrayOfNamedHashMap":[{"name":"'$FN'","hashMap":{"fileFormatType":"org.3GPP.32.435#measCollec","location":"'$URL'","fileFormatVersion":"V10","compression":"gzip"}}]}}'
+            else
+                EVT='{"event":{"commonEventHeader":{"sequence":0,"eventName":"Noti_RnNode-Ericsson_FileReady","sourceName":"'$NO'","lastEpochMicrosec":'$CURTIMEMS',"startEpochMicrosec":'$STTIMEMS',"timeZoneOffset":"UTC'$TIMEZONE'","changeIdentifier":"PM_MEAS_FILES"},"notificationFields":{"notificationFieldsVersion":"notificationFieldsVersion","changeType":"FileReady","changeIdentifier":"PM_MEAS_FILES","arrayOfNamedHashMap":[{"name":"'$FN'","hashMap":{"fileFormatType":"org.3GPP.32.435#measCollec","location":"'$URL'","fileFormatVersion":"V10","compression":"gzip"}}]}}}'
+            fi
             echo $EVT >> .out.json
         else
             NO="$NODE_NAME_BASE-$j"
 
             let SRV_ID=$j%$SRV_COUNT
-            #let SRV_ID=SRV_ID+1
             echo "NODE "$NO
 
             EVT_FRAG=""
@@ -145,48 +160,55 @@ for (( i=0; i<$EVT_COUNT; i++)); do
                 if [ $FID -lt 0 ]; then
                     FN="NONEXISTING_$NO.$FILE_EXT"
                 else
-                    #FN="A20000626.2315+0200-2330+0200_$NO-$FID.$FILE_EXT"
                     FN="A$ST$TIMEZONE-$ET${TIMEZONE}_$NO.$FILE_EXT"
                 fi
                 echo "FILENAME "$FN
-                if [ $TYPE == "sftp" ]; then
-                    SRV="ftp-sftp-$SRV_ID"
-                    #echo "FTP SERVER "$SRV
-                    URL="sftp://onap:pano@$SRV:$SFTP_PORT/$FN"
-                elif [ $TYPE == "ftpes" ]; then
-                    SRV="ftp-ftpes-$SRV_ID"
-                    #echo "FTP SERVER "$SRV
-                    URL="ftpes://onap:pano@$SRV:$FTPES_PORT/$FN"
-                elif [ $TYPE == "https" ]; then
-                    SRV="pm-https-server-$SRV_ID.pm-https-server.ran"
-                    #echo "HTTP SERVER "$SRV
-                    URL="https://$SRV:$HTTPS_PORT/files/$FN"
-                fi
+                SRV="pm-https-server-$SRV_ID.pm-https-server.ran"
+                URL="https://$SRV:$HTTPS_PORT/files/$FN"
                 if [ "$EVT_FRAG" != "" ]; then
                     EVT_FRAG=$EVT_FRAG","
                 fi
                 EVT_FRAG=$EVT_FRAG'{"name":"'$FN'","hashMap":{"fileFormatType":"org.3GPP.32.435#measCollec","location":"'$URL'","fileFormatVersion":"V10","compression":"gzip"}}'
             done
 
-            EVT='{"event":{"commonEventHeader":{"sequence":0,"eventName":"Noti_RnNode-Ericsson_FileReady","sourceName":"'$NO'","lastEpochMicrosec":'$CURTIMEMS',"startEpochMicrosec":'$STTIMEMS',"timeZoneOffset":"UTC'$TIMEZONE'","changeIdentifier":"PM_MEAS_FILES"},"notificationFields":{"notificationFieldsVersion":"notificationFieldsVersion","changeType":"FileReady","changeIdentifier":"PM_MEAS_FILES","arrayOfNamedHashMap":['$EVT_FRAG']}}}'
+            if [ $VARIANT == "ves" ] && [ $CNTR -gt 0 ]; then
+                echo "," >> .out.json
+            fi
+            if [ $VARIANT == "ves" ]; then
+                EVT='{"commonEventHeader":{"domain":"notification","sequence":0,"eventName":"Noti_RnNode-Ericsson_FileReady","eventId":"FileReady_'$TCNTR'","priority":"Normal","version":"4.0.1","vesEventListenerVersion":"7.0.1","sourceName":"'$NO'","reportingEntityName":"'$NO'","lastEpochMicrosec":'$CURTIMEMS',"startEpochMicrosec":'$STTIMEMS',"timeZoneOffset":"UTC'$TIMEZONE'"},"notificationFields":{"notificationFieldsVersion":"2.0","changeType":"FileReady","changeIdentifier":"PM_MEAS_FILES","arrayOfNamedHashMap":[{"name":"'$FN'","hashMap":{"fileFormatType":"org.3GPP.32.435#measCollec","location":"'$URL'","fileFormatVersion":"V10","compression":"gzip"}}]}}'
+            else
+                EVT='{"event":{"commonEventHeader":{"sequence":0,"eventName":"Noti_RnNode-Ericsson_FileReady","sourceName":"'$NO'","lastEpochMicrosec":'$CURTIMEMS',"startEpochMicrosec":'$STTIMEMS',"timeZoneOffset":"UTC'$TIMEZONE'","changeIdentifier":"PM_MEAS_FILES"},"notificationFields":{"notificationFieldsVersion":"notificationFieldsVersion","changeType":"FileReady","changeIdentifier":"PM_MEAS_FILES","arrayOfNamedHashMap":[{"name":"'$FN'","hashMap":{"fileFormatType":"org.3GPP.32.435#measCollec","location":"'$URL'","fileFormatVersion":"V10","compression":"gzip"}}]}}}'
+            fi
             echo $EVT >> .out.json
-
         fi
 
         let CNTR=CNTR+1
         let TCNTR=TCNTR+1
         if [ $CNTR -ge $BATCHSIZE ]; then
-            echo "Pushing batch of $CNTR events"
-            cat .out.json | kafka-console-producer --topic file-ready --broker-list kafka-1-kafka-bootstrap.nonrtric:9092
+            echo "Pushing batch of $CNTR events $PUSHMSG"
+            if [ $VARIANT == "ves" ]; then
+                echo ']}' >> .out.json
+                curl -s -X POST http://ves-collector.nonrtric:8080/eventListener/v7/eventBatch --header 'Content-Type: application/json' --data-binary @.out.json
+            else
+                cat .out.json | kafka-console-producer --topic file-ready --broker-list kafka-1-kafka-bootstrap.nonrtric:9092
+            fi
             rm .out.json
             touch .out.json
+            if [ $VARIANT == "ves" ]; then
+                echo '{"eventList": [' > .out.json
+            fi
             CNTR=0
         fi
     done
 done
 if [ $CNTR -ne 0 ]; then
-    echo "Pushing batch of $CNTR events"
-    cat .out.json | kafka-console-producer --topic file-ready --broker-list kafka-1-kafka-bootstrap.nonrtric:9092
+    echo "Pushing batch of $CNTR events $PUSHMSG"
+    if [ $VARIANT == "ves" ]; then
+        echo ']}' >> .out.json
+        curl -s -X POST http://ves-collector.nonrtric:8080/eventListener/v7/eventBatch --header 'Content-Type: application/json' --data-binary @.out.json
+    else
+        cat .out.json | kafka-console-producer --topic file-ready --broker-list kafka-1-kafka-bootstrap.nonrtric:9092
+    fi
 fi
 
 echo "Pushed $TCNTR events"

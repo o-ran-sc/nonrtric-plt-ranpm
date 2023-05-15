@@ -44,7 +44,6 @@ echo "Uninstall $INST"
 
 helm repo remove strimzi
 helm uninstall   -n nonrtric strimzi-kafka-crds
-#kubectl delete -f 'https://strimzi.io/install/latest?namespace=nonrtric' -n nonrtric
 check_error $? "$INST"
 
 helm uninstall namespaces

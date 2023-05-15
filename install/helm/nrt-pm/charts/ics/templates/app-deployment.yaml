@@ -34,7 +34,8 @@ spec:
     spec:
       containers:
       - name: informationservice
-        image: nexus3.o-ran-sc.org:10004/o-ran-sc/nonrtric-plt-informationcoordinatorservice:1.5.0
+#       image: nexus3.o-ran-sc.org:10004/o-ran-sc/nonrtric-plt-informationcoordinatorservice:1.5.0
+        image: nexus3.o-ran-sc.org:10003/o-ran-sc/nonrtric-plt-informationcoordinatorservice:1.5.0-SNAPSHOT
         imagePullPolicy: Always
         ports:
         - name: http
