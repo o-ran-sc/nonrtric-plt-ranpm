@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d49a905_88f7c265",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-05-15T11:37:01Z",
+      "side": 1,
+      "message": "Ref https://github.com/readthedocs/readthedocs.org/issues/10290 to fix issues in FL jenkins env for RTD builds.\nFix already present in upstream RTD builds (.readthedocs.yaml).",
+      "revId": "75de76f7874f32495fd0a3b41fea8bf45d79b587",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
