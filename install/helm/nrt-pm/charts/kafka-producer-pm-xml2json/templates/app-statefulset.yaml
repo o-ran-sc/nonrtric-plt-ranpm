@@ -38,8 +38,12 @@ spec:
     spec:
       containers:
       - name: kafka-producer-pm-xml2json
-        image: kafka-pm-producer:latest
+        image: {{ .Values.global.extimagerepo }}pm-file-converter:latest
+        {{- if .Values.global.extimagerepo }}
+        imagePullPolicy: Always
+        {{- else }}
         imagePullPolicy: Never
+        {{- end }}
         ports:
         - name: http
           containerPort: 80

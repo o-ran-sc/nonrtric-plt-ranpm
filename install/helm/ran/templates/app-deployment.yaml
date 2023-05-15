@@ -23,7 +23,7 @@ metadata:
   labels:
     app: pm-https-server
 spec:
-  replicas: 1    # Max 10 = number of generated certs unique ...
+  replicas: {{ .Values.global.numhttpsservers }}    # Max 10 = number of generated unique certs  ...
   serviceName: pm-https-server
   selector:
     matchLabels:
@@ -60,8 +60,12 @@ spec:
           runAsUser: 0
       containers:
       - name: pm-https-server
-        image: pm-https-server:latest
+        image: {{ .Values.global.extimagerepo }}pm-https-server:latest
+        {{- if .Values.global.extimagerepo }}
+        imagePullPolicy: Always
+        {{- else }}
         imagePullPolicy: Never
+        {{- end }}
         ports:
         - name: http
           containerPort: 80
@@ -72,12 +76,12 @@ spec:
         # If env is missing, the file in the call to "/files/<filename> url must exist in the server
         - name: ALWAYS_RETURN
           value: /ne-files/pm.xml.gz
-        # Env must be specified if genetated files use. The value shall spefify the first timestamp of a series of pm files
+        # Env must be specified if generated files use. The value shall specify the first timestamp of a series of pm files
         # If a file with a timestamp less than the below will return 404
-        # Timestamp shall be gvien with date.time where minutes has values 00,15,45 and the given timezone
+        # Timestamp shall be given with date.time where minutes has values 00,15,45 and the given timezone
         # Example: 20230220.1300 - denotes a first file name of 20230220.1300+0100-1315+0100_<node-name>.xml.gz
         - name: GENERATED_FILE_START_TIME
-          value: "20230220.1300"
+          value: "20230515.0700"
         # Timezone to use for generated files. If not given, timezone 0000 will be used
         # Shall include +/- sign for the timezone value
         - name: GENERATED_FILE_TIMEZONE

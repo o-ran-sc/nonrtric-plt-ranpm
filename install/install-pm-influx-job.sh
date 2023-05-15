@@ -29,14 +29,14 @@ check_error() {
     fi
 }
 
-export KHOST=$(kube_get_controlplane_host)
+export KUBERNETESHOST=$(kube_get_controlplane_host)
 if [ $? -ne 0 ]; then
-    echo $KHOST
+    echo $KUBERNETESHOST
     echo "Exiting"
     exit 1
 fi
 
-echo "Kubernetes control plane host: $KHOST"
+echo "Kubernetes control plane host: $KUBERNETESHOST"
 
 . scripts/kube_get_nodeport.sh
 . scripts/get_influxdb2_token.sh
@@ -53,7 +53,6 @@ bucket=pm-bucket
 echo "Creating bucket $bucket in influxdb2"
 create_influxdb2_bucket influxdb2-0 nonrtric $bucket
 
-export KC_PORT=$(kube_get_nodeport keycloak nonrtric http)
 . scripts/populate_keycloak.sh
 
 cid="console-setup"

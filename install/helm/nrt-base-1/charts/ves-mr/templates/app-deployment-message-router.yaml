@@ -1,0 +1,56 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: message-router
+  namespace: nonrtric
+  labels:
+    app: message-router
+
+spec:
+  selector:
+    matchLabels:
+      app: message-router
+  serviceName: message-router
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: message-router
+        app: message-router
+      name: message-router
+    spec:
+      containers:
+        - name: message-router
+          image: nexus3.onap.org:10002/onap/dmaap/dmaap-mr:1.4.4
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 3904
+            name: api
+
+          env:
+          # - name: JAASLOGIN
+          #   valueFrom:
+          #     secretKeyRef:
+          #       name: strimzi-kafka-admin
+          #       key: sasl.jaas.config
+          # - name: SASLMECH
+          #   value: scram-sha-512
+          - name: enableCadi
+            value: "false"
+          - name: useZkTopicStore
+            value: "false"
+          volumeMounts:
+            - mountPath: /appl/dmaapMR1/bundleconfig/etc/appprops/MsgRtrApi.properties
+              subPath: MsgRtrApi.properties
+              name: msgrtrapi
+            - mountPath: /appl/dmaapMR1/bundleconfig/etc/logback.xml
+              subPath: logback.xml
+              name: logback
+      volumes:
+        - name: msgrtrapi
+          configMap:
+            name: msgrtrapi
+        - name: logback
+          configMap:
+            name: logback

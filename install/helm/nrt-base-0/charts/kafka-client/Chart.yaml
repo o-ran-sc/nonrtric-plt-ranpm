@@ -16,7 +16,7 @@
 #
 
 apiVersion: v2
-name: client
+name: kafka-client
 description: Kafka client helm chart
 
 # A chart can be either an 'application' or a 'library' chart.

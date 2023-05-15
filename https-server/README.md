@@ -5,7 +5,7 @@
 
 This server can be used to simulate a RAN node for file download over https.
 Files can be requested in three ways:
-- static file (always the same files returned)
+- static file (always the same file returned)
 - semi-static files (the requested file must exist in the container)
 - generated files (file contents is generated using a template where the start/stop time as well the node name is based on requested file. Counter values are also generated)
 
@@ -20,7 +20,7 @@ Build for remote kubernetes - an externally accessible image repo (e.g. docker h
 
 
 ### Configuration
-The following env vars (all optional) may be set to control the behavior of the server
+The following env vars (all optional) may be set to control the behaviour of the server
 
 - ALWAYS_RETURN - Name of a file under "/files" in the container that is always returned regardless of requested file on the url `/files/<file-id>`. The can be used when the file contents is not important.
 
@@ -30,7 +30,7 @@ The following env vars (all optional) may be set to control the behavior of the 
 
 If generated files shall be used, load the file pm-template.xml.gz to the /template-files dir in the container.
 
-Configure the following for desired behaviou
+Configure the following for desired behaviour
 - static file: ALWAYS_RETURN
 - semi-static files: none
 - generated files: GENERATED_FILE_START_TIME and GENERATED_FILE_TIMEZONE
