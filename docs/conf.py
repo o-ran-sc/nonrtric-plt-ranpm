@@ -42,6 +42,6 @@ intersphinx_mapping['nonrtric'] = ('%s/o-ran-sc-nonrtric/en/%s' %(baseurl, branc
 intersphinx_mapping['influxlogger'] = ('%s/influxlogger' % selfurl, None)
 intersphinx_mapping['datafilecollector'] = ('%s/datafilecollector' % selfurl, None)
 intersphinx_mapping['pmproducer'] = ('%s/pmproducer' % selfurl, None)
-intersphinx_mapping['pm-file-converter'] = ('%s/pm-file-converter' % selfurl, None)
+#intersphinx_mapping['pm-file-converter'] = ('%s/pm-file-converter' % selfurl, None)
 
 intersphinx_disabled_reftypes = ["*"]
