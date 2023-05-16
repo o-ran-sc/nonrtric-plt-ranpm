@@ -15,7 +15,7 @@
 #  ============LICENSE_END=================================================
 #
 
-# NB: This is the only conf.yaml file used by the upstream readthedocs job  (ref '.readthedocs.yaml') 
+# NB: This is the only conf.yaml file used by the upstream readthedocs job  (ref '.readthedocs.yaml')
 #     Where possible include contents of the sub-folders' 'conf.yaml' files here if appropriate
 
 from docs_conf.conf import *
@@ -42,6 +42,6 @@ intersphinx_mapping['nonrtric'] = ('%s/o-ran-sc-nonrtric/en/%s' %(baseurl, branc
 intersphinx_mapping['influxlogger'] = ('%s/influxlogger' % selfurl, None)
 intersphinx_mapping['datafilecollector'] = ('%s/datafilecollector' % selfurl, None)
 intersphinx_mapping['pmproducer'] = ('%s/pmproducer' % selfurl, None)
-
+intersphinx_mapping['kafka-pm-producer'] = ('%s/kafka-pm-producer' % selfurl, None)
 
 intersphinx_disabled_reftypes = ["*"]

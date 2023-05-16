@@ -44,7 +44,7 @@ The third party products used are:
 For more detailed documentation of the components:
 
 * :doc:`Non-RT RIC - RAN PM - PM Data File Collector (Documentation site) <datafilecollector:index>`.
-* PM Data Converter TBD
+* :doc:`Non-RT RIC - RAN PM - PM Data Data Converter (Documentation site) <kafka-pm-producer:index>`.
 * :doc:`Non-RT RIC - RAN PM - PM Producer (Documentation site) <pmproducer:index>`.
 * :doc:`Non-RT RIC - RAN PM - Influx Logger (Documentation site) <influxlogger:index>`.
 * `Non-RT RIC - Information Coordinator Service (Documentation site) <https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-informationcoordinatorservice/en/latest/>`_.
