@@ -43,14 +43,12 @@ The third party products used are:
 
 For more detailed documentation of the components:
 
-..  Commented out until the site exists for the first time
-   * :doc:`Non-RT RIC - RAN PM - PM File Converter (Documentation site) <pm-file-converter:index>`.
-
 * :doc:`Non-RT RIC - RAN PM - PM Data File Collector (Documentation site) <datafilecollector:index>`.
+* :doc:`Non-RT RIC - RAN PM - PM File Converter (Documentation site) <pm-file-converter:index>`.
 * :doc:`Non-RT RIC - RAN PM - PM Producer (Documentation site) <pmproducer:index>`.
 * :doc:`Non-RT RIC - RAN PM - Influx Logger (Documentation site) <influxlogger:index>`.
 * `Non-RT RIC - Information Coordinator Service (Documentation site) <https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-informationcoordinatorservice/en/latest/>`_.
-* HTTPS-SERVER TBD
+*  HTTPS-SERVER TBD
 
 *********
 Data Flow

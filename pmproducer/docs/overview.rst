@@ -39,6 +39,7 @@ After filtering, the data will be delivered to the output topic.
 
 The format of the delivered PM measurement is the same as the input format (which in turn is a Json mapping done from
 3GPP TS 32.432/3GPP TS 32.435).
+The data can be delivered in gzipped format or in cleartext (indicated by an element in the Kafka header).
 
 The result of the PM filtering preserves the structure of a 3GPP PM report.
 Here follows an example of a resulting delivered PM report.
@@ -124,9 +125,15 @@ For each filtered result sent to a Kafka topic, there will the following propert
 * source-name, the name of the source RAN traffic-handling element from which the measurements will originate.
 
 
-******************
-Configuration File
-******************
+*************
+Configuration
+*************
+
+The component is configured by a configuration file and by the normal spring boot configuration file (apoplication.yaml).
+
+==================
+Configuration file
+==================
 
 The configuration file defines Kafka topics that should be listened to and registered as information types which can be subscribed to.
 There is an example configuration file in config/application_configuration.json
@@ -166,6 +173,13 @@ Below follows an example of a configuration file.
       }
    ]
  }
+
+ ================
+ application.yaml
+ ================
+
+An example application.yaml configuration file: ":download:`link <../config/application.yaml>`"
+
 
 **************************
 Information Job Parameters
@@ -358,6 +372,10 @@ and the result is sent to the Kafka topic specified by the Job (by the data cons
 
 .. image:: ./dedicatedTopics.png
    :width: 500pt
+
+=========================================
+Several Jobs sharing the same Kafka topic
+=========================================
 
 If several jobs publish to the same Kafka topic (shared topic), the resulting filtered output will be an aggregate of all matching filters.
 So, each consumer will then get more data than requested.

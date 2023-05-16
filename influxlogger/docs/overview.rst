@@ -134,7 +134,7 @@ Here follows an example of the expected input object:
 Configuration
 *************
 
-The DFC is configured via its application.yaml
+The component is configured via its application.yaml
 
 
 An example application.yaml configuration file: ":download:`link <../config/application.yaml>`"
