@@ -2,7 +2,7 @@
 .. SPDX-License-Identifier: CC-BY-4.0
 .. Copyright (C) 2023 Nordix
 
-Non-RT RIC PM Data Converter
+Non-RT RIC PM File Converter
 ============================
 
 .. toctree::
@@ -10,4 +10,4 @@ Non-RT RIC PM Data Converter
    :caption: Contents:
 
    ./overview.rst
- 
+

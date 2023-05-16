@@ -31,13 +31,22 @@ build:
     python: "3.7"
   jobs:
     pre_build:
-    - mkdir --parents _readthedocs/html/
-    - mkdir --parents _readthedocs/tmp/doctrees
-    - sphinx-build -W -b html --keep-going -n -d _readthedocs/tmp/doctrees  ./docs/ _readthedocs/html/
-    - sphinx-build -W -b html --keep-going -n -d _readthedocs/tmp/doctrees/datafilecollector  ./datafilecollector/docs/ _readthedocs/html/datafilecollector
-    - sphinx-build -W -b html --keep-going -n -d _readthedocs/tmp/doctrees/influxlogger  ./influxlogger/docs/ _readthedocs/html/influxlogger
-    - sphinx-build -W -b html --keep-going -n -d _readthedocs/tmp/doctrees/pmproducer  ./pmproducer/docs/ _readthedocs/html/pmproducer
-    - sphinx-build -W -b html --keep-going -n -d _readthedocs/tmp/doctrees/kafka-pm-producer  ./kafka-pm-producer/docs/ _readthedocs/html/kafka-pm-producer
+      - mkdir --parents _readthedocs/html/
+      - mkdir --parents _readthedocs/tmp/doctrees
+      - sphinx-build -W -b html --keep-going -n -d
+        _readthedocs/tmp/doctrees  ./docs/ _readthedocs/html/
+      - sphinx-build -W -b html --keep-going -n -d
+        _readthedocs/tmp/doctrees/datafilecollector  ./datafilecollector/docs/
+        _readthedocs/html/datafilecollector
+      - sphinx-build -W -b html --keep-going -n -d
+        _readthedocs/tmp/doctrees/influxlogger  ./influxlogger/docs/
+        _readthedocs/html/influxlogger
+      - sphinx-build -W -b html --keep-going -n -d
+        _readthedocs/tmp/doctrees/pmproducer  ./pmproducer/docs/
+        _readthedocs/html/pmproducer
+      - sphinx-build -W -b html --keep-going -n -d
+        _readthedocs/tmp/doctrees/pm-file-converter  ./pm-file-converter/docs/
+        _readthedocs/html/pm-file-converter
 
 python:
   install:
@@ -45,7 +54,7 @@ python:
     - requirements: datafilecollector/docs/requirements-docs.txt
     - requirements: influxlogger/docs/requirements-docs.txt
     - requirements: pmproducer/docs/requirements-docs.txt
-    - requirements: kafka-pm-producer/docs/requirements-docs.txt
+    - requirements: pm-file-converter/docs/requirements-docs.txt
 
 sphinx:
   configuration: docs/conf.py

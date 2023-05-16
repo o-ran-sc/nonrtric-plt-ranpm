@@ -3,7 +3,7 @@
 .. Copyright (C) 2023 Nordix
 
 
-PM Data Converter
+PM File Converter
 ~~~~~~~~~~~~~~~~~
 
 
@@ -11,7 +11,7 @@ PM Data Converter
 Overview
 ********
 
-The task of the PM Data Converter is to convert PM Measurement report files,
+The task of the PM File Converter is to convert PM Measurement report files,
 (XML formatted according to 3GPP TS 32.432 and 3GPP TS 32.435) into Json.
 
 The component receives objects from kafka that indicates that new PM Report files
