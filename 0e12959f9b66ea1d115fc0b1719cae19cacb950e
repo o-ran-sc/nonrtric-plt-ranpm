@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36ccd7b6_69147766",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-05-16T12:00:38Z",
+      "side": 1,
+      "message": "Will merge conflict with https://gerrit.o-ran-sc.org/r/c/nonrtric/plt/ranpm/+/11109",
+      "revId": "0e12959f9b66ea1d115fc0b1719cae19cacb950e",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
