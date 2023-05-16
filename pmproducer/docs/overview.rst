@@ -39,6 +39,7 @@ After filtering, the data will be delivered to the output topic.
 
 The format of the delivered PM measurement is the same as the input format (which in turn is a Json mapping done from
 3GPP TS 32.432/3GPP TS 32.435).
+The data can be delivered in gzipped format or in cleartext (indicated by an element in the Kafka header).
 
 The result of the PM filtering preserves the structure of a 3GPP PM report.
 Here follows an example of a resulting delivered PM report.
@@ -358,6 +359,10 @@ and the result is sent to the Kafka topic specified by the Job (by the data cons
 
 .. image:: ./dedicatedTopics.png
    :width: 500pt
+
+=========================================
+Several Jobs sharing the same Kafka topic
+=========================================
 
 If several jobs publish to the same Kafka topic (shared topic), the resulting filtered output will be an aggregate of all matching filters.
 So, each consumer will then get more data than requested.
