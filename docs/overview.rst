@@ -5,7 +5,7 @@
 Non-RT RIC RAN PM Measurement
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Parent repository for components implementing Non-RT RIC RAN PM Use-case.
+Parent repository for components implementing Non-RT RIC RAN PM Use-cases.
 
 
 ********
@@ -44,7 +44,7 @@ The third party products used are:
 For more detailed documentation of the components:
 
 * :doc:`Non-RT RIC - RAN PM - PM Data File Collector (Documentation site) <datafilecollector:index>`.
-* PM Data Converter TBD
+* :doc:`Non-RT RIC - RAN PM - PM Data Data Converter (Documentation site) <kafka-pm-producer:index>`.
 * :doc:`Non-RT RIC - RAN PM - PM Producer (Documentation site) <pmproducer:index>`.
 * :doc:`Non-RT RIC - RAN PM - Influx Logger (Documentation site) <influxlogger:index>`.
 * `Non-RT RIC - Information Coordinator Service (Documentation site) <https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-informationcoordinatorservice/en/latest/>`_.
@@ -97,13 +97,14 @@ to json. So these does not use any subscriptions.
 PM Subscriber design time dependencies
 **************************************
 
-An rApp uses the ICS API, which is avaiable in `Non-RT RIC - Information Coordinator Service (Documentation site) <https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-informationcoordinatorservice/en/latest/>`_.
+An rApp uses the ICS API to create and manage the subscription of PM Measurements.
+The API documentation is avaiable in `Non-RT RIC - Information Coordinator Service (Documentation site) <https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-informationcoordinatorservice/en/latest/>`_.
 
 The schema for the PM Mesaurement information jobs is defined in :doc:`Non-RT RIC - RAN PM - PM Producer (Documentation site) <pmproducer:index>`.
 This schema defines parameters used in the subscription (info job) and defines which measurements to subscribe for and on which
 kafka topic the information shall be delivered to.
 
-An application retrieving logged PM data from the Influx database needs to know how the data is stored. That is
+An application retrieving logged PM data from the Influx database needs to consider how the data is stored (the schema). That is
 defined in :doc:`Non-RT RIC - RAN PM - Influx Logger (Documentation site) <influxlogger:index>`.
 
 .. image:: ./DesignTimeDependencies.png

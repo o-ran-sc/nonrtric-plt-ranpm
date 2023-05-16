@@ -110,9 +110,9 @@ Here follows an example:
    }
 
 
-**************************
+*************************
 Output File Ready Message
-**************************
+*************************
 
 Here follows an example of the sent object indicating that a new Json file is available.
 It only contains the name of the stored file. The name of the bucket and the minio endpoint
@@ -124,6 +124,31 @@ must be known by the event receiver.
       "filename": "xyz.json.gzip"
    }
 
+
+************************
+Input File Ready Message
+************************
+
+Below follows an example of an input File Ready Message. The
+message is sent by the Data File Collector. The only elemts used by this component are sourceName, name and
+objectStoreBucket.
+
+.. code-block:: javascript
+
+   {
+     "productName":"RnNode",
+     "vendorName":"Ericsson",
+     "lastEpochMicrosec":151983,
+     "sourceName":"5GRAN_DU",
+     "startEpochMicrosec":15198378,
+     "timeZoneOffset":"UTC+05:00",
+     "compression":"gzip",
+     "fileFormatType":"org.3GPP.32.435#measCollec",
+     "fileFormatVersion":"V10",
+     "name":"5GRAN_DU/A20220418.1900-1915_seliitdus00487.xml",
+     "changeIdentifier":"PM_MEAS_FILES",
+     "objectStoreBucket":"ropfiles"
+  }
 
 
 

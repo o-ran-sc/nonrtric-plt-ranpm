@@ -77,7 +77,7 @@ Output File Publish Message
 ***************************
 
 
-Below follows an example of an output File Publish Message. .
+Below follows an example of an output File Publish Message.
 
 .. code-block:: javascript
 

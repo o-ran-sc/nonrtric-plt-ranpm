@@ -289,6 +289,7 @@ The following properties are defined:
      The start file is the time from when the information shall be returned.
      In this case, the query is only done for files from the given "sourceNames".
      If this parameter is excluded, only "new" reports will be delivered as they are collected from the RAN traffic-handling nodes.
+     How old information that can be retrieved depends on the retention time for the storage (if minio it used, it is a S3 bucket).
 
    * pmRopEndTime, for querying already collected PM measurements. Only relevant if pmRopStartTime.
      If this parameters is given, no reports will be sent as new files are collected.
