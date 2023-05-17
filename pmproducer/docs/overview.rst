@@ -122,7 +122,7 @@ For each filtered result sent to a Kafka topic, there will the following propert
 
 * type-id, this property is used to indicate the ID of the information type. The value is a string.
 * gzip, if this property exists the object is gzip'ed (otherwise not). The property has no value.
-* source-name, the name of the source RAN traffic-handling element from which the measurements will originate.
+* source-name, the name of the source RAN traffic-handling element from which the measurements originate.
 
 
 *************
@@ -174,9 +174,9 @@ Below follows an example of a configuration file.
    ]
  }
 
- ================
- application.yaml
- ================
+================
+application.yaml
+================
 
 An example application.yaml configuration file: ":download:`link <../config/application.yaml>`"
 
@@ -300,10 +300,12 @@ The following properties are defined:
    * measuredEntityDns, selection of DNs for the RAN traffic-handling elements.
 
    * pmRopStartTime, if this parameter is specified already collected PM measurements files will be scanned to retrieve historical data.
-     The start file is the time from when the information shall be returned.
+     This is the time from when the information shall be returned.
      In this case, the query is only done for files from the given "sourceNames".
      If this parameter is excluded, only "new" reports will be delivered as they are collected from the RAN traffic-handling nodes.
      How old information that can be retrieved depends on the retention time for the storage (if minio it used, it is a S3 bucket).
+     A best effort is done, so that the stored files that are in time range are scanned even if the
+     specified time is too long back in time.
 
    * pmRopEndTime, for querying already collected PM measurements. Only relevant if pmRopStartTime.
      If this parameters is given, no reports will be sent as new files are collected.
