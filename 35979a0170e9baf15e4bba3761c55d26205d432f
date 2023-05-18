@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69125e4f_d174dc83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-05-18T10:39:29Z",
+      "side": 1,
+      "message": "So the jenkens verify job now runs ... :-) \nBut there\u0027re some errors:",
+      "revId": "35979a0170e9baf15e4bba3761c55d26205d432f",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49b70316_731299ee",
+        "filename": "pm-file-converter/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-05-18T10:39:29Z",
+      "side": 1,
+      "message": "Errorf  ?",
+      "range": {
+        "startLine": 447,
+        "startChar": 6,
+        "endLine": 447,
+        "endChar": 11
+      },
+      "revId": "35979a0170e9baf15e4bba3761c55d26205d432f",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a63c3e04_a67318af",
+        "filename": "pm-file-converter/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-05-18T10:39:29Z",
+      "side": 1,
+      "message": "Errorf  ?",
+      "range": {
+        "startLine": 460,
+        "startChar": 7,
+        "endLine": 460,
+        "endChar": 12
+      },
+      "revId": "35979a0170e9baf15e4bba3761c55d26205d432f",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "938008d2_2338873c",
+        "filename": "pm-file-converter/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-05-18T10:39:29Z",
+      "side": 1,
+      "message": "Errorf  ?",
+      "range": {
+        "startLine": 471,
+        "startChar": 7,
+        "endLine": 471,
+        "endChar": 12
+      },
+      "revId": "35979a0170e9baf15e4bba3761c55d26205d432f",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11aa5f82_1e00de68",
+        "filename": "pm-file-converter/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2427,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-05-18T10:39:29Z",
+      "side": 1,
+      "message": "strconv.Itoa ?",
+      "range": {
+        "startLine": 2427,
+        "startChar": 14,
+        "endLine": 2427,
+        "endChar": 27
+      },
+      "revId": "35979a0170e9baf15e4bba3761c55d26205d432f",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "600190db_8bfc758a",
+        "filename": "pm-file-converter/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2437,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-05-18T10:39:29Z",
+      "side": 1,
+      "message": "strconv.Itoa ?",
+      "range": {
+        "startLine": 2437,
+        "startChar": 11,
+        "endLine": 2437,
+        "endChar": 23
+      },
+      "revId": "35979a0170e9baf15e4bba3761c55d26205d432f",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
