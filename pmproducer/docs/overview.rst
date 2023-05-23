@@ -174,9 +174,12 @@ Below follows an example of a configuration file.
    ]
  }
 
+
+
 ================
 application.yaml
 ================
+As any springboot application, this is component configured via an application.yaml file.
 
 An example application.yaml configuration file: ":download:`link <../config/application.yaml>`"
 

@@ -30,7 +30,7 @@ The picture illustrates the components involved.
   is the same as the XML format.
 * The PM Producer handles filtering and distribution of PM data to subscribers. These subscribers can be rApps.
 * The Influx Logger stores selected PM mesurements into a time series database.
-* HTTPS-SERVER is for testing and implements functionality to simulate file transfer from thye RAN nodes.
+* HTTPS-SERVER is for testing and implements functionality to simulate file transfer from RAN nodes.
 
 The third party products used are:
 

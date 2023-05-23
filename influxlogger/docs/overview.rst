@@ -38,19 +38,6 @@ Here follows an example of one Influx table which contains aggregated values for
    :width: 1000pt
 
 
-******************************************
-Setting up the PM measurement subscription
-******************************************
-
-The influx logger will create its data subscription automatically. This is done by reading a file that
-defines the data to log and which Kafka topic to use (1). The contents of this file is used to create
-the information job for subscribing of PM measurement (2). ICS will make sure that all PM Measurement producers
-are ordered to start producing data (3).
-
-.. image:: ./Subscription.png
-   :width: 1000pt
-
-An example jobDefinition.json file: ":download:`link <../config/jobDefinition.json>`"
 
 ********************
 Input PM Measurement
@@ -134,8 +121,27 @@ Here follows an example of the expected input object:
 Configuration
 *************
 
-The component is configured via its application.yaml
 
+
+==========================================
+Setting up the PM measurement subscription
+==========================================
+
+The influx logger will create its data subscription automatically. This is done by reading a configuration file that
+defines the data to log and which Kafka topic to use (1). The contents of this file is used to create
+the information job for subscribing of PM measurement (2). ICS will make sure that all PM Measurement producers
+are ordered to start producing data (3).
+
+.. image:: ./Subscription.png
+   :width: 1000pt
+
+An example jobDefinition.json file: ":download:`link <../config/jobDefinition.json>`"
+
+================
+application.yaml
+================
+
+The component is configured via its application.yaml
 
 An example application.yaml configuration file: ":download:`link <../config/application.yaml>`"
 
