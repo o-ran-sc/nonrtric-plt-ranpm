@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: message-router
+  namespace: nonrtric
+  labels:
+    app: message-router
+spec:
+  ports:
+    - port: 3904
+      targetPort: 3904
+      protocol: TCP
+      name: http
+  type: ClusterIP
+  selector:
+   app: message-router

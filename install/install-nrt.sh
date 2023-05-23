@@ -27,17 +27,44 @@
 SAMELINE="\033[0K\r"
 
 # Variables
-export KHOST=$(kube_get_controlplane_host)
+export KUBERNETESHOST=$(kube_get_controlplane_host)
 if [ $? -ne 0 ]; then
-    echo $KHOST
+    echo $KUBERNETESHOST
     echo "Exiting"
     exit 1
 fi
 
 echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-echo "Kubernetes control plane host: $KHOST"
+echo "Kubernetes control plane host: $KUBERNETESHOST"
 echo "Host obtained from current kubectl context"
 echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+
+echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+echo "Checking requirements"
+echo " Checking if istio is installed"
+kubectl $KUBECONF get authorizationpolicies -A &> /dev/null
+if [ $? -ne 0 ]; then
+    echo "  Istio api: kubectl get authorizationpolicies is not installed"
+    exit 1
+else
+    echo "  OK"
+fi
+echo " Checking if jq is installed"
+tmp=$(type jq)
+if [ $? -ne 0 ]; then
+	echo "  Command utility jq (cmd-line json processor) is not installed"
+	exit 1
+else
+    echo "  OK"
+fi
+echo " Checking if envsubst is installed"
+tmp=$(type envsubst)
+if [ $? -ne 0 ]; then
+	echo "  Command utility envsubst (env var substitution in files) is not installed"
+	exit 1
+else
+    echo "  OK"
+fi
 
 echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 echo "Restarting istiod, workaround to refresh jwks cache"
@@ -69,7 +96,6 @@ helm install --wait -n nonrtric nrt-base-0 helm/nrt-base-0
 
 # Create realm in keycloak
 
-##export KC_PORT=$(kube_get_nodeport keycloak nonrtric http)
 . scripts/populate_keycloak.sh
 
 create_realms nonrtric-realm
@@ -84,63 +110,11 @@ check_error $?
 generate_client_secrets nonrtric-realm $cid
 check_error $?
 
-# retcode=0
-# while [ $retcode -eq 0 ]; do
-#     #NRT_REALM_JWKS=$(kubectl exec -n nonrtric client -- curl -f http://keycloak.nonrtric:8080/realms/nonrtric-realm/protocol/openid-connect/certs)
-#     NRT_REALM_JWKS=$(curl -fs localhost:31788/realms/nonrtric-realm/protocol/openid-connect/certs)
-#     if [ $? -eq 0 ]; then
-#         retcode=1
-#         #echo $NRT_REALM_JWKS
-#         echo "JWKS for nonrtric-realm obtained"
-#     else
-#         sleep 3
-#         echo "Wating for keycloak to publish JWKS for nonrtric-realm"
-#     fi
-# done
-
-# export NRT_REALM_JWKS
-
 echo ""
 
-# ##################################################################################
-# echo "##### Installing chart httpecho"
-# ##################################################################################
-
-#helm install --wait -n nonrtric httpecho helm/httpecho
-
-
-
-# TSEC=$SECONDS
-# numok=0
-# while [ $numok -lt 10 ]; do
-#     echo ""
-#     echo "Time: $(($SECONDS-$TSEC))"
-#     cid="console-setup"
-#     __get_admin_token
-#     TOKEN=$(get_client_token nonrtric-realm $cid)
-#     decode_token "$TOKEN"
-#     curl -fv localhost:31789/ -H "Authorization: Bearer $TOKEN"
-#     if [ $? -eq 0 ]; then
-#         let numok=numok+1
-#     fi
-#     sleep 5
-# done
-
-# TSEC=$SECONDS
-# while [ true ]; do
-#     echo ""
-#     echo "Time: $(($SECONDS-$TSEC))"
-#     cid="console-setup"
-#     __get_admin_token
-#     TOKEN=$(get_client_token nonrtric-realm $cid)
-#     decode_token "$TOKEN"
-#     curl -v localhost:31789/ -H "Authorization: Bearer $TOKEN"
-#     sleep 5
-# done
 cid="console-setup"
 __get_admin_token
 TOKEN=$(get_client_token nonrtric-realm $cid)
-decode_token "$TOKEN"
 
 ##################################################################################
 echo "##### Installing charts: strimzi and nrt-base-1"
@@ -153,11 +127,9 @@ helm install --wait strimzi-kafka-crds -n nonrtric strimzi/strimzi-kafka-operato
 
 cp opa-rules/bundle.tar.gz helm/nrt-base-1/charts/opa-rule-db/data
 
-#envsubst < helm/nrt-base-1/charts/httpecho/values-template.yaml > helm/nrt-base-1/charts/httpecho/values.yaml
-
 helm install -n nonrtric nrt-base-1 helm/nrt-base-1
 
-
+echo "Waiting for influx db - there may be error messages while trying..."
 retcode=1
 while [ $retcode -eq 1 ]; do
     retcode=0
@@ -167,7 +139,7 @@ while [ $retcode -eq 1 ]; do
         sleep 1
     elif [ "$CONFIG" == "{}" ]; then
         echo "Configuring db"
-        kubectl exec -n nonrtric influxdb2-0 -- influx setup -u bm -p mySuP3rS3cr3tT0keN -o est -b pm-bucket -f
+        kubectl exec -n nonrtric influxdb2-0 -- influx setup -u admin -p mySuP3rS3cr3tT0keN -o est -b pm-bucket -f
         if [ $? -ne 0 ]; then
             retcode=1
             sleep 1
@@ -178,11 +150,9 @@ while [ $retcode -eq 1 ]; do
 done
 
 # Save influx user api-token to secret
-INFLUXDB2_TOKEN=$(get_influxdb2_token influxdb2-0 nonrtric)
-INFLUXDB2_TOKEN=$(echo -n $INFLUXDB2_TOKEN | base64)
-PATCHDATA='[{"op": "add", "path": "/data/token", "value": "'$INFLUXDB2_TOKEN'" }]'
+INFLUXDB2_TOKEN=$(get_influxdb2_token influxdb2-0 nonrtric | base64)
+PATCHDATA='[{"op": "add", "path": "/data/token", "value": "'$INFLUXDB2_TOKEN'"}]'
 kubectl patch secret influxdb-api-token -n nonrtric --type json -p "$PATCHDATA"
-
 
 echo "Wait for kafka"
 _ts=$SECONDS
@@ -207,7 +177,7 @@ echo "##### Installing: chart ran"
 ./helm/ran/certs/gen-certs.sh 10
 check_error $?
 
-helm install --wait -n ran ran helm/ran
+helm install --wait -f helm/global-values.yaml -n ran ran helm/ran
 
 echo ""
 
@@ -282,10 +252,7 @@ export APP_CLIENT_SECRET=$(< .sec_nonrtric-realm_$cid)
 
 envsubst < helm/nrt-pm/charts/dfc/values-template.yaml > helm/nrt-pm/charts/dfc/values.yaml
 
-
-#envsubst < helm/nrt-pm/charts/ics/values-template.yaml > helm/nrt-pm/charts/ics/values.yaml
-
-helm install --wait -n nonrtric nrt-pm helm/nrt-pm
+helm install --wait -f helm/global-values.yaml -n nonrtric nrt-pm helm/nrt-pm
 
 echo ""
 

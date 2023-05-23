@@ -1,0 +1,43 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ves-collector
+  namespace: nonrtric
+  labels:
+    run: ves-collector
+spec:
+  selector:
+    matchLabels:
+      run: ves-collector
+  template:
+    metadata:
+      labels:
+        run: ves-collector
+    spec:
+      volumes:
+        - name: conf-vol1
+          configMap:
+            name: ves-collector-collector.properties
+        - name: conf-vol2
+          configMap:
+            name: ves-collector-ves-dmaap-config.json
+      containers:
+      - name: ves-collector
+        image: nexus3.onap.org:10002/onap/org.onap.dcaegen2.collectors.ves.vescollector:1.12.3
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: DMAAPHOST
+          value: message-router.nonrtric
+        ports:
+        - name: http
+          containerPort: 8080
+        - name: https
+          containerPort: 8443
+        volumeMounts:
+        - name: conf-vol1
+          mountPath: /opt/app/VESCollector/etc/collector.properties
+          subPath: collector.properties
+        - name: conf-vol2
+          mountPath: /opt/app/VESCollector/etc/ves-dmaap-config.json
+          subPath: ves-dmaap-config.json

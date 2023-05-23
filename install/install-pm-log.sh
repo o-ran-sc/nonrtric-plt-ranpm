@@ -25,9 +25,9 @@
 echo "Installing pmlog"
 
 # Variables
-export KHOST=$(kube_get_controlplane_host)
+export KUBERNETESHOST=$(kube_get_controlplane_host)
 if [ $? -ne 0 ]; then
-    echo $KHOST
+    echo $KUBERNETESHOST
     echo "Exiting"
     exit 1
 fi
@@ -42,12 +42,6 @@ check_error() {
     fi
 }
 
-# echo " Retriving influxdb2 access token..."
-# export INFLUXDB2_TOKEN=$(get_influxdb2_token influxdb2-0 nonrtric)
-
-# envsubst < nrt-pm-log/values-template.yaml > nrt-pm-log/values.yaml
-
-export KC_PORT=$(kube_get_nodeport keycloak nonrtric http)
 . scripts/populate_keycloak.sh
 
 cid="nrt-pm-log"

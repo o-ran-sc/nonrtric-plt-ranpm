@@ -1,14 +1,23 @@
 {
-    "info_type_id": "PmData",
-    "job_owner": "console",
-    "job_result_uri": "",
-    "job_definition": {
-       "filter": {
-
-       },
-       "deliveryInfo": {
-          "topic": "pmreports",
-          "bootStrapServers": "kafka-1-kafka-bootstrap.nonrtric:9097"
-       }
-    }
- }
+   "info_type_id": "PmData",
+   "job_owner": "console",
+   "job_definition": {
+      "filter": {
+         "sourceNames": [],
+         "measObjInstIds": [],
+         "measTypeSpecs": [
+            {
+               "measuredObjClass": "NRCellDU",
+               "measTypes": [
+                  "pmCounterNumber101"
+               ]
+            }
+         ],
+         "measuredEntityDns": []
+      },
+      "deliveryInfo": {
+         "topic": "pmreports",
+         "bootStrapServers": "kafka-1-kafka-bootstrap.nonrtric:9097"
+      }
+   }
+}

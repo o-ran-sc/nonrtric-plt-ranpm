@@ -15,5 +15,11 @@
 #  ============LICENSE_END=================================================
 #
 
-nrtpmlog:
-  clientsecret: fwbKl26FccceE4godFW8Hkdi5Wi4Lhke
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: logback
+  namespace: nonrtric
+
+data:
+{{ (.Files.Glob "config/logback.xml").AsConfig | nindent 2 }}

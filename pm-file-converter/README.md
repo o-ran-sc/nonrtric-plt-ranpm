@@ -1,15 +1,45 @@
 
+## PM Data Producer
 
-## Producer
-
-Producer supporting data types for pm xml to json conversion and pm json filtering
-
+### Manual build, tag and push to image repo
 
 Build for docker or local kubernetes\
 `./build.sh no-push`
 
 Build for remote kubernetes - an externally accessible image repo (e.g. docker hub) is needed  \
 `./build.sh <external-image-repo>`
+
+### Function
+
+Producer supporting data types for pm xml to json conversion, pm json filtering with output to kafka or influx db.
+
+### Configuration
+
+The app expects the following environment variables:
+
+- CREDS_GRANT_TYPE :  Grant type (keycloak)
+- CREDS_CLIENT_SECRET: Client secret (keycloak)
+- CREDS_CLIENT_ID : Client id (keycloak)
+- AUTH_SERVICE_URL : Url to keycloak for fetching tokens
+- KAFKA_SERVER : Host and port to kafka bootstrap server
+- ICS : Host and port to the Information Coordination Service
+- SELF: Host and port of this app
+
+The following env vars are optional
+FILES_VOLUME : Path to persistent file storage (optional)
+FILESTORE_USER : Minio filestore user
+FILESTORE_PWD : Minio filestore password
+FILESTORE_SERVER: Host and port of the minio filestore
+KP : Id of the app
+
+The app can be configured to read file from a mounted file system or from a filestore server (minio).
+
+Mounted files:
+Configure ´FILES_VOLUME´ and leave var starting with FILESTORE empty.
+
+Filestore:
+Configure env var starting with FILESTORE and leave ´FILES_VOLUME´empty.
+
 
 
 ## License

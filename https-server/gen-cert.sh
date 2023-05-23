@@ -17,7 +17,7 @@
 #  ============LICENSE_END=================================================
 #
 
-#Generate basic cert and key for web server
+#Generate basic cert and key for https server
 
 cat <<__EOF__ |  openssl req -new -newkey rsa:2048 -sha256 -nodes -x509 -keyout certs/server.key -out certs/server.crt -days 9999
 SE
