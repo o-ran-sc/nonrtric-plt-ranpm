@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0b4df29_80b1fda1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001589
+      },
+      "writtenOn": "2023-05-23T08:15:39Z",
+      "side": 1,
+      "message": "left 1 comment",
+      "revId": "8d90fda583652cad3fc9f01ceedd5a2870d9875d",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d8bacc4_e5cafb89",
+        "filename": "install/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001589
+      },
+      "writtenOn": "2023-05-23T08:15:39Z",
+      "side": 1,
+      "message": "If remote or multi node cluster is used, then an image repo needs to be available to push the built images to.",
+      "range": {
+        "startLine": 28,
+        "startChar": 48,
+        "endLine": 28,
+        "endChar": 167
+      },
+      "revId": "8d90fda583652cad3fc9f01ceedd5a2870d9875d",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
