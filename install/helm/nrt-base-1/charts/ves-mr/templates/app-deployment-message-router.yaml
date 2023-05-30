@@ -11,7 +11,6 @@ spec:
   selector:
     matchLabels:
       app: message-router
-  serviceName: message-router
   replicas: 1
   template:
     metadata:
