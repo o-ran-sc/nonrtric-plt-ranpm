@@ -49,15 +49,8 @@ openssl genrsa 2048 > ca.key  2> /dev/null
 check_error $?
 
 echo " Generating ca cert"
-cat <<__EOF__ | openssl req -new -x509 -nodes -days 365000  -key ca.key  -out httpsca.crt 2> /dev/null
-SE
-.
-.
-EST
-EST
-$SRV
-.
-__EOF__
+openssl req -new -x509 -nodes -days 365000  -key ca.key -subj "/C=SE/ST=./L=./O=EST/OU=EST/CN=$SRV/emailAddress=a@example.com" -out httpsca.crt 2> /dev/null
+
 check_error $?
 
 
@@ -65,16 +58,8 @@ for (( i=0; i<${1}; i++ )); do
     SRV="pm-https-server-$i.pm-https-server.ran"
 
     echo " Generating cert and key  for server $SRV"
-cat <<__EOF__ | openssl req -newkey rsa:2048 -nodes -days 365000  -keyout https-$i.key -out https-req$i.crt 2> /dev/null
-SE
-.
-.
-ERIC
-ERIC
-$SRV
-.
+    openssl req -newkey rsa:2048 -nodes -days 365000 -subj "/C=SE/ST=./L=./O=ERIC/OU=ERIC/CN=$SRV/emailAddress=a@example.com" -keyout https-$i.key -out https-req$i.crt 2> /dev/null
 
-__EOF__
     check_error $?
 
     openssl x509 -req -days 365000 -set_serial 01 -in https-req$i.crt -out https-$i.crt -CA httpsca.crt -CAkey ca.key
@@ -87,3 +72,4 @@ done
 
 echo "DONE"
 exit 0
+
