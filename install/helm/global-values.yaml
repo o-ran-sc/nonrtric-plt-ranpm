@@ -16,5 +16,5 @@
 #
 
 global:
-  extimagerepo: bjornmagnussonest/
+  extimagerepo:
   numhttpsservers: 10
