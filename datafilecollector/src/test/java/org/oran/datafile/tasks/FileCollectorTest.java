@@ -49,6 +49,7 @@ import org.oran.datafile.model.Counters;
 import org.oran.datafile.model.FileData;
 import org.oran.datafile.model.FilePublishInformation;
 import org.oran.datafile.model.FileReadyMessage;
+import org.oran.datafile.oauth2.SecurityContext;
 import reactor.test.StepVerifier;
 
 public class FileCollectorTest {
@@ -109,6 +110,8 @@ public class FileCollectorTest {
     private DfcHttpsClient dfcHttpsClientMock = mock(DfcHttpsClient.class);
 
     private Counters counters;
+
+    static final SecurityContext securityContext = new SecurityContext("");
 
     FileReadyMessage.Event event(String location) {
         FileReadyMessage.MessageMetaData messageMetaData = FileReadyMessage.MessageMetaData.builder() //
@@ -188,7 +191,7 @@ public class FileCollectorTest {
 
     @Test
     public void whenFtpesFile_returnCorrectResponse() throws Exception {
-        FileCollector collectorUndetTest = spy(new FileCollector(appConfigMock, counters));
+        FileCollector collectorUndetTest = spy(new FileCollector(securityContext, appConfigMock, counters));
         doReturn(ftpesClientMock).when(collectorUndetTest).createFtpesClient(any());
 
         FileData fileData = createFileData(FTPES_LOCATION_NO_PORT);
@@ -212,7 +215,7 @@ public class FileCollectorTest {
 
     @Test
     public void whenSftpFile_returnCorrectResponse() throws Exception {
-        FileCollector collectorUndetTest = spy(new FileCollector(appConfigMock, counters));
+        FileCollector collectorUndetTest = spy(new FileCollector(securityContext, appConfigMock, counters));
         doReturn(sftpClientMock).when(collectorUndetTest).createSftpClient(any());
 
         FileData fileData = createFileData(SFTP_LOCATION_NO_PORT);
@@ -241,7 +244,7 @@ public class FileCollectorTest {
 
     @Test
     public void whenHttpFile_returnCorrectResponse() throws Exception {
-        FileCollector collectorUndetTest = spy(new FileCollector(appConfigMock, counters));
+        FileCollector collectorUndetTest = spy(new FileCollector(securityContext, appConfigMock, counters));
         doReturn(dfcHttpClientMock).when(collectorUndetTest).createHttpClient(any());
 
         FileData fileData = createFileData(HTTP_LOCATION_NO_PORT);
@@ -273,7 +276,7 @@ public class FileCollectorTest {
 
     @Test
     public void whenHttpsFile_returnCorrectResponse() throws Exception {
-        FileCollector collectorUndetTest = spy(new FileCollector(appConfigMock, counters));
+        FileCollector collectorUndetTest = spy(new FileCollector(securityContext, appConfigMock, counters));
         doReturn(dfcHttpsClientMock).when(collectorUndetTest).createHttpsClient(any());
 
         FileData fileData = createFileData(HTTPS_LOCATION_NO_PORT);
@@ -305,7 +308,7 @@ public class FileCollectorTest {
 
     @Test
     public void whenFtpesFileAlwaysFail_retryAndFail() throws Exception {
-        FileCollector collectorUndetTest = spy(new FileCollector(appConfigMock, counters));
+        FileCollector collectorUndetTest = spy(new FileCollector(securityContext, appConfigMock, counters));
         doReturn(ftpesClientMock).when(collectorUndetTest).createFtpesClient(any());
 
         FileData fileData = createFileData(FTPES_LOCATION);
@@ -325,7 +328,7 @@ public class FileCollectorTest {
 
     @Test
     public void whenFtpesFileAlwaysFail_failWithoutRetry() throws Exception {
-        FileCollector collectorUndetTest = spy(new FileCollector(appConfigMock, counters));
+        FileCollector collectorUndetTest = spy(new FileCollector(securityContext, appConfigMock, counters));
         doReturn(ftpesClientMock).when(collectorUndetTest).createFtpesClient(any());
 
         FileData fileData = createFileData(FTPES_LOCATION);
@@ -345,7 +348,7 @@ public class FileCollectorTest {
 
     @Test
     public void whenFtpesFileFailOnce_retryAndReturnCorrectResponse() throws Exception {
-        FileCollector collectorUndetTest = spy(new FileCollector(appConfigMock, counters));
+        FileCollector collectorUndetTest = spy(new FileCollector(securityContext, appConfigMock, counters));
         doReturn(ftpesClientMock).when(collectorUndetTest).createFtpesClient(any());
         doThrow(new DatafileTaskException("Unable to collect file.")).doNothing().when(ftpesClientMock)
             .collectFile(REMOTE_FILE_LOCATION, LOCAL_FILE_LOCATION);

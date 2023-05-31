@@ -48,6 +48,7 @@ import org.oran.datafile.model.FileData;
 import org.oran.datafile.model.FilePublishInformation;
 import org.oran.datafile.model.FileReadyMessage;
 import org.oran.datafile.model.FileReadyMessage.MessageMetaData;
+import org.oran.datafile.oauth2.SecurityContext;
 import org.oran.datafile.tasks.CollectAndReportFiles;
 import org.oran.datafile.tasks.FileCollector;
 import org.oran.datafile.tasks.KafkaTopicListener;
@@ -117,6 +118,8 @@ class MockDatafile {
     @Autowired
     CollectAndReportFiles scheduledTask;
 
+    static final SecurityContext securityContext = new SecurityContext("");
+
     private static KafkaReceiver kafkaReceiver;
 
     private static class KafkaReceiver {
@@ -166,13 +169,13 @@ class MockDatafile {
         final AppConfig appConfig;
 
         public FileCollectorMock(AppConfig appConfig) {
-            super(appConfig, new Counters());
+            super(securityContext, appConfig, new Counters());
             this.appConfig = appConfig;
         }
 
         @Override // (override fetchFile to disable the actual file fetching)
         public Mono<FilePublishInformation> collectFile(FileData fileData, long numRetries, Duration firstBackoff) {
-            FileCollector fc = new FileCollector(this.appConfig, new Counters());
+            FileCollector fc = new FileCollector(securityContext, this.appConfig, new Counters());
             FilePublishInformation i = fc.createFilePublishInformation(fileData);
 
             try {
@@ -191,7 +194,7 @@ class MockDatafile {
         final AppConfig appConfig;
 
         public CollectAndReportFilesMock(AppConfig appConfig) {
-            super(appConfig);
+            super(securityContext, appConfig);
             this.appConfig = appConfig;
         }
 

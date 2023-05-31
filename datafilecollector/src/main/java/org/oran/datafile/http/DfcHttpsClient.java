@@ -1,6 +1,7 @@
 /*-
  * ============LICENSE_START======================================================================
  * Copyright (C) 2021 Nokia. All rights reserved.
+ * Copyright (C) 2023 Nordix Foundation.
  * ===============================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -41,6 +42,7 @@ import org.oran.datafile.commons.FileCollectClient;
 import org.oran.datafile.exceptions.DatafileTaskException;
 import org.oran.datafile.exceptions.NonRetryableDatafileTaskException;
 import org.oran.datafile.model.FileServerData;
+import org.oran.datafile.oauth2.SecurityContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -57,10 +59,13 @@ public class DfcHttpsClient implements FileCollectClient {
 
     private final FileServerData fileServerData;
     private final PoolingHttpClientConnectionManager connectionManager;
+    private final SecurityContext securityContext;
 
-    public DfcHttpsClient(FileServerData fileServerData, PoolingHttpClientConnectionManager connectionManager) {
+    public DfcHttpsClient(SecurityContext securityContext, FileServerData fileServerData,
+        PoolingHttpClientConnectionManager connectionManager) {
         this.fileServerData = fileServerData;
         this.connectionManager = connectionManager;
+        this.securityContext = securityContext;
     }
 
     @Override
@@ -81,8 +86,11 @@ public class DfcHttpsClient implements FileCollectClient {
         logger.trace("Prepare to collectFile {}", localFile);
         HttpGet httpGet = new HttpGet(HttpUtils.prepareHttpsUri(fileServerData, remoteFile));
 
-        String authorizationContent = getAuthorizationContent();
+        String authorizationContent = this.securityContext.getBearerAuthToken();
         if (!authorizationContent.isEmpty()) {
+            httpGet.addHeader("Authorization", "Bearer " + authorizationContent);
+        } else if (!this.fileServerData.password.isEmpty()) {
+            authorizationContent = HttpUtils.basicAuthContent(this.fileServerData.userId, this.fileServerData.password);
             httpGet.addHeader("Authorization", authorizationContent);
         }
         try {
@@ -95,33 +103,7 @@ public class DfcHttpsClient implements FileCollectClient {
         logger.trace("HTTPS collectFile OK");
     }
 
-    private String getAuthorizationContent() throws DatafileTaskException {
-        String jwtToken = HttpUtils.getJWTToken(fileServerData);
-        if (shouldUseBasicAuth(jwtToken)) {
-            return HttpUtils.basicAuthContent(this.fileServerData.userId, this.fileServerData.password);
-        }
-        return HttpUtils.jwtAuthContent(jwtToken);
-    }
-
-    private boolean shouldUseBasicAuth(String jwtToken) throws DatafileTaskException {
-        return basicAuthValidNotPresentOrThrow() && jwtToken.isEmpty();
-    }
-
-    protected boolean basicAuthValidNotPresentOrThrow() throws DatafileTaskException {
-        if (isAuthDataEmpty()) {
-            return false;
-        }
-        if (HttpUtils.isBasicAuthDataFilled(fileServerData)) {
-            return true;
-        }
-        throw new DatafileTaskException("Not sufficient basic auth data for file.");
-    }
-
-    private boolean isAuthDataEmpty() {
-        return this.fileServerData.userId.isEmpty() && this.fileServerData.password.isEmpty();
-    }
-
-    protected HttpResponse makeCall(HttpGet httpGet) throws IOException, DatafileTaskException {
+    HttpResponse makeCall(HttpGet httpGet) throws IOException, DatafileTaskException {
         try {
             HttpResponse httpResponse = executeHttpClient(httpGet);
             if (isResponseOk(httpResponse)) {
@@ -143,11 +125,11 @@ public class DfcHttpsClient implements FileCollectClient {
         }
     }
 
-    protected CloseableHttpResponse executeHttpClient(HttpGet httpGet) throws IOException {
+    CloseableHttpResponse executeHttpClient(HttpGet httpGet) throws IOException {
         return httpsClient.execute(httpGet);
     }
 
-    protected boolean isResponseOk(HttpResponse httpResponse) {
+    boolean isResponseOk(HttpResponse httpResponse) {
         return getResponseCode(httpResponse) == 200;
     }
 
@@ -155,11 +137,11 @@ public class DfcHttpsClient implements FileCollectClient {
         return httpResponse.getStatusLine().getStatusCode();
     }
 
-    protected boolean isErrorInConnection(HttpResponse httpResponse) {
+    boolean isErrorInConnection(HttpResponse httpResponse) {
         return getResponseCode(httpResponse) >= 400;
     }
 
-    protected void processResponse(HttpResponse response, Path localFile) throws IOException {
+    void processResponse(HttpResponse response, Path localFile) throws IOException {
         logger.trace("Starting to process response.");
         HttpEntity entity = response.getEntity();
         InputStream stream = entity.getContent();
@@ -169,7 +151,7 @@ public class DfcHttpsClient implements FileCollectClient {
         logger.trace("Transmission was successful - {} bytes downloaded.", numBytes);
     }
 
-    protected long writeFile(Path localFile, InputStream stream) throws IOException {
+    long writeFile(Path localFile, InputStream stream) throws IOException {
         return Files.copy(stream, localFile, StandardCopyOption.REPLACE_EXISTING);
     }
 

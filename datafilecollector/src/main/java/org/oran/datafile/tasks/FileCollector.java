@@ -38,6 +38,7 @@ import org.oran.datafile.model.Counters;
 import org.oran.datafile.model.FileData;
 import org.oran.datafile.model.FilePublishInformation;
 import org.oran.datafile.model.FileReadyMessage;
+import org.oran.datafile.oauth2.SecurityContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -52,15 +53,17 @@ public class FileCollector {
     private static final Logger logger = LoggerFactory.getLogger(FileCollector.class);
     private final AppConfig appConfig;
     private final Counters counters;
+    private final SecurityContext securityContext;
 
     /**
      * Constructor.
      *
      * @param appConfig application configuration
      */
-    public FileCollector(AppConfig appConfig, Counters counters) {
+    public FileCollector(SecurityContext securityContext, AppConfig appConfig, Counters counters) {
         this.appConfig = appConfig;
         this.counters = counters;
+        this.securityContext = securityContext;
     }
 
     /**
@@ -175,10 +178,11 @@ public class FileCollector {
     }
 
     protected FileCollectClient createHttpClient(FileData fileData) {
-        return new DfcHttpClient(fileData.fileServerData());
+        return new DfcHttpClient(securityContext, fileData.fileServerData());
     }
 
     protected FileCollectClient createHttpsClient(FileData fileData) throws DatafileTaskException {
-        return new DfcHttpsClient(fileData.fileServerData(), HttpsClientConnectionManagerUtil.instance());
+        return new DfcHttpsClient(securityContext, fileData.fileServerData(),
+            HttpsClientConnectionManagerUtil.instance());
     }
 }

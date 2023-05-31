@@ -16,7 +16,6 @@
  */
 package org.oran.datafile.http;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
@@ -45,6 +44,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.oran.datafile.exceptions.DatafileTaskException;
 import org.oran.datafile.exceptions.NonRetryableDatafileTaskException;
 import org.oran.datafile.model.FileServerData;
+import org.oran.datafile.oauth2.SecurityContext;
 
 @ExtendWith(MockitoExtension.class)
 class DfcHttpsClientTest {
@@ -66,28 +66,8 @@ class DfcHttpsClientTest {
 
     @BeforeEach
     public void setup() {
-        dfcHttpsClientSpy = spy(new DfcHttpsClient(createFileServerData(), connectionManager));
-    }
-
-    @Test
-    void fileServerData_properLocationBasicAuth() throws Exception {
-        boolean result = dfcHttpsClientSpy.basicAuthValidNotPresentOrThrow();
-        assertEquals(true, result);
-    }
-
-    @Test
-    void fileServerData_properLocationNoBasicAuth() throws Exception {
-        dfcHttpsClientSpy = spy(new DfcHttpsClient(emptyUserInFileServerData(), connectionManager));
-
-        boolean result = dfcHttpsClientSpy.basicAuthValidNotPresentOrThrow();
-        assertEquals(false, result);
-    }
-
-    @Test
-    void fileServerData_improperAuthDataExceptionOccurred() throws Exception {
-        dfcHttpsClientSpy = spy(new DfcHttpsClient(invalidUserInFileServerData(), connectionManager));
-
-        assertThrows(DatafileTaskException.class, () -> dfcHttpsClientSpy.basicAuthValidNotPresentOrThrow());
+        SecurityContext ctx = new SecurityContext("");
+        dfcHttpsClientSpy = spy(new DfcHttpsClient(ctx, createFileServerData(), connectionManager));
     }
 
     @Test
@@ -109,7 +89,8 @@ class DfcHttpsClientTest {
     @Test
     void dfcHttpsClient_flow_successfulCallWithJWTAndResponseProcessing() throws Exception {
         FileServerData serverData = jWTTokenInFileServerData();
-        dfcHttpsClientSpy = spy(new DfcHttpsClient(serverData, connectionManager));
+        SecurityContext ctx = new SecurityContext("");
+        dfcHttpsClientSpy = spy(new DfcHttpsClient(ctx, serverData, connectionManager));
 
         doReturn(HttpClientResponseHelper.APACHE_RESPONSE_OK).when(dfcHttpsClientSpy)
             .executeHttpClient(any(HttpGet.class));
