@@ -33,10 +33,6 @@ public final class HttpUtils implements HttpStatus {
     private static final Logger logger = LoggerFactory.getLogger(HttpUtils.class);
     public static final int HTTP_DEFAULT_PORT = 80;
     public static final int HTTPS_DEFAULT_PORT = 443;
-    public static final String JWT_TOKEN_NAME = "access_token";
-    public static final String AUTH_JWT_WARN = "Both JWT token and Basic auth data present. Omitting basic auth info.";
-    public static final String AUTH_JWT_ERROR =
-        "More than one JWT token present in the queryParameters. Omitting JWT token.";
 
     private HttpUtils() {
     }
@@ -59,10 +55,6 @@ public final class HttpUtils implements HttpStatus {
 
     public static String basicAuthContent(String username, String password) {
         return "Basic " + Base64.getEncoder().encodeToString((username + ":" + password).getBytes());
-    }
-
-    public static String jwtAuthContent(String token) {
-        return "Bearer " + token;
     }
 
     /**
@@ -107,7 +99,7 @@ public final class HttpUtils implements HttpStatus {
      */
     public static String prepareUri(String scheme, FileServerData fileServerData, String remoteFile, int defaultPort) {
         int port = fileServerData.port != null ? fileServerData.port : defaultPort;
-        String query = rewriteQueryWithoutToken(fileServerData.queryParameters);
+        String query = queryParametersAsString(fileServerData.queryParameters);
         String fragment = fileServerData.uriRawFragment;
         if (!query.isEmpty()) {
             query = "?" + query;
@@ -119,101 +111,19 @@ public final class HttpUtils implements HttpStatus {
     }
 
     /**
-     * Returns JWT token string (if single exist) from the queryParameters.
      *
-     * @param fileServerData file server data which contain queryParameters where
-     *        JWT token may exist
-     * @return JWT token value if single token entry exist or empty string
-     *         elsewhere.
-     *         If JWT token key has no value, empty string will be returned.
-     */
-    public static String getJWTToken(FileServerData fileServerData) {
-
-        if (fileServerData.queryParameters.isEmpty()) {
-            return "";
-        }
-        boolean jwtTokenKeyPresent = HttpUtils.isQueryWithSingleJWT(fileServerData.queryParameters);
-        if (!jwtTokenKeyPresent) {
-            return "";
-        }
-        String token = HttpUtils.getJWTToken(fileServerData.queryParameters);
-        if (HttpUtils.isBasicAuthDataFilled(fileServerData)) {
-            logger.warn(HttpUtils.AUTH_JWT_WARN);
-        }
-        return token;
-    }
-
-    /**
-     * Checks if the queryParameters contains single JWT token entry. Valid
-     * queryParameters
-     * contains only one token entry.
-     *
-     * @param query queryParameters
-     * @return true if queryParameters contains single token
-     */
-    public static boolean isQueryWithSingleJWT(List<NameValuePair> query) {
-        if (query == null) {
-            return false;
-        }
-        int i = getJWTTokenCount(query);
-        if (i == 0) {
-            return false;
-        }
-        if (i > 1) {
-            logger.error(AUTH_JWT_ERROR);
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * Returns the number of JWT token entries. Valid queryParameters contains only
-     * one token entry.
-     *
-     * @param queryElements elements of the queryParameters
-     * @return true if queryParameters contains single JWT token entry
-     */
-    public static int getJWTTokenCount(List<NameValuePair> queryElements) {
-        int i = 0;
-        for (NameValuePair element : queryElements) {
-            if (element.getName().equals(JWT_TOKEN_NAME)) {
-                i++;
-            }
-        }
-        return i;
-    }
-
-    private static String getJWTToken(List<NameValuePair> query) {
-        for (NameValuePair element : query) {
-            if (!element.getName().equals(JWT_TOKEN_NAME)) {
-                continue;
-            }
-            if (element.getValue() != null) {
-                return element.getValue();
-            }
-            return "";
-        }
-        return "";
-    }
-
-    /**
-     * Rewrites HTTP queryParameters without JWT token
      *
      * @param query list of NameValuePair of elements sent in the queryParameters
      * @return String representation of queryParameters elements which were provided
      *         in the input
-     *         Empty string is possible when queryParameters is empty or contains
-     *         only access_token key.
+     *         Empty string is possible when queryParameters is empty.
      */
-    public static String rewriteQueryWithoutToken(List<NameValuePair> query) {
+    public static String queryParametersAsString(List<NameValuePair> query) {
         if (query.isEmpty()) {
             return "";
         }
         StringBuilder sb = new StringBuilder();
         for (NameValuePair nvp : query) {
-            if (nvp.getName().equals(JWT_TOKEN_NAME)) {
-                continue;
-            }
             sb.append(nvp.getName());
             if (nvp.getValue() != null) {
                 sb.append("=");

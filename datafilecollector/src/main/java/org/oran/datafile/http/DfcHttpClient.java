@@ -27,6 +27,7 @@ import org.oran.datafile.commons.FileCollectClient;
 import org.oran.datafile.exceptions.DatafileTaskException;
 import org.oran.datafile.exceptions.NonRetryableDatafileTaskException;
 import org.oran.datafile.model.FileServerData;
+import org.oran.datafile.oauth2.SecurityContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -52,31 +53,27 @@ public class DfcHttpClient implements FileCollectClient {
     private Disposable disposableClient;
 
     protected HttpClient client;
+    private final SecurityContext securityContext;
 
-    public DfcHttpClient(FileServerData fileServerData) {
+    public DfcHttpClient(SecurityContext securityContext, FileServerData fileServerData) {
         this.fileServerData = fileServerData;
+        this.securityContext = securityContext;
     }
 
     @Override
     public void open() throws DatafileTaskException {
         logger.trace("Setting httpClient for file download.");
 
-        String authorizationContent = getAuthorizationContent();
-        this.client =
-            HttpClient.create(pool).keepAlive(true).headers(h -> h.add("Authorization", authorizationContent));
-
-        logger.trace("httpClient, auth header was set.");
-    }
-
-    protected String getAuthorizationContent() throws DatafileTaskException {
-        String jwtToken = HttpUtils.getJWTToken(fileServerData);
-        if (!jwtToken.isEmpty()) {
-            return HttpUtils.jwtAuthContent(jwtToken);
+        final String authorizationContent = this.securityContext.getBearerAuthToken();
+        this.client = HttpClient.create(pool).keepAlive(true);
+        if (!authorizationContent.isEmpty()) {
+            this.client = this.client.headers(h -> h.add("Authorization", "Bearer " + authorizationContent));
+            logger.trace("httpClient, auth header was set.");
+        } else if (!this.fileServerData.password.isEmpty()) {
+            String basicAuthContent =
+                HttpUtils.basicAuthContent(this.fileServerData.userId, this.fileServerData.password);
+            this.client = this.client.headers(h -> h.add("Authorization", basicAuthContent));
         }
-        if (!HttpUtils.isBasicAuthDataFilled(fileServerData)) {
-            throw new DatafileTaskException("Not sufficient basic auth data for file.");
-        }
-        return HttpUtils.basicAuthContent(this.fileServerData.userId, this.fileServerData.password);
     }
 
     @Override

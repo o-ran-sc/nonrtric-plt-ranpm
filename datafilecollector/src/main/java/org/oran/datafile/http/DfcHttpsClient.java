@@ -41,6 +41,7 @@ import org.oran.datafile.commons.FileCollectClient;
 import org.oran.datafile.exceptions.DatafileTaskException;
 import org.oran.datafile.exceptions.NonRetryableDatafileTaskException;
 import org.oran.datafile.model.FileServerData;
+import org.oran.datafile.oauth2.SecurityContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -57,10 +58,13 @@ public class DfcHttpsClient implements FileCollectClient {
 
     private final FileServerData fileServerData;
     private final PoolingHttpClientConnectionManager connectionManager;
+    private final SecurityContext securityContext;
 
-    public DfcHttpsClient(FileServerData fileServerData, PoolingHttpClientConnectionManager connectionManager) {
+    public DfcHttpsClient(SecurityContext securityContext, FileServerData fileServerData,
+        PoolingHttpClientConnectionManager connectionManager) {
         this.fileServerData = fileServerData;
         this.connectionManager = connectionManager;
+        this.securityContext = securityContext;
     }
 
     @Override
@@ -81,8 +85,11 @@ public class DfcHttpsClient implements FileCollectClient {
         logger.trace("Prepare to collectFile {}", localFile);
         HttpGet httpGet = new HttpGet(HttpUtils.prepareHttpsUri(fileServerData, remoteFile));
 
-        String authorizationContent = getAuthorizationContent();
+        String authorizationContent = this.securityContext.getBearerAuthToken();
         if (!authorizationContent.isEmpty()) {
+            httpGet.addHeader("Authorization", "Bearer " + authorizationContent);
+        } else if (!this.fileServerData.password.isEmpty()) {
+            authorizationContent = HttpUtils.basicAuthContent(this.fileServerData.userId, this.fileServerData.password);
             httpGet.addHeader("Authorization", authorizationContent);
         }
         try {
@@ -93,18 +100,6 @@ public class DfcHttpsClient implements FileCollectClient {
             throw new DatafileTaskException("Error downloading file from server. ", e);
         }
         logger.trace("HTTPS collectFile OK");
-    }
-
-    private String getAuthorizationContent() throws DatafileTaskException {
-        String jwtToken = HttpUtils.getJWTToken(fileServerData);
-        if (shouldUseBasicAuth(jwtToken)) {
-            return HttpUtils.basicAuthContent(this.fileServerData.userId, this.fileServerData.password);
-        }
-        return HttpUtils.jwtAuthContent(jwtToken);
-    }
-
-    private boolean shouldUseBasicAuth(String jwtToken) throws DatafileTaskException {
-        return basicAuthValidNotPresentOrThrow() && jwtToken.isEmpty();
     }
 
     protected boolean basicAuthValidNotPresentOrThrow() throws DatafileTaskException {
