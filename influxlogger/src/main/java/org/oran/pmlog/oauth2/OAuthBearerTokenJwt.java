@@ -56,7 +56,6 @@ public class OAuthBearerTokenJwt implements OAuthBearerToken {
         }
         String payloadStr = new String(decoder.decode(chunks[1]));
         JwtTokenBody token = gson.fromJson(payloadStr, JwtTokenBody.class);
-        logger.error("Token: {}", token);
         return new OAuthBearerTokenJwt(token, tokenRaw);
     }
 
