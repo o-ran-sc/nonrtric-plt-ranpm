@@ -16,13 +16,16 @@ The demo set can be run on local or remote kubernetes.
 Kubectl must be configured to point to the applicable kubernetes instance.
 Nodeports exposed by the kubernetes instance must be accessible by the local machine - basically the kubernetes control plane IP needs to be accessible from the local machine.
 
-- Latest version of istio install
+- Latest version of istio installed
 
 # Other requirements
 - helm3
 - bash
 - cmd 'envsubst' must be installed (check by cmd: 'type envsubst' )
 - cmd 'jq' must be installed (check by cmd: 'type jq' )
+- keytool
+- openssl
+
 
 ## Before installation
 The following images need to be built manually. If remote or multi node cluster is used, then an image repo needs to be available to push the built images to.

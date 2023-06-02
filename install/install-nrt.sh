@@ -150,7 +150,11 @@ while [ $retcode -eq 1 ]; do
 done
 
 # Save influx user api-token to secret
-INFLUXDB2_TOKEN=$(get_influxdb2_token influxdb2-0 nonrtric | base64)
+B64FLAG="-w 0"
+case "$OSTYPE" in
+  darwin*)  B64FLAG="" ;;
+esac
+INFLUXDB2_TOKEN=$(get_influxdb2_token influxdb2-0 nonrtric | base64 $B64FLAG)
 PATCHDATA='[{"op": "add", "path": "/data/token", "value": "'$INFLUXDB2_TOKEN'"}]'
 kubectl patch secret influxdb-api-token -n nonrtric --type json -p "$PATCHDATA"
 
