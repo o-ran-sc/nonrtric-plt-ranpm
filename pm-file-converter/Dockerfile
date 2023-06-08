@@ -20,6 +20,8 @@ FROM golang:1.20.3-buster AS build
 WORKDIR /app
 
 COPY main.go .
+ADD common common
+ADD components components
 RUN go mod init main
 RUN go mod tidy
 
