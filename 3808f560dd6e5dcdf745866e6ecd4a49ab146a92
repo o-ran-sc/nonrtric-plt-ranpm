@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d88f29c6_12392a94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-06-09T16:33:12Z",
+      "side": 1,
+      "message": "stage-release",
+      "revId": "3808f560dd6e5dcdf745866e6ecd4a49ab146a92",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "93d88231_4be86e23",
         "filename": "README.md",
         "patchSetId": 1
