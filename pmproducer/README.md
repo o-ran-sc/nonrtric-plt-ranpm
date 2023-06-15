@@ -24,6 +24,13 @@ The file `config/application_configuration.json` contains the configuration of j
 }
 ```
 
+The latest documentation can be found here:
+https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-ranpm/en/latest/pmproducer/index.html
+
+
+The comonent is part of the RAM PM use case, which is described here:
+https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-ranpm/en/latest/overview.html#overview
+
 
 ## License
 

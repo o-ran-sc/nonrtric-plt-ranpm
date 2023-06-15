@@ -30,6 +30,13 @@ Running with dev-mode of DFC
 - **Stop DFC**: http://<container_address>:8100/**stopDatafile** or https://<container_address>:8433/**stopDatafile**
 
 
+The latest documentation can be found here:
+https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-ranpm/en/latest/datafilecollector/index.html
+
+
+The comonent is part of the RAM PM use case, which is described here:
+https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-ranpm/en/latest/overview.html#overview
+
 
 ## License
 

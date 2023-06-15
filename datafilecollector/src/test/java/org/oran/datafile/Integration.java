@@ -85,7 +85,7 @@ import reactor.core.publisher.Mono;
         "app.auth-token-file=src/test/resources/jwtToken.b64", //
         "app.kafka.use-oath-token=false"})
 @SuppressWarnings("squid:S3577") // Not containing any tests since it is a mock.
-class MockDatafile {
+class Integration {
 
     private static final int LAST_EPOCH_MICROSEC = 151983;
     private static final String SOURCE_NAME = "5GRAN_DU";
@@ -104,7 +104,7 @@ class MockDatafile {
     private static final String CHANGE_IDENTIFIER = "PM_MEAS_FILES";
     private static final String CHANGE_TYPE = "FileReady";
 
-    private static final Logger logger = LoggerFactory.getLogger(MockDatafile.class);
+    private static final Logger logger = LoggerFactory.getLogger(Integration.class);
     private static Gson gson = new GsonBuilder() //
         .disableHtmlEscaping() //
         .create(); //
@@ -125,7 +125,7 @@ class MockDatafile {
     private static class KafkaReceiver {
         public final String topic;
         private DataFromTopic receivedKafkaOutput;
-        private final Logger logger = LoggerFactory.getLogger(MockDatafile.class);
+        private final Logger logger = LoggerFactory.getLogger(Integration.class);
 
         int count = 0;
 
