@@ -1,6 +1,13 @@
 
 ## PM Data Producer
 
+The latest documentation can be found here:
+https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-ranpm/en/latest/pm-file-converter/index.html
+
+
+The comonent is part of the RAM PM use case, which is described here: 
+https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-ranpm/en/latest/overview.html#overview
+
 ### Manual build, tag and push to image repo
 
 Build for docker or local kubernetes\

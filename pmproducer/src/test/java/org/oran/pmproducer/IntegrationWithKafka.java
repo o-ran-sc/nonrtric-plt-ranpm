@@ -89,7 +89,11 @@ import reactor.kafka.sender.SenderRecord;
         "app.pm-files-path=/tmp/pmproducer", //
         "app.s3.bucket=pmproducertest", //
         "app.auth-token-file=src/test/resources/jwtToken.b64", //
-        "app.kafka.use-oath-token=false"}) //
+        "app.kafka.use-oath-token=false" }) //
+/**
+ * Tests interwork with Kafka and Minio
+ * Requires that Kafka and ICS is started.
+ */
 class IntegrationWithKafka {
 
     final static String PM_TYPE_ID = "PmDataOverKafka";
@@ -556,8 +560,8 @@ class IntegrationWithKafka {
                     consumerJobInfoKafka(this.applicationConfig.getKafkaBootStrapServers(), outputTopic, filterData),
                     jobId, restClient());
 
-            KafkaReceiver receiver =
-                    new KafkaReceiver(this.applicationConfig, outputTopic, this.securityContext, "group_" + i);
+            KafkaReceiver receiver = new KafkaReceiver(this.applicationConfig, outputTopic, this.securityContext,
+                    "group_" + i);
             receivers.add(receiver);
         }
 
@@ -615,7 +619,7 @@ class IntegrationWithKafka {
 
     @Test
     void testHistoricalData() throws Exception {
-        // test
+        // test that it works to get already fetched data
         final String JOB_ID = "testHistoricalData";
 
         DataStore fileStore = dataStore();

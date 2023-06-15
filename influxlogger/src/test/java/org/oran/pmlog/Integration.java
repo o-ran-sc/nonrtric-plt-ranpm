@@ -102,10 +102,12 @@ class Integration {
     }
 
     @BeforeEach
-    void init() {}
+    void init() {
+    }
 
     @AfterEach
-    void reset() {}
+    void reset() {
+    }
 
     private SenderOptions<byte[], byte[]> kafkaSenderOptions() {
         String bootstrapServers = this.applicationConfig.getKafkaBootStrapServers();
@@ -167,6 +169,13 @@ class Integration {
     final String PM_REPORT_FILE_BIG = "./src/test/resources/A20000626.2315+0200-2330+0200_HTTPS-6-73.json";
     final String PM_REPORT_FILE = "./src/test/resources/pm_report.json";
 
+    /**
+     * Generate a PM report
+     * 
+     * @param sequenceValue used for generating counter values
+     * @param noOfObjects   used for generating counter values
+     * @return
+     */
     String pmReport(int sequenceValue, int noOfObjects) {
         try {
             String str = Files.readString(Path.of(PM_REPORT_FILE), Charset.defaultCharset());
@@ -193,6 +202,9 @@ class Integration {
 
     }
 
+    // Store PM data for 24 hours in influx. The the data contains genenerated
+    // counter values
+    // that varies over time.
     @Test
     void testStoreReportsInflux() throws Exception {
         final int NO_OF_OBJECTS = 24 * 4;

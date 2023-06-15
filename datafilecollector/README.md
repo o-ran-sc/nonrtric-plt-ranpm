@@ -4,7 +4,7 @@ Datafile Collector is responsible for collecting PM counter files from traffical
 The files are stored in a persistent volume or in an S3 object store.
 
 The origin is from ONAP. This variant uses Kafka and S3 object store and does not use the Dmaap.
-
+datafilecollector/src/main/java/org/oran/datafile/model/FilePublishInformation.java
 ## Introduction
 
 DFC is delivered as one **Docker container** which hosts application server and can be started by `docker-compose`.
@@ -29,6 +29,13 @@ Running with dev-mode of DFC
 
 - **Stop DFC**: http://<container_address>:8100/**stopDatafile** or https://<container_address>:8433/**stopDatafile**
 
+
+The latest documentation can be found here:
+https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-ranpm/en/latest/datafilecollector/index.html
+
+
+The comonent is part of the RAM PM use case, which is described here: 
+https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-ranpm/en/latest/overview.html#overview
 
 
 ## License

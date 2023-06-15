@@ -68,8 +68,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
-@TestPropertySource(
-    properties = { //
+@TestPropertySource(properties = { //
         "app.ssl.key-store-password-file=./config/ftps_keystore.pass", //
         "app.ssl.key-store=./config/ftps_keystore.p12", //
         "app.ssl.trust-store-password-file=./config/truststore.pass", //
@@ -83,9 +82,9 @@ import reactor.core.publisher.Mono;
         "app.s3.bucket=ropfiles", //
         "app.s3.locksBucket=locks", //
         "app.auth-token-file=src/test/resources/jwtToken.b64", //
-        "app.kafka.use-oath-token=false"})
+        "app.kafka.use-oath-token=false" })
 @SuppressWarnings("squid:S3577") // Not containing any tests since it is a mock.
-class MockDatafile {
+class Integration {
 
     private static final int LAST_EPOCH_MICROSEC = 151983;
     private static final String SOURCE_NAME = "5GRAN_DU";
@@ -94,20 +93,18 @@ class MockDatafile {
     private static final String PM_FILE_NAME = "PM_FILE_NAME";
 
     // This can be any downloadable file on the net
-    private static final String FTPES_LOCATION =
-        "ftpes:// onap:pano@ftp-ftpes-6:2021/A20000626.2315+0200-2330+0200_GNODEB-15-4.xml.gz";
-    private static final String LOCATION =
-        "https://launchpad.net/ubuntu/+source/perf-tools-unstable/1.0+git7ffb3fd-1ubuntu1/+build/13630748/+files/perf-tools-unstable_1.0+git7ffb3fd-1ubuntu1_all.deb";
+    private static final String FTPES_LOCATION = "ftpes:// onap:pano@ftp-ftpes-6:2021/A20000626.2315+0200-2330+0200_GNODEB-15-4.xml.gz";
+    private static final String LOCATION = "https://launchpad.net/ubuntu/+source/perf-tools-unstable/1.0+git7ffb3fd-1ubuntu1/+build/13630748/+files/perf-tools-unstable_1.0+git7ffb3fd-1ubuntu1_all.deb";
     private static final String GZIP_COMPRESSION = "gzip";
     private static final String FILE_FORMAT_TYPE = "org.3GPP.32.435#measCollec";
     private static final String FILE_FORMAT_VERSION = "V10";
     private static final String CHANGE_IDENTIFIER = "PM_MEAS_FILES";
     private static final String CHANGE_TYPE = "FileReady";
 
-    private static final Logger logger = LoggerFactory.getLogger(MockDatafile.class);
+    private static final Logger logger = LoggerFactory.getLogger(Integration.class);
     private static Gson gson = new GsonBuilder() //
-        .disableHtmlEscaping() //
-        .create(); //
+            .disableHtmlEscaping() //
+            .create(); //
 
     @LocalServerPort
     private int port;
@@ -125,7 +122,7 @@ class MockDatafile {
     private static class KafkaReceiver {
         public final String topic;
         private DataFromTopic receivedKafkaOutput;
-        private final Logger logger = LoggerFactory.getLogger(MockDatafile.class);
+        private final Logger logger = LoggerFactory.getLogger(Integration.class);
 
         int count = 0;
 
@@ -140,9 +137,9 @@ class MockDatafile {
             KafkaTopicListener topicListener = new KafkaTopicListener(config);
 
             topicListener.getFlux() //
-                .doOnNext(this::set) //
-                .doFinally(sig -> logger.info("Finally " + sig)) //
-                .subscribe();
+                    .doOnNext(this::set) //
+                    .doFinally(sig -> logger.info("Finally " + sig)) //
+                    .subscribe();
         }
 
         private void set(DataFromTopic receivedKafkaOutput) {
@@ -271,10 +268,11 @@ class MockDatafile {
         Instant startTime = Instant.now();
 
         Flux.range(1, NO_OF_OBJECTS) //
-            .map(i -> gson.toJson(fileReadyMessage("testS3Concurrency_" + i))) //
-            .flatMap(
-                fileReadyMessage -> scheduledTask.sendDataToStream(appConfig.getInputTopic(), "key", fileReadyMessage)) //
-            .blockLast(); //
+                .map(i -> gson.toJson(fileReadyMessage("testS3Concurrency_" + i))) //
+                .flatMap(
+                        fileReadyMessage -> scheduledTask.sendDataToStream(appConfig.getInputTopic(), "key",
+                                fileReadyMessage)) //
+                .blockLast(); //
 
         while (kafkaReceiver.count < NO_OF_OBJECTS) {
             logger.info("sleeping {}", kafkaReceiver.count);
@@ -304,45 +302,45 @@ class MockDatafile {
 
     FileReadyMessage.Event event(String fileName) {
         MessageMetaData messageMetaData = MessageMetaData.builder() //
-            .lastEpochMicrosec(LAST_EPOCH_MICROSEC) //
-            .sourceName(SOURCE_NAME) //
-            .startEpochMicrosec(START_EPOCH_MICROSEC) //
-            .timeZoneOffset(TIME_ZONE_OFFSET) //
-            .changeIdentifier(CHANGE_IDENTIFIER) //
-            .eventName("Noti_RnNode-Ericsson_FileReady").build();
+                .lastEpochMicrosec(LAST_EPOCH_MICROSEC) //
+                .sourceName(SOURCE_NAME) //
+                .startEpochMicrosec(START_EPOCH_MICROSEC) //
+                .timeZoneOffset(TIME_ZONE_OFFSET) //
+                .changeIdentifier(CHANGE_IDENTIFIER) //
+                .eventName("Noti_RnNode-Ericsson_FileReady").build();
 
         FileReadyMessage.FileInfo fileInfo = FileReadyMessage.FileInfo //
-            .builder() //
-            .fileFormatType(FILE_FORMAT_TYPE) //
-            .location(LOCATION) //
-            .fileFormatVersion(FILE_FORMAT_VERSION) //
-            .compression(GZIP_COMPRESSION) //
-            .build();
+                .builder() //
+                .fileFormatType(FILE_FORMAT_TYPE) //
+                .location(LOCATION) //
+                .fileFormatVersion(FILE_FORMAT_VERSION) //
+                .compression(GZIP_COMPRESSION) //
+                .build();
 
         FileReadyMessage.ArrayOfNamedHashMap arrayOfNamedHashMap = FileReadyMessage.ArrayOfNamedHashMap //
-            .builder() //
-            .name(fileName) //
-            .hashMap(fileInfo) //
-            .build();
+                .builder() //
+                .name(fileName) //
+                .hashMap(fileInfo) //
+                .build();
 
         List<FileReadyMessage.ArrayOfNamedHashMap> arrayOfNamedHashMapList = new ArrayList<>();
         arrayOfNamedHashMapList.add(arrayOfNamedHashMap);
 
         FileReadyMessage.NotificationFields notificationFields = FileReadyMessage.NotificationFields //
-            .builder().notificationFieldsVersion("notificationFieldsVersion") //
-            .changeType(CHANGE_TYPE).changeIdentifier(CHANGE_IDENTIFIER) //
-            .arrayOfNamedHashMap(arrayOfNamedHashMapList) //
-            .build();
+                .builder().notificationFieldsVersion("notificationFieldsVersion") //
+                .changeType(CHANGE_TYPE).changeIdentifier(CHANGE_IDENTIFIER) //
+                .arrayOfNamedHashMap(arrayOfNamedHashMapList) //
+                .build();
 
         return FileReadyMessage.Event.builder() //
-            .commonEventHeader(messageMetaData) //
-            .notificationFields(notificationFields).build();
+                .commonEventHeader(messageMetaData) //
+                .notificationFields(notificationFields).build();
     }
 
     private FileReadyMessage fileReadyMessage(String fileName) {
         FileReadyMessage message = FileReadyMessage.builder() //
-            .event(event(fileName)) //
-            .build();
+                .event(event(fileName)) //
+                .build();
         return message;
     }
 
