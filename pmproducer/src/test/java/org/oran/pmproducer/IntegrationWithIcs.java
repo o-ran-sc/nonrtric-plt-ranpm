@@ -57,6 +57,10 @@ import org.springframework.test.context.TestPropertySource;
         "app.configuration-filepath=./src/test/resources/test_application_configuration.json", //
         "app.ics-base-url=https://localhost:8434" //
 })
+/**
+ * Tests that the interwork with ICS works.
+ * ICS must be running.
+ */
 class IntegrationWithIcs {
 
     private static final String JOB_ID = "JOB_ID";
