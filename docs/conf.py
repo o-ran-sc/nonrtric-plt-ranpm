@@ -38,7 +38,7 @@ extensions = [
 #intershpinx mapping with other projects
 intersphinx_mapping = {}
 intersphinx_mapping['nonrtric'] = ('%s/o-ran-sc-nonrtric/en/%s' %(baseurl, branch), None)
-## Note there is a circular dependency here - sub-project pages must exist before they can be checked
+## Note there is a circular dependency here - sub-project pages must exist before they can be checked - makes new branches difficult - may need a few steps!
 intersphinx_mapping['influxlogger'] = ('%s/influxlogger' % selfurl, None)
 intersphinx_mapping['datafilecollector'] = ('%s/datafilecollector' % selfurl, None)
 intersphinx_mapping['pmproducer'] = ('%s/pmproducer' % selfurl, None)
