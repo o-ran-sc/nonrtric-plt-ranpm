@@ -27,7 +27,7 @@
     </parent>
     <groupId>org.o-ran-sc.nonrtric.plt.ranpm</groupId>
     <artifactId>datafile-app-server</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <properties>
         <java.version>17</java.version>
