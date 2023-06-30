@@ -12,3 +12,5 @@ Non-RT RIC PM Data File Collector
    ./overview.rst
    ./developer-guide.rst
    ./api-docs.rst
+   ./release-notes.rst
+

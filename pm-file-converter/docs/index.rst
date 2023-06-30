@@ -10,4 +10,5 @@ Non-RT RIC PM File Converter
    :caption: Contents:
 
    ./overview.rst
+   ./release-notes.rst
 
