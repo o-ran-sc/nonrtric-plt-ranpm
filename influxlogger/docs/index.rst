@@ -12,3 +12,4 @@ Non-RT RIC Influx Logger
    ./overview.rst
    ./developer-guide.rst
    ./api-docs.rst
+   ./release-notes.rst

@@ -13,7 +13,7 @@ Overview
 ********
 
 The OSC Non-RT RIC provides a high performing, fully scalable end-to-end solution for handling
-PM Mesurements. A PM report (containing aggregated PM measurements over a time interval) is
+PM Measurements. A PM report (containing aggregated PM measurements over a time interval) is
 an XML file. The format is defined by 3GPP (TS 32.432 and 3GPP TS 32.435).
 The files are collected from the RAN and stored. An rApp can subscribe for chosen measurement types from
 measured resources in the network.
@@ -29,14 +29,14 @@ The picture illustrates the components involved.
 * The PM File Converter converts these to a Json format. The structure and the contents
   is the same as the XML format.
 * The PM Producer handles filtering and distribution of PM data to subscribers. These subscribers can be rApps.
-* The Influx Logger stores selected PM mesurements into a time series database.
+* The Influx Logger stores selected PM measurements into a time series database.
 * HTTPS-SERVER is for testing and implements functionality to simulate file transfer from RAN nodes.
 
 The third party products used are:
 
 * Minio object storage, for storing of files.
 * Kafka for transferring of data (not the full PM reports, though)
-* Influx time series database for storing of selected PM mesurements over time.
+* Influx time series database for storing of selected PM measurements over time.
 
 .. image:: ./Components.png
    :width: 500pt
@@ -47,7 +47,7 @@ For more detailed documentation of the components:
 * :doc:`Non-RT RIC - RAN PM - PM File Converter (Documentation site) <pm-file-converter:index>`.
 * :doc:`Non-RT RIC - RAN PM - PM Producer (Documentation site) <pmproducer:index>`.
 * :doc:`Non-RT RIC - RAN PM - Influx Logger (Documentation site) <influxlogger:index>`.
-* `Non-RT RIC - Information Coordinator Service (Documentation site) <https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-informationcoordinatorservice/en/latest/>`_.
+* `Non-RT RIC - Information Coordinator Service (Documentation site) <https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-informationcoordinatorservice/en/h-release/>`_.
 *  HTTPS-SERVER TBD
 
 *********
@@ -77,7 +77,7 @@ At anytime an rApp can read logged PM data from the Influx database.
 PM Data Subscription
 ********************
 PM measurement data is subscribed by creating an Information Job using the Information Coordination Service (ICS).
-This a subscription broker and is part of what is called Data Managament an Exposure (DME) in O-RAN.
+This a subscription broker and is part of what is called Data Management an Exposure (DME) in O-RAN.
 The ICS makes sure that all data producers gets its data subscriptions (jobs).
 
 In the picture below, an rApp and the Influx Logger are consumers of PM data.
@@ -86,7 +86,7 @@ In the picture below, an rApp and the Influx Logger are consumers of PM data.
    :width: 500pt
 
 The PM Data Influx logger will create a PM data subscription based on a configuration file. An rApp can create
-PM data subscpition. The PM Data producer will deliver received PM measurements according to the subscriptions.
+PM data subscription. The PM Data producer will deliver received PM measurements according to the subscriptions.
 
 The PM Data file collector will fetch all PM measurement files. The PM Data Converted will convert all fetched xml files
 to json. So these does not use any subscriptions.
@@ -96,14 +96,14 @@ PM Subscriber design time dependencies
 **************************************
 
 An rApp uses the ICS API to create and manage the subscription of PM Measurements.
-The API documentation is avaiable in `Non-RT RIC - Information Coordinator Service (Documentation site) <https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-informationcoordinatorservice/en/latest/>`_.
+The API documentation is available in `Non-RT RIC - Information Coordinator Service (Doc site) <https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-informationcoordinatorservice/en/h-release/>`_.
 
-The schema for the PM Mesaurement information jobs is defined in :doc:`Non-RT RIC - RAN PM - PM Producer (Documentation site) <pmproducer:index>`.
+The schema for the PM Measurement information jobs is defined in :doc:`Non-RT RIC - RAN PM - PM Producer (Documentation <pmproducer:index>`.
 This schema defines parameters used in the subscription (info job) and defines which measurements to subscribe for and on which
 kafka topic the information shall be delivered to.
 
 An application retrieving logged PM data from the Influx database needs to consider how the data is stored (the schema). That is
-defined in :doc:`Non-RT RIC - RAN PM - Influx Logger (Documentation site) <influxlogger:index>`.
+defined in :doc:`Non-RT RIC - RAN PM - Influx Logger (Documentation) <influxlogger:index>`.
 
 .. image:: ./DesignTimeDependencies.png
    :width: 500pt

@@ -129,7 +129,7 @@ For each filtered result sent to a Kafka topic, there will the following propert
 Configuration
 *************
 
-The component is configured by a configuration file and by the normal spring boot configuration file (apoplication.yaml).
+The component is configured by a configuration file and by the normal spring boot configuration file (application.yaml).
 
 ==================
 Configuration file

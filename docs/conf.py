@@ -20,7 +20,7 @@
 
 from docs_conf.conf import *
 
-branch = 'latest'
+branch = 'h-release'
 baseurl = 'https://docs.o-ran-sc.org/projects/'
 selfurl = '%s/o-ran-sc-nonrtric-plt-ranpm/en/%s' %(baseurl, branch)
 

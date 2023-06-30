@@ -12,3 +12,4 @@ Non-RT RIC PM Producer
    ./overview.rst
    ./developer-guide.rst
    ./api-docs.rst
+   ./release-notes.rst

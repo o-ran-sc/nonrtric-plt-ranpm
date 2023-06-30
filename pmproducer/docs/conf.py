@@ -19,7 +19,7 @@ from docs_conf.conf import *
 
 #branch configuration
 
-branch = 'latest'
+branch = 'h-release'
 
 language = 'en'
 

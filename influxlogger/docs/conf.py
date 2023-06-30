@@ -17,7 +17,7 @@
 
 from docs_conf.conf import *
 
-branch = 'latest'
+branch = 'h-release'
 
 linkcheck_ignore = [
     'http://localhost.*',

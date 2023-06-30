@@ -19,7 +19,7 @@ are collected from the RAN. The event is sent by the Data File Collector.
 
 The XML file is read from the storage, converted to Json, gzipped and stored.
 
-A Json object indicating that a new Json PM Mesurement report is available is sent on
+A Json object indicating that a new Json PM Measurement report is available is sent on
 a Kafka topic to be picked up by other components for further processing,
 
 .. image:: ./Architecture.png
@@ -35,7 +35,7 @@ This product is a part of :doc:`NONRTRIC <nonrtric:index>`.
 Output PM Measurement
 *********************
 
-The Json format of the PM mesaurememt follows the same structure as the input XML format (defined by 3GPP).
+The Json format of the PM measurement follows the same structure as the input XML format (defined by 3GPP).
 
 Here follows an example:
 
@@ -130,7 +130,7 @@ Input File Ready Message
 ************************
 
 Below follows an example of an input File Ready Message. The
-message is sent by the Data File Collector. The only elemts used by this component are sourceName, name and
+message is sent by the Data File Collector. The only elements used by this component are sourceName, name and
 objectStoreBucket.
 
 .. code-block:: javascript
