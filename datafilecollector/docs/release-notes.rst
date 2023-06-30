@@ -7,16 +7,10 @@ Release-Notes
 =============
 
 
-This document provides the release notes for the release of the Non-RT RIC RAN PM Usecase/Functions.
+This document provides the release notes for the release of the Non-RT RIC - RAN PM - PM Data File Collector.
 
-More detailed Release Notes for individual functions can be found in: 
-* :doc:`Non-RT RIC - RAN PM - PM Data File Collector (Doc site) <datafilecollector:index>`.
-* :doc:`Non-RT RIC - RAN PM - PM File Converter (Doc site) <pm-file-converter:index>`.
-* :doc:`Non-RT RIC - RAN PM - PM Producer (Doc site) <pmproducer:index>`.
-* :doc:`Non-RT RIC - RAN PM - Influx Logger (Doc site) <influxlogger:index>`.
-
-Version history RAN PM Usecase/Functions
-========================================
+Version history Non-RT RIC - RAN PM - PM Data File Collector
+============================================================
 
 +------------+----------+------------------+--------------------+
 | **Date**   | **Ver.** | **Author**       | **Comment**        |
@@ -48,8 +42,5 @@ H Release
 +-----------------------------+---------------------------------------------------+
 | **Purpose of the delivery** | First release (H) of RAN PM Usecase/Functions     |
 |                             |    nonrtric-plt-ranpm-datafilecollector:1.0.0     |
-|                             |    nonrtric-plt-pmlog:1.0.0                       |
-|                             |    nonrtric-plt-ranpm-pm-file-converter:1.0.0     |
-|                             |    nonrtric-plt-pmproducer:1.0.0                  |
 |                             |                                                   |
 +-----------------------------+---------------------------------------------------+
