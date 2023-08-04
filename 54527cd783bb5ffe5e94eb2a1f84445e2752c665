@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2408eb59_fb477606",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-08-04T14:33:37Z",
+      "side": 1,
+      "message": "trivial merge to trigger image refresh generation",
+      "revId": "54527cd783bb5ffe5e94eb2a1f84445e2752c665",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
