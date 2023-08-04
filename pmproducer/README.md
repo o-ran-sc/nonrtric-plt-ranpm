@@ -1,6 +1,5 @@
 # O-RAN-SC Non-RealTime RIC PM Producer
 
-
 This product is a PM data information producer (as defined by the Information Coordinator Service (ICS)). Its main tasks is to distribute PM data to PM data consumers (using Kafka topics).
 
 This service will receive File Ready Events or PM Data from the Kafka streaming platform and will filter the information and distribute it further to the data consumers (information job owners).
