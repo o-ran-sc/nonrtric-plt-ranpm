@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2576d226_873fb586",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001877
+      },
+      "writtenOn": "2023-08-08T11:12:17Z",
+      "side": 1,
+      "message": "Added some minor comments.",
+      "revId": "078141365de8cf5bb989116cf035bfc40ce3ead2",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4ee9def_953de2ac",
+        "filename": "pm-file-converter/common/dataTypes/dataTypes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1001877
+      },
+      "writtenOn": "2023-08-08T11:12:17Z",
+      "side": 1,
+      "message": "2023",
+      "revId": "078141365de8cf5bb989116cf035bfc40ce3ead2",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c6f8bc5_a0ece7d9",
+        "filename": "pm-file-converter/common/utils/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1001877
+      },
+      "writtenOn": "2023-08-08T11:12:17Z",
+      "side": 1,
+      "message": "2023",
+      "range": {
+        "startLine": 6,
+        "startChar": 17,
+        "endLine": 6,
+        "endChar": 21
+      },
+      "revId": "078141365de8cf5bb989116cf035bfc40ce3ead2",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c40b048_b3c8a18c",
+        "filename": "pm-file-converter/components/kafkacollector/kafkacollector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1001877
+      },
+      "writtenOn": "2023-08-08T11:12:17Z",
+      "side": 1,
+      "message": "2023",
+      "range": {
+        "startLine": 6,
+        "startChar": 17,
+        "endLine": 6,
+        "endChar": 21
+      },
+      "revId": "078141365de8cf5bb989116cf035bfc40ce3ead2",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7354ba1_d6812376",
+        "filename": "pm-file-converter/components/kafkacollector/kafkacollector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001877
+      },
+      "writtenOn": "2023-08-08T11:12:17Z",
+      "side": 1,
+      "message": "trail space",
+      "range": {
+        "startLine": 30,
+        "startChar": 40,
+        "endLine": 30,
+        "endChar": 41
+      },
+      "revId": "078141365de8cf5bb989116cf035bfc40ce3ead2",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcd0c661_a68b311a",
+        "filename": "pm-file-converter/components/miniocollector/miniocollector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1001877
+      },
+      "writtenOn": "2023-08-08T11:12:17Z",
+      "side": 1,
+      "message": "2023",
+      "range": {
+        "startLine": 6,
+        "startChar": 17,
+        "endLine": 6,
+        "endChar": 21
+      },
+      "revId": "078141365de8cf5bb989116cf035bfc40ce3ead2",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f132359_b1aa914c",
+        "filename": "pm-file-converter/components/xmltransform/xmltransform.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1001877
+      },
+      "writtenOn": "2023-08-08T11:12:17Z",
+      "side": 1,
+      "message": "2023",
+      "range": {
+        "startLine": 6,
+        "startChar": 22,
+        "endLine": 6,
+        "endChar": 26
+      },
+      "revId": "078141365de8cf5bb989116cf035bfc40ce3ead2",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce39f841_946b9a7e",
+        "filename": "pm-file-converter/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1001877
+      },
+      "writtenOn": "2023-08-08T11:12:17Z",
+      "side": 1,
+      "message": "2023",
+      "range": {
+        "startLine": 6,
+        "startChar": 17,
+        "endLine": 6,
+        "endChar": 21
+      },
+      "revId": "078141365de8cf5bb989116cf035bfc40ce3ead2",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
