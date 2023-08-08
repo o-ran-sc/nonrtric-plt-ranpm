@@ -37,7 +37,6 @@ helm uninstall -n nonrtric nrt-base-1
 
 helm uninstall -n nonrtric nrt-base-0
 
-
 INST="strimzi-kafka CRDs"
 echo "##########################"
 echo "Uninstall $INST"
@@ -45,8 +44,6 @@ echo "Uninstall $INST"
 helm repo remove strimzi
 helm uninstall   -n nonrtric strimzi-kafka-crds
 check_error $? "$INST"
-
-helm uninstall namespaces
 
 # Print final result
 if [ $NUM_ERRORS -eq 0 ]; then
@@ -57,5 +54,3 @@ else
 fi
 
 exit 0
-
-

@@ -82,17 +82,9 @@ check_error() {
 }
 
 ##################################################################################
-echo "##### Installing chart: namespaces"
-##################################################################################
-
-helm install --wait namespaces helm/namespaces
-
-echo ""
-
-##################################################################################
 echo "##### Installing chart: nrt-base-0"
 ##################################################################################
-helm install --wait -n nonrtric nrt-base-0 helm/nrt-base-0
+helm install --wait --create-namespace -n nonrtric nrt-base-0 helm/nrt-base-0
 
 # Create realm in keycloak
 
@@ -181,7 +173,7 @@ echo "##### Installing: chart ran"
 ./helm/ran/certs/gen-certs.sh 10
 check_error $?
 
-helm install --wait -f helm/global-values.yaml -n ran ran helm/ran
+helm install --wait --create-namespace -n ran -f helm/global-values.yaml ran helm/ran
 
 echo ""
 
