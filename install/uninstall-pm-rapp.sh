@@ -15,7 +15,6 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 #  ============LICENSE_END=================================================
-#
 
 echo "Uninstalling pmrapp"
 
@@ -23,4 +22,3 @@ echo " helm uninstall..."
 helm uninstall -n nonrtric nrt-pm-rapp
 
 echo "done"
-
