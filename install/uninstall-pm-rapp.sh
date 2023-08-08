@@ -23,4 +23,3 @@ echo " helm uninstall..."
 helm uninstall -n nonrtric nrt-pm-rapp
 
 echo "done"
-

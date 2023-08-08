@@ -62,4 +62,3 @@ echo " helm install..."
 helm install -n nonrtric nrt-pm-log helm/nrt-pm-log
 
 echo "done"
-
