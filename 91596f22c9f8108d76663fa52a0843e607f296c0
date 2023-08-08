@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80430840_2691ea87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002243
+      },
+      "writtenOn": "2023-08-08T11:45:51Z",
+      "side": 1,
+      "message": "Hi Rohith, my 2 cent\u0027s worth...",
+      "revId": "91596f22c9f8108d76663fa52a0843e607f296c0",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1d85803_93c7d502",
+        "filename": "install/install-ranpm.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002243
+      },
+      "writtenOn": "2023-08-08T11:45:51Z",
+      "side": 1,
+      "message": "We are creating a new Bash shell for each script. The completed message will run on the calling shell. So, we could have see a completed message before the script completes in its new shell. Not sure, if this is an issue.",
+      "revId": "91596f22c9f8108d76663fa52a0843e607f296c0",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0389ca7_0dc93ff6",
+        "filename": "install/uninstall-nrt.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002243
+      },
+      "writtenOn": "2023-08-08T11:45:51Z",
+      "side": 1,
+      "message": "I prefer a trailing newline 😊",
+      "revId": "91596f22c9f8108d76663fa52a0843e607f296c0",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52d17ccf_75a33fe6",
+        "filename": "install/uninstall-ranpm.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002243
+      },
+      "writtenOn": "2023-08-08T11:45:51Z",
+      "side": 1,
+      "message": "We are calling the script in a separate shell. Is this intentional?",
+      "revId": "91596f22c9f8108d76663fa52a0843e607f296c0",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
