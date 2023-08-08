@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f218440_394e2252",
+        "filename": "install/install-ranpm.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1001877
+      },
+      "writtenOn": "2023-08-08T16:31:16Z",
+      "side": 1,
+      "message": "License can be added.",
+      "revId": "3aa4b4092a10e29ef6f17dcfe6021de55aec3429",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca9af1a7_a80a9768",
+        "filename": "install/uninstall-ranpm.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1001877
+      },
+      "writtenOn": "2023-08-08T16:31:16Z",
+      "side": 1,
+      "message": "License can be added.",
+      "revId": "3aa4b4092a10e29ef6f17dcfe6021de55aec3429",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
