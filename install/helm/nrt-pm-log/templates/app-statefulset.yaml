@@ -44,10 +44,30 @@ spec:
         - name: token-cache-volume
           emptyDir: {}
       containers:
-      - name: pmlog
-#       image: nexus3.o-ran-sc.org:10004/o-ran-sc/nonrtric-plt-pmlog:1.0.0
-        image: nexus3.o-ran-sc.org:10003/o-ran-sc/nonrtric-plt-pmlog:1.0.0-SNAPSHOT
+      - name: auth-token
+        image: nexus3.o-ran-sc.org:10004/o-ran-sc/nonrtric-plt-auth-token-fetch:1.1.1
         imagePullPolicy: Always
+        env:
+        - name: CREDS_GRANT_TYPE
+          value: client_credentials
+        - name: CREDS_CLIENT_SECRET
+          value: {{ .Values.nrtpmlog.clientsecret }}
+        - name: CREDS_CLIENT_ID
+          value: nrt-pm-log
+        - name: AUTH_SERVICE_URL
+          value: http://keycloak.nonrtric:8080/realms/nonrtric-realm/protocol/openid-connect/token
+        - name: OUTPUT_FILE
+          value: /token-cache/jwt.txt
+        volumeMounts:
+        - mountPath: /token-cache
+          name: token-cache-volume
+      - name: pmlog
+        image: nexus3.o-ran-sc.org:10001/o-ran-sc/nonrtric-plt-pmlog:1.0.0
+        imagePullPolicy: Always
+        command:
+        - sh
+        - -c
+        - until [ -e /token-cache/jwt.txt ]; do echo "Waiting for JWT to be available"; sleep 1; done; /jre/bin/java -jar /opt/app/pmlog-service/pmlog.jar
         ports:
         - name: http
           containerPort: 8084
@@ -68,23 +88,6 @@ spec:
             secretKeyRef:
               name: influxdb-api-token
               key: token
-      - name: auth-token
-        image: nexus3.o-ran-sc.org:10004/o-ran-sc/nonrtric-plt-auth-token-fetch:1.1.1
-        imagePullPolicy: Always
-        env:
-        - name: CREDS_GRANT_TYPE
-          value: client_credentials
-        - name: CREDS_CLIENT_SECRET
-          value: {{ .Values.nrtpmlog.clientsecret }}
-        - name: CREDS_CLIENT_ID
-          value: nrt-pm-log
-        - name: AUTH_SERVICE_URL
-          value: http://keycloak.nonrtric:8080/realms/nonrtric-realm/protocol/openid-connect/token
-        - name: OUTPUT_FILE
-          value: /token-cache/jwt.txt
-        volumeMounts:
-        - mountPath: /token-cache
-          name: token-cache-volume
 
 
 
