@@ -24,6 +24,30 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c35477d3_29c70913",
+        "filename": "pm-file-converter/components/xmltransform/A20230515.0700_0100-0715_0100_GNODEB-0.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-08-09T13:34:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f9dbcce_ac21385e",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 1
+      },
+      "revId": "804fbc1c4c20b9db6db76c9b86a8a74c28c007eb",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "153c6fc3_15a0d2b2",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-08T18:43:17Z",
       "side": 1,
       "message": "Please change the string values here (to anything), e.g swVersion \"ABCVersion x1234\"",
+      "range": {
+        "startLine": 15,
+        "startChar": 31,
+        "endLine": 15,
+        "endChar": 50
+      },
+      "revId": "804fbc1c4c20b9db6db76c9b86a8a74c28c007eb",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1051abf3_fcae6e75",
+        "filename": "pm-file-converter/components/xmltransform/A20230515.0700_0100-0715_0100_GNODEB-0.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-08-09T13:34:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "153c6fc3_15a0d2b2",
       "range": {
         "startLine": 15,
         "startChar": 31,
