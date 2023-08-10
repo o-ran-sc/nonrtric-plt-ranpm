@@ -1,0 +1,53 @@
+#  ============LICENSE_START===============================================
+#  Copyright (C) 2023 Nordix Foundation. All rights reserved.
+#  ========================================================================
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#  ============LICENSE_END=================================================
+#
+
+version: '3.0'
+networks:
+  default:
+    external: true
+    name: nonrtric-docker-net
+
+services:
+  auth-token-file-dfc:
+    image: $AUTH_TOKEN_IMAGE
+    environment:
+      - CREDS_GRANT_TYPE=client_credentials
+      - CREDS_CLIENT_SECRET=$DFC_CLIENT_SECRET
+      - CREDS_CLIENT_ID=dfc
+      - AUTH_SERVICE_URL=http://keycloak:8080/realms/nonrtric-realm/protocol/openid-connect/token
+      - OUTPUT_FILE=/token-cache/jwt.txt
+    volumes:
+    - ./config/dfc1/token-cache:/token-cache
+    labels:
+      - "ranpm=yes"
+
+  dfc1:
+    container_name: dfc1
+    user: root
+    image: $DFC_IMAGE
+    ports:
+    - 8433:8433
+    volumes:
+    - ./config/dfc1/application.yaml:/opt/app/datafile/config/application.yaml
+    - ./config/dfc1/truststore.jks:/opt/app/datafile/config/truststore.jks
+    - ./shared-volume:/tmp/onap_datafile/
+    - ./config/dfc1/token-cache:/token-cache
+    # truststore is updated in runtime
+    depends_on:
+      - auth-token-file-dfc
+    labels:
+      - "ranpm=yes"
