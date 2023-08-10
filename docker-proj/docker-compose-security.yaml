@@ -1,0 +1,80 @@
+#  ============LICENSE_START===============================================
+#  Copyright (C) 2023 Nordix Foundation. All rights reserved.
+#  ========================================================================
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#  ============LICENSE_END=================================================
+#
+
+version: '3.0'
+networks:
+  default:
+    external: true
+    name: nonrtric-docker-net
+
+services:
+  bundle-server:
+    image: ${BUNDLE_IMAGE}
+    container_name: bundle-server
+    ports:
+      - 80:80
+    volumes:
+      - ./config/bundle-server/bundle.tar.gz:/usr/share/nginx/html/bundle.tar.gz
+    labels:
+      - "ranpm=yes"
+
+  opa-kafka:
+    image: ${OPA_IMAGE}
+    container_name: opa-kafka
+    ports:
+      - 8181:8181
+    command:
+      - "run"
+      - "--server"
+      - "--log-format=json-pretty"
+      - "--set=decision_logs.console=true"
+      - "--set=services.authz.url=http://bundle-server"
+      - "--set=bundles.authz.service=authz"
+      - "--set=bundles.authz.resource=bundle.tar.gz"
+    depends_on:
+      - bundle-server
+    labels:
+      - "ranpm=yes"
+
+  keycloak:
+    image: ${KEYCLOAK_IMAGE} 
+    container_name: keycloak 
+    command: 
+      - "start"
+      - "--https-key-store-file=/etc/x509/https/keycloak.server.keystore.p12"
+      - "--https-key-store-password=$${KC_KEYSTORE_PASSWORD}"
+      - "--https-key-store-type=PKCS12"
+      - "--https-trust-store-file=/etc/x509/https/keycloak.client.truststore.p12"
+      - "--https-trust-store-password=$${KC_KEYSTORE_PASSWORD}"
+      - "--https-trust-store-type=PKCS12"
+      - "--https-client-auth=request"
+      - "--http-enabled=true"
+    ports:
+      - 8462:8080
+      - 8463:8443
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_KEYSTORE_PASSWORD=changeit
+      - KC_HOSTNAME=keycloak
+      - KC_HTTP_ENABLED=true
+      - KC_HTTPS_CLIENT_AUTH=request
+    volumes:
+      - ./config/keycloak/certs/keycloak.client.truststore.p12:/etc/x509/https/keycloak.client.truststore.p12  
+      - ./config/keycloak/certs/keycloak.server.keystore.p12:/etc/x509/https/keycloak.server.keystore.p12
+    labels:
+      - "ranpm=yes"
