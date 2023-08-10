@@ -1,0 +1,127 @@
+#  ============LICENSE_START===============================================
+#  Copyright (C) 2023 Nordix Foundation. All rights reserved.
+#  ========================================================================
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#  ============LICENSE_END=================================================
+#
+
+version: '3.0'
+networks:
+  default:
+    external: true
+    name: nonrtric-docker-net
+
+services:
+  zookeeper-1:
+    image: ${STRIMZI_IMAGE}
+    command: [
+        "sh", "-c",
+        "bin/zookeeper-server-start.sh config/zookeeper.properties"
+      ]
+    ports:
+      - '2181:2181'
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      LOG_DIR: /tmp/logs
+    labels:
+      - "ranpm=yes"
+
+  kafka-1:
+    image: ${STRIMZI_IMAGE}
+    command: [
+      "sh", "-c",
+      "bin/kafka-server-start.sh /tmp/kafka/strimzi.properties"
+    ]
+    environment:
+      LOG_DIR: /tmp/logs
+    depends_on:
+      - zookeeper-1
+    ports:
+      - "9092:9092"
+      - "9097:9097"
+    labels:
+      - "ranpm=yes"
+    volumes:
+      - ./config/kafka/strimzi.properties:/tmp/kafka/strimzi.properties
+
+  redpanda:
+    container_name: redpanda-console
+    image: ${REDPANDA_IMAGE}
+    restart: on-failure
+    hostname: redpanda-console
+    ports:
+    - "8780:8080"
+    depends_on:
+      - kafka-1
+    environment:
+      KAFKA_BROKERS: kafka-1:9092
+    labels:
+      - "ranpm=yes"
+
+  message-router:
+    container_name: message-router
+    image: ${DMAAP_IMAGE}
+    ports:
+      - 3904:3904
+      - 3905:3905
+    environment:
+      enableCadi: 'false'
+    volumes:
+      - ./config/dmaap/MsgRtrApi.properties:/appl/dmaapMR1/bundleconfig/etc/appprops/MsgRtrApi.properties
+      - ./config/dmaap/logback.xml:/appl/dmaapMR1/bundleconfig/etc/logback.xml
+    depends_on:
+      - zookeeper-1
+      - kafka-1
+    labels:
+      - "ranpm=yes"
+
+  ves-collector:
+    image: ${VES_COLLECTOR_IMAGE}
+    container_name: ves-collector
+    environment:
+      DMAAPHOST: message-router
+    ports:
+      - 8080:8080
+      - 8443:8443
+    volumes:
+      - ./config/ves-collector/collector.properties:/opt/app/VESCollector/etc/collector.properties
+      - ./config/ves-collector/ves-dmaap-config.json:/opt/app/VESCollector/etc/ves-dmaap-config.json
+    labels:
+      - "ranpm=yes"
+
+  ics:
+    image: ${ICS_IMAGE}
+    container_name: ics
+    volumes:
+    - ./config/ics/application.yaml:/opt/app/information-coordinator-service/config/application.yaml
+    ports:
+    - 8083:8083
+    - 8434:8434
+    labels:
+      - "ranpm=yes"
+
+  minio:
+    image: ${MINIO_IMAGE}
+    container_name: minio-server
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: adminadmin
+    ports:
+    - 9000:9000
+    - 9001:9001
+    labels:
+      - "ranpm=yes"
+    volumes:
+    - /tmp/minio-test/0:/data

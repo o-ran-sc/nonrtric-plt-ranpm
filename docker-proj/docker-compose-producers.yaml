@@ -1,0 +1,75 @@
+#  ============LICENSE_START===============================================
+#  Copyright (C) 2023 Nordix Foundation. All rights reserved.
+#  ========================================================================
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#  ============LICENSE_END=================================================
+#
+
+version: '3.0'
+networks:
+  default:
+    external: true
+    name: nonrtric-docker-net
+
+services:
+  kafka-producer-pm-xml2json-0:
+    image: $KPX_IMAGE
+    container_name: kafka-producer-pm-xml2json-0
+    volumes:
+    - ./config/pmfc/application_configuration_xml2json.json:/application_configuration.json
+    - ./shared-volume:$FILES_VOLUME
+    ports:
+    - 9881:80
+    labels:
+      - "ranpm=yes"
+    environment:
+      KP: kafka-producer-pm-xml2json-0
+      FILES_VOLUME: $FILES_VOLUME
+      KAFKA_SERVER: kafka-1:9097
+      ICS: ics:8083
+      SELF: kafka-producer-pm-xml2json-0:80
+      FILESTORE_USER: admin
+      FILESTORE_PWD: adminadmin
+      FILESTORE_SERVER: minio-server:9000
+      CREDS_GRANT_TYPE: client_credentials
+      CREDS_CLIENT_SECRET: $XML2JSON_CLIENT_SECRET
+      CREDS_CLIENT_ID: kafka-producer-pm-xml2json
+      AUTH_SERVICE_URL: http://keycloak:8080/realms/nonrtric-realm/protocol/openid-connect/token
+
+  auth-token-file-pm-producer-json2kafka:
+    image: $AUTH_TOKEN_IMAGE
+    environment:
+      CREDS_GRANT_TYPE: client_credentials
+      CREDS_CLIENT_SECRET: $JSON2KAFKA_CLIENT_SECRET
+      CREDS_CLIENT_ID: pm-producer-json2kafka
+      AUTH_SERVICE_URL: http://keycloak:8080/realms/nonrtric-realm/protocol/openid-connect/token
+      OUTPUT_FILE: /token-cache/jwt.txt
+    volumes:
+    - ./config/pmpr/token-cache:/token-cache
+    labels:
+      - "ranpm=yes"
+
+  pm-producer-json2kafka:
+    image: $DMAAPADP_IMAGE
+    container_name: pm-producer-json2kafka
+    depends_on:
+      - auth-token-file-pm-producer-json2kafka
+    volumes:
+    - ./config/pmpr/application_configuration.json:/opt/app/pm-producer-service/data/application_configuration.json
+    - ./config/pmpr/application.yaml:/opt/app/pm-producer-service/config/application.yaml
+    - ./config/pmpr/token-cache:/token-cache
+    - ./shared-volume:$FILES_VOLUME
+    ports:
+    - 8084:8084
+    labels:
+      - "ranpm=yes"
