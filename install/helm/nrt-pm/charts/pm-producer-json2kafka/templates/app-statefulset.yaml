@@ -36,8 +36,7 @@ spec:
     spec:
       containers:
       - name: pm-producer-json2kafka
-#       image: nexus3.o-ran-sc.org:10004/o-ran-sc/nonrtric-plt-pmproducer:1.0.0
-        image: nexus3.o-ran-sc.org:10003/o-ran-sc/nonrtric-plt-pmproducer:1.0.0-SNAPSHOT
+        image: nexus3.o-ran-sc.org:10001/o-ran-sc/nonrtric-plt-pmproducer:1.0.1
         imagePullPolicy: Always
         ports:
         - name: http

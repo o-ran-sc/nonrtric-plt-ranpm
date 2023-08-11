@@ -33,7 +33,6 @@ If external repo is used, use the same repo for all built images and configure t
 
 Build the following images (build instruction in each dir)
 - ranpm/https-server
-- ranpm/pm-file-converter
 - pm-rapp
 
 
