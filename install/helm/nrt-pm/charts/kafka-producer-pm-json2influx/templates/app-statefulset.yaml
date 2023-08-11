@@ -38,12 +38,8 @@ spec:
     spec:
       containers:
       - name: kafka-producer-pm-json2influx
-        image: {{ .Values.global.extimagerepo }}pm-file-converter:latest
-        {{- if .Values.global.extimagerepo }}
+        image: nexus3.o-ran-sc.org:10001/o-ran-sc/nonrtric-plt-ranpm-pm-file-converter:1.0.1
         imagePullPolicy: Always
-        {{- else }}
-        imagePullPolicy: Never
-        {{- end }}
         ports:
         - name: http
           containerPort: 80
