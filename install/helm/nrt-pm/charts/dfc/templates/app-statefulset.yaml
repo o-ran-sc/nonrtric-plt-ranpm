@@ -46,8 +46,7 @@ spec:
       - name: dfc
         securityContext:
           runAsUser: 0     # Need to run as root - needed when writing to hostpath
-#       image: nexus3.o-ran-sc.org:10004/o-ran-sc/nonrtric-plt-ranpm-datafilecollector:1.0.0
-        image: nexus3.o-ran-sc.org:10003/o-ran-sc/nonrtric-plt-ranpm-datafilecollector:1.0.0-SNAPSHOT
+        image: nexus3.o-ran-sc.org:10001/o-ran-sc/nonrtric-plt-ranpm-datafilecollector:1.0.0
         imagePullPolicy: Always
         ports:
         - name: http
@@ -73,7 +72,7 @@ spec:
         - name: APP_KAFKA_CLIENT-ID
           value: "datafile-collector.$(APPNS).$(APPID)"
       - name: auth-token
-        image: nexus3.o-ran-sc.org:10004/o-ran-sc/nonrtric-plt-auth-token-fetch:1.1.1
+        image: nexus3.o-ran-sc.org:10001/o-ran-sc/nonrtric-plt-auth-token-fetch:1.1.1
         imagePullPolicy: Always
         env:
         - name: CREDS_GRANT_TYPE

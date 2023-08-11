@@ -1,4 +1,17 @@
+## License
 
+Copyright (C) 2023 Nordix Foundation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
 ## Prerequisites
 
@@ -33,7 +46,6 @@ If external repo is used, use the same repo for all built images and configure t
 
 Build the following images (build instruction in each dir)
 - ranpm/https-server
-- ranpm/pm-file-converter
 - pm-rapp
 
 
@@ -49,12 +61,12 @@ The following scripts are provided for installing (install-nrt.sh mush be instal
 - install-pm-influx-job.sh : Sets up an alternative job to produce data stored in influx db.
 - install-pm-rapp.sh : Installs a rapp that subscribe and print out received data
 
-## Unstallation
+## Uninstallation
 
 There is a corresponding uninstall script for each install script. However, it is enough to just run `uninstall-nrt.sh` and `uninstall-pm-rapp.sh´.
 
 ## Exposed ports to APIs
-All exposed APIs on individual port numbers (nodeporta) on the address of the kubernetes control plane.
+All exposed APIs on individual port numbers (nodeports) on the address of the kubernetes control plane.
 
 ### Keycloak API
 Keycloak API accessed via proxy (proxy is needed to make keycloak issue token with the internal address of keycloak).
@@ -97,19 +109,3 @@ Browser for influx db.
 - nodeport: 31812
 - user: admin
 - password: mySuP3rS3cr3tT0keN
-
-
-## License
-
-Copyright (C) 2023 Nordix Foundation. All rights reserved.
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-     http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
