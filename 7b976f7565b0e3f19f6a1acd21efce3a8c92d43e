@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79b51b2b_f708e939",
+        "filename": "docker-proj/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001877
+      },
+      "writtenOn": "2023-08-11T16:01:36Z",
+      "side": 1,
+      "message": "whitespace",
+      "range": {
+        "startLine": 31,
+        "startChar": 31,
+        "endLine": 31,
+        "endChar": 32
+      },
+      "revId": "7b976f7565b0e3f19f6a1acd21efce3a8c92d43e",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05db57f7_4bc992d7",
+        "filename": "docker-proj/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001877
+      },
+      "writtenOn": "2023-08-11T16:01:36Z",
+      "side": 1,
+      "message": "whitespace",
+      "range": {
+        "startLine": 35,
+        "startChar": 18,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "7b976f7565b0e3f19f6a1acd21efce3a8c92d43e",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07b134a8_c9ad1708",
+        "filename": "docker-proj/docker-tear-down.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1001877
+      },
+      "writtenOn": "2023-08-11T16:01:36Z",
+      "side": 1,
+      "message": "2023",
+      "range": {
+        "startLine": 4,
+        "startChar": 17,
+        "endLine": 4,
+        "endChar": 21
+      },
+      "revId": "7b976f7565b0e3f19f6a1acd21efce3a8c92d43e",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e896871_2b1b45e8",
+        "filename": "docker-proj/scripts/populate_keycloak.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1001877
+      },
+      "writtenOn": "2023-08-11T16:01:36Z",
+      "side": 1,
+      "message": "whitesapce",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 8
+      },
+      "revId": "7b976f7565b0e3f19f6a1acd21efce3a8c92d43e",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ab387a1_ea82527d",
+        "filename": "docker-proj/scripts/push-to-ves-collector.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001877
+      },
+      "writtenOn": "2023-08-11T16:01:36Z",
+      "side": 1,
+      "message": "whitespace",
+      "range": {
+        "startLine": 38,
+        "startChar": 21,
+        "endLine": 38,
+        "endChar": 22
+      },
+      "revId": "7b976f7565b0e3f19f6a1acd21efce3a8c92d43e",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
