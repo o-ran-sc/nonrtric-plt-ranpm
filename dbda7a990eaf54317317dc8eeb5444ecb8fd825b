@@ -24,6 +24,30 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c85c0882_54b4d76c",
+        "filename": "install/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002209
+      },
+      "writtenOn": "2023-08-14T13:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22cbfc89_46e9429b",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 15
+      },
+      "revId": "dbda7a990eaf54317317dc8eeb5444ecb8fd825b",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ec032fb_b397cbe6",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-14T13:34:22Z",
       "side": 1,
       "message": "nodeports",
+      "range": {
+        "startLine": 56,
+        "startChar": 45,
+        "endLine": 56,
+        "endChar": 54
+      },
+      "revId": "dbda7a990eaf54317317dc8eeb5444ecb8fd825b",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d441817f_436ef08c",
+        "filename": "install/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002209
+      },
+      "writtenOn": "2023-08-14T13:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ec032fb_b397cbe6",
       "range": {
         "startLine": 56,
         "startChar": 45,
@@ -70,6 +118,30 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9467f0d8_27e499fd",
+        "filename": "install/helm/nrt-pm/charts/dfc/templates/app-statefulset.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002209
+      },
+      "writtenOn": "2023-08-14T13:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b5a3dd3_667d5260",
+      "range": {
+        "startLine": 75,
+        "startChar": 35,
+        "endLine": 75,
+        "endChar": 40
+      },
+      "revId": "dbda7a990eaf54317317dc8eeb5444ecb8fd825b",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09c6b278_907239ab",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-08-14T13:34:22Z",
       "side": 1,
       "message": "correct port?",
+      "range": {
+        "startLine": 66,
+        "startChar": 35,
+        "endLine": 66,
+        "endChar": 40
+      },
+      "revId": "dbda7a990eaf54317317dc8eeb5444ecb8fd825b",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50c35c92_032ae3f6",
+        "filename": "install/helm/nrt-pm/charts/pm-producer-json2kafka/templates/app-statefulset.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002209
+      },
+      "writtenOn": "2023-08-14T13:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09c6b278_907239ab",
       "range": {
         "startLine": 66,
         "startChar": 35,
