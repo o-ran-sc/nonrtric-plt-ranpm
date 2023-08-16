@@ -23,8 +23,6 @@ echo "--> build-pm-file-converter-ubuntu.sh"
 # go installs tools like go-acc to $HOME/go/bin
 # ubuntu minion path lacks go
 export PATH=$PATH:/usr/local/go/bin:$(go env GOPATH)/bin:$(go env GOPATH)
-which go
-which go-acc
 export GO111MODULE=on
 go version
 cd pm-file-converter/
