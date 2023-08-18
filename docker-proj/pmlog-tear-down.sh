@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #  ============LICENSE_START===============================================
 #  Copyright (C) 2023 Nordix Foundation. All rights reserved.
 #  ========================================================================
@@ -15,26 +17,17 @@
 #  ============LICENSE_END=================================================
 #
 
-version: '3.0'
-networks:
-  default:
-    external: true
-    name: nonrtric-docker-net
+echo "Stop and remove all pmlog containers in the project"
 
-services:
-  pm-https-server-${CONTAINER_NUM}:
-    container_name: pm-https-server-${CONTAINER_NUM}
-    hostname: pm-https-server-${CONTAINER_NUM}
-    image: $PM_HTTPSSERVER_IMAGE
-    environment:
-      ALWAYS_RETURN: /ne-files/pm.xml.gz
-      GENERATED_FILE_START_TIME: "${START_TIME}"
-      GENERATED_FILE_TIMEZONE:  "+0100"
-    volumes:
-    - ./ne-files:/ne-files:rw
-    - ./config/https/template-files:/template-files
-    - ./config/https/certs/https-${CONTAINER_NUM}.key:/certs/server.key
-    - ./config/https/certs/https-${CONTAINER_NUM}.crt:/certs/server.crt
-    labels:
-      - "ranpm=yes"
+docker stop $(docker ps -qa  --filter "label=ranpmlog")  2> /dev/null
+docker stop $(docker ps -qa  --filter "label=ranpmlog")  2> /dev/null
+docker rm -f $(docker ps -qa  --filter "label=ranpmlog")  2> /dev/null
 
+docker-compose -f docker-compose-pmlog_gen.yaml -p pmlog down
+docker-compose -f docker-compose-influxdb_gen.yaml -p influx down
+
+
+data_dir=./config/influxdb2/data
+if [[ -e $data_dir ]]; then
+    rm -rf $data_dir
+fi

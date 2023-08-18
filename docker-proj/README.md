@@ -42,6 +42,19 @@ If the script fails, make sure to clean the setup before attempting a new setup.
 
 In addition, a `docker system prune` might be needed now and then.
 
+### PM Influx Logger
+Additionally you can install PM influx logger.
+
+Example cmd: \
+`./pmlog-setup.sh`
+
+To remove run:
+`./pmlog-tear-down.sh`
+
+To update the filter edit and run:
+`./update-pmlog.sh`
+
+
 ### Tools for monitoring
 
 Open browser to redpanda (kafka gui) - watch topics, messages etc\

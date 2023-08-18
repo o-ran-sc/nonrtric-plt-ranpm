@@ -17,7 +17,6 @@
 #  ============LICENSE_END=================================================
 #
 
-echo $SP
 print_usage() {
     echo "Usage: docker-setup.sh"
     exit 1
@@ -198,7 +197,7 @@ for (( i=1; i<=$NUM_DFC; i++ )); do
 done
 cd $cwd
 
-chmod 622 config/dfc1/token-cache/jwt.txt
+chmod 666 config/dfc1/token-cache/jwt.txt
 envsubst < docker-compose-dfc1.yaml > docker-compose-dfc_gen.yaml
 envsubst < config/dfc1/application-template.yaml > config/dfc1/application.yaml
 docker-compose -p dfc -f docker-compose-dfc_gen.yaml up -d
@@ -206,11 +205,11 @@ docker-compose -p dfc -f docker-compose-dfc_gen.yaml up -d
 
 setup_producers() {
 echo "Starting producers"
-chmod 622 config/pmpr/token-cache/jwt.txt
+chmod 666 config/pmpr/token-cache/jwt.txt
+export KPADP_MINIO=http://minio-server:9000
 cp config/pmpr/application_configuration-minio-template.json config/pmpr/application_configuration.json
 envsubst < config/pmpr/application-minio-template.yaml > config/pmpr/application.yaml
 
-export KPADP_MINIO=http://minio-server:9000
 envsubst < docker-compose-producers.yaml > docker-compose-producers_gen.yaml
 docker-compose -p prod -f docker-compose-producers_gen.yaml up -d
 }
@@ -227,15 +226,21 @@ cp pm-files/pm* ne-files
 echo "Starting http servers"
 export PM_HTTPSSERVER_IMAGE="pm-https-server:latest"
 
-grep -B 21 "services:" docker-compose-pm-https.yaml > docker-compose-pm-https_gen.yaml
+total_lines=$(cat docker-compose-pm-https.yaml | wc -l)
+services_line=$(grep -n "services:" docker-compose-pm-https.yaml| cut -f1 -d:)
+let remaining_lines=$total_lines-$services_line
+export START_TIME=$(date +%Y%m%d.%H%M -d '3 hours ago')
+
+grep -B $services_line "services:" docker-compose-pm-https.yaml > docker-compose-pm-https_gen.yaml
 for (( i=1; i<=$NUM_HTTP; i++ )); do
    export CONTAINER_NUM=$i
-   grep -A 12 "services:" docker-compose-pm-https.yaml | grep -v "services:" | \
-   envsubst  '$CONTAINER_NUM,$PM_HTTPSSERVER_IMAGE' >> docker-compose-pm-https_gen.yaml
+   grep -A $remaining_lines "services:" docker-compose-pm-https.yaml | grep -v "services:" | \
+   envsubst  '$CONTAINER_NUM,$PM_HTTPSSERVER_IMAGE,$START_TIME' >> docker-compose-pm-https_gen.yaml
 done
 docker-compose -p pm-https -f docker-compose-pm-https_gen.yaml up -d
 }
 
+## Main ##
 export KAFKA_NUM_PARTITIONS=10
 export TOPICS="file-ready collected-file json-file-ready-kp json-file-ready-kpadp pmreports"
 

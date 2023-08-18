@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #  ============LICENSE_START===============================================
 #  Copyright (C) 2023 Nordix Foundation. All rights reserved.
 #  ========================================================================
@@ -15,26 +17,21 @@
 #  ============LICENSE_END=================================================
 #
 
-version: '3.0'
-networks:
-  default:
-    external: true
-    name: nonrtric-docker-net
+# args: <influxdb2-instance> <namespace>
+get_influxdb2_token() {
+	if [ $# -ne 1 ]; then
+    	echo"get_influxdb2_token needs 1 arg, <influxdb2-instance> " $@
+		exit 1
+	fi
 
-services:
-  pm-https-server-${CONTAINER_NUM}:
-    container_name: pm-https-server-${CONTAINER_NUM}
-    hostname: pm-https-server-${CONTAINER_NUM}
-    image: $PM_HTTPSSERVER_IMAGE
-    environment:
-      ALWAYS_RETURN: /ne-files/pm.xml.gz
-      GENERATED_FILE_START_TIME: "${START_TIME}"
-      GENERATED_FILE_TIMEZONE:  "+0100"
-    volumes:
-    - ./ne-files:/ne-files:rw
-    - ./config/https/template-files:/template-files
-    - ./config/https/certs/https-${CONTAINER_NUM}.key:/certs/server.key
-    - ./config/https/certs/https-${CONTAINER_NUM}.crt:/certs/server.crt
-    labels:
-      - "ranpm=yes"
-
+	__influxdb2_access_token=""
+	while [ -z "$__influxdb2_access_token" ]; do
+		export __influxdb2_access_token=$(docker exec $1 influx config ls --json | jq -r .default.token)
+		if [ $? -ne 0 ]; then
+			__influxdb2_access_token=""
+			sleep 1
+		fi
+	done
+	echo -n $__influxdb2_access_token
+	return 0
+}

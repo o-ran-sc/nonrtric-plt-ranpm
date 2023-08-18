@@ -62,6 +62,8 @@ services:
   pm-producer-json2kafka:
     image: $DMAAPADP_IMAGE
     container_name: pm-producer-json2kafka
+    environment:
+      APP_PM-PRODUCER-BASE-URL: http://pm-producer-json2kafka:8084
     depends_on:
       - auth-token-file-pm-producer-json2kafka
     volumes:

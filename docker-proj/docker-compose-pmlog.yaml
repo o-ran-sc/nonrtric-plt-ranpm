@@ -22,19 +22,34 @@ networks:
     name: nonrtric-docker-net
 
 services:
-  pm-https-server-${CONTAINER_NUM}:
-    container_name: pm-https-server-${CONTAINER_NUM}
-    hostname: pm-https-server-${CONTAINER_NUM}
-    image: $PM_HTTPSSERVER_IMAGE
+  auth-token-file-pmlog-0:
+    image: $AUTH_TOKEN_IMAGE
     environment:
-      ALWAYS_RETURN: /ne-files/pm.xml.gz
-      GENERATED_FILE_START_TIME: "${START_TIME}"
-      GENERATED_FILE_TIMEZONE:  "+0100"
+      CREDS_GRANT_TYPE: client_credentials
+      CREDS_CLIENT_SECRET: $PMLOG_CLIENT_SECRET
+      CREDS_CLIENT_ID: nrt-pm-log
+      AUTH_SERVICE_URL: http://keycloak:8080/realms/nonrtric-realm/protocol/openid-connect/token
+      OUTPUT_FILE: /token-cache/jwt.txt
     volumes:
-    - ./ne-files:/ne-files:rw
-    - ./config/https/template-files:/template-files
-    - ./config/https/certs/https-${CONTAINER_NUM}.key:/certs/server.key
-    - ./config/https/certs/https-${CONTAINER_NUM}.crt:/certs/server.crt
+    - ./config/pmlog/token-cache:/token-cache
     labels:
       - "ranpm=yes"
+      - "ranpmlog=yes"
 
+  pmlog-0:
+    image: $PMLOG_IMAGE
+    container_name: pmlog-0
+    depends_on:
+      - auth-token-file-pmlog-0
+    environment:
+      APP_INFLUX_ACCESSTOKEN: $INFLUXDB2_TOKEN
+    volumes:
+    - ./config/pmlog/jobDefinition.json:/opt/app/pmlog-service/config/jobDefinition.json
+    - ./config/pmlog/application.yaml:/opt/app/pmlog-service/config/application.yaml
+    - ./config/pmlog/token-cache:/token-cache
+    ports:
+    - 8184:8084
+    - 8436:8436
+    labels:
+      - "ranpm=yes"
+      - "ranpmlog=yes"

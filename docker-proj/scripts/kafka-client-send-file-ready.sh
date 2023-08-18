@@ -28,6 +28,8 @@ NODE_NAME_BASE=$3
 FILE_EXT=$4
 SRV_COUNT=$5
 
+HTTPS_PORT=443
+
 print_usage() {
     echo "Usage: kafka-client-send-file-ready.sh <node-count> <num-of-events> <node-name-base> <file-extension> <num-servers>"
     exit 1
@@ -37,7 +39,8 @@ if [ $# -lt 5 ]; then
     print_usage
 fi
 
-BEGINTIME=1665146700
+BEGINTIME=$(date +%s -d '1 hour ago')
+TIMEZONE="+0100"
 CURTIME=$BEGINTIME
 
 BATCHSIZE=1000
@@ -54,8 +57,10 @@ for (( i=0; i<$EVT_COUNT; i++)); do
 
     echo "EVENT NO: $i for $NODE_COUNT NODES - 1 FILE PER EVENT"
 
+    let STTIMEMS=$CURTIME*1000000
     ST=$(date -d @$CURTIME +'%Y%m%d.%H%M')
     let CURTIME=CURTIME+900
+    let CURTIMEMS=$CURTIME*1000000
     ET=$(date -d @$CURTIME +'%H%M')
 
     for (( j=0; j<$NODE_COUNT; j++)); do
@@ -70,8 +75,8 @@ for (( i=0; i<$EVT_COUNT; i++)); do
             echo "FILENAME "$FN
             SRV="pm-https-server-$SRV_ID"
             echo "HTTP SERVER "$SRV
-            URL="https://$SRV:$HTTPS_PORT/files/$FN"
-            EVT='{"event":{"commonEventHeader":{"sequence":0,"eventName":"Noti_RnNode-Ericsson_FileReady","sourceName":"'$NO'","lastEpochMicrosec":151983,"startEpochMicrosec":15198378,"timeZoneOffset":"UTC+05:00","changeIdentifier":"PM_MEAS_FILES"},"notificationFields":{"notificationFieldsVersion":"notificationFieldsVersion","changeType":"FileReady","changeIdentifier":"PM_MEAS_FILES","arrayOfNamedHashMap":[{"name":"'$FN'","hashMap":{"fileFormatType":"org.3GPP.32.435#measCollec","location":"'$URL'","fileFormatVersion":"V10","compression":"gzip"}}]}}}'
+            URL="https://$SRV:$HTTPS_PORT/generatedfiles/$FN"
+            EVT='{"event":{"commonEventHeader":{"sequence":0,"eventName":"Noti_RnNode-Ericsson_FileReady","sourceName":"'$NO'","lastEpochMicrosec":'$CURTIMEMS',"startEpochMicrosec":'$STTIMEMS',"timeZoneOffset":"UTC'$TIMEZONE'","changeIdentifier":"PM_MEAS_FILES"},"notificationFields":{"notificationFieldsVersion":"notificationFieldsVersion","changeType":"FileReady","changeIdentifier":"PM_MEAS_FILES","arrayOfNamedHashMap":[{"name":"'$FN'","hashMap":{"fileFormatType":"org.3GPP.32.435#measCollec","location":"'$URL'","fileFormatVersion":"V10","compression":"gzip"}}]}}}'
             echo $EVT >> .out.json
 
         let CNTR=CNTR+1

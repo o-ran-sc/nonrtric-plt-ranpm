@@ -42,8 +42,10 @@ fi
 rm .out.json
 touch .out.json
 
-BEGINTIME=1665146700
+BEGINTIME=$(date +%s -d '1 hour ago')
+TIMEZONE="+0100"
 CURTIME=$BEGINTIME
+COLLECTIONTIME=$(date +%a,%d%m%Y%H:%M:%S%Z)
 
 for (( i=0; i<$EVT_COUNT; i++)); do
 
@@ -51,16 +53,11 @@ for (( i=0; i<$EVT_COUNT; i++)); do
     echo '{"eventList": [' > .out.json
     first=0
 
-    arch="$(uname -s)"
-    if [[ $arch == "Darwin"* ]]; then
-        ST=$(date -r $CURTIME +'%Y%m%d.%H%M')
-        let CURTIME=CURTIME+900
-        ET=$(date -r $CURTIME +'%H%M')
-    else
-        ST=$(date -d @$CURTIME +'%Y%m%d.%H%M')
-        let CURTIME=CURTIME+900
-        ET=$(date -d @$CURTIME +'%H%M')
-    fi
+    let STTIMEMS=$CURTIME*1000000
+    ST=$(date -d @$CURTIME +'%Y%m%d.%H%M')
+    let CURTIME=CURTIME+900
+    let CURTIMEMS=$CURTIME*1000000
+    ET=$(date -d @$CURTIME +'%H%M')
 
     for (( j=0; j<$NODE_COUNT; j++)); do
 
@@ -69,12 +66,11 @@ for (( i=0; i<$EVT_COUNT; i++)); do
             FN="A$ST+0200-$ET+0200_$NO-$i.$FILE_EXT"
             let SRV_ID=$j%$SRV_COUNT
             let SRV_ID=SRV_ID+1
-            #echo "NODE "$NO
             echo "FILENAME "$FN
             SRV="pm-https-server-$SRV_ID"
             echo "HTTP SERVER "$SRV
-            URL="https://$SRV:$HTTPS_PORT/files/$FN"
-            EVT='{"commonEventHeader":{"startEpochMicrosec":15198378,"eventId":"FileReady_1797490e-10ae-4d48-9ea7-3d7d790b25e1","timeZoneOffset":"UTC+05.30","internalHeaderFields":{"collectorTimeStamp":"Wed,0907202211:56:02GMT"},"priority":"Normal","version":"4.0.1","reportingEntityName":"'$NO'","sequence":0,"domain":"notification","lastEpochMicrosec":151983,"eventName":"Notification_gnb-Ericsson_FileReady","vesEventListenerVersion":"7.0.1","sourceName":"'$NO'"},"notificationFields":{"notificationFieldsVersion":"2.0","changeType":"FileReady","changeIdentifier":"PM_MEAS_FILES","arrayOfNamedHashMap":[{"name":"'$FN'","hashMap":{"location":"'$URL'","fileFormatType":"org.3GPP.32.435#measCollec","fileFormatVersion":"V10","compression":"gzip"}}]}}'
+            URL="https://$SRV:$HTTPS_PORT/generatedfiles/$FN"
+            EVT='{"commonEventHeader":{"startEpochMicrosec":'$STTIMEMS',"eventId":"FileReady_1797490e-10ae-4d48-9ea7-3d7d790b25e1","timeZoneOffset":"UTC'$TIMEZONE'","internalHeaderFields":{"collectorTimeStamp":"'$COLLECTIONTIME'"},"priority":"Normal","version":"4.0.1","reportingEntityName":"'$NO'","sequence":0,"domain":"notification","lastEpochMicrosec":'$CURTIMEMS',"eventName":"Notification_gnb-Ericsson_FileReady","vesEventListenerVersion":"7.0.1","sourceName":"'$NO'"},"notificationFields":{"notificationFieldsVersion":"2.0","changeType":"FileReady","changeIdentifier":"PM_MEAS_FILES","arrayOfNamedHashMap":[{"name":"'$FN'","hashMap":{"location":"'$URL'","fileFormatType":"org.3GPP.32.435#measCollec","fileFormatVersion":"V10","compression":"gzip"}}]}}'
             if [ $first -ne 0 ]; then
                 echo "," >> .out.json
             fi
