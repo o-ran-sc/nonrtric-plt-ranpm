@@ -7,24 +7,28 @@ Release-Notes
 =============
 
 
-This document provides the release notes for the release of the Non-RT RIC RAN PM Usecase/Functions.
+This document provides the release notes for the release of the Non-RT RIC RAN PM Use-case/Functions.
 
-More detailed Release Notes for individual functions can be found in: 
+More detailed Release Notes for individual functions can be found in:
+
 * :doc:`Non-RT RIC - RAN PM - PM Data File Collector (Doc site) <datafilecollector:index>`.
 * :doc:`Non-RT RIC - RAN PM - PM File Converter (Doc site) <pm-file-converter:index>`.
 * :doc:`Non-RT RIC - RAN PM - PM Producer (Doc site) <pmproducer:index>`.
 * :doc:`Non-RT RIC - RAN PM - Influx Logger (Doc site) <influxlogger:index>`.
 
-Version history RAN PM Usecase/Functions
-========================================
+Version history RAN PM Use-case/Functions
+=========================================
 
-+------------+----------+------------------+--------------------+
-| **Date**   | **Ver.** | **Author**       | **Comment**        |
-|            |          |                  |                    |
-+------------+----------+------------------+--------------------+
-| 2023-06-16 |          | John Keeney      | H Release          |
-|            |          |                  |                    |
-+------------+----------+------------------+--------------------+
++------------+----------+------------------+--------------------------+
+| **Date**   | **Ver.** | **Author**       | **Comment**              |
+|            |          |                  |                          |
++------------+----------+------------------+--------------------------+
+| 2023-06-16 |          | John Keeney      | H Release                |
+|            |          |                  |                          |
++------------+----------+------------------+--------------------------+
+| 2023-08-10 |          | John Keeney      | H Release (Maintenance)  |
+|            |          |                  |                          |
++------------+----------+------------------+--------------------------+
 
 
 Release Data
@@ -53,3 +57,25 @@ H Release
 |                             |    nonrtric-plt-pmproducer:1.0.0                  |
 |                             |                                                   |
 +-----------------------------+---------------------------------------------------+
+
+H Release (Maintenance)
+-----------------------
++-----------------------------+------------------------------------------------------+
+| **Project**                 | Non-RT RIC RAN PM                                    |
+|                             |                                                      |
++-----------------------------+------------------------------------------------------+
+| **Repo/commit-ID**          | nonrtric/plt/ranpm/                                  |
+|                             | 080a80da2364851e1e9e060d4bbdcbf0faa87ca0             |
+|                             |                                                      |
++-----------------------------+------------------------------------------------------+
+| **Release designation**     | H (Maintenance Release)                              |
+|                             |                                                      |
++-----------------------------+------------------------------------------------------+
+| **Release date**            | 2023-08-10                                           |
+|                             |                                                      |
++-----------------------------+------------------------------------------------------+
+| **Purpose of the delivery** | Maintenance release (H) of RAN PM Usecase/Functions  |
+|                             |    nonrtric-plt-ranpm-pm-file-converter:1.0.1        |
+|                             |    nonrtric-plt-pmproducer:1.0.1                     |
+|                             |                                                      |
++-----------------------------+------------------------------------------------------+
