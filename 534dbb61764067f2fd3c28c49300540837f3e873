@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0a322e9_bf323be2",
+        "filename": "datafilecollector/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-08-21T15:41:41Z",
+      "side": 1,
+      "message": "can we just rename this to datafile-collector",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 35
+      },
+      "revId": "534dbb61764067f2fd3c28c49300540837f3e873",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63937c2d_5c000b23",
+        "filename": "datafilecollector/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-08-21T15:41:41Z",
+      "side": 1,
+      "message": "Just \n\"RAN PM Data File Collector\" I think.",
+      "range": {
+        "startLine": 32,
+        "startChar": 19,
+        "endLine": 32,
+        "endChar": 38
+      },
+      "revId": "534dbb61764067f2fd3c28c49300540837f3e873",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd2d43cc_7b895b36",
+        "filename": "datafilecollector/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-08-21T15:41:41Z",
+      "side": 1,
+      "message": "NONRTRIC",
+      "range": {
+        "startLine": 32,
+        "startChar": 10,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "534dbb61764067f2fd3c28c49300540837f3e873",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4a96efc_2652b304",
+        "filename": "datafilecollector/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-08-21T15:41:41Z",
+      "side": 1,
+      "message": "File Collector for collecting RAN PM files from RAN functions (O-RAN SC NONRTRIC)",
+      "range": {
+        "startLine": 33,
+        "startChar": 17,
+        "endLine": 33,
+        "endChar": 45
+      },
+      "revId": "534dbb61764067f2fd3c28c49300540837f3e873",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
