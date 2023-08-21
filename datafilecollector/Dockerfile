@@ -65,5 +65,5 @@ RUN mkdir -p /var/log/ONAP /opt/app/datafile/etc/cert/ && \
 
 USER $user
 
-COPY --chown=$user:$group /target/datafile-app-server.jar /opt/app/datafile/
-CMD ["/jre/bin/java", "-jar", "/opt/app/datafile/datafile-app-server.jar"]
+COPY --chown=$user:$group /target/datafile-collector.jar /opt/app/datafile/
+CMD ["/jre/bin/java", "-jar", "/opt/app/datafile/datafile-collector.jar"]
