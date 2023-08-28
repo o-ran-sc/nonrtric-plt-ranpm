@@ -45,10 +45,8 @@ import (
 type JobDefinition struct {
 	InfoTypeID    string `json:"info_type_id"`
 	JobOwner      string `json:"job_owner"`
-	JobResultURI  string `json:"job_result_uri"`
+	StatusNotificationURI  string `json:"status_notification_uri"`
 	JobDefinition struct {
-		KafkaOutputTopic string          `json:"kafkaOutputTopic"`
-		FilterType       string          `json:"filterType"`
 		Filter           json.RawMessage `json:"filter"`
 		DeliveryInfo     struct {
 			Topic            string `json:"topic"`
@@ -165,13 +163,12 @@ func main() {
 		os.Exit(1)
 	}
 	job_type := job_json.InfoTypeID
-	job_json.JobDefinition.KafkaOutputTopic = topic
 	job_json.JobDefinition.DeliveryInfo.Topic = topic
 	job_json.JobDefinition.DeliveryInfo.BootStrapServers = bootstrapserver
 
-	gid = "pm-rapp-" + job_type + "-" + rapp_id
+        gid = "pm-rapp-" + job_type + "-" + rapp_id
 
-	jobid = "rapp-job-" + job_type + "-" + rapp_id
+        jobid = "rapp-job-" + job_type + "-" + rapp_id
 
 	json_bytes, err := json.Marshal(job_json)
 	if err != nil {
