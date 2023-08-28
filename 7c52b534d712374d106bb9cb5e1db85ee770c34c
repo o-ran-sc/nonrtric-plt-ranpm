@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0925bff9_207443a3",
+        "filename": "docker-proj/config/pmrapp/jobDefinition.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002202
+      },
+      "writtenOn": "2023-08-28T16:25:56Z",
+      "side": 1,
+      "message": "Please add license information.",
+      "revId": "7c52b534d712374d106bb9cb5e1db85ee770c34c",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ea05249_12d50f8f",
+        "filename": "install/helm/nrt-pm-rapp/config/jobDefinition.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002202
+      },
+      "writtenOn": "2023-08-28T16:25:56Z",
+      "side": 1,
+      "message": "Please add license information.",
+      "revId": "7c52b534d712374d106bb9cb5e1db85ee770c34c",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
