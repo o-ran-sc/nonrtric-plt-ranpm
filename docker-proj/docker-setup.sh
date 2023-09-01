@@ -102,6 +102,12 @@ pull_image $KPX_IMAGE
 
 export AUTH_TOKEN_IMAGE=nexus3.o-ran-sc.org:10001/o-ran-sc/nonrtric-plt-auth-token-fetch:1.1.1
 pull_image $AUTH_TOKEN_IMAGE
+
+export NONRTRIC_GATEWAY_IMAGE=nexus3.o-ran-sc.org:10001/o-ran-sc/nonrtric-gateway:1.2.0
+pull_image $NONRTRIC_GATEWAY_IMAGE
+
+export CONTROL_PANEL_IMAGE=nexus3.o-ran-sc.org:10001/o-ran-sc/nonrtric-controlpanel:2.5.0
+pull_image $CONTROL_PANEL_IMAGE
 }
 
 setup_keycloak() {
@@ -160,7 +166,7 @@ export DFC_CLIENT_SECRET=$(< .sec_nonrtric-realm_$cid)
 
 setup_kafka() {
 echo "Starting containers for: kafka, zookeeper, kafka client, ics, minio"
-envsubst  '$DMAAP_IMAGE,$VES_COLLECTOR_IMAGE,$ICS_IMAGE,$REDPANDA_IMAGE,$STRIMZI_IMAGE,$MINIO_IMAGE' < docker-compose-k1.yaml > docker-compose-k1_gen.yaml
+envsubst  < docker-compose-k1.yaml > docker-compose-k1_gen.yaml
 docker-compose -p common -f docker-compose-k1_gen.yaml up -d
 }
 

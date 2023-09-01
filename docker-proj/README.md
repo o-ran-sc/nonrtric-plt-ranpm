@@ -88,16 +88,17 @@ Example cmd: \
 To remove run:
 `./pmrapp-tear-down.sh`
 
-
 ### Tools for monitoring
 
 Open browser to redpanda (kafka gui) - watch topics, messages etc\
-browser: `localhost:8780`
+browser: `<host ip>:8780`
 
-Open brower to minio - available only if minio is given on the cmd line when starting the demo\
+Open brower to minio \
 user: admin pwd: adminadmin\
-browser: `localhost:9001`
+browser: `<host ip>:9001`
 
+Open brower to control-panel \
+browser: `<host ip>:8088/ei-coordinator`
 
 ### Push data - basic
 
