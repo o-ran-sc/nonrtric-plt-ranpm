@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd1eb145_45ccee3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-09-04T13:57:40Z",
+      "side": 1,
+      "message": "All good: https://readthedocs.org/projects/o-ran-sc-nonrtric-plt-ranpm/builds/",
+      "revId": "0cdfdb69c0bcc7dc81bd366ec5f05a6fdbb38ea0",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
