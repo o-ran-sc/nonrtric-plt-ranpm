@@ -20,7 +20,7 @@ ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 cd "${ROOT_DIR}"
 
 # Array of scripts to execute
-scripts=("uninstall-pm-rapp.sh" "uninstall-nrt.sh")
+scripts=("uninstall-pm-rapp.sh" "uninstall-pm-log.sh"  "uninstall-nrt.sh")
 
 for script in "${scripts[@]}"; do
   echo "*****************************************************************"

@@ -43,7 +43,7 @@ echo "Kubernetes control plane host: $KUBERNETESHOST"
 . scripts/create_influxdb2_bucket.sh
 . scripts/create_ics_job.sh
 
-echo "Installtion pm to influx job"
+echo "Installation pm to influx job"
 
 echo " Retriving influxdb2 access token..."
 INFLUXDB2_TOKEN=$(get_influxdb2_token influxdb2-0 nonrtric)

@@ -109,3 +109,8 @@ Browser for influx db.
 - nodeport: 31812
 - user: admin
 - password: mySuP3rS3cr3tT0keN
+
+### Controlpanel
+Browser for control-panel \
+browser: `<host ip>:30091/ei-coordinator`
+- nodeport: 30091

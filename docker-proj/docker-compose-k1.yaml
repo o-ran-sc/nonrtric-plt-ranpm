@@ -39,6 +39,7 @@ services:
 
   kafka-1:
     image: ${STRIMZI_IMAGE}
+    container_name: common-kafka-1-1
     command: [
       "sh", "-c",
       "bin/kafka-server-start.sh /tmp/kafka/strimzi.properties"
