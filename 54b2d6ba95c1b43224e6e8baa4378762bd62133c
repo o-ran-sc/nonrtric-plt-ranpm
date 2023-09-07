@@ -1,0 +1,8 @@
+Code-Review+2: John  Keeney <john.keeney@est.tech>
+Verified+1: ORAN Required GHA <releng+oran.required.gha@linuxfoundation.org>
+Verified+1: ORAN Jobbuilder <releng+oran-jobbuilder@linuxfoundation.org>
+Submitted-by: John  Keeney <john.keeney@est.tech>
+Submitted-at: Thu, 07 Sep 2023 11:21:40 +0000
+Reviewed-on: https://gerrit.o-ran-sc.org/r/c/nonrtric/plt/ranpm/+/11691
+Project: nonrtric/plt/ranpm
+Branch: refs/heads/h-release
