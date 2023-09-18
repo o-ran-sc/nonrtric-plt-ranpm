@@ -49,11 +49,6 @@ public class ConsumerRegstrationTask {
     private final AsyncRestClient restClient;
     private final ApplicationConfig applicationConfig;
 
-    private static com.google.gson.Gson gson = new com.google.gson.GsonBuilder() //
-            .disableHtmlEscaping() //
-            .excludeFieldsWithoutExposeAnnotation() //
-            .create();
-
     @Getter
     private boolean isRegisteredInIcs = false;
 
@@ -74,7 +69,7 @@ public class ConsumerRegstrationTask {
     private void createSubscription() {
         putInfoJob() //
                 .doOnError(this::handleRegistrationFailure)
-                .retryWhen(Retry.fixedDelay(100, Duration.ofMillis(5 * 1000))) //
+                .retryWhen(Retry.fixedDelay(100, Duration.ofMillis(5L * 1000))) //
                 .subscribe( //
                         null, //
                         this::handleRegistrationFailure, //

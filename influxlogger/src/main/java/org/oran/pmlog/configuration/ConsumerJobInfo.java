@@ -94,14 +94,17 @@ public class ConsumerJobInfo {
 
     @SerializedName("info_type_id")
     @Expose
+    @Getter
     public String infoTypeId = "";
 
     @SerializedName("job_owner")
     @Expose
+    @Getter
     public String owner = "";
 
     @SerializedName("job_definition")
     @Expose
+    @Getter
     public PmJobParameters jobDefinition;
 
     public ConsumerJobInfo() {}

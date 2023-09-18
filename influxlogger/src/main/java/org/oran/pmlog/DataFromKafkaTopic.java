@@ -23,6 +23,7 @@ package org.oran.pmlog;
 import java.io.ByteArrayInputStream;
 import java.util.zip.GZIPInputStream;
 
+import lombok.Getter;
 import lombok.ToString;
 
 import org.apache.kafka.common.header.Header;
@@ -31,8 +32,11 @@ import org.slf4j.LoggerFactory;
 
 @ToString
 public class DataFromKafkaTopic {
+    @Getter
     private final byte[] key;
+    @Getter
     private final byte[] value;
+    @Getter
     private String stringValue = null;
     private static final Logger logger = LoggerFactory.getLogger(DataFromKafkaTopic.class);
 
