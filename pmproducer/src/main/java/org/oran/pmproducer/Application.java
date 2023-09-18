@@ -23,7 +23,6 @@ package org.oran.pmproducer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -49,22 +48,6 @@ public class Application {
                 applicationContext = null;
             }
         });
-    }
-
-    private static void restartApplication() {
-        if (applicationContext == null) {
-            logger.info("Cannot restart in unittest");
-            return;
-        }
-        ApplicationArguments args = applicationContext.getBean(ApplicationArguments.class);
-
-        Thread thread = new Thread(() -> {
-            applicationContext.close();
-            applicationContext = SpringApplication.run(Application.class, args.getSourceArgs());
-        });
-
-        thread.setDaemon(false);
-        thread.start();
     }
 
 }

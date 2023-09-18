@@ -79,6 +79,7 @@ public class JobDataDistributor {
             this.consumerFaultCounter = 0;
         }
 
+        @SuppressWarnings("java:S1172")
         public void handleException(Throwable t) {
             ++this.consumerFaultCounter;
         }

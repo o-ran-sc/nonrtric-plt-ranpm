@@ -74,6 +74,12 @@ class S3ObjectStore implements DataStore {
         return s3AsynchClient;
     }
 
+    @SuppressWarnings({"java:S3010", "java:S2209"})
+    public S3ObjectStore(ApplicationConfig applicationConfig, S3AsyncClient s3AsynchClient, boolean testOnly) {
+        this.applicationConfig = applicationConfig;
+        this.s3AsynchClient = s3AsynchClient;
+    }
+
     private static S3AsyncClientBuilder getS3AsyncClientBuilder(ApplicationConfig applicationConfig) {
         URI uri = URI.create(applicationConfig.getS3EndpointOverride());
         return S3AsyncClient.builder() //
