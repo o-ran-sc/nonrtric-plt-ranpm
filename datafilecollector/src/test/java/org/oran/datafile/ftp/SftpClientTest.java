@@ -47,7 +47,7 @@ import org.oran.datafile.exceptions.NonRetryableDatafileTaskException;
 import org.oran.datafile.model.FileServerData;
 
 @ExtendWith(MockitoExtension.class)
-public class SftpClientTest {
+class SftpClientTest {
 
     private static final String HOST = "127.0.0.1";
     private static final int SFTP_PORT = 1021;
@@ -64,7 +64,7 @@ public class SftpClientTest {
     private ChannelSftp channelMock;
 
     @Test
-    public void openWithPort_success() throws Exception {
+    void openWithPort_success() throws Exception {
         FileServerData expectedFileServerData = FileServerData.builder() //
             .serverAddress(HOST) //
             .userId(USERNAME) //
@@ -92,7 +92,7 @@ public class SftpClientTest {
     }
 
     @Test
-    public void openWithoutPort_success() throws Exception {
+    void openWithoutPort_success() throws Exception {
         FileServerData expectedFileServerData = FileServerData.builder() //
             .serverAddress(HOST) //
             .userId(USERNAME) //
@@ -112,7 +112,7 @@ public class SftpClientTest {
     }
 
     @Test
-    public void open_throwsExceptionWithRetry() throws Exception {
+    void open_throwsExceptionWithRetry() throws Exception {
         FileServerData expectedFileServerData = FileServerData.builder() //
             .serverAddress(HOST) //
             .userId(USERNAME) //
@@ -130,7 +130,7 @@ public class SftpClientTest {
     }
 
     @Test
-    public void openAuthFail_throwsExceptionWithoutRetry() throws Exception {
+    void openAuthFail_throwsExceptionWithoutRetry() throws Exception {
         FileServerData expectedFileServerData = FileServerData.builder() //
             .serverAddress(HOST) //
             .userId(USERNAME) //
@@ -152,7 +152,7 @@ public class SftpClientTest {
 
     @SuppressWarnings("resource")
     @Test
-    public void collectFile_success() throws DatafileTaskException, SftpException {
+    void collectFile_success() throws DatafileTaskException, SftpException {
         FileServerData expectedFileServerData = FileServerData.builder() //
             .serverAddress(HOST) //
             .userId(USERNAME) //
@@ -170,7 +170,7 @@ public class SftpClientTest {
     }
 
     @Test
-    public void collectFile_throwsExceptionWithRetry() throws SftpException {
+    void collectFile_throwsExceptionWithRetry() throws SftpException {
         FileServerData expectedFileServerData = FileServerData.builder() //
             .serverAddress(HOST) //
             .userId(USERNAME) //
@@ -190,7 +190,7 @@ public class SftpClientTest {
     }
 
     @Test
-    public void collectFileFileMissing_throwsExceptionWithoutRetry() throws SftpException {
+    void collectFileFileMissing_throwsExceptionWithoutRetry() throws SftpException {
         FileServerData expectedFileServerData = FileServerData.builder() //
             .serverAddress(HOST) //
             .userId(USERNAME) //
@@ -211,7 +211,7 @@ public class SftpClientTest {
     }
 
     @Test
-    public void close_success() {
+    void close_success() {
         SftpClient sftpClient = new SftpClient(null, createSampleSftpClientSettings());
 
         sftpClient.session = sessionMock;

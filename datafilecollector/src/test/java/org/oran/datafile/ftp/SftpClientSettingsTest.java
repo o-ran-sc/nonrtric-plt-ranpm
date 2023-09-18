@@ -26,10 +26,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.oran.datafile.configuration.SftpConfig;
 
-public class SftpClientSettingsTest {
+class SftpClientSettingsTest {
 
     @Test
-    public void shouldUseFtpStrictHostChecking(@TempDir Path tempDir) throws Exception {
+    void shouldUseFtpStrictHostChecking(@TempDir Path tempDir) throws Exception {
         File knowHostsFile = new File(tempDir.toFile(), "known_hosts");
         knowHostsFile.createNewFile();
 
@@ -40,7 +40,7 @@ public class SftpClientSettingsTest {
     }
 
     @Test
-    public void shouldNotUseFtpStrictHostChecking_whenFileDoesNotExist() {
+    void shouldNotUseFtpStrictHostChecking_whenFileDoesNotExist() {
         SftpConfig config = createSampleSftpConfigWithStrictHostChecking("unknown_file");
         SftpClientSettings sftpClient = new SftpClientSettings(config);
 
@@ -49,7 +49,7 @@ public class SftpClientSettingsTest {
     }
 
     @Test
-    public void shouldNotUseFtpStrictHostChecking_whenExplicitlySwitchedOff() {
+    void shouldNotUseFtpStrictHostChecking_whenExplicitlySwitchedOff() {
         SftpClientSettings sftpClient = new SftpClientSettings(createSampleSftpConfigNoStrictHostChecking());
         sftpClient.shouldUseStrictHostChecking();
         assertThat(sftpClient.shouldUseStrictHostChecking()).isFalse();

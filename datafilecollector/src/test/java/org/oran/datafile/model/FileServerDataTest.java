@@ -1,6 +1,6 @@
 /*-
  * ============LICENSE_START=======================================================
- * Copyright (C) 2020 NOKIA Intellectual Property. All rights reserved.
+ *  Copyright (C) 2019-2023 Nordix Foundation.
  * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,16 +18,23 @@
  * ============LICENSE_END=========================================================
  */
 
-package org.oran.datafile.configuration;
+package org.oran.datafile.model;
 
-import lombok.Builder;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@Builder
-public class SftpConfig {
+import java.util.ArrayList;
+import org.junit.jupiter.api.Test;
 
-    @SuppressWarnings("java:S1104")
-    public boolean strictHostKeyChecking;
-
-    @SuppressWarnings("java:S1104")
-    public String knownHostsFilePath;
+class FileServerDataTest {
+    @Test
+    void testConstructor() {
+        FileServerData actualFileServerData = new FileServerData("42 Main St", "42", "password", new ArrayList<>(),
+            "Uri Raw Fragment", 8080);
+        assertEquals("FileServerData(serverAddress=42 Main St, userId=42, uriRawFragment=Uri Raw Fragment, port=8080)",
+            actualFileServerData.toString());
+        assertEquals(8080, actualFileServerData.port.intValue());
+        assertTrue(actualFileServerData.queryParameters.isEmpty());
+    }
 }
+

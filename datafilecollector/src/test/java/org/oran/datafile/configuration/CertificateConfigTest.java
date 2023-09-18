@@ -1,6 +1,6 @@
 /*-
  * ============LICENSE_START=======================================================
- * Copyright (C) 2020 NOKIA Intellectual Property. All rights reserved.
+ *  Copyright (C) 2023 Nordix Foundation.
  * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,14 +20,20 @@
 
 package org.oran.datafile.configuration;
 
-import lombok.Builder;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Builder
-public class SftpConfig {
+import org.junit.jupiter.api.Test;
 
-    @SuppressWarnings("java:S1104")
-    public boolean strictHostKeyChecking;
+class CertificateConfigTest {
+    @Test
+    void testConstructor() {
+        CertificateConfig actualCertificateConfig = new CertificateConfig("Key Cert", "Key Password Path", "Trusted Ca",
+            "Trusted Ca Password Path");
 
-    @SuppressWarnings("java:S1104")
-    public String knownHostsFilePath;
+        assertEquals("Key Cert", actualCertificateConfig.keyCert);
+        assertEquals("Trusted Ca Password Path", actualCertificateConfig.trustedCaPasswordPath);
+        assertEquals("Trusted Ca", actualCertificateConfig.trustedCa);
+        assertEquals("Key Password Path", actualCertificateConfig.keyPasswordPath);
+    }
 }
+

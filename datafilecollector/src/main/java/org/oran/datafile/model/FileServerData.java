@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Builder;
+import lombok.Getter;
 import lombok.ToString;
 
 import org.apache.hc.core5.http.NameValuePair;
@@ -34,10 +35,16 @@ import org.apache.hc.core5.http.NameValuePair;
 @ToString
 public class FileServerData {
 
+    @SuppressWarnings("java:S1104")
+    @Getter
     public String serverAddress;
+
+    @SuppressWarnings("java:S1104")
+    @Getter
     public String userId;
 
     @ToString.Exclude
+    @Getter
     public String password;
 
     @Builder.Default
@@ -47,5 +54,7 @@ public class FileServerData {
     @Builder.Default
     public String uriRawFragment = "";
 
+    @SuppressWarnings("java:S1104")
+    @Getter
     public Integer port;
 }

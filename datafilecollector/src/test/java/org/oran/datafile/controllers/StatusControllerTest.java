@@ -1,7 +1,6 @@
 /*-
  * ============LICENSE_START=======================================================
  *  Copyright (C) 2019-2023 Nordix Foundation.
- *  Copyright (C) 2020 Nokia. All rights reserved.
  * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +20,7 @@
 
 package org.oran.datafile.controllers;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.doReturn;
 
@@ -32,11 +32,12 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.oran.datafile.model.Counters;
 import org.oran.datafile.tasks.CollectAndReportFiles;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import reactor.core.publisher.Mono;
 
 @ExtendWith(MockitoExtension.class)
-public class StatusControllerTest {
+class StatusControllerTest {
     @Mock
     CollectAndReportFiles scheduledTasksMock;
 
@@ -48,7 +49,7 @@ public class StatusControllerTest {
     }
 
     @Test
-    public void heartbeat_success() {
+    void heartbeat_success() {
         HttpHeaders httpHeaders = new HttpHeaders();
 
         Mono<ResponseEntity<String>> result = controllerUnderTest.heartbeat(httpHeaders);
@@ -58,7 +59,7 @@ public class StatusControllerTest {
     }
 
     @Test
-    public void status() {
+    void status() {
         Counters counters = new Counters();
         doReturn(counters).when(scheduledTasksMock).getCounters();
 
@@ -67,6 +68,8 @@ public class StatusControllerTest {
         Mono<ResponseEntity<String>> result = controllerUnderTest.status(httpHeaders);
 
         String body = result.block().getBody();
+        HttpStatusCode httpStatusCode = result.block().getStatusCode();
+        assertEquals(200, httpStatusCode.value());
         System.out.println(body);
     }
 
