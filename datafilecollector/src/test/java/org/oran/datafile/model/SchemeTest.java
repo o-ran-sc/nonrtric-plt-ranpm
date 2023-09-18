@@ -26,10 +26,10 @@ import org.junit.jupiter.api.Test;
 import org.oran.datafile.exceptions.DatafileTaskException;
 import org.oran.datafile.model.FileData.Scheme;
 
-public class SchemeTest {
+class SchemeTest {
 
     @Test
-    public void shouldReturnSchemeForSupportedProtocol() throws DatafileTaskException {
+    void shouldReturnSchemeForSupportedProtocol() throws DatafileTaskException {
         assertEquals(Scheme.FTPES, Scheme.getSchemeFromString("FTPES"));
         assertEquals(Scheme.SFTP, Scheme.getSchemeFromString("SFTP"));
         assertEquals(Scheme.HTTP, Scheme.getSchemeFromString("HTTP"));
@@ -37,12 +37,12 @@ public class SchemeTest {
     }
 
     @Test
-    public void shouldThrowExceptionForUnsupportedProtocol() {
+    void shouldThrowExceptionForUnsupportedProtocol() {
         assertThrows(DatafileTaskException.class, () -> Scheme.getSchemeFromString("FTPS"));
     }
 
     @Test
-    public void shouldThrowExceptionForInvalidProtocol() {
+    void shouldThrowExceptionForInvalidProtocol() {
         assertThrows(DatafileTaskException.class, () -> Scheme.getSchemeFromString("invalid"));
     }
 }

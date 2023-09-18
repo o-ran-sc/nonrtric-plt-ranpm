@@ -21,16 +21,12 @@ package org.oran.datafile.http;
 
 import java.util.Base64;
 import java.util.List;
-
 import org.apache.hc.core5.http.NameValuePair;
 import org.apache.http.HttpStatus;
 import org.oran.datafile.model.FileServerData;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public final class HttpUtils implements HttpStatus {
 
-    private static final Logger logger = LoggerFactory.getLogger(HttpUtils.class);
     public static final int HTTP_DEFAULT_PORT = 80;
     public static final int HTTPS_DEFAULT_PORT = 443;
 

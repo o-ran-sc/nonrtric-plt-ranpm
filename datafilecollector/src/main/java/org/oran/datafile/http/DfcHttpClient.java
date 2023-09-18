@@ -92,12 +92,13 @@ public class DfcHttpClient implements FileCollectClient {
         try {
             latch.await();
         } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
             throw new DatafileTaskException("Interrupted exception after datafile download - ", e);
         }
 
         if (isDownloadFailed(errorMessage)) {
-            if (errorMessage.get() instanceof NonRetryableDatafileTaskException) {
-                throw (NonRetryableDatafileTaskException) errorMessage.get();
+            if (errorMessage.get() instanceof NonRetryableDatafileTaskException nonRetryableException) {
+                throw nonRetryableException;
             }
             throw (DatafileTaskException) errorMessage.get();
         }
