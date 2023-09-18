@@ -51,7 +51,6 @@ public class InfluxStore {
     @Getter
     private Disposable subscription;
 
-    private static com.google.gson.Gson gson = new com.google.gson.GsonBuilder().disableHtmlEscaping().create();
     private final ApplicationConfig applConfig;
 
     private final InfluxDBClient influxClient;
@@ -97,7 +96,7 @@ public class InfluxStore {
         this.subscription = input.flatMap(this::storeInInflux) //
                 .subscribe(this::handleSentOk, //
                         this::handleExceptionInStream, //
-                        () -> stop());
+                    this::stop);
 
     }
 
@@ -105,6 +104,7 @@ public class InfluxStore {
         return measInfoList.getMeasTypes().getMeasType(measResult.getP());
     }
 
+    @SuppressWarnings("java:S1172")
     private void addCounterFieldToPoint(Point point, PmReport.MeasInfoList measInfoList,
             PmReport.MeasValuesList measValueList, PmReport.MeasResult measResult) {
         String measType = measType(measResult, measInfoList);
