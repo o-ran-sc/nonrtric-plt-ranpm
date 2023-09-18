@@ -157,6 +157,7 @@ public class ProducerRegstrationTask {
         }
     }
 
+    @SuppressWarnings("java:S1172")
     private Object jsonSchemaObject(InfoType type) throws IOException, ServiceException {
         final String schemaFile = "/typeSchemaPmData.json";
         return jsonObject(readSchemaFile(schemaFile));
@@ -179,12 +180,6 @@ public class ProducerRegstrationTask {
             logger.error("Bug, error in JSON: {} {}", json, e.getMessage());
             throw new NullPointerException(e.getMessage());
         }
-    }
-
-    private boolean isEqual(ProducerRegistrationInfo a, ProducerRegistrationInfo b) {
-        return a.jobCallbackUrl.equals(b.jobCallbackUrl) //
-                && a.producerSupervisionCallbackUrl.equals(b.producerSupervisionCallbackUrl) //
-                && a.supportedTypeIds.size() == b.supportedTypeIds.size();
     }
 
     private ProducerRegistrationInfo producerRegistrationInfo() {

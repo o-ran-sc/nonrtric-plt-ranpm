@@ -67,6 +67,12 @@ class S3ObjectStore implements DataStore {
         getS3AsynchClient(applicationConfig);
     }
 
+    @SuppressWarnings({"java:S3010", "java:S2209"})
+    public S3ObjectStore(ApplicationConfig applicationConfig, S3AsyncClient s3AsynchClient) {
+        this.applicationConfig = applicationConfig;
+        this.s3AsynchClient = s3AsynchClient;
+    }
+
     private static synchronized S3AsyncClient getS3AsynchClient(ApplicationConfig applicationConfig) {
         if (applicationConfig.isS3Enabled() && s3AsynchClient == null) {
             s3AsynchClient = getS3AsyncClientBuilder(applicationConfig).build();
