@@ -49,10 +49,11 @@ public class SecurityContext {
     private static SecurityContext instance;
 
     @Setter
+    @Getter
     private Path authTokenFilePath;
 
     public SecurityContext(@Value("${app.auth-token-file:}") String authTokenFilename) {
-        instance = this;
+        instance = this; //NOSONAR
         if (!authTokenFilename.isEmpty()) {
             this.authTokenFilePath = Path.of(authTokenFilename);
         }

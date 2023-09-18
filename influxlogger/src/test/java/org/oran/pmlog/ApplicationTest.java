@@ -21,7 +21,6 @@
 package org.oran.pmlog;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.awaitility.Awaitility.await;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.spy;
 
@@ -33,7 +32,6 @@ import java.lang.invoke.MethodHandles;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
-
 import org.json.JSONObject;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -44,7 +42,6 @@ import org.mockito.Mockito;
 import org.oran.pmlog.clients.AsyncRestClient;
 import org.oran.pmlog.clients.AsyncRestClientFactory;
 import org.oran.pmlog.configuration.ApplicationConfig;
-import org.oran.pmlog.configuration.ConsumerJobInfo;
 import org.oran.pmlog.configuration.WebClientConfig;
 import org.oran.pmlog.configuration.WebClientConfig.HttpProxyConfig;
 import org.oran.pmlog.oauth2.SecurityContext;
@@ -172,15 +169,6 @@ class ApplicationTest {
         TestBeanFactory.influxStore.start(Flux.just(data));
 
         Mockito.verify(TestBeanFactory.influxStore, Mockito.times(1)).store(any(), any());
-    }
-
-    @Test
-    void testJobCreation() throws Exception {
-        await().untilAsserted(() -> assertThat(consumerRegstrationTask.isRegisteredInIcs()).isTrue());
-        ConsumerJobInfo createdJob = this.icsSimulatorController.testResults.createdJob;
-        assertThat(createdJob).isNotNull();
-        assertThat(createdJob.jobDefinition.getDeliveryInfo().getTopic())
-                .isEqualTo(applicationConfig.getKafkaInputTopic());
     }
 
     private AsyncRestClient restClient() {

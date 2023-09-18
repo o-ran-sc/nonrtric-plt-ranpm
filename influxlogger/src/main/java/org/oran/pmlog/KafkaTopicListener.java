@@ -45,7 +45,6 @@ public class KafkaTopicListener {
     private static final Logger logger = LoggerFactory.getLogger(KafkaTopicListener.class);
     private final ApplicationConfig applicationConfig;
     private Flux<DataFromKafkaTopic> dataFromTopic;
-    private static com.google.gson.Gson gson = new com.google.gson.GsonBuilder().disableHtmlEscaping().create();
 
     public KafkaTopicListener(ApplicationConfig applConfig) {
         this.applicationConfig = applConfig;

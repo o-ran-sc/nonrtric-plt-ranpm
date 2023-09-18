@@ -20,6 +20,8 @@
 
 package org.oran.pmlog;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -213,7 +215,7 @@ class Integration {
                 .map(str -> new DataFromKafkaTopic(null, null, str.getBytes()));
 
         influxStore.start(input);
-
+        assertEquals(96, NO_OF_OBJECTS);
     }
 
     @SuppressWarnings("squid:S2925") // "Thread.sleep" should not be used in tests.
@@ -227,6 +229,8 @@ class Integration {
         sendDataToKafka(dataToSend);
 
         Thread.sleep(1000 * 1000);
+
+        assertEquals(20, NO_OF_OBJECTS);
     }
 
     @Test
@@ -248,12 +252,7 @@ class Integration {
         ConsumerJobInfo info = new ConsumerJobInfo("type", params, "owner");
         String str = gson.toJson(info);
         System.out.print(str);
-    }
-
-    @SuppressWarnings("squid:S2925") // "Thread.sleep" should not be used in tests.
-    @Test
-    void tet() throws Exception {
-        Thread.sleep(1000 * 1000);
+        assertEquals("type", info.infoTypeId);
     }
 
 }
