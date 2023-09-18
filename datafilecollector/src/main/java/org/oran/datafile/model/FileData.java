@@ -86,8 +86,10 @@ public class FileData {
 
     private static final Logger logger = LoggerFactory.getLogger(FileData.class);
 
+    @SuppressWarnings("java:S1104")
     public FileReadyMessage.ArrayOfNamedHashMap fileInfo;
 
+    @SuppressWarnings("java:S1104")
     public FileReadyMessage.MessageMetaData messageMetaData;
 
     public static Iterable<FileData> createFileData(FileReadyMessage msg) {

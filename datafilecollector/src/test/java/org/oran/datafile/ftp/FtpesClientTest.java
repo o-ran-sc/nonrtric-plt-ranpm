@@ -18,7 +18,11 @@
 package org.oran.datafile.ftp;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
@@ -31,21 +35,25 @@ import static org.mockito.Mockito.when;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.CertificateException;
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.TrustManager;
-
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPSClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
+import org.oran.datafile.exceptions.DatafileTaskException;
+import org.oran.datafile.exceptions.NonRetryableDatafileTaskException;
 import org.oran.datafile.model.FileServerData;
 import org.springframework.http.HttpStatus;
 
-public class FtpesClientTest {
+class FtpesClientTest {
 
     private static final String REMOTE_FILE_PATH = "/dir/sample.txt";
     private static final Path LOCAL_FILE_PATH = Paths.get("target/sample.txt");
@@ -85,7 +93,7 @@ public class FtpesClientTest {
     private void verifyFtpsClientMock_openOk() throws Exception {
         doReturn(outputStreamMock).when(clientUnderTestSpy).createOutputStream(LOCAL_FILE_PATH);
 
-        when(ftpsClientMock.retrieveFile(ArgumentMatchers.eq(REMOTE_FILE_PATH),
+        when(ftpsClientMock.retrieveFile(eq(REMOTE_FILE_PATH),
             ArgumentMatchers.any(OutputStream.class))).thenReturn(true);
         verify(ftpsClientMock).setNeedClientAuth(true);
         verify(ftpsClientMock).setKeyManager(keyManagerMock);
@@ -101,7 +109,7 @@ public class FtpesClientTest {
     }
 
     @Test
-    public void collectFile_allOk() throws Exception {
+    void collectFile_allOk() throws Exception {
 
         doReturn(keyManagerMock).when(clientUnderTestSpy).getKeyManager(Paths.get(FTP_KEY_PATH), FTP_KEY_PASSWORD_PATH);
         doReturn(trustManagerMock).when(clientUnderTestSpy).getTrustManager(TRUSTED_CA_PATH, TRUSTED_CA_PASSWORD);
@@ -121,12 +129,12 @@ public class FtpesClientTest {
         verify(ftpsClientMock, times(1)).isConnected();
         verify(ftpsClientMock, times(1)).logout();
         verify(ftpsClientMock, times(1)).disconnect();
-        verify(ftpsClientMock, times(1)).retrieveFile(ArgumentMatchers.eq(REMOTE_FILE_PATH), any());
+        verify(ftpsClientMock, times(1)).retrieveFile(eq(REMOTE_FILE_PATH), any());
         verifyNoMoreInteractions(ftpsClientMock);
     }
 
     @Test
-    public void collectFileFaultyOwnKey_shouldFail() throws Exception {
+    void collectFileFaultyOwnKey_shouldFail() throws Exception {
 
         doReturn(outputStreamMock).when(clientUnderTestSpy).createOutputStream(LOCAL_FILE_PATH);
         assertThatThrownBy(() -> clientUnderTestSpy.open()).hasMessageContaining("Could not open connection:");
@@ -140,7 +148,7 @@ public class FtpesClientTest {
     }
 
     @Test
-    public void collectFileFaultTrustedCA_shouldFail_no_trustedCA_file() throws Exception {
+    void collectFileFaultTrustedCA_shouldFail_no_trustedCA_file() throws Exception {
 
         doReturn(keyManagerMock).when(clientUnderTestSpy).getKeyManager(Paths.get(FTP_KEY_PATH), FTP_KEY_PASSWORD_PATH);
         doThrow(new IOException("problem")).when(clientUnderTestSpy).createInputStream(TRUSTED_CA_PATH);
@@ -150,7 +158,7 @@ public class FtpesClientTest {
     }
 
     @Test
-    public void collectFileFaultTrustedCA_shouldFail_empty_trustedCA_file() throws Exception {
+    void collectFileFaultTrustedCA_shouldFail_empty_trustedCA_file() throws Exception {
 
         doReturn(keyManagerMock).when(clientUnderTestSpy).getKeyManager(Paths.get(FTP_KEY_PATH), FTP_KEY_PASSWORD_PATH);
         doReturn(inputStreamMock).when(clientUnderTestSpy).createInputStream(TRUSTED_CA_PATH);
@@ -159,7 +167,7 @@ public class FtpesClientTest {
     }
 
     @Test
-    public void collectFileFaultyLogin_shouldFail() throws Exception {
+    void collectFileFaultyLogin_shouldFail() throws Exception {
 
         doReturn(keyManagerMock).when(clientUnderTestSpy).getKeyManager(Paths.get(FTP_KEY_PATH), FTP_KEY_PASSWORD_PATH);
         doReturn(trustManagerMock).when(clientUnderTestSpy).getTrustManager(TRUSTED_CA_PATH, TRUSTED_CA_PASSWORD);
@@ -176,7 +184,7 @@ public class FtpesClientTest {
     }
 
     @Test
-    public void collectFileBadRequestResponse_shouldFail() throws Exception {
+    void collectFileBadRequestResponse_shouldFail() throws Exception {
         doReturn(keyManagerMock).when(clientUnderTestSpy).getKeyManager(Paths.get(FTP_KEY_PATH), FTP_KEY_PASSWORD_PATH);
         doReturn(trustManagerMock).when(clientUnderTestSpy).getTrustManager(TRUSTED_CA_PATH, TRUSTED_CA_PASSWORD);
         doReturn(outputStreamMock).when(clientUnderTestSpy).createOutputStream(LOCAL_FILE_PATH);
@@ -196,7 +204,7 @@ public class FtpesClientTest {
     }
 
     @Test
-    public void collectFile_shouldFail() throws Exception {
+    void collectFile_shouldFail() throws Exception {
         doReturn(keyManagerMock).when(clientUnderTestSpy).getKeyManager(Paths.get(FTP_KEY_PATH), FTP_KEY_PASSWORD_PATH);
         doReturn(trustManagerMock).when(clientUnderTestSpy).getTrustManager(TRUSTED_CA_PATH, TRUSTED_CA_PASSWORD);
         doReturn(outputStreamMock).when(clientUnderTestSpy).createOutputStream(LOCAL_FILE_PATH);
@@ -210,12 +218,12 @@ public class FtpesClientTest {
             .hasMessageContaining(REMOTE_FILE_PATH).hasMessageContaining("No retry");
 
         verifyFtpsClientMock_openOk();
-        verify(ftpsClientMock, times(1)).retrieveFile(ArgumentMatchers.eq(REMOTE_FILE_PATH), any());
+        verify(ftpsClientMock, times(1)).retrieveFile(eq(REMOTE_FILE_PATH), any());
         verifyNoMoreInteractions(ftpsClientMock);
     }
 
     @Test
-    public void collectFile_shouldFail_ioexception() throws Exception {
+    void collectFile_shouldFail_ioexception() throws Exception {
         doReturn(keyManagerMock).when(clientUnderTestSpy).getKeyManager(Paths.get(FTP_KEY_PATH), FTP_KEY_PASSWORD_PATH);
         doReturn(trustManagerMock).when(clientUnderTestSpy).getTrustManager(TRUSTED_CA_PATH, TRUSTED_CA_PASSWORD);
         doReturn(outputStreamMock).when(clientUnderTestSpy).createOutputStream(LOCAL_FILE_PATH);
@@ -230,7 +238,33 @@ public class FtpesClientTest {
             .hasMessage("Could not fetch file: java.io.IOException: problem");
 
         verifyFtpsClientMock_openOk();
-        verify(ftpsClientMock, times(1)).retrieveFile(ArgumentMatchers.eq(REMOTE_FILE_PATH), any());
+        verify(ftpsClientMock, times(1)).retrieveFile(eq(REMOTE_FILE_PATH), any());
         verifyNoMoreInteractions(ftpsClientMock);
+    }
+
+    @Test
+    void testCreateInputStream() throws IOException, URISyntaxException {
+        Path trustCaPath = Paths.get(getClass().getResource("/org/oran/datafile/datastore/file.txt").toURI());
+        InputStream actualCreateInputStreamResult = clientUnderTestSpy.createInputStream(trustCaPath);
+        assertNotNull(actualCreateInputStreamResult);
+    }
+
+    @Test
+    void testCreateOutputStream() throws IOException, URISyntaxException, DatafileTaskException {
+        Path trustCaPath = Paths.get(getClass().getResource("/org/oran/datafile/datastore/file.txt").toURI());
+        assertThrows(NonRetryableDatafileTaskException.class, () -> clientUnderTestSpy.createOutputStream(trustCaPath));
+    }
+
+    @Test
+    void testGetTrustManager2() throws IOException, KeyStoreException, NoSuchAlgorithmException, CertificateException {
+        FileServerData fileServerData = FileServerData.builder()
+            .password("password123")
+            .port(8080)
+            .serverAddress("42 Main St")
+            .userId("42")
+            .build();
+        assertNull((new FtpesClient(fileServerData, Paths.get(System.getProperty("java.io.tmpdir"), "test.txt"),
+            "Key Cert Password Path", Paths.get(System.getProperty("java.io.tmpdir"), "test.txt"),
+            "Trusted Ca Password Path")).getTrustManager(null, "foo"));
     }
 }
