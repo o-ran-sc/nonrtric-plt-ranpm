@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "392a0db7_977c68c6",
+        "filename": "pmproducer/src/main/java/org/oran/pmproducer/datastore/S3ObjectStore.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001877
+      },
+      "writtenOn": "2023-09-18T14:44:12Z",
+      "side": 1,
+      "message": "Unsed argument. Can be removed?",
+      "range": {
+        "startLine": 78,
+        "startChar": 100,
+        "endLine": 78,
+        "endChar": 108
+      },
+      "revId": "e44edcc4ae7634068606479366a166f00441c4b6",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "576467e0_02b44b02",
+        "filename": "pmproducer/src/main/java/org/oran/pmproducer/oauth2/OAuthKafkaAuthenticateLoginCallbackHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001877
+      },
+      "writtenOn": "2023-09-18T14:44:12Z",
+      "side": 1,
+      "message": "This method can be avoided if it is used by tests alone.",
+      "range": {
+        "startLine": 98,
+        "startChar": 19,
+        "endLine": 98,
+        "endChar": 31
+      },
+      "revId": "e44edcc4ae7634068606479366a166f00441c4b6",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
