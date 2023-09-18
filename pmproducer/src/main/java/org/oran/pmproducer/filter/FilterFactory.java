@@ -21,15 +21,9 @@
 package org.oran.pmproducer.filter;
 
 import com.google.gson.GsonBuilder;
-
-import java.lang.invoke.MethodHandles;
 import java.util.Collection;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class FilterFactory {
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private static com.google.gson.Gson gson = new GsonBuilder().disableHtmlEscaping().create();
 
     private FilterFactory() {}

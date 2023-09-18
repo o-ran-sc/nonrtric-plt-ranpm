@@ -29,6 +29,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
         description = "The body of the Information Producer callbacks for Information Job creation and deletion")
 public class ProducerJobInfo {
 
+    @SuppressWarnings("java:S1874")
     @Schema(name = "info_job_identity", description = "Identity of the Information Job", required = true)
     @SerializedName("info_job_identity")
     @JsonProperty("info_job_identity")

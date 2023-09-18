@@ -33,16 +33,19 @@ import lombok.Builder;
 @Schema(name = "producer_registration_info", description = "Information for an Information Producer")
 public class ProducerRegistrationInfo {
 
+    @SuppressWarnings("java:S1874")
     @Schema(name = "supported_info_types", description = "Supported Information Type IDs", required = true)
     @SerializedName("supported_info_types")
     @JsonProperty(value = "supported_info_types", required = true)
     public Collection<String> supportedTypeIds;
 
+    @SuppressWarnings("java:S1874")
     @Schema(name = "info_job_callback_url", description = "callback for Information Job", required = true)
     @SerializedName("info_job_callback_url")
     @JsonProperty(value = "info_job_callback_url", required = true)
     public String jobCallbackUrl;
 
+    @SuppressWarnings("java:S1874")
     @Schema(name = "info_producer_supervision_callback_url", description = "callback for producer supervision",
             required = true)
     @SerializedName("info_producer_supervision_callback_url")

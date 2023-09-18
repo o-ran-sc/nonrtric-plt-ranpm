@@ -459,8 +459,9 @@ class IntegrationWithKafka {
         }
 
         String msgString = kafkaReceiver.receivedKafkaOutput.valueAsString();
-        assertThat(msgString).contains("pmCounterNumber0");
-        assertThat(msgString).doesNotContain("pmCounterNumber1");
+        assertThat(msgString)
+            .contains("pmCounterNumber0")
+            .doesNotContain("pmCounterNumber1");
         assertThat(kafkaReceiver.receivedKafkaOutput.getTypeIdFromHeaders()).isEqualTo(PM_TYPE_ID);
         assertThat(kafkaReceiver.receivedKafkaOutput.getSourceNameFromHeaders()).isEqualTo("HTTPST2-0"); // This is from
                                                                                                          // the file
