@@ -169,7 +169,7 @@ public class FileCollector {
         return new SftpClient(fileData.fileServerData(), new SftpClientSettings(appConfig.getSftpConfiguration()));
     }
 
-    protected FtpesClient createFtpesClient(FileData fileData) throws DatafileTaskException {
+    protected FtpesClient createFtpesClient(FileData fileData) {
         CertificateConfig config = appConfig.getCertificateConfiguration();
         Path trustedCa = config.trustedCa.isEmpty() ? null : Paths.get(config.trustedCa);
 

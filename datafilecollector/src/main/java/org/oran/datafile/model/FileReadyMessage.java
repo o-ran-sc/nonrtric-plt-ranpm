@@ -33,24 +33,43 @@ public class FileReadyMessage {
     @Builder
     public static class MessageMetaData {
 
+        @SuppressWarnings("java:S1104")
         public String eventId;
 
+        @SuppressWarnings("java:S1104")
         public String priority;
+
+        @SuppressWarnings("java:S1104")
         public String version;
+
+        @SuppressWarnings("java:S1104")
         public String reportingEntityName;
+
+        @SuppressWarnings("java:S1104")
         public int sequence;
+
+        @SuppressWarnings("java:S1104")
         public String domain;
 
+        @SuppressWarnings("java:S1104")
         public String eventName;
+
+        @SuppressWarnings("java:S1104")
         public String vesEventListenerVersion;
 
+        @SuppressWarnings("java:S1104")
         public String sourceName;
 
+        @SuppressWarnings("java:S1104")
         public long lastEpochMicrosec;
+
+        @SuppressWarnings("java:S1104")
         public long startEpochMicrosec;
 
+        @SuppressWarnings("java:S1104")
         public String timeZoneOffset;
 
+        @SuppressWarnings("java:S1104")
         public String changeIdentifier;
 
         /**
@@ -59,6 +78,7 @@ public class FileReadyMessage {
          * example: Noti_RnNode-Ericsson_FileReady
          *
          */
+        @SuppressWarnings("java:S6035")
         public String productName() {
             String[] eventArray = eventName.split("_|-");
             if (eventArray.length >= 2) {
@@ -68,6 +88,7 @@ public class FileReadyMessage {
             }
         }
 
+        @SuppressWarnings("java:S6035")
         public String vendorName() {
             String[] eventArray = eventName.split("_|-");
             if (eventArray.length >= 3) {
@@ -80,32 +101,53 @@ public class FileReadyMessage {
 
     @Builder
     public static class FileInfo {
+        @SuppressWarnings("java:S1104")
         public String fileFormatType;
+
+        @SuppressWarnings("java:S1104")
         public String location;
+
+        @SuppressWarnings("java:S1104")
         public String fileFormatVersion;
+
+        @SuppressWarnings("java:S1104")
         public String compression;
     }
 
     @Builder
     public static class ArrayOfNamedHashMap {
+        @SuppressWarnings("java:S1104")
         public String name;
+
+        @SuppressWarnings("java:S1104")
         public FileInfo hashMap;
     }
 
     @Builder
     public static class NotificationFields {
+        @SuppressWarnings("java:S1104")
         public String notificationFieldsVersion;
+
+        @SuppressWarnings("java:S1104")
         public String changeType;
+
+        @SuppressWarnings("java:S1104")
         public String changeIdentifier;
+
+        @SuppressWarnings("java:S1104")
         public List<ArrayOfNamedHashMap> arrayOfNamedHashMap;
     }
 
     @Builder
     public static class Event {
+        @SuppressWarnings("java:S1104")
         public MessageMetaData commonEventHeader;
+
+        @SuppressWarnings("java:S1104")
         public NotificationFields notificationFields;
     }
 
+    @SuppressWarnings("java:S1104")
     public Event event;
 
 }

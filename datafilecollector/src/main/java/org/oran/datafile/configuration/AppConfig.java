@@ -21,6 +21,7 @@ import java.util.Map;
 
 import lombok.Getter;
 
+import lombok.Setter;
 import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.common.config.SaslConfigs;
 import org.apache.kafka.common.config.SslConfigs;
@@ -55,6 +56,7 @@ public class AppConfig {
 
     @Value("${app.collected-files-path}")
     @Getter
+    @Setter
     private String collectedFilesPath;
 
     @Value("${app.sftp.strict-host-key-checking:false}")
@@ -77,22 +79,27 @@ public class AppConfig {
     private String clientTrustStorePassword;
 
     @Getter
+    @Setter
     @Value("${app.s3.endpointOverride:}")
     private String s3EndpointOverride;
 
     @Getter
+    @Setter
     @Value("${app.s3.accessKeyId:}")
     private String s3AccessKeyId;
 
     @Getter
+    @Setter
     @Value("${app.s3.secretAccessKey:}")
     private String s3SecretAccessKey;
 
     @Getter
+    @Setter
     @Value("${app.s3.bucket:}")
     private String s3Bucket;
 
     @Value("${app.s3.locksBucket:}")
+    @Setter
     private String s3LocksBucket;
 
     @Value("${app.number-of-worker-treads:200}")

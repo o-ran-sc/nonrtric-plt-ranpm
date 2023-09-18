@@ -138,7 +138,7 @@ public class FileStore implements DataStore {
         return Mono.just("OK");
     }
 
-    private Path path(String name) {
+    public Path path(String name) {
         return Path.of(appConfig.getCollectedFilesPath(), name);
     }
 

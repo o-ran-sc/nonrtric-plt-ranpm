@@ -239,11 +239,6 @@ class Integration {
     }
 
     @Test
-    void clear() {
-
-    }
-
-    @Test
     void testKafka() throws InterruptedException {
         waitForKafkaListener();
 
@@ -278,7 +273,7 @@ class Integration {
 
         while (kafkaReceiver.count < NO_OF_OBJECTS) {
             logger.info("sleeping {}", kafkaReceiver.count);
-            Thread.sleep(1000 * 1);
+            Thread.sleep(1000); //NOSONAR
         }
 
         String rec = kafkaReceiver.lastValue();

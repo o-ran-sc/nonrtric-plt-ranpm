@@ -73,6 +73,12 @@ public class S3ObjectStore implements DataStore {
         getS3AsynchClient(applicationConfig);
     }
 
+    @SuppressWarnings({"java:S3010", "java:S2209"})
+    public S3ObjectStore(AppConfig applicationConfig, S3AsyncClient s3AsynchClient, boolean testOnly) {
+        this.applicationConfig = applicationConfig;
+        this.s3AsynchClient = s3AsynchClient;
+    }
+
     private static synchronized S3AsyncClient getS3AsynchClient(AppConfig applicationConfig) {
         if (applicationConfig.isS3Enabled() && s3AsynchClient == null) {
             s3AsynchClient = getS3AsyncClientBuilder(applicationConfig).build();
@@ -209,13 +215,9 @@ public class S3ObjectStore implements DataStore {
             oids.add(oid);
         }
 
-        Delete delete = Delete.builder() //
-            .objects(oids) //
-            .build();
-
         DeleteObjectsRequest request = DeleteObjectsRequest.builder() //
             .bucket(bucket(bucket)) //
-            .delete(delete) //
+            .delete(Delete.builder().objects(oids).build()) //NOSONAR
             .build();
 
         CompletableFuture<DeleteObjectsResponse> future = s3AsynchClient.deleteObjects(request);
