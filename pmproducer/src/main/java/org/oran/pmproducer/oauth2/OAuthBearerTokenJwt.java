@@ -1,38 +1,33 @@
-//  ============LICENSE_START===============================================
-//  Copyright (C) 2023 Nordix Foundation. All rights reserved.
-//  ========================================================================
-//  Licensed under the Apache License, Version 2.0 (the "License");
-//  you may not use this file except in compliance with the License.
-//  You may obtain a copy of the License at
-//
-//       http://www.apache.org/licenses/LICENSE-2.0
-//
-//  Unless required by applicable law or agreed to in writing, software
-//  distributed under the License is distributed on an "AS IS" BASIS,
-//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//  See the License for the specific language governing permissions and
-//  limitations under the License.
-//  ============LICENSE_END=================================================
-//
+/*-
+ * ========================LICENSE_START=================================
+ * O-RAN-SC
+ * %%
+ * Copyright (C) 2023 Nordix Foundation
+ * %%
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ========================LICENSE_END===================================
+ */
 
 package org.oran.pmproducer.oauth2;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 
 import java.util.Base64;
 import java.util.HashSet;
 import java.util.Set;
-
 import lombok.ToString;
-
 import org.apache.kafka.common.security.oauthbearer.OAuthBearerToken;
 import org.oran.pmproducer.exceptions.ServiceException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class OAuthBearerTokenJwt implements OAuthBearerToken {
-    private static final Logger logger = LoggerFactory.getLogger(OAuthBearerTokenJwt.class);
     private static final com.google.gson.Gson gson = new com.google.gson.GsonBuilder().disableHtmlEscaping().create();
 
     private final String jwtTokenRaw;
@@ -47,7 +42,7 @@ public class OAuthBearerTokenJwt implements OAuthBearerToken {
     }
 
     public static OAuthBearerTokenJwt create(String tokenRaw)
-            throws ServiceException, JsonMappingException, JsonProcessingException {
+            throws ServiceException {
         String[] chunks = tokenRaw.split("\\.");
         Base64.Decoder decoder = Base64.getUrlDecoder();
         if (chunks.length < 2) {

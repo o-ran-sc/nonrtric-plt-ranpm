@@ -145,8 +145,7 @@ public class AsyncRestClient {
     }
 
     private void onError(Throwable t) {
-        if (t instanceof WebClientResponseException) {
-            WebClientResponseException e = (WebClientResponseException) t;
+        if (t instanceof WebClientResponseException e) {
             logger.debug("Response error: {}", e.getResponseBodyAsString());
         }
     }

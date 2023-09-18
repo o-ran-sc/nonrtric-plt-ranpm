@@ -108,11 +108,8 @@ public class ErrorResponse {
     public static ResponseEntity<Object> create(Throwable e, HttpStatus code) {
         if (e instanceof RuntimeException) {
             code = HttpStatus.INTERNAL_SERVER_ERROR;
-        } else if (e instanceof ServiceException) {
-            ServiceException se = (ServiceException) e;
-            if (se.getHttpStatus() != null) {
-                code = se.getHttpStatus();
-            }
+        } else if (e instanceof ServiceException se && se.getHttpStatus() != null) {
+            code = se.getHttpStatus();
         }
         return create(e.toString(), code);
     }

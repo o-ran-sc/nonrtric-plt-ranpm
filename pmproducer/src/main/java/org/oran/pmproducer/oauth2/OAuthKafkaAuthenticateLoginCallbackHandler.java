@@ -1,19 +1,21 @@
-//  ============LICENSE_START===============================================
-//  Copyright (C) 2023 Nordix Foundation. All rights reserved.
-//  ========================================================================
-//  Licensed under the Apache License, Version 2.0 (the "License");
-//  you may not use this file except in compliance with the License.
-//  You may obtain a copy of the License at
-//
-//       http://www.apache.org/licenses/LICENSE-2.0
-//
-//  Unless required by applicable law or agreed to in writing, software
-//  distributed under the License is distributed on an "AS IS" BASIS,
-//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//  See the License for the specific language governing permissions and
-//  limitations under the License.
-//  ============LICENSE_END=================================================
-//
+/*-
+ * ========================LICENSE_START=================================
+ * O-RAN-SC
+ * Copyright (C) 2023 Nordix Foundation
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ========================LICENSE_END===================================
+ */
 
 package org.oran.pmproducer.oauth2;
 
@@ -51,7 +53,10 @@ public class OAuthKafkaAuthenticateLoginCallbackHandler implements AuthenticateC
     }
 
     @Override
-    public void close() {}
+    public void close() {
+        /*This method intentionally left empty.
+        Close functionality will be implemented later.*/
+    }
 
     @Override
     public void handle(Callback[] callbacks) throws IOException, UnsupportedCallbackException {
@@ -59,11 +64,11 @@ public class OAuthKafkaAuthenticateLoginCallbackHandler implements AuthenticateC
         if (!this.isConfigured)
             throw new IllegalStateException("Callback handler not configured");
         for (Callback callback : callbacks) {
-            logger.debug("callback " + callback.toString());
-            if (callback instanceof OAuthBearerTokenCallback) {
-                handleCallback((OAuthBearerTokenCallback) callback);
-            } else if (callback instanceof SaslExtensionsCallback) {
-                handleCallback((SaslExtensionsCallback) callback);
+            logger.debug("callback {}", callback);
+            if (callback instanceof OAuthBearerTokenCallback oAuthBearerTokenCallback) {
+                handleCallback(oAuthBearerTokenCallback);
+            } else if (callback instanceof SaslExtensionsCallback saslExtensionsCallback) {
+                handleCallback(saslExtensionsCallback);
             } else {
                 logger.error("Unsupported callback: {}", callback);
                 throw new UnsupportedCallbackException(callback);
@@ -88,6 +93,10 @@ public class OAuthKafkaAuthenticateLoginCallbackHandler implements AuthenticateC
         } catch (Exception e) {
             logger.error("Could not handle login callback: {}", e.getMessage());
         }
+    }
+
+    public boolean isConfigured() {
+        return isConfigured;
     }
 
 }

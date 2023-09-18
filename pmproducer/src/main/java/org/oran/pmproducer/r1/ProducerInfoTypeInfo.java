@@ -28,11 +28,13 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Schema(name = "producer_info_type_info", description = "Information for an Information Type")
 public class ProducerInfoTypeInfo {
 
+    @SuppressWarnings("java:S1874")
     @Schema(name = "info_job_data_schema", description = "Json schema for the job data", required = true)
     @SerializedName("info_job_data_schema")
     @JsonProperty(value = "info_job_data_schema", required = true)
     public Object jobDataSchema;
 
+    @SuppressWarnings("java:S1874")
     @Schema(name = "info_type_information", description = "Type specific information for the information type",
             required = true)
     @SerializedName("info_type_information")
