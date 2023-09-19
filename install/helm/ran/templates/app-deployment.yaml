@@ -60,7 +60,7 @@ spec:
           runAsUser: 0
       containers:
       - name: pm-https-server
-        image: {{ .Values.global.extimagerepo }}pm-https-server:latest
+        image: {{ .Values.global.extimagerepo }}/pm-https-server:latest
         {{- if .Values.global.extimagerepo }}
         imagePullPolicy: Always
         {{- else }}

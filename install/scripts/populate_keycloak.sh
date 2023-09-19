@@ -21,9 +21,6 @@
 
 echo "Cluster ip: $KUBERNETESHOST"
 
-KC_URL=http://keycloak.nonrtric:8080
-echo "Keycloak url: "$KC_URL
-
 KC_PROXY_PORT=$(kubectl get svc -n nonrtric keycloak-proxy --output jsonpath='{.spec.ports[?(@.name=="http")].nodePort}')
 echo "Nodeport to keycloak proxy: "$KC_PROXY_PORT
 
@@ -31,7 +28,15 @@ __get_admin_token() {
     echo "Get admin token"
     ADMIN_TOKEN=""
     while [ "${#ADMIN_TOKEN}" -lt 20 ]; do
-        ADMIN_TOKEN=$(curl --proxy $KUBERNETESHOST:$KC_PROXY_PORT -s -X POST --max-time 2     "$KC_URL/realms/master/protocol/openid-connect/token"     -H "Content-Type: application/x-www-form-urlencoded"     -d "username=admin" -d "password=admin" -d 'grant_type=password' -d "client_id=admin-cli"  |  jq -r '.access_token')
+        ADMIN_TOKEN=$(curl -s -X POST "$KUBERNETESHOST:$KC_PROXY_PORT/realms/master/protocol/openid-connect/token" \
+            --max-time 2 \
+            -H "Content-Type: application/x-www-form-urlencoded" \
+            -d "username=admin" \
+            -d "password=admin" \
+            -d 'grant_type=password' \
+            -d "client_id=admin-cli" \
+            | jq -r '.access_token')
+
         if [ "${#ADMIN_TOKEN}" -lt 20 ]; then
             echo "Could not get admin token, retrying..."
             echo "Retrieved token: $ADMIN_TOKEN"
@@ -67,25 +72,26 @@ decode_jwt() {
 list_realms() {
     echo "Listing all realms"
     __check_admin_token
-    curl --proxy $KUBERNETESHOST:$KC_PROXY_PORT -s \
-        -X GET \
+
+    curl -s -X GET "$KUBERNETESHOST:$KC_PROXY_PORT/admin/realms" \
         -H "Authorization: Bearer ${ADMIN_TOKEN}" \
-        "$KC_URL/admin/realms" | jq -r '.[].id' | indent2
+        | jq -r '.[].id' | indent2
 }
 delete_realms() {
     echo "$@"
     for realm in "$@"; do
         echo "Attempt to delete realm: $realm"
         __check_admin_token
-        curl --proxy $KUBERNETESHOST:$KC_PROXY_PORT -s \
-        -X DELETE \
-        -H "Authorization: Bearer ${ADMIN_TOKEN}" \
-        "$KC_URL/admin/realms/$realm" | indent1
+
+        curl -s -X DELETE "$KUBERNETESHOST:$KC_PROXY_PORT/admin/realms/$realm" \
+            -H "Authorization: Bearer ${ADMIN_TOKEN}" \
+        | indent1
+
         if [ $? -ne 0 ]; then
-            echo "Command failed"
+            echo "Command failed, delete_realms"
             exit 1
         fi
-        echo " OK"
+        echo " OK, delete_realms"
     done
 }
 
@@ -102,17 +108,17 @@ cat > .jsonfile1 <<- "EOF"
 EOF
         export __realm_name=$1
         envsubst < .jsonfile1 > .jsonfile2
-        curl --proxy $KUBERNETESHOST:$KC_PROXY_PORT -s \
-        -X POST \
-        -H "Authorization: Bearer ${ADMIN_TOKEN}" \
-        -H "Content-Type: application/json" \
-        -d @".jsonfile2" \
-        "$KC_URL/admin/realms" | indent2
+        curl -s -X POST "$KUBERNETESHOST:$KC_PROXY_PORT/admin/realms" \
+            -H "Authorization: Bearer ${ADMIN_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -d @".jsonfile2" \
+        | indent2
+
         if [ $? -ne 0 ]; then
-            echo "Command failed"
+            echo "Command failed, create_realms"
             exit 1
         fi
-        echo "  OK"
+        echo "  OK, create_realms"
         shift
     done
 }
@@ -136,26 +142,26 @@ EOF
         __check_admin_token
         export __client_name=$1
         envsubst < .jsonfile1 > .jsonfile2
-        curl --proxy $KUBERNETESHOST:$KC_PROXY_PORT -s \
-        -X POST \
-        -H "Authorization: Bearer ${ADMIN_TOKEN}" \
-        -H "Content-Type: application/json" \
-        -d @".jsonfile2" \
-        "$KC_URL/admin/realms/$__realm/clients" | indent1
+
+        curl -s -X POST "$KUBERNETESHOST:$KC_PROXY_PORT/admin/realms/$__realm/clients" \
+            -H "Authorization: Bearer ${ADMIN_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -d @".jsonfile2" \
+        | indent1
+
         if [ $? -ne 0 ]; then
-            echo "Command failed"
+            echo "Command failed, create_clients"
             exit 1
         fi
-        echo " OK"
+        echo " OK, create_clients"
         shift
     done
 }
 
 __get_client_id() {
-    __client_data=$(curl --proxy $KUBERNETESHOST:$KC_PROXY_PORT -s \
-        -X GET \
-        -H "Authorization: Bearer ${ADMIN_TOKEN}" \
-        "$KC_URL/admin/realms/$1/clients?clientId=$2")
+    __client_data=$(curl -s -X GET "$KUBERNETESHOST:$KC_PROXY_PORT/admin/realms/$1/clients?clientId=$2" \
+        -H "Authorization: Bearer ${ADMIN_TOKEN}" )
+
     if [ $? -ne 0 ]; then
         return 1
     fi
@@ -172,31 +178,32 @@ generate_client_secrets() {
         __check_admin_token
         __client_id=$(__get_client_id $__realm $1)
         if [ $? -ne 0 ]; then
-            echo "Command failed"
+            echo "Command failed, generate_client_secrets, __get_client_id"
             exit 1
         fi
         echo " Client id for client $1 in realm $__realm: "$__client_id | indent1
         echo "  Creating secret"
-        __client_secret=$(curl --proxy $KUBERNETESHOST:$KC_PROXY_PORT -s \
-                -X POST \
-                -H "Authorization: Bearer ${ADMIN_TOKEN}" \
-                "$KC_URL/admin/realms/$__realm/clients/$__client_id/client-secret")
+
+        __client_secret=$(curl -s -X POST "$KUBERNETESHOST:$KC_PROXY_PORT/admin/realms/$__realm/clients/$__client_id/client-secret" \
+                -H "Authorization: Bearer ${ADMIN_TOKEN}" )
+
         if [ $? -ne 0 ]; then
-            echo "Command failed"
+            echo "Command failed, generate_client_secrets, client_secret POST"
             exit 1
         fi
-        __client_secret=$(curl --proxy $KUBERNETESHOST:$KC_PROXY_PORT -s \
-                -X GET \
-                -H "Authorization: Bearer ${ADMIN_TOKEN}" \
-                "$KC_URL/admin/realms/$__realm/clients/$__client_id/client-secret")
+
+        __client_secret=$(curl -s -X GET "$KUBERNETESHOST:$KC_PROXY_PORT/admin/realms/$__realm/clients/$__client_id/client-secret" \
+                -H "Authorization: Bearer ${ADMIN_TOKEN}" )
+
         if [ $? -ne 0 ]; then
-            echo "Command failed"
+            echo "Command failed, generate_client_secrets, client_secret GET"
             exit 1
         fi
+
         __client_secret=$(echo $__client_secret | jq -r .value)
         echo "  Client secret for client $1 in realm $__realm: "$__client_secret | indent1
         echo $__client_secret > ".sec_$__realm""_$1"
-        echo "   OK"
+        echo "   OK, generate_client_secrets"
         shift
     done
 }
@@ -206,7 +213,7 @@ create_client_roles() {
     __check_admin_token
     __client_id=$(__get_client_id $1 $2)
     if [ $? -ne 0 ]; then
-        echo "Command failed"
+        echo "Command failed, create_client_roles, __get_client_id"
         exit 1
     fi
     __realm=$1
@@ -220,14 +227,15 @@ cat > .jsonfile1 <<- "EOF"
 EOF
         export __role=$1
         envsubst < .jsonfile1 > .jsonfile2
-        curl --proxy $KUBERNETESHOST:$KC_PROXY_PORT -s \
-        -X POST \
-        -H "Authorization: Bearer ${ADMIN_TOKEN}" \
-        -H "Content-Type: application/json" \
-        -d @".jsonfile2" \
-        "$KC_URL/admin/realms/$__realm/clients/$__client_id/roles" | indent1
+
+        curl -s -X POST "$KUBERNETESHOST:$KC_PROXY_PORT/admin/realms/$__realm/clients/$__client_id/roles" \
+            -H "Authorization: Bearer ${ADMIN_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -d @".jsonfile2" \
+        | indent1
+
         if [ $? -ne 0 ]; then
-            echo "Command failed"
+            echo "Command failed, create_client_roles"
             exit 1
         fi
         shift
@@ -236,32 +244,28 @@ EOF
 
 __get_service_account_id() {
     # <realm-name> <client-id>
-    __service_account_data=$(curl --proxy $KUBERNETESHOST:$KC_PROXY_PORT -s \
-        -X GET \
-        -H "Authorization: Bearer ${ADMIN_TOKEN}" \
-        "$KC_URL/admin/realms/$1/clients/$2/service-account-user")
+
+    __service_account_data=$(curl -s -X GET "$KUBERNETESHOST:$KC_PROXY_PORT/admin/realms/$1/clients/$2/service-account-user" \
+        -H "Authorization: Bearer ${ADMIN_TOKEN}" )
+
     if [ $? -ne 0 ]; then
         return 1
     fi
+
     __service_account_id=$(echo $__service_account_data |  jq -r '.id')
     echo $__service_account_id
     return 0
 }
 
-#     curl --proxy $KUBERNETESHOST:$KC_PROXY_PORT -s \
-#     -X GET \
-#     -H "Authorization: Bearer ${ADMIN_TOKEN}" \
-#     "$KC_URL/admin/realms/$__realm/users/$__service_account_id/role-mappings/clients/$__client_id/available"
 __get_client_available_role_id() {
     # <realm-name> <service-account-id> <client-id> <client-role-name>
-    __client_role_data=$(curl --proxy $KUBERNETESHOST:$KC_PROXY_PORT -s \
-        -X GET \
-        -H "Authorization: Bearer ${ADMIN_TOKEN}" \
-        "$KC_URL/admin/realms/$1/users/$2/role-mappings/clients/$3/available")
+
+    __client_role_data=$(curl -s -X GET "$KUBERNETESHOST:$KC_PROXY_PORT/admin/realms/$1/users/$2/role-mappings/clients/$3/available" \
+        -H "Authorization: Bearer ${ADMIN_TOKEN}" )
+
     if [ $? -ne 0 ]; then
         return 1
     fi
-    #__client_role_id=$(echo $__client_role_data |  jq -r '.id')
     __client_role_id=$(echo $__client_role_data | jq  -r '.[] | select(.name=="'$4'") | .id ')
     echo $__client_role_id
     return 0
@@ -269,14 +273,13 @@ __get_client_available_role_id() {
 
 __get_client_mapped_role_id() {
     # <realm-name> <service-account-id> <client-id> <client-role-name>
-    __client_role_data=$(curl --proxy $KUBERNETESHOST:$KC_PROXY_PORT -s \
-        -X GET \
-        -H "Authorization: Bearer ${ADMIN_TOKEN}" \
-        "$KC_URL/admin/realms/$1/users/$2/role-mappings/clients/$3")
+
+    __client_role_data=$(curl -s -X GET "$KUBERNETESHOST:$KC_PROXY_PORT/admin/realms/$1/users/$2/role-mappings/clients/$3" \
+        -H "Authorization: Bearer ${ADMIN_TOKEN}" )
+
     if [ $? -ne 0 ]; then
         return 1
     fi
-    #__client_role_id=$(echo $__client_role_data |  jq -r '.id')
     __client_role_id=$(echo $__client_role_data | jq  -r '.[] | select(.name=="'$4'") | .id ')
     echo $__client_role_id
     return 0
@@ -290,26 +293,28 @@ add_client_roles_mapping()  {
     __client=$2
     __client_id=$(__get_client_id $__realm $__client)
     if [ $? -ne 0 ]; then
-        echo "Command failed"
+        echo "Command failed, add_client_roles_mapping, __get_client_id"
         exit 1
     fi
     echo " Client id for client $__client in realm $__realm: "$__client_id | indent1
     __service_account_id=$(__get_service_account_id $__realm $__client_id)
     if [ $? -ne 0 ]; then
-        echo "Command failed"
+        echo "Command failed, add_client_roles_mapping, __get_service_account_id"
         exit 1
     fi
     echo " Service account id for client $__client in realm $__realm: "$__service_account_id | indent1
     shift; shift
+
     __cntr=0
     __all_roles=$@
+
     while [ $# -gt 0 ]; do
         if [ $__cntr -eq 0 ]; then
             echo "[" > .jsonfile2
         fi
         __client_role_id=$(__get_client_available_role_id $__realm $__service_account_id $__client_id $1)
         if [ $? -ne 0 ]; then
-            echo "Command failed"
+            echo "Command failed, add_client_roles_mapping, __get_client_available_role_id"
             exit 1
         fi
         #echo "CLIENT ROLE ID $1 "$__client_role_id
@@ -322,20 +327,21 @@ add_client_roles_mapping()  {
         let __cntr=__cntr+1
         shift
     done
+
     echo "]" >> .jsonfile2
     echo "  Adding roles $__all_roles to client $__client in realm $__realm"
 
-    curl --proxy $KUBERNETESHOST:$KC_PROXY_PORT -s \
-    -X POST \
-    -H "Authorization: Bearer ${ADMIN_TOKEN}" \
-    -H "Content-Type: application/json" \
-    -d @".jsonfile2" \
-    "$KC_URL/admin/realms/$__realm/users/$__service_account_id/role-mappings/clients/$__client_id" | indent2
+    curl -s -X POST "$KUBERNETESHOST:$KC_PROXY_PORT/admin/realms/$__realm/users/$__service_account_id/role-mappings/clients/$__client_id" \
+        -H "Authorization: Bearer ${ADMIN_TOKEN}" \
+        -H "Content-Type: application/json" \
+        -d @".jsonfile2" \
+    | indent2
+
     if [ $? -ne 0 ]; then
-        echo "Command failed"
+        echo "Command failed, add_client_roles_mapping, adding roles"
         exit 1
     fi
-    echo "  OK"
+    echo "  OK, add_client_roles_mapping"
 }
 
 
@@ -348,13 +354,13 @@ remove_client_roles_mapping()  {
     __client=$2
     __client_id=$(__get_client_id $__realm $__client)
     if [ $? -ne 0 ]; then
-        echo "Command failed"
+        echo "Command failed, remove_client_roles_mapping, __get_client_id"
         exit 1
     fi
     echo " Client id for client $__client in realm $__realm: "$__client_id | indent1
     __service_account_id=$(__get_service_account_id $__realm $__client_id)
     if [ $? -ne 0 ]; then
-        echo "Command failed"
+        echo "Command failed, remove_client_roles_mapping, __get_service_account_id"
         exit 1
     fi
     echo " Service account id for client $__client in realm $__realm: "$__service_account_id | indent1
@@ -367,7 +373,7 @@ remove_client_roles_mapping()  {
         fi
         __client_role_id=$(__get_client_mapped_role_id $__realm $__service_account_id $__client_id $1)
         if [ $? -ne 0 ]; then
-            echo "Command failed"
+            echo "Command failed, remove_client_roles_mapping, __get_client_mapped_role_id"
             exit 1
         fi
         #echo "CLIENT ROLE ID $1 "$__client_role_id
@@ -383,17 +389,17 @@ remove_client_roles_mapping()  {
     echo "]" >> .jsonfile2
     echo "  Removing roles $__all_roles from client $__client in realm $__realm"
 
-    curl --proxy $KUBERNETESHOST:$KC_PROXY_PORT -s \
-    -X DELETE \
-    -H "Authorization: Bearer ${ADMIN_TOKEN}" \
-    -H "Content-Type: application/json" \
-    -d @".jsonfile2" \
-    "$KC_URL/admin/realms/$__realm/users/$__service_account_id/role-mappings/clients/$__client_id" | indent2
+    curl -s -X DELETE "$KUBERNETESHOST:$KC_PROXY_PORT/admin/realms/$__realm/users/$__service_account_id/role-mappings/clients/$__client_id" \
+        -H "Authorization: Bearer ${ADMIN_TOKEN}" \
+        -H "Content-Type: application/json" \
+        -d @".jsonfile2" \
+    | indent2
+
     if [ $? -ne 0 ]; then
-        echo "Command failed"
+        echo "Command failed, remove_client_roles_mapping, delete"
         exit 1
     fi
-    echo "  OK"
+    echo "  OK, remove client roles mapping"
 }
 
 add_client_hardcoded-claim-mapper() {
@@ -427,19 +433,20 @@ add_client_hardcoded-claim-mapper() {
 }
 EOF
     envsubst < .jsonfile1 > .jsonfile2
-    curl --proxy $KUBERNETESHOST:$KC_PROXY_PORT -s \
-    -X POST \
-    -H "Authorization: Bearer ${ADMIN_TOKEN}" \
-    -H "Content-Type: application/json" \
-    -d @".jsonfile2" \
-    "$KC_URL/admin/realms/nonrtric-realm/clients/"$__client_id"/protocol-mappers/models" | indent2
+
+    curl -s -X POST "$KUBERNETESHOST:$KC_PROXY_PORT/admin/realms/nonrtric-realm/clients/"$__client_id"/protocol-mappers/models" \
+        -H "Authorization: Bearer ${ADMIN_TOKEN}" \
+        -H "Content-Type: application/json" \
+        -d @".jsonfile2" \
+    | indent2
+
     if [ $? -ne 0 ]; then
-        echo "Command failed"
+        echo "Command failed, add_client_hardcoded-claim-mapper"
         exit 1
     fi
     set +x
     cat .jsonfile2
-    echo "  OK"
+    echo "  OK, add_client_hardcoded-claim-mapper"
 }
 
 # Get a client token
@@ -455,10 +462,9 @@ get_client_token() {
     fi
     #echo " Client id for client $__client in realm $__realm: "$__client_id | indent1
 
-    __client_secret=$(curl --proxy $KUBERNETESHOST:$KC_PROXY_PORT -s -f \
-            -X GET \
-            -H "Authorization: Bearer ${ADMIN_TOKEN}" \
-            "$KC_URL/admin/realms/$__realm/clients/$__client_id/client-secret")
+    __client_secret=$(curl -s -f -X GET "$KUBERNETESHOST:$KC_PROXY_PORT/admin/realms/$__realm/clients/$__client_id/client-secret" \
+        -H "Authorization: Bearer ${ADMIN_TOKEN}" )
+
     if [ $? -ne 0 ]; then
         echo " Fatal error when getting client secret, response: "$?
         exit 1
@@ -466,9 +472,10 @@ get_client_token() {
 
     __client_secret=$(echo $__client_secret | jq -r .value)
 
-	__TMP_TOKEN=$(curl --proxy $KUBERNETESHOST:$KC_PROXY_PORT -f -s -X POST $KC_URL/realms/$__realm/protocol/openid-connect/token   \
-                  -H Content-Type:application/x-www-form-urlencoded \
-                  -d client_id="$__client" -d client_secret="$__client_secret" -d grant_type=client_credentials)
+	__TMP_TOKEN=$(curl -s -f -X POST "$KUBERNETESHOST:$KC_PROXY_PORT/realms/$__realm/protocol/openid-connect/token" \
+        -H Content-Type:application/x-www-form-urlencoded \
+        -d client_id="$__client" -d client_secret="$__client_secret" -d grant_type=client_credentials)
+
 	if [ $? -ne 0 ]; then
 		echo " Fatal error when getting client token, response: "$?
 		exit 1
