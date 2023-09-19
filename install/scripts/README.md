@@ -24,7 +24,7 @@ The event will contain a url to each pm file. These urls points to a web server 
 - file-extension : The pm file extension - should match the actual pm file to be downloaded from the web-servers (simulated RAN nodes)
 - sftp|ftps|https -  Protocol for downloading pm files - only https is currently supported
 - num-servers - The number of web servers for pm file download. Should match the number of web servers actually started by the install script. This script generates pm file url to one of the web servers to spread the load. Note that this number can be different from the node-count parameter.
-- hist :  By default, each event only contains the reference to a single pm file. If the parameter is given then each event will contain the latest pm file and 95 of the previous file to represent a full 24h set of pm files.
+- hist :  By default, each event only contains the reference to a single pm file. If the parameter is given then each event will contain the latest pm file and 95 of the previous files to represent a full 24h set of pm files.
 
 
 ## Script - push-genfiles-to-ves-collector.sh

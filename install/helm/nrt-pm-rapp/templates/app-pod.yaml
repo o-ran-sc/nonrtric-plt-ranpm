@@ -25,7 +25,7 @@ metadata:
 spec:
   containers:
   - name: pm-rapp
-    image: {{ .Values.global.extimagerepo }}pm-rapp:latest
+    image: {{ .Values.global.extimagerepo }}/pm-rapp:latest
     {{- if .Values.global.extimagerepo }}
     imagePullPolicy: Always
     {{- else }}

@@ -21,7 +21,7 @@ The ranpm setup works on linux/MacOS or on windows via WSL using a local or remo
 - kubernetes cluster
 - local docker for building images
 
-It is recommended to run the ranpm on a kubernetes cluster instead of local docker-desktop etc as the setup requires a fair amount of computer resouces.
+It is recommended to run the ranpm on a kubernetes cluster instead of local docker-desktop etc as the setup requires a fair amount of computer resources.
 
 # Requirement on kubernetes
 
@@ -42,7 +42,7 @@ Nodeports exposed by the kubernetes instance must be accessible by the local mac
 
 ## Before installation
 The following images need to be built manually. If remote or multi node cluster is used, then an image repo needs to be available to push the built images to.
-If external repo is used, use the same repo for all built images and configure the reponame in `helm/global-values.yaml` (the parameter value of extimagerepo shall have a trailing `/`)
+If external repo is used, use the same repo for all built images and configure the reponame in `helm/global-values.yaml`
 
 Build the following images (build instruction in each dir)
 - ranpm/https-server
