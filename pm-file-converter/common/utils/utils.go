@@ -21,14 +21,17 @@ package utils
 
 import (
 	"bytes"
-	log "github.com/sirupsen/logrus"
 	"main/components/kafkacollector"
 	"net/http"
+
+	log "github.com/sirupsen/logrus"
 )
 
 var httpclient = &http.Client{}
 
 // Send a http request with json (json may be nil)
+//
+//lint:ignore S100
 func Send_http_request(json []byte, method string, url string, retry bool, useAuth bool) bool {
 
 	// set the HTTP method, url, and request body

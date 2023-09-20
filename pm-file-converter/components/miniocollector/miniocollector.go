@@ -24,10 +24,6 @@ import (
 	"compress/gzip"
 	"context"
 	"fmt"
-	jsoniter "github.com/json-iterator/go"
-	"github.com/minio/minio-go/v7"
-	"github.com/minio/minio-go/v7/pkg/credentials"
-	log "github.com/sirupsen/logrus"
 	"io"
 	"main/common/dataTypes"
 	"main/components/xmltransform"
@@ -35,8 +31,14 @@ import (
 	"os"
 	"strings"
 	"time"
+
+	jsoniter "github.com/json-iterator/go"
+	"github.com/minio/minio-go/v7"
+	"github.com/minio/minio-go/v7/pkg/credentials"
+	log "github.com/sirupsen/logrus"
 )
 
+// nolint
 func Xml_to_json_conv(evt_data *dataTypes.XmlFileEventHeader) string {
 	filestoreUser := os.Getenv("FILESTORE_USER")
 	filestorePwd := os.Getenv("FILESTORE_PWD")
@@ -76,6 +78,7 @@ func Xml_to_json_conv(evt_data *dataTypes.XmlFileEventHeader) string {
 	return newObjectName
 }
 
+// nolint
 func upload_object(mc *minio.Client, b []byte, objectName string, fsbucket string) {
 	contentType := "application/json"
 	if strings.HasSuffix(objectName, ".gz") {
@@ -109,6 +112,7 @@ func upload_object(mc *minio.Client, b []byte, objectName string, fsbucket strin
 	}
 }
 
+// nolint
 func create_minio_bucket(mc *minio.Client, bucket string) error {
 	tctx := context.Background()
 	err := mc.MakeBucket(tctx, bucket, minio.MakeBucketOptions{})
@@ -127,6 +131,7 @@ func create_minio_bucket(mc *minio.Client, bucket string) error {
 	return nil
 }
 
+// nolint
 func check_minio_bucket(mc *minio.Client, bucket string) bool {
 	tctx := context.Background()
 	exists, err := mc.BucketExists(tctx, bucket)
@@ -139,6 +144,7 @@ func check_minio_bucket(mc *minio.Client, bucket string) bool {
 }
 
 // Write gzipped data to a Writer
+// nolint
 func gzipWrite(w io.Writer, data *[]byte) error {
 	gw, err1 := gzip.NewWriterLevel(w, gzip.BestSpeed)
 
