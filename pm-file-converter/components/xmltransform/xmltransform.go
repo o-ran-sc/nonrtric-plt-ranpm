@@ -35,6 +35,7 @@ import (
 	"time"
 )
 
+//lint:ignore S117
 func xml_to_json_conv(f_byteValue *[]byte, xfeh *dataTypes.XmlFileEventHeader) ([]byte, error) {
 	var f dataTypes.MeasCollecFile
 	start := time.Now()
