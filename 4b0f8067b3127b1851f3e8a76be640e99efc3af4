@@ -53,6 +53,24 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "051f0f8c_050a2029",
+        "filename": "influxlogger/src/test/java/org/oran/pmlog/Integration.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1002202
+      },
+      "writtenOn": "2023-09-22T09:23:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8957dc37_40f72e8a",
+      "revId": "4b0f8067b3127b1851f3e8a76be640e99efc3af4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1907e58a_6ad98b46",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "no further changes are required",
       "parentUuid": "1907e58a_6ad98b46",
+      "revId": "4b0f8067b3127b1851f3e8a76be640e99efc3af4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73dd95b0_013597cc",
+        "filename": "influxlogger/src/test/java/org/oran/pmlog/Integration.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1002202
+      },
+      "writtenOn": "2023-09-22T09:23:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c878e015_734a0d94",
       "revId": "4b0f8067b3127b1851f3e8a76be640e99efc3af4",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
