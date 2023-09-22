@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8957dc37_40f72e8a",
+        "filename": "influxlogger/src/test/java/org/oran/pmlog/Integration.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1002202
+      },
+      "writtenOn": "2023-09-22T09:23:20Z",
+      "side": 1,
+      "message": "no further changes are required",
+      "parentUuid": "9f6fb87b_190e1a79",
+      "revId": "4b0f8067b3127b1851f3e8a76be640e99efc3af4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1907e58a_6ad98b46",
         "filename": "influxlogger/src/test/java/org/oran/pmlog/Integration.java",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2023-09-18T10:57:27Z",
       "side": 1,
       "message": "Do we need to test if a final int has changed?",
+      "revId": "4b0f8067b3127b1851f3e8a76be640e99efc3af4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c878e015_734a0d94",
+        "filename": "influxlogger/src/test/java/org/oran/pmlog/Integration.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1002202
+      },
+      "writtenOn": "2023-09-22T09:23:20Z",
+      "side": 1,
+      "message": "no further changes are required",
+      "parentUuid": "1907e58a_6ad98b46",
       "revId": "4b0f8067b3127b1851f3e8a76be640e99efc3af4",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
