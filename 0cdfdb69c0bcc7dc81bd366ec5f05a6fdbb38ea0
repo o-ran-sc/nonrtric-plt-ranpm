@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fdd1ce5_ab634850",
+        "filename": "datafilecollector/src/test/java/org/oran/datafile/controllers/StatusControllerTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-09-25T15:06:45Z",
+      "side": 0,
+      "message": "Please put this back in. \nWe can\u0027t just remove some else\u0027s  copyright statment",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 50
+      },
+      "revId": "0cdfdb69c0bcc7dc81bd366ec5f05a6fdbb38ea0",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
