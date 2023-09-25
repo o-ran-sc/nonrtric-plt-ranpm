@@ -73,6 +73,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "059ff598_6c7eb35f",
+        "filename": "influxlogger/src/test/java/org/oran/pmlog/Integration.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-09-25T12:41:32Z",
+      "side": 1,
+      "message": "As denis mentions, this check doesn\u0027t make sense. NO_OF_OBJECTS is final.\nSo test is always 96\u003d\u003d96   ... which will never fail.",
+      "range": {
+        "startLine": 218,
+        "startChar": 7,
+        "endLine": 218,
+        "endChar": 40
+      },
+      "revId": "4b0f8067b3127b1851f3e8a76be640e99efc3af4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bc089be_93db94cc",
+        "filename": "influxlogger/src/test/java/org/oran/pmlog/Integration.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-09-25T12:41:32Z",
+      "side": 1,
+      "message": "1000 sec sleep?\nIs there a better way than this?",
+      "range": {
+        "startLine": 231,
+        "startChar": 8,
+        "endLine": 231,
+        "endChar": 34
+      },
+      "revId": "4b0f8067b3127b1851f3e8a76be640e99efc3af4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1907e58a_6ad98b46",
         "filename": "influxlogger/src/test/java/org/oran/pmlog/Integration.java",
         "patchSetId": 1
