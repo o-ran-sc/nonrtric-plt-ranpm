@@ -22,6 +22,30 @@
       },
       "revId": "4b0f8067b3127b1851f3e8a76be640e99efc3af4",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29c3a858_3a4829b2",
+        "filename": "pmproducer/src/test/java/org/oran/pmproducer/IntegrationWithKafka.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1002202
+      },
+      "writtenOn": "2023-09-25T15:39:35Z",
+      "side": 0,
+      "message": "In filterData, we are adding only one element in MeasTypes array which is pmCounterNumber0 so this assert will always fail.",
+      "parentUuid": "38ea20e5_12a018e0",
+      "range": {
+        "startLine": 463,
+        "startChar": 5,
+        "endLine": 463,
+        "endChar": 65
+      },
+      "revId": "4b0f8067b3127b1851f3e8a76be640e99efc3af4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }
