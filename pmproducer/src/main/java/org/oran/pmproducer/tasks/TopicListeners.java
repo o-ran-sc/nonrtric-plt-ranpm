@@ -43,6 +43,7 @@ import org.springframework.stereotype.Component;
 public class TopicListeners {
     private static final Logger logger = LoggerFactory.getLogger(TopicListeners.class);
 
+    @SuppressWarnings("java:S1700")
     @Getter
     private final Map<String, TopicListener> topicListeners = new HashMap<>(); // Key is typeId
 

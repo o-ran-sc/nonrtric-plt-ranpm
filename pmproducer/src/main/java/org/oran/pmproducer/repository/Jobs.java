@@ -119,6 +119,7 @@ public class Jobs {
     private final List<Observer> observers = new ArrayList<>();
     private final ApplicationConfig appConfig;
 
+    @SuppressWarnings("java:S1172")
     public Jobs(@Autowired ApplicationConfig applicationConfig, @Autowired SecurityContext securityContext,
             @Autowired ApplicationConfig appConfig) {
         this.appConfig = appConfig;
@@ -137,8 +138,7 @@ public class Jobs {
     }
 
     public void addJob(String id, InfoType type, String owner, String lastUpdated, Parameters parameters)
-            throws ServiceException {
-
+    {
         Job job = new Job(id, type, owner, lastUpdated, parameters, this.appConfig);
         this.put(job);
     }
