@@ -41,6 +41,30 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d083e6c_5cba7817",
+        "filename": "influxlogger/src/main/java/org/oran/pmlog/configuration/ConsumerJobInfo.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002202
+      },
+      "writtenOn": "2023-09-26T15:53:22Z",
+      "side": 1,
+      "message": "No, we can access them using the property name in Test class, but I have used the getter method for all properties to maintain consistency.",
+      "parentUuid": "6b0528d3_efd06cc6",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 11
+      },
+      "revId": "331535e4fea69fbdcf3c74cc1cdfe8b05c9080f4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1811cee0_1546ebe2",
@@ -64,6 +88,30 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee84439e_775f4a63",
+        "filename": "influxlogger/src/main/java/org/oran/pmlog/configuration/ConsumerJobInfo.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002202
+      },
+      "writtenOn": "2023-09-26T15:53:22Z",
+      "side": 1,
+      "message": "No, we can access them using the property name in Test class, but I have used the getter method for all properties to maintain consistency.",
+      "parentUuid": "1811cee0_1546ebe2",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 11
+      },
+      "revId": "331535e4fea69fbdcf3c74cc1cdfe8b05c9080f4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2eb06649_61ca41dc",
@@ -77,6 +125,30 @@
       "writtenOn": "2023-09-26T14:36:46Z",
       "side": 1,
       "message": "NB: Same as above",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 11
+      },
+      "revId": "331535e4fea69fbdcf3c74cc1cdfe8b05c9080f4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3f65ffb_a41c94db",
+        "filename": "influxlogger/src/main/java/org/oran/pmlog/configuration/ConsumerJobInfo.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002202
+      },
+      "writtenOn": "2023-09-26T15:53:22Z",
+      "side": 1,
+      "message": "No, we can access them using the property name in Test class, but I have used the getter method for all properties to maintain consistency.",
+      "parentUuid": "2eb06649_61ca41dc",
       "range": {
         "startLine": 107,
         "startChar": 4,
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eca03187_5a9d6e76",
+        "filename": "influxlogger/src/test/java/org/oran/pmlog/Integration.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1002202
+      },
+      "writtenOn": "2023-09-26T15:53:22Z",
+      "side": 1,
+      "message": "The class is not part of the Test Suite, and it expects InfluxDB to be up and running on your local environment. The entire code is designed solely for testing the code flow. You will see this error on console:\n\n[ERROR]  o.o.p.InfluxStore - Could not write points from O-DU-1122, reason: Failed to connect to localhost/[0:0:0:0:0:0:0:1]:8086",
+      "parentUuid": "2e2cbda3_c2d9915d",
+      "range": {
+        "startLine": 218,
+        "startChar": 26,
+        "endLine": 218,
+        "endChar": 33
+      },
+      "revId": "331535e4fea69fbdcf3c74cc1cdfe8b05c9080f4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f9d88e9f_ecc60738",
         "filename": "influxlogger/src/test/java/org/oran/pmlog/Integration.java",
         "patchSetId": 3
@@ -123,6 +219,30 @@
       "writtenOn": "2023-09-26T13:43:34Z",
       "side": 1,
       "message": "Is there anyway to check that the send was succesfull?\nOr just fail if an exception is raised?",
+      "range": {
+        "startLine": 229,
+        "startChar": 8,
+        "endLine": 229,
+        "endChar": 36
+      },
+      "revId": "331535e4fea69fbdcf3c74cc1cdfe8b05c9080f4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc290e20_1be58f9a",
+        "filename": "influxlogger/src/test/java/org/oran/pmlog/Integration.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1002202
+      },
+      "writtenOn": "2023-09-26T15:53:22Z",
+      "side": 1,
+      "message": "The class is not part of the Test Suite, and it expects Kafka to be up and running on your local environment. The entire code is designed solely for testing the code flow. You will see this error on console:\n\no.o.p.ConsumerRegstrationTask - Creation of subscription/info job failed Connection refused: no further information: localhost/127.0.0.1:8434",
+      "parentUuid": "f9d88e9f_ecc60738",
       "range": {
         "startLine": 229,
         "startChar": 8,
