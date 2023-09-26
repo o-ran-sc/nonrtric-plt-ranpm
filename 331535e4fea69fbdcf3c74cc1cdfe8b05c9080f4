@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e2cbda3_c2d9915d",
+        "filename": "influxlogger/src/test/java/org/oran/pmlog/Integration.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-09-26T13:43:34Z",
+      "side": 1,
+      "message": "Is there anyway to check that the store was successful?",
+      "range": {
+        "startLine": 218,
+        "startChar": 26,
+        "endLine": 218,
+        "endChar": 33
+      },
+      "revId": "331535e4fea69fbdcf3c74cc1cdfe8b05c9080f4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9d88e9f_ecc60738",
+        "filename": "influxlogger/src/test/java/org/oran/pmlog/Integration.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-09-26T13:43:34Z",
+      "side": 1,
+      "message": "Is there anyway to check that the send was succesfull?\nOr just fail if an exception is raised?",
+      "range": {
+        "startLine": 229,
+        "startChar": 8,
+        "endLine": 229,
+        "endChar": 36
+      },
+      "revId": "331535e4fea69fbdcf3c74cc1cdfe8b05c9080f4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
