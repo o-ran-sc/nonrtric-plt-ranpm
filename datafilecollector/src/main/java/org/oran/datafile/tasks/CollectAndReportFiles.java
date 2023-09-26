@@ -258,7 +258,8 @@ public class CollectAndReportFiles {
 
     private Mono<FilePublishInformation> handleFetchFileFailure(FileData fileData, Throwable t) {
         Path localFilePath = fileData.getLocalFilePath(this.appConfig);
-        logger.error("File fetching failed, path {}, reason: {}", fileData.remoteFilePath(), t.getMessage());
+        String remoteFilePath = fileData.remoteFilePath();
+        logger.error("File fetching failed, path {}, reason: {}", remoteFilePath, t.getMessage());
         deleteFile(localFilePath);
         if (FileData.Scheme.isFtpScheme(fileData.scheme())) {
             counters.incNoOfFailedFtp();

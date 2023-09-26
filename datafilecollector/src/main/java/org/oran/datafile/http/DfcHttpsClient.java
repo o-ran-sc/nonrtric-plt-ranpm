@@ -82,6 +82,7 @@ public class DfcHttpsClient implements FileCollectClient {
     }
 
     @Override
+    @SuppressWarnings("java:S2139")
     public void collectFile(String remoteFile, Path localFile) throws DatafileTaskException {
         logger.trace("Prepare to collectFile {}", localFile);
         HttpGet httpGet = new HttpGet(HttpUtils.prepareHttpsUri(fileServerData, remoteFile));
@@ -97,12 +98,13 @@ public class DfcHttpsClient implements FileCollectClient {
             HttpResponse httpResponse = makeCall(httpGet);
             processResponse(httpResponse, localFile);
         } catch (IOException e) {
-            logger.error("marker", e);
+            logger.error("Error downloading file from server. Details: {}", e.getMessage());
             throw new DatafileTaskException("Error downloading file from server. ", e);
         }
         logger.trace("HTTPS collectFile OK");
     }
 
+    @SuppressWarnings("java:S2139")
     HttpResponse makeCall(HttpGet httpGet) throws IOException, DatafileTaskException {
         try {
             HttpResponse httpResponse = executeHttpClient(httpGet);

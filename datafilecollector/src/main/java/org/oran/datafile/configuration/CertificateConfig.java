@@ -26,11 +26,15 @@ import lombok.Builder;
 @Builder
 public class CertificateConfig {
 
+    @SuppressWarnings("java:S1104")
     public String keyCert;
 
+    @SuppressWarnings("java:S1104")
     public String keyPasswordPath;
 
+    @SuppressWarnings("java:S1104")
     public String trustedCa;
 
+    @SuppressWarnings("java:S1104")
     public String trustedCaPasswordPath;
 }

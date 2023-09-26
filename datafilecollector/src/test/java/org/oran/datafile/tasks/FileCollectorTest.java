@@ -52,7 +52,7 @@ import org.oran.datafile.model.FileReadyMessage;
 import org.oran.datafile.oauth2.SecurityContext;
 import reactor.test.StepVerifier;
 
-public class FileCollectorTest {
+class FileCollectorTest {
 
     final static String DATAFILE_TMPDIR = "/tmp/onap_datafile/";
     private static final String PRODUCT_NAME = "NrRadio";
@@ -190,7 +190,7 @@ public class FileCollectorTest {
     }
 
     @Test
-    public void whenFtpesFile_returnCorrectResponse() throws Exception {
+    void whenFtpesFile_returnCorrectResponse() throws Exception {
         FileCollector collectorUndetTest = spy(new FileCollector(securityContext, appConfigMock, counters));
         doReturn(ftpesClientMock).when(collectorUndetTest).createFtpesClient(any());
 
@@ -214,7 +214,7 @@ public class FileCollectorTest {
     }
 
     @Test
-    public void whenSftpFile_returnCorrectResponse() throws Exception {
+    void whenSftpFile_returnCorrectResponse() throws Exception {
         FileCollector collectorUndetTest = spy(new FileCollector(securityContext, appConfigMock, counters));
         doReturn(sftpClientMock).when(collectorUndetTest).createSftpClient(any());
 
@@ -243,7 +243,7 @@ public class FileCollectorTest {
     }
 
     @Test
-    public void whenHttpFile_returnCorrectResponse() throws Exception {
+    void whenHttpFile_returnCorrectResponse() throws Exception {
         FileCollector collectorUndetTest = spy(new FileCollector(securityContext, appConfigMock, counters));
         doReturn(dfcHttpClientMock).when(collectorUndetTest).createHttpClient(any());
 
@@ -275,7 +275,7 @@ public class FileCollectorTest {
     }
 
     @Test
-    public void whenHttpsFile_returnCorrectResponse() throws Exception {
+    void whenHttpsFile_returnCorrectResponse() throws Exception {
         FileCollector collectorUndetTest = spy(new FileCollector(securityContext, appConfigMock, counters));
         doReturn(dfcHttpsClientMock).when(collectorUndetTest).createHttpsClient(any());
 
@@ -307,7 +307,7 @@ public class FileCollectorTest {
     }
 
     @Test
-    public void whenFtpesFileAlwaysFail_retryAndFail() throws Exception {
+    void whenFtpesFileAlwaysFail_retryAndFail() throws Exception {
         FileCollector collectorUndetTest = spy(new FileCollector(securityContext, appConfigMock, counters));
         doReturn(ftpesClientMock).when(collectorUndetTest).createFtpesClient(any());
 
@@ -327,7 +327,7 @@ public class FileCollectorTest {
     }
 
     @Test
-    public void whenFtpesFileAlwaysFail_failWithoutRetry() throws Exception {
+    void whenFtpesFileAlwaysFail_failWithoutRetry() throws Exception {
         FileCollector collectorUndetTest = spy(new FileCollector(securityContext, appConfigMock, counters));
         doReturn(ftpesClientMock).when(collectorUndetTest).createFtpesClient(any());
 
@@ -347,7 +347,7 @@ public class FileCollectorTest {
     }
 
     @Test
-    public void whenFtpesFileFailOnce_retryAndReturnCorrectResponse() throws Exception {
+    void whenFtpesFileFailOnce_retryAndReturnCorrectResponse() throws Exception {
         FileCollector collectorUndetTest = spy(new FileCollector(securityContext, appConfigMock, counters));
         doReturn(ftpesClientMock).when(collectorUndetTest).createFtpesClient(any());
         doThrow(new DatafileTaskException("Unable to collect file.")).doNothing().when(ftpesClientMock)

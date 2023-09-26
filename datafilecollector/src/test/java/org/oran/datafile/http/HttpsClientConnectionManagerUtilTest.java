@@ -25,7 +25,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.oran.datafile.exceptions.DatafileTaskException;
 
 @ExtendWith(MockitoExtension.class)
-public class HttpsClientConnectionManagerUtilTest {
+class HttpsClientConnectionManagerUtilTest {
 
     private static final String KEY_PATH = "src/test/resources/keystore.p12";
     private static final String KEY_PASSWORD = "src/test/resources/keystore.pass";
@@ -34,19 +34,19 @@ public class HttpsClientConnectionManagerUtilTest {
     private static final String TRUSTED_CA_PASSWORD = "src/test/resources/trust.pass";
 
     @Test
-    public void emptyManager_shouldThrowException() {
+    void emptyManager_shouldThrowException() {
         assertThrows(DatafileTaskException.class, () -> HttpsClientConnectionManagerUtil.instance());
     }
 
     @Test
-    public void creatingManager_successfulCase() throws Exception {
+    void creatingManager_successfulCase() throws Exception {
         HttpsClientConnectionManagerUtil.setupOrUpdate(KEY_PATH, KEY_PASSWORD, TRUSTED_CA_PATH, TRUSTED_CA_PASSWORD, //
             true);
         assertNotNull(HttpsClientConnectionManagerUtil.instance());
     }
 
     @Test
-    public void creatingManager_improperSecretShouldThrowException() {
+    void creatingManager_improperSecretShouldThrowException() {
         assertThrows(DatafileTaskException.class, () -> HttpsClientConnectionManagerUtil.setupOrUpdate(KEY_PATH, //
             KEY_IMPROPER_PASSWORD, TRUSTED_CA_PATH, TRUSTED_CA_PASSWORD, true));
         assertThrows(DatafileTaskException.class, () -> HttpsClientConnectionManagerUtil.instance());
