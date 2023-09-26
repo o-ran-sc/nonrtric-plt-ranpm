@@ -39,6 +39,30 @@
       },
       "revId": "fcc80ae37ce7fe33acc35264abc94c98f62bee47",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c67c094_b2f33d2c",
+        "filename": "pm-file-converter/components/miniocollector/minio_upload_test.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002202
+      },
+      "writtenOn": "2023-09-26T09:43:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41510daa_3880abe5",
+      "range": {
+        "startLine": 2,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "fcc80ae37ce7fe33acc35264abc94c98f62bee47",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }
