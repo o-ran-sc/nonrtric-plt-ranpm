@@ -1,6 +1,92 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35cb0fd9_86a9e1fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002240
+      },
+      "writtenOn": "2023-09-26T14:36:46Z",
+      "side": 1,
+      "message": "It looks fine for me if all the comments addressed",
+      "revId": "331535e4fea69fbdcf3c74cc1cdfe8b05c9080f4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b0528d3_efd06cc6",
+        "filename": "influxlogger/src/main/java/org/oran/pmlog/configuration/ConsumerJobInfo.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002240
+      },
+      "writtenOn": "2023-09-26T14:36:46Z",
+      "side": 1,
+      "message": "NB: Do we need getter methods as these are public?",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 11
+      },
+      "revId": "331535e4fea69fbdcf3c74cc1cdfe8b05c9080f4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1811cee0_1546ebe2",
+        "filename": "influxlogger/src/main/java/org/oran/pmlog/configuration/ConsumerJobInfo.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002240
+      },
+      "writtenOn": "2023-09-26T14:36:46Z",
+      "side": 1,
+      "message": "NB: Same as above",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 11
+      },
+      "revId": "331535e4fea69fbdcf3c74cc1cdfe8b05c9080f4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eb06649_61ca41dc",
+        "filename": "influxlogger/src/main/java/org/oran/pmlog/configuration/ConsumerJobInfo.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002240
+      },
+      "writtenOn": "2023-09-26T14:36:46Z",
+      "side": 1,
+      "message": "NB: Same as above",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 11
+      },
+      "revId": "331535e4fea69fbdcf3c74cc1cdfe8b05c9080f4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e2cbda3_c2d9915d",
