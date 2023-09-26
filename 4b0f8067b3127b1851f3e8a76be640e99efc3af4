@@ -166,6 +166,30 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec3ae18f_5ee2fc0a",
+        "filename": "influxlogger/src/test/java/org/oran/pmlog/Integration.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1002202
+      },
+      "writtenOn": "2023-09-26T12:30:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ed71214_53794f21",
+      "range": {
+        "startLine": 218,
+        "startChar": 7,
+        "endLine": 218,
+        "endChar": 40
+      },
+      "revId": "4b0f8067b3127b1851f3e8a76be640e99efc3af4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bc089be_93db94cc",
@@ -227,6 +251,30 @@
       "side": 1,
       "message": "1000 sec sleep in a test is not good. \nThere must be a better way to find something else to wait on.",
       "parentUuid": "47c58870_bf0113f9",
+      "range": {
+        "startLine": 231,
+        "startChar": 8,
+        "endLine": 231,
+        "endChar": 34
+      },
+      "revId": "4b0f8067b3127b1851f3e8a76be640e99efc3af4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e71b571a_4e6dcd9d",
+        "filename": "influxlogger/src/test/java/org/oran/pmlog/Integration.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1002202
+      },
+      "writtenOn": "2023-09-26T12:30:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afc57825_aa1b3d6d",
       "range": {
         "startLine": 231,
         "startChar": 8,
