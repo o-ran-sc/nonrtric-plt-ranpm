@@ -57,7 +57,7 @@
         <swagger-codegen-maven-plugin.version>3.0.11</swagger-codegen-maven-plugin.version>
         <docker-maven-plugin>0.30.0</docker-maven-plugin>
         <sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
-        <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
         <springdoc.version>2.0.2</springdoc.version>
         <springdoc.openapi-ui.version>1.6.14</springdoc.openapi-ui.version>
         <exec.skip>true</exec.skip>
