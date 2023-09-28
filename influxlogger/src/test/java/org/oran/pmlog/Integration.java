@@ -20,6 +20,8 @@
 
 package org.oran.pmlog;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -200,9 +202,10 @@ class Integration {
 
     }
 
-    // Store PM data for 24 hours in influx. The the data contains genenerated
+    // Store PM data for 24 hours in influx. The data contains genenerated
     // counter values
     // that varies over time.
+    @SuppressWarnings("java:S2699")
     @Test
     void testStoreReportsInflux() throws Exception {
         final int NO_OF_OBJECTS = 24 * 4;
@@ -213,10 +216,9 @@ class Integration {
                 .map(str -> new DataFromKafkaTopic(null, null, str.getBytes()));
 
         influxStore.start(input);
-
     }
 
-    @SuppressWarnings("squid:S2925") // "Thread.sleep" should not be used in tests.
+    @SuppressWarnings({"squid:S2925", "java:S2699"}) // "Thread.sleep" should not be used in tests.
     @Test
     void sendPmReportsThroughKafka() throws Exception {
         waitForKafkaListener();
@@ -225,8 +227,6 @@ class Integration {
 
         var dataToSend = Flux.range(0, NO_OF_OBJECTS).map(i -> kafkaSenderRecord(pmReport(i, NO_OF_OBJECTS), "key"));
         sendDataToKafka(dataToSend);
-
-        Thread.sleep(1000 * 1000);
     }
 
     @Test
@@ -248,12 +248,7 @@ class Integration {
         ConsumerJobInfo info = new ConsumerJobInfo("type", params, "owner");
         String str = gson.toJson(info);
         System.out.print(str);
-    }
-
-    @SuppressWarnings("squid:S2925") // "Thread.sleep" should not be used in tests.
-    @Test
-    void tet() throws Exception {
-        Thread.sleep(1000 * 1000);
+        assertEquals("type", info.infoTypeId);
     }
 
 }

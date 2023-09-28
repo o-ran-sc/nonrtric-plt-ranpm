@@ -117,6 +117,7 @@ public class AsyncRestClientFactory {
             }
         }
 
+        @SuppressWarnings("java:S6204")
         private SslContext createSslContextRejectingUntrustedPeers(String trustStorePath, String trustStorePass,
                 KeyManagerFactory keyManager)
                 throws NoSuchAlgorithmException, CertificateException, IOException, KeyStoreException {
