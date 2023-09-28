@@ -206,6 +206,30 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0687f49_2ea337bd",
+        "filename": "influxlogger/src/test/java/org/oran/pmlog/Integration.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-09-28T09:34:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eca03187_5a9d6e76",
+      "range": {
+        "startLine": 218,
+        "startChar": 26,
+        "endLine": 218,
+        "endChar": 33
+      },
+      "revId": "331535e4fea69fbdcf3c74cc1cdfe8b05c9080f4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9d88e9f_ecc60738",
@@ -243,6 +267,30 @@
       "side": 1,
       "message": "The class is not part of the Test Suite, and it expects Kafka to be up and running on your local environment. The entire code is designed solely for testing the code flow. You will see this error on console:\n\no.o.p.ConsumerRegstrationTask - Creation of subscription/info job failed Connection refused: no further information: localhost/127.0.0.1:8434",
       "parentUuid": "f9d88e9f_ecc60738",
+      "range": {
+        "startLine": 229,
+        "startChar": 8,
+        "endLine": 229,
+        "endChar": 36
+      },
+      "revId": "331535e4fea69fbdcf3c74cc1cdfe8b05c9080f4",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54000ca0_35d7e982",
+        "filename": "influxlogger/src/test/java/org/oran/pmlog/Integration.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2023-09-28T09:34:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cc290e20_1be58f9a",
       "range": {
         "startLine": 229,
         "startChar": 8,
