@@ -1,0 +1,9 @@
+Verified+1: ORAN Required GHA <releng+oran.required.gha@linuxfoundation.org>
+Code-Review+1: Sonia Sangari <sonia.sangari@est.tech>
+Code-Review+2: John  Keeney <john.keeney@est.tech>
+Verified+1: John  Keeney <john.keeney@est.tech>
+Submitted-by: John  Keeney <john.keeney@est.tech>
+Submitted-at: Fri, 29 Sep 2023 10:10:11 +0000
+Reviewed-on: https://gerrit.o-ran-sc.org/r/c/nonrtric/plt/ranpm/+/11829
+Project: nonrtric/plt/ranpm
+Branch: refs/heads/master
