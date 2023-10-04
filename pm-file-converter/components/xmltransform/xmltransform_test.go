@@ -63,7 +63,7 @@ func TestXMLToJSONConv_Success(t *testing.T) {
 		return
 	}
 	file_bytes := buf3.Bytes()
-	b, err := xml_to_json_conv(&file_bytes, &evt_data)
+	b, err := xmlToJsonConv(&file_bytes, &evt_data)
 
 	json_filename := "A20230515.0700_0100-0715_0100_GNODEB-0.json"
 

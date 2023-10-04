@@ -33,7 +33,7 @@ func TestMake_minio_bucket(t *testing.T) {
 
 	// Create a test bucket.
 	bucketName := "my-test-bucket"
-	err = create_minio_bucket(minioClient, bucketName)
+	err = createMinioBucket(minioClient, bucketName)
 	if err != nil {
 		log.Fatalf("Error creating bucket: %v", err)
 	} else {
@@ -61,7 +61,7 @@ func Test_bucket_cannot_empty(t *testing.T) {
 
 	// Create a test bucket.
 	bucketName := ""
-	err = create_minio_bucket(minioClient, bucketName)
+	err = createMinioBucket(minioClient, bucketName)
 	if err != nil {
 		assert.Error(t, err)
 	} else {
@@ -91,7 +91,7 @@ func Test_check_minio_bucket(t *testing.T) {
 
 	// Create a test bucket.
 	bucketName := "my-test-bucket"
-	found = check_minio_bucket(minioClient, bucketName)
+	found = checkMinioBucket(minioClient, bucketName)
 	if found {
 		assert.True(t, found)
 	} else {
@@ -121,7 +121,7 @@ func Test_bucket_not_exists(t *testing.T) {
 
 	// Create a test bucket.
 	bucketName := "my-test-bucket-not-exists"
-	found = check_minio_bucket(minioClient, bucketName)
+	found = checkMinioBucket(minioClient, bucketName)
 	if found {
 		assert.True(t, found)
 	} else {
@@ -168,7 +168,7 @@ func Test_upload_object(t *testing.T) {
 
 	// Create a test bucket.
 	bucketName := "my-test-bucket"
-	upload_object(minioClient, file_bytes, "minio_upload_test.json", bucketName)
+	uploadObject(minioClient, file_bytes, "minio_upload_test.json", bucketName)
 
 	assert.NoError(t, err)
 
