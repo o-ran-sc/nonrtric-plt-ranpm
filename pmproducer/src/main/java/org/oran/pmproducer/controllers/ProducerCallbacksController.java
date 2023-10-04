@@ -89,7 +89,7 @@ public class ProducerCallbacksController {
             @RequestBody String body) {
         try {
             ProducerJobInfo request = gson.fromJson(body, ProducerJobInfo.class);
-            logger.debug("Job started callback id: {}, body: {}", request.id, body);
+            logger.debug("Job started callback id: {}", request.id);
             this.jobs.addJob(request.id, types.getType(request.typeId), request.owner, request.lastUpdated,
                     toJobParameters(request.jobData));
             return new ResponseEntity<>(HttpStatus.OK);
