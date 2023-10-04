@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "528dd1ac_41960f08",
+        "filename": "pmproducer/src/main/java/org/oran/pmproducer/controllers/ProducerCallbacksController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1001877
+      },
+      "writtenOn": "2023-10-04T11:38:10Z",
+      "side": 1,
+      "message": "Minor Suggestion: Couple of parameters from ProducerJobInfo can be included in the debug message rather than removing entire body.",
+      "revId": "4dd29883b619182fb43ebc4565266831d2a3b79e",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
