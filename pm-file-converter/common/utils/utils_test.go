@@ -20,7 +20,7 @@ func TestSend_http_request(t *testing.T) {
 
 	validate := func(t *testing.T, tc *testCase) {
 		t.Run(tc.Name, func(t *testing.T) {
-			actualBool := Send_http_request(tc.Json, tc.Method, tc.Url, tc.Retry, tc.UseAuth)
+			actualBool := SendHttpRequest(tc.Json, tc.Method, tc.Url, tc.Retry, tc.UseAuth)
 
 			assert.Equal(t, tc.ExpectedBool, actualBool)
 		})

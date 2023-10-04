@@ -39,7 +39,7 @@ import (
 )
 
 // nolint
-func Xml_to_json_conv(evt_data *dataTypes.XmlFileEventHeader) string {
+func XmlToJsonConv(evtData *dataTypes.XmlFileEventHeader) string {
 	filestoreUser := os.Getenv("FILESTORE_USER")
 	filestorePwd := os.Getenv("FILESTORE_PWD")
 	filestoreServer := os.Getenv("FILESTORE_SERVER")
@@ -52,12 +52,12 @@ func Xml_to_json_conv(evt_data *dataTypes.XmlFileEventHeader) string {
 		log.Fatalln(err)
 	}
 	expiry := time.Second * 24 * 60 * 60 // 1 day.
-	objectName := evt_data.Name
-	bucketName := evt_data.ObjectStoreBucket
-	compresion := evt_data.Compression
+	objectName := evtData.Name
+	bucketName := evtData.ObjectStoreBucket
+	compresion := evtData.Compression
 	reqParams := make(url.Values)
 
-	xmlh, err := jsoniter.Marshal(evt_data)
+	xmlh, err := jsoniter.Marshal(evtData)
 	if err != nil {
 		fmt.Printf("Error: %s", err)
 		return ""
@@ -68,18 +68,18 @@ func Xml_to_json_conv(evt_data *dataTypes.XmlFileEventHeader) string {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	file_bytes := xmltransform.Convert(presignedURL.String(), compresion, string(xmlh))
+	fileBytes := xmltransform.Convert(presignedURL.String(), compresion, string(xmlh))
 	newObjectName := objectName + "kafka-producer-pm-xml2json-0.json.gz"
 	var buf bytes.Buffer
-	err = gzipWrite(&buf, &file_bytes)
-	upload_object(s3Client, buf.Bytes(), newObjectName, "pm-files-json")
+	err = gzipWrite(&buf, &fileBytes)
+	uploadObject(s3Client, buf.Bytes(), newObjectName, "pm-files-json")
 	fmt.Println("")
 
 	return newObjectName
 }
 
 // nolint
-func upload_object(mc *minio.Client, b []byte, objectName string, fsbucket string) {
+func uploadObject(mc *minio.Client, b []byte, objectName string, fsbucket string) {
 	contentType := "application/json"
 	if strings.HasSuffix(objectName, ".gz") {
 		contentType = "application/gzip"
@@ -88,8 +88,8 @@ func upload_object(mc *minio.Client, b []byte, objectName string, fsbucket strin
 	// Upload the xml file with PutObject
 	r := bytes.NewReader(b)
 	tctx := context.Background()
-	if check_minio_bucket(mc, fsbucket) == false {
-		err := create_minio_bucket(mc, fsbucket)
+	if checkMinioBucket(mc, fsbucket) == false {
+		err := createMinioBucket(mc, fsbucket)
 		if err != nil {
 			log.Error("Cannot create bucket: ", fsbucket, ", ", err)
 			return
@@ -113,7 +113,7 @@ func upload_object(mc *minio.Client, b []byte, objectName string, fsbucket strin
 }
 
 // nolint
-func create_minio_bucket(mc *minio.Client, bucket string) error {
+func createMinioBucket(mc *minio.Client, bucket string) error {
 	tctx := context.Background()
 	err := mc.MakeBucket(tctx, bucket, minio.MakeBucketOptions{})
 	if err != nil {
@@ -132,7 +132,7 @@ func create_minio_bucket(mc *minio.Client, bucket string) error {
 }
 
 // nolint
-func check_minio_bucket(mc *minio.Client, bucket string) bool {
+func checkMinioBucket(mc *minio.Client, bucket string) bool {
 	tctx := context.Background()
 	exists, err := mc.BucketExists(tctx, bucket)
 	if err == nil && exists {

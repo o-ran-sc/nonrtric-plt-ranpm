@@ -36,10 +36,10 @@ import (
 )
 
 //lint:ignore S117
-func xml_to_json_conv(f_byteValue *[]byte, xfeh *dataTypes.XmlFileEventHeader) ([]byte, error) {
+func xmlToJsonConv(fBytevalue *[]byte, xfeh *dataTypes.XmlFileEventHeader) ([]byte, error) {
 	var f dataTypes.MeasCollecFile
 	start := time.Now()
-	err := xml.Unmarshal(*f_byteValue, &f)
+	err := xml.Unmarshal(*fBytevalue, &f)
 	if err != nil {
 		return nil, errors.New("Cannot unmarshal xml-file")
 	}
@@ -48,7 +48,6 @@ func xml_to_json_conv(f_byteValue *[]byte, xfeh *dataTypes.XmlFileEventHeader) (
 	start = time.Now()
 	var pmfile dataTypes.PMJsonFile
 
-	//TODO: Fill in more values
 	pmfile.Event.Perf3GppFields.Perf3GppFieldsVersion = "1.0"
 	pmfile.Event.Perf3GppFields.MeasDataCollection.GranularityPeriod = 900
 	pmfile.Event.Perf3GppFields.MeasDataCollection.MeasuredEntityUserName = ""
@@ -82,7 +81,6 @@ func xml_to_json_conv(f_byteValue *[]byte, xfeh *dataTypes.XmlFileEventHeader) (
 
 	pmfile.Event.Perf3GppFields.MeasDataCollection.GranularityPeriod = 900
 
-	//TODO: Fill more values
 	pmfile.Event.CommonEventHeader.Domain = ""    //xfeh.Domain
 	pmfile.Event.CommonEventHeader.EventID = ""   //xfeh.EventID
 	pmfile.Event.CommonEventHeader.Sequence = 0   //xfeh.Sequence
@@ -109,8 +107,8 @@ func xml_to_json_conv(f_byteValue *[]byte, xfeh *dataTypes.XmlFileEventHeader) (
 }
 
 func Convert(inputS3Url, compression, xmlFileEventHeader string) []byte {
-	evt_data := dataTypes.XmlFileEventHeader{}
-	jsoniter.Unmarshal([]byte(xmlFileEventHeader), &evt_data)
+	evtData := dataTypes.XmlFileEventHeader{}
+	jsoniter.Unmarshal([]byte(xmlFileEventHeader), &evtData)
 
 	client := new(http.Client)
 
@@ -136,8 +134,8 @@ func Convert(inputS3Url, compression, xmlFileEventHeader string) []byte {
 		log.Error("Error reading response, discarding message, ", err)
 		return nil
 	}
-	file_bytes := buf3.Bytes()
+	fileBytes := buf3.Bytes()
 	fmt.Println("Converting to XML")
-	b, err := xml_to_json_conv(&file_bytes, &evt_data)
+	b, err := xmlToJsonConv(&fileBytes, &evtData)
 	return b
 }

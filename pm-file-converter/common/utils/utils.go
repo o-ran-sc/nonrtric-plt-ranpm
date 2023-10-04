@@ -30,9 +30,7 @@ import (
 var httpclient = &http.Client{}
 
 // Send a http request with json (json may be nil)
-//
-//lint:ignore S100
-func Send_http_request(json []byte, method string, url string, retry bool, useAuth bool) bool {
+func SendHttpRequest(json []byte, method string, url string, retry bool, useAuth bool) bool {
 
 	// set the HTTP method, url, and request body
 	var req *http.Request
@@ -49,7 +47,7 @@ func Send_http_request(json []byte, method string, url string, retry bool, useAu
 	}
 
 	if useAuth {
-		token, err := kafkacollector.Fetch_token()
+		token, err := kafkacollector.FetchToken()
 		if err != nil {
 			log.Error("Cannot fetch token for http request: ", err)
 			return false
