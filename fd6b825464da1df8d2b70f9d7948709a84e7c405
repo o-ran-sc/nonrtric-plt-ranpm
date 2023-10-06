@@ -159,6 +159,30 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fad5f4af_54694094",
+        "filename": "pm-file-converter/components/kafkacollector/kafkacollector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002202
+      },
+      "writtenOn": "2023-10-06T13:17:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e21d1e4_5884bf79",
+      "range": {
+        "startLine": 78,
+        "startChar": 46,
+        "endLine": 78,
+        "endChar": 55
+      },
+      "revId": "fd6b825464da1df8d2b70f9d7948709a84e7c405",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3509b760_5e39d9ae",
