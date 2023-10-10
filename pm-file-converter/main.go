@@ -59,6 +59,8 @@ var writer_control = make(chan dataTypes.WriterControl, 1)
 const registration_delay_short = 2
 const registration_delay_long = 120
 
+const failedMessageLabel = " - failed"
+
 //== Variables ==//
 
 var AppState = Init
@@ -155,7 +157,7 @@ func registerProducer() bool {
 	if err != nil {
 		log.Error("Cannot read config file: ", config_file)
 		// NOSONAR
-		log.Error(registeringProducer, producer_instance_name, " - failed")
+		log.Error(registeringProducer, producer_instance_name, failedMessageLabel)
 		return false
 	}
 	data := dataTypes.DataTypes{}
@@ -163,7 +165,7 @@ func registerProducer() bool {
 	if err != nil {
 		log.Error("Cannot parse config file: ", config_file)
 		// NOSONAR
-		log.Error(registeringProducer, producer_instance_name, " - failed")
+		log.Error(registeringProducer, producer_instance_name, failedMessageLabel)
 		return false
 	}
 	var newTypeNames []string
@@ -183,14 +185,14 @@ func registerProducer() bool {
 		if err != nil {
 			log.Error("Cannot create json for type: ", data.ProdDataTypes[i].ID)
 			// NOSONAR
-			log.Error(registeringProducer, producer_instance_name, " - failed")
+			log.Error(registeringProducer, producer_instance_name, failedMessageLabel)
 			return false
 		} else {
 			ok := utils.SendHttpRequest(json, http.MethodPut, "http://"+ics_server+"/data-producer/v1/info-types/"+data.ProdDataTypes[i].ID, true, creds_grant_type != "")
 			if !ok {
 				log.Error("Cannot register type: ", data.ProdDataTypes[i].ID)
 				// NOSONAR
-				log.Error(registeringProducer, producer_instance_name, " - failed")
+				log.Error(registeringProducer, producer_instance_name, failedMessageLabel)
 				return false
 			}
 			newTypeNames = append(newTypeNames, data.ProdDataTypes[i].ID)
