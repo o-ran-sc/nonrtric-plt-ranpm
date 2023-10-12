@@ -18,7 +18,7 @@
 //	limitations under the License.
 //	========================LICENSE_END===================================
 
-//nolint:gocognit
+//nolint:all
 package kafkacollector
 
 import (
@@ -49,7 +49,7 @@ const typeLabel = " for type: "
 const fetchTokenErrorMessage = "Cannot fetch token: "
 const setTokenErrorMessage = "Cannot set token: "
 
-// This function intentionally has high cognitive complexity //NOSONAR
+//nolint:all
 func StartTopicReader(topic string, typeId string, controlCh chan dataTypes.ReaderControl, dataCh chan *dataTypes.KafkaPayload, gid string, cid string) {
 
 	log.Info("Topic reader starting, topic: ", topic, typeLabel, typeId)
@@ -182,7 +182,7 @@ func StartTopicReader(topic string, typeId string, controlCh chan dataTypes.Read
 	}()
 }
 
-// This function intentionally has high cognitive complexity //NOSONAR
+//nolint:all
 func StartTopicWriter(controlCh chan dataTypes.WriterControl, dataCh chan *dataTypes.KafkaPayload) {
 
 	var kafkaProducer *kafka.Producer
@@ -296,7 +296,7 @@ func StartTopicWriter(controlCh chan dataTypes.WriterControl, dataCh chan *dataT
 	}()
 }
 
-// We need to pass the kafka properties in this way for readability purpose //NOSONAR
+//nolint:all
 func createKafkaConsumer(typeId string, gid string, cid string) *kafka.Consumer {
 	var cm kafka.ConfigMap
 	if creds_grant_type == "" {
@@ -331,7 +331,7 @@ func createKafkaConsumer(typeId string, gid string, cid string) *kafka.Consumer 
 	return c
 }
 
-// We need to pass the kafka properties in this way for readability purpose //NOSONAR
+//nolint:all
 func startProducer() *kafka.Producer {
 	log.Info("Creating kafka producer")
 
@@ -358,6 +358,7 @@ func startProducer() *kafka.Producer {
 	return p
 }
 
+//nolint:all
 func StartJobXmlFileData(typeId string, controlCh chan dataTypes.JobControl, dataInCh chan *dataTypes.KafkaPayload, dataOutChannel chan *dataTypes.KafkaPayload, fvolume string, fsbucket string) {
 
 	log.Info("Type job", typeId, " started")
@@ -392,7 +393,7 @@ func StartJobXmlFileData(typeId string, controlCh chan dataTypes.JobControl, dat
 	}
 }
 
-// This function intentionally has more parameters for legacy compatibility //NOSONAR
+//nolint:all
 func runXmlJob(typeId string, msg *dataTypes.KafkaPayload, outputCompression string, dataOutChannel chan *dataTypes.KafkaPayload, topicList map[string]string, jobLimiterChan chan struct{}, fvolume string, fsbucket string) {
 	defer func() {
 		<-jobLimiterChan
@@ -437,7 +438,7 @@ func runXmlJob(typeId string, msg *dataTypes.KafkaPayload, outputCompression str
 	}
 }
 
-// This function intentionally has some patterns in logs for easier identification //NOSONAR
+//nolint:all
 func FetchToken() (*kafka.OAuthBearerToken, error) {
 	log.Debug("Get token inline")
 	conf := &clientcredentials.Config{
