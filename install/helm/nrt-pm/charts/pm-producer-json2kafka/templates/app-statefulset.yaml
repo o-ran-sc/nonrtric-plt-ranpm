@@ -36,7 +36,7 @@ spec:
     spec:
       containers:
       - name: pm-producer-json2kafka
-        image: nexus3.o-ran-sc.org:10001/o-ran-sc/nonrtric-plt-pmproducer:1.0.1
+        image: nexus3.o-ran-sc.org:10002/o-ran-sc/nonrtric-plt-pmproducer:1.0.1
         imagePullPolicy: Always
         ports:
         - name: http
@@ -63,7 +63,7 @@ spec:
         - mountPath: /token-cache
           name: token-cache-volume
       - name: auth-token
-        image: nexus3.o-ran-sc.org:10001/o-ran-sc/nonrtric-plt-auth-token-fetch:1.1.1
+        image: nexus3.o-ran-sc.org:10002/o-ran-sc/nonrtric-plt-auth-token-fetch:1.1.1
         imagePullPolicy: Always
         env:
         - name: CREDS_GRANT_TYPE

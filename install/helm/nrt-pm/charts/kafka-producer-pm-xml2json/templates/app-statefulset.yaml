@@ -38,7 +38,7 @@ spec:
     spec:
       containers:
       - name: kafka-producer-pm-xml2json
-        image: nexus3.o-ran-sc.org:10001/o-ran-sc/nonrtric-plt-ranpm-pm-file-converter:1.0.1
+        image: nexus3.o-ran-sc.org:10002/o-ran-sc/nonrtric-plt-ranpm-pm-file-converter:1.0.1
         imagePullPolicy: Always
         ports:
         - name: http
