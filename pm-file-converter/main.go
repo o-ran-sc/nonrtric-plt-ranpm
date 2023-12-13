@@ -3,7 +3,8 @@
 //	========================LICENSE_START=================================
 //	O-RAN-SC
 //	%%
-//	Copyright (C) 2023: Nordix Foundation
+//	Copyright (C) 2023: Nordix Foundation. All rights reserved.
+//	Copyright (C) 2023 OpenInfra Foundation Europe. All rights reserved.
 //	%%
 //	Licensed under the Apache License, Version 2.0 (the "License");
 //	you may not use this file except in compliance with the License.
@@ -21,8 +22,6 @@ package main
 
 import (
 	"fmt"
-	jsoniter "github.com/json-iterator/go"
-	log "github.com/sirupsen/logrus"
 	"main/common/dataTypes"
 	"main/common/utils"
 	"main/components/kafkacollector"
@@ -33,6 +32,9 @@ import (
 	"sync"
 	"syscall"
 	"time"
+
+	jsoniter "github.com/json-iterator/go"
+	log "github.com/sirupsen/logrus"
 )
 
 var ics_server = os.Getenv("ICS")
