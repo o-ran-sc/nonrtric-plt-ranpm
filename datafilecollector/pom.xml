@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ~ ============LICENSE_START=======================================================
-  ~ Copyright (C) 2023 Nordix Foundation
+  ~ Copyright (C) 2023 Nordix Foundation. All rights reserved.
+  ~ Copyright (C) 2023 OpenInfra Foundation Europe. All rights reserved.
   ~ ================================================================================
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -23,7 +24,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.4</version>
+        <version>3.2.0</version>
     </parent>
     <groupId>org.o-ran-sc.nonrtric.plt.ranpm</groupId>
     <artifactId>datafile-collector</artifactId>
