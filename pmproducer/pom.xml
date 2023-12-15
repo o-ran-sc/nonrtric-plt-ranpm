@@ -3,7 +3,8 @@
 * ========================LICENSE_START=================================
 * O-RAN-SC
 * %%
-* Copyright (C) 2023 Nordix Foundation
+* Copyright (C) 2023 Nordix Foundation. All rights reserved.
+* Copyright (C) 2023 OpenInfra Foundation Europe. All rights reserved.
 * %%
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -31,7 +32,7 @@
     </parent>
     <groupId>org.o-ran-sc.nonrtric.plt</groupId>
     <artifactId>pmproducer</artifactId>
-    <version>1.1.0-SNAPSHOT</version>
+    <version>1.1.1-SNAPSHOT</version>
     <name>NONRTRIC RAN PM Producer</name>
     <description>Filtering and distribution of PM data to rApps subscribers (O-RAN SC NONRTRIC)</description>
     <licenses>
