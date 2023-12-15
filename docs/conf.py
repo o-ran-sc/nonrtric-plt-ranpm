@@ -22,11 +22,14 @@
 from docs_conf.conf import *
 
 branch = 'i-release'
-subsitesbranch = 'i-release'
+subsitesbranch = 'i-release' # set this to latest for the first build on a new branch. Then change in next commit. 
+icsbranch = 'i-release' 
 
 baseurl = 'https://docs.o-ran-sc.org/projects/'
 selfurl = '%s/o-ran-sc-nonrtric-plt-ranpm/en/%s' %(baseurl, branch)
 subsitesurl = '%s/o-ran-sc-nonrtric-plt-ranpm/en/%s' %(baseurl, subsitesbranch)
+icsurl = '%s/o-ran-sc-nonrtric-plt-informationcoordinatorservice/en/%s' %(baseurl, subsitesbranch)
+
 
 linkcheck_ignore = [
     'http://localhost.*',
@@ -47,5 +50,6 @@ intersphinx_mapping['influxlogger'] = ('%s/influxlogger' %subsitesurl, None)
 intersphinx_mapping['datafilecollector'] = ('%s/datafilecollector' %subsitesurl, None)
 intersphinx_mapping['pmproducer'] = ('%s/pmproducer' %subsitesurl, None)
 intersphinx_mapping['pm-file-converter'] = ('%s/pm-file-converter' %subsitesurl, None)
+intersphinx_mapping['ics'] = ('%s' %icsurl, None)
 
 intersphinx_disabled_reftypes = ["*"]
