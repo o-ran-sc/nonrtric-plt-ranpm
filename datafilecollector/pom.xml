@@ -27,7 +27,7 @@
     </parent>
     <groupId>org.o-ran-sc.nonrtric.plt.ranpm</groupId>
     <artifactId>datafile-collector</artifactId>
-    <version>1.1.0-SNAPSHOT</version>
+    <version>1.1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>NONRTRIC RAN PM Data File Collector</name>
     <description>File Collector for collecting RAN PM files from RAN functions (O-RAN SC NONRTRIC)</description>

@@ -31,7 +31,7 @@
     </parent>
     <groupId>org.o-ran-sc.nonrtric.plt</groupId>
     <artifactId>pmproducer</artifactId>
-    <version>1.1.0-SNAPSHOT</version>
+    <version>1.1.1-SNAPSHOT</version>
     <name>NONRTRIC RAN PM Producer</name>
     <description>Filtering and distribution of PM data to rApps subscribers (O-RAN SC NONRTRIC)</description>
     <licenses>
