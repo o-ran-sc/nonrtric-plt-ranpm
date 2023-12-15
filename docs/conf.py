@@ -22,8 +22,11 @@
 from docs_conf.conf import *
 
 branch = 'latest'
+subsitesbranch = 'latest' # set this to latest for the first build on a new branch. Then change in next commit. 
+
 baseurl = 'https://docs.o-ran-sc.org/projects/'
 selfurl = '%s/o-ran-sc-nonrtric-plt-ranpm/en/%s' %(baseurl, branch)
+subsitesurl = '%s/o-ran-sc-nonrtric-plt-ranpm/en/%s' %(baseurl, subsitesbranch)
 
 linkcheck_ignore = [
     'http://localhost.*',
@@ -40,9 +43,9 @@ extensions = [
 intersphinx_mapping = {}
 intersphinx_mapping['nonrtric'] = ('%s/o-ran-sc-nonrtric/en/%s' %(baseurl, branch), None)
 ## Note there is a circular dependency here - sub-project pages must exist before they can be checked
-intersphinx_mapping['influxlogger'] = ('%s/influxlogger' % selfurl, None)
-intersphinx_mapping['datafilecollector'] = ('%s/datafilecollector' % selfurl, None)
-intersphinx_mapping['pmproducer'] = ('%s/pmproducer' % selfurl, None)
-intersphinx_mapping['pm-file-converter'] = ('%s/pm-file-converter' % selfurl, None)
+intersphinx_mapping['influxlogger'] = ('%s/influxlogger' %subsitesurl, None)
+intersphinx_mapping['datafilecollector'] = ('%s/datafilecollector' %subsitesurl, None)
+intersphinx_mapping['pmproducer'] = ('%s/pmproducer' %subsitesurl, None)
+intersphinx_mapping['pm-file-converter'] = ('%s/pm-file-converter' %subsitesurl, None)
 
 intersphinx_disabled_reftypes = ["*"]
