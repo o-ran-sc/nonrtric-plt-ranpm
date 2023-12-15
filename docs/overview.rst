@@ -47,7 +47,7 @@ For more detailed documentation of the components:
 * :doc:`Non-RT RIC - RAN PM - PM File Converter (Documentation site) <pm-file-converter:index>`.
 * :doc:`Non-RT RIC - RAN PM - PM Producer (Documentation site) <pmproducer:index>`.
 * :doc:`Non-RT RIC - RAN PM - Influx Logger (Documentation site) <influxlogger:index>`.
-* `Non-RT RIC - Information Coordinator Service (Documentation site) <https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-informationcoordinatorservice/en/latest/>`_.
+* `Non-RT RIC - Information Coordinator Service (Documentation site) <ics:index>`_.
 *  HTTPS-SERVER TBD
 
 *********
@@ -96,7 +96,7 @@ PM Subscriber design time dependencies
 **************************************
 
 An rApp uses the ICS API to create and manage the subscription of PM Measurements.
-The API documentation is available in `Non-RT RIC - Information Coordinator Service (Doc site) <https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-informationcoordinatorservice/en/latest/>`_.
+The API documentation is available in `Non-RT RIC - Information Coordinator Service (Doc site) <ics:index>`_.
 
 The schema for the PM Measurement information jobs is defined in :doc:`Non-RT RIC - RAN PM - PM Producer (Documentation <pmproducer:index>`.
 This schema defines parameters used in the subscription (info job) and defines which measurements to subscribe for and on which
