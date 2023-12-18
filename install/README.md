@@ -1,6 +1,7 @@
 ## License
 
 Copyright (C) 2023 Nordix Foundation. All rights reserved.
+Copyright (C) 2023 OpenInfra Foundation Europe. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -42,10 +43,10 @@ Nodeports exposed by the kubernetes instance must be accessible by the local mac
 
 ## Before installation
 The following images need to be built manually. If remote or multi node cluster is used, then an image repo needs to be available to push the built images to.
-If external repo is used, use the same repo for all built images and configure the reponame in `helm/global-values.yaml`
+If external repo is used, use the same repo for all built images and configure the reponame in `helm/global-values.yaml`. (the parameter value of extimagerepo shall have a trailing /)
 
 Build the following images (build instruction in each dir)
-- ranpm/https-server
+- https-server
 - pm-rapp
 
 
