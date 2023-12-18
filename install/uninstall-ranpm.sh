@@ -2,6 +2,7 @@
 
 #  ============LICENSE_START===============================================
 #  Copyright (C) 2023 Nordix Foundation. All rights reserved.
+#  Copyright (C) 2023 OpenInfra Foundation Europe. All rights reserved.
 #  ========================================================================
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -20,7 +21,7 @@ ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 cd "${ROOT_DIR}"
 
 # Array of scripts to execute
-scripts=("uninstall-pm-rapp.sh" "uninstall-pm-log.sh"  "uninstall-nrt.sh")
+scripts=("uninstall-nrt.sh" "uninstall-pm-rapp.sh")
 
 for script in "${scripts[@]}"; do
   echo "*****************************************************************"
