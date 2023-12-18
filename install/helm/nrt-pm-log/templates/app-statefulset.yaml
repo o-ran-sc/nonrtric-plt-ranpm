@@ -62,7 +62,7 @@ spec:
         - mountPath: /token-cache
           name: token-cache-volume
       - name: pmlog
-        image: nexus3.o-ran-sc.org:10002/o-ran-sc/nonrtric-plt-pmlog:1.0.0
+        image: nexus3.o-ran-sc.org:10002/o-ran-sc/nonrtric-plt-pmlog:1.1.0
         imagePullPolicy: Always
         command:
         - sh
