@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6643b82c_240eb183",
+        "filename": "install/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1001877
+      },
+      "writtenOn": "2023-12-18T12:47:04Z",
+      "side": 1,
+      "message": "This can be removed if there is no change made on this file.",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 9
+      },
+      "revId": "22e938ed34735d6f89db2d95f69218169b33fc9d",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bccae6dc_9f62ad6f",
         "filename": "install/helm/nrt-pm-log/templates/app-statefulset.yaml",
         "patchSetId": 2
