@@ -24,6 +24,30 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bd8321e_215b77c0",
+        "filename": "install/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1002209
+      },
+      "writtenOn": "2023-12-18T12:56:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6643b82c_240eb183",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 9
+      },
+      "revId": "22e938ed34735d6f89db2d95f69218169b33fc9d",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bccae6dc_9f62ad6f",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-12-18T12:39:33Z",
       "side": 1,
       "message": "Do we need to trim whitespace? Same for all the copyright notices.",
+      "revId": "22e938ed34735d6f89db2d95f69218169b33fc9d",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02eec19b_8ddb9566",
+        "filename": "install/helm/nrt-pm-log/templates/app-statefulset.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1002209
+      },
+      "writtenOn": "2023-12-18T12:56:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bccae6dc_9f62ad6f",
       "revId": "22e938ed34735d6f89db2d95f69218169b33fc9d",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
