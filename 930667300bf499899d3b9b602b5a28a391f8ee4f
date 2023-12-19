@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b2f3d6e_c1347ef5",
+        "filename": "install/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002243
+      },
+      "writtenOn": "2023-12-19T09:26:27Z",
+      "side": 1,
+      "message": "Capitalize The. Do we need the brackets?",
+      "revId": "930667300bf499899d3b9b602b5a28a391f8ee4f",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
