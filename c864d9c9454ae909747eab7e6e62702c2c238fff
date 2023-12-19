@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83f80a78_9644ee31",
+        "filename": "install/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002243
+      },
+      "writtenOn": "2023-12-19T09:44:10Z",
+      "side": 1,
+      "message": "Full stop?",
+      "revId": "c864d9c9454ae909747eab7e6e62702c2c238fff",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ]
+}
