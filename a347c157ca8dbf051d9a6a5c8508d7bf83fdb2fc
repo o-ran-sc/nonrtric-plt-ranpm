@@ -16,6 +16,24 @@
       "message": "The --short switch has been deprecated and is not available in Kubernetes 1.28.\n\n$ kubectl version\nClient Version: v1.28.1\nKustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3\nServer Version: v1.24.6\n\n$ kubectl version --short\nerror: unknown flag: --short\nSee \u0027kubectl version --help\u0027 for usage.",
       "revId": "a347c157ca8dbf051d9a6a5c8508d7bf83fdb2fc",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce0d6816_30bbea0a",
+        "filename": "install/install-nrt.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001877
+      },
+      "writtenOn": "2024-03-22T19:42:01Z",
+      "side": 1,
+      "message": "Handling for deprecated version added.",
+      "parentUuid": "5a5fdeb0_d1d7b856",
+      "revId": "a347c157ca8dbf051d9a6a5c8508d7bf83fdb2fc",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }
