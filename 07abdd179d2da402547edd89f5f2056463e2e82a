@@ -1,0 +1,11 @@
+Code-Review+1: Rohith Rajneesh <rohith.rajneesh@est.tech>
+Verified+1: John Keeney <john.keeney@est.tech>
+Code-Review+1: Denis G Noonan <denis.noonan@est.tech>
+Code-Review+2: John Keeney <john.keeney@est.tech>
+Code-Review+1: Francesco Davide Lapenta <francesco.lapenta@est.tech>
+Verified+1: ORAN Required GHA <releng+oran.required.gha@linuxfoundation.org>
+Submitted-by: John Keeney <john.keeney@est.tech>
+Submitted-at: Mon, 25 Mar 2024 11:12:44 +0000
+Reviewed-on: https://gerrit.o-ran-sc.org/r/c/nonrtric/plt/ranpm/+/12625
+Project: nonrtric/plt/ranpm
+Branch: refs/heads/master
