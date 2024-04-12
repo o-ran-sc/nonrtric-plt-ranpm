@@ -57,7 +57,7 @@ jobs:
     steps:
       - name: Notify job start
         # yamllint disable-line rule:line-length
-        uses: lfit/gerrit-review-action@7c30179c3c9389545fccb0d458df59879372ae6a  # v0.6
+        uses: lfit/gerrit-review-action@9627b9a144f2a2cad70707ddfae87c87dce60729  # v0.8
         with:
           host: ${{ vars.GERRIT_SERVER }}
           username: ${{ vars.GERRIT_SSH_USER }}
@@ -101,16 +101,112 @@ jobs:
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
+  run-maven-sonar-pmproducer:
+    needs: notify
+    # yamllint disable-line rule:line-length
+    uses: lfit/releng-reusable-workflows/.github/workflows/composed-maven-sonar-cloud.yaml@main
+    with:
+      GERRIT_BRANCH: ${{ inputs.GERRIT_BRANCH }}
+      GERRIT_CHANGE_ID: ${{ inputs.GERRIT_CHANGE_ID }}
+      GERRIT_CHANGE_NUMBER: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+      GERRIT_CHANGE_URL: ${{ inputs.GERRIT_CHANGE_URL }}
+      GERRIT_EVENT_TYPE: ${{ inputs.GERRIT_EVENT_TYPE }}
+      GERRIT_PATCHSET_NUMBER: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+      GERRIT_PATCHSET_REVISION: ${{ inputs.GERRIT_PATCHSET_REVISION }}
+      GERRIT_PROJECT: ${{ inputs.GERRIT_PROJECT }}
+      GERRIT_REFSPEC: ${{ inputs.GERRIT_REFSPEC }}
+      # yamllint disable rule:line-length
+      ENV_VARS: '{"SONARCLOUD_QUALITYGATE_WAIT": "false","SCAN_DEV_BRANCH": "false"}'
+      ENV_SECRETS: "{}"
+      JDK_VERSION: "17"
+      MVN_POM_FILE: "pmproducer/pom.xml"
+      MVN_PHASES: "clean install"
+      MVN_OPTS: >-
+        -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+        -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r
+        -DaltDeploymentRepository=staging::default::file:"${GITHUB_WORKSPACE}"/m2repo
+      SONAR_PROJECT_KEY: "o-ran-sc_nonrtric-plt-ranpm-pmproducer"
+      SONAR_ORG: "o-ran-sc"
+      SONAR_ARGS: >
+        -Dsonar.verbose=true
+        -Ddocker.skip=true
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  run-maven-sonar-influxlogger:
+    needs: notify
+    # yamllint disable-line rule:line-length
+    uses: lfit/releng-reusable-workflows/.github/workflows/composed-maven-sonar-cloud.yaml@main
+    with:
+      GERRIT_BRANCH: ${{ inputs.GERRIT_BRANCH }}
+      GERRIT_CHANGE_ID: ${{ inputs.GERRIT_CHANGE_ID }}
+      GERRIT_CHANGE_NUMBER: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+      GERRIT_CHANGE_URL: ${{ inputs.GERRIT_CHANGE_URL }}
+      GERRIT_EVENT_TYPE: ${{ inputs.GERRIT_EVENT_TYPE }}
+      GERRIT_PATCHSET_NUMBER: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+      GERRIT_PATCHSET_REVISION: ${{ inputs.GERRIT_PATCHSET_REVISION }}
+      GERRIT_PROJECT: ${{ inputs.GERRIT_PROJECT }}
+      GERRIT_REFSPEC: ${{ inputs.GERRIT_REFSPEC }}
+      # yamllint disable rule:line-length
+      ENV_VARS: '{"SONARCLOUD_QUALITYGATE_WAIT": "false","SCAN_DEV_BRANCH": "false"}'
+      ENV_SECRETS: "{}"
+      JDK_VERSION: "17"
+      MVN_POM_FILE: "influxlogger/pom.xml"
+      MVN_PHASES: "clean install"
+      MVN_OPTS: >-
+        -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+        -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r
+        -DaltDeploymentRepository=staging::default::file:"${GITHUB_WORKSPACE}"/m2repo
+      SONAR_PROJECT_KEY: "o-ran-sc_nonrtric-plt-ranpm-influxlogger"
+      SONAR_ORG: "o-ran-sc"
+      SONAR_ARGS: >
+        -Dsonar.verbose=true
+        -Ddocker.skip=true
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  run-maven-sonar-datafilecollector:
+    needs: notify
+    # yamllint disable-line rule:line-length
+    uses: lfit/releng-reusable-workflows/.github/workflows/composed-maven-sonar-cloud.yaml@main
+    with:
+      GERRIT_BRANCH: ${{ inputs.GERRIT_BRANCH }}
+      GERRIT_CHANGE_ID: ${{ inputs.GERRIT_CHANGE_ID }}
+      GERRIT_CHANGE_NUMBER: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+      GERRIT_CHANGE_URL: ${{ inputs.GERRIT_CHANGE_URL }}
+      GERRIT_EVENT_TYPE: ${{ inputs.GERRIT_EVENT_TYPE }}
+      GERRIT_PATCHSET_NUMBER: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+      GERRIT_PATCHSET_REVISION: ${{ inputs.GERRIT_PATCHSET_REVISION }}
+      GERRIT_PROJECT: ${{ inputs.GERRIT_PROJECT }}
+      GERRIT_REFSPEC: ${{ inputs.GERRIT_REFSPEC }}
+      # yamllint disable rule:line-length
+      ENV_VARS: '{"SONARCLOUD_QUALITYGATE_WAIT": "false","SCAN_DEV_BRANCH": "false"}'
+      ENV_SECRETS: "{}"
+      JDK_VERSION: "17"
+      MVN_POM_FILE: "datafilecollector/pom.xml"
+      MVN_PHASES: "clean install"
+      MVN_OPTS: >-
+        -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+        -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r
+        -DaltDeploymentRepository=staging::default::file:"${GITHUB_WORKSPACE}"/m2repo
+      SONAR_PROJECT_KEY: "o-ran-sc_nonrtric-plt-ranpm-datafilecollector"
+      SONAR_ORG: "o-ran-sc"
+      SONAR_ARGS: >
+        -Dsonar.verbose=true
+        -Ddocker.skip=true
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
   report-status:
     if: ${{ always() }}
-    needs: [notify, call-prescan-sonarcloud]
+    needs: [notify, call-prescan-sonarcloud, run-maven-sonar-pmproducer, run-maven-sonar-influxlogger, run-maven-sonar-datafilecollector]
     runs-on: ubuntu-latest
     steps:
       - name: Get workflow conclusion
         uses: technote-space/workflow-conclusion-action@v3
       - name: Report workflow conclusion
         # yamllint disable-line rule:line-length
-        uses: lfit/gerrit-review-action@7c30179c3c9389545fccb0d458df59879372ae6a  # v0.6
+        uses: lfit/gerrit-review-action@9627b9a144f2a2cad70707ddfae87c87dce60729  # v0.8
         with:
           host: ${{ vars.GERRIT_SERVER }}
           username: ${{ vars.GERRIT_SSH_USER }}
