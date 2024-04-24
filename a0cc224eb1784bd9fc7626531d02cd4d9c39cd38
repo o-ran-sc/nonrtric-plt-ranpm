@@ -1,0 +1,8 @@
+Verified+1: Jessica Wagantall <jwagantall@linuxfoundation.org>
+Verified+1: ORAN Required GHA <releng+oran.required.gha@linuxfoundation.org>
+Code-Review+2: Matthew Watkins <mwatkins@linuxfoundation.org>
+Submitted-by: Jessica Wagantall <jwagantall@linuxfoundation.org>
+Submitted-at: Wed, 24 Apr 2024 03:59:24 +0000
+Reviewed-on: https://gerrit.o-ran-sc.org/r/c/nonrtric/plt/ranpm/+/12746
+Project: nonrtric/plt/ranpm
+Branch: refs/heads/master
