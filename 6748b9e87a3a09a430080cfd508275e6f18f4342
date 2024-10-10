@@ -1,0 +1,8 @@
+Code-Review+2: John Keeney <john.keeney@est.tech>
+Verified+1: John Keeney <john.keeney@est.tech>
+Verified+1: ORAN Required GHA <releng+oran.required.gha@linuxfoundation.org>
+Submitted-by: John Keeney <john.keeney@est.tech>
+Submitted-at: Thu, 10 Oct 2024 16:49:22 +0000
+Reviewed-on: https://gerrit.o-ran-sc.org/r/c/nonrtric/plt/ranpm/+/13596
+Project: nonrtric/plt/ranpm
+Branch: refs/heads/master
