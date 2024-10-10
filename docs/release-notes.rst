@@ -1,7 +1,7 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
 .. Copyright (C) 2023 Nordix Foundation. All rights reserved. 
-.. Copyright (C) 2023 OpenInfra Foundation Europe. All rights reserved. 
+.. Copyright (C) 2023-2024 OpenInfra Foundation Europe. All rights reserved. 
 
 =============
 Release-Notes
@@ -31,6 +31,9 @@ Version history RAN PM Use-case/Functions
 |            |          |                  |                          |
 +------------+----------+------------------+--------------------------+
 | 2023-12-15 |          | John Keeney      | I Release                |
+|            |          |                  |                          |
++------------+----------+------------------+--------------------------+
+| 2024-10-10 |          | John Keeney      | I Release (Bugfix)       |
 |            |          |                  |                          |
 +------------+----------+------------------+--------------------------+
 
@@ -105,6 +108,27 @@ I Release
 |                             |    nonrtric-plt-pmlog:1.1.0                       |
 |                             |    nonrtric-plt-ranpm-pm-file-converter:1.1.0     |
 |                             |    nonrtric-plt-pmproducer:1.1.0                  |
+|                             |                                                   |
++-----------------------------+---------------------------------------------------+
+
+I Release - Bugfix
+------------------
++-----------------------------+---------------------------------------------------+
+| **Project**                 | Non-RT RIC RAN PM                                 |
+|                             |                                                   |
++-----------------------------+---------------------------------------------------+
+| **Repo/commit-ID**          | nonrtric/plt/ranpm/                               |
+|                             | efd6b62b020c0f66637653c5e8eb05aae82babb0          |
+|                             |                                                   |
++-----------------------------+---------------------------------------------------+
+| **Release designation**     | I                                                 |
+|                             |                                                   |
++-----------------------------+---------------------------------------------------+
+| **Release date**            | 2024-10-10                                        |
+|                             |                                                   |
++-----------------------------+---------------------------------------------------+
+| **Purpose of the delivery** | Bugfix Release of RAN PM Usecase/Functions        |
+|                             |    nonrtric-plt-ranpm-pm-file-converter:1.1.1     |
 |                             |                                                   |
 +-----------------------------+---------------------------------------------------+
 
