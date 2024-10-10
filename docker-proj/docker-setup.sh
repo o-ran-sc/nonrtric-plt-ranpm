@@ -97,7 +97,7 @@ pull_image $DMAAPADP_IMAGE
 export DFC_IMAGE="nexus3.o-ran-sc.org:10001/o-ran-sc/nonrtric-plt-ranpm-datafilecollector:1.0.0"
 pull_image $DFC_IMAGE
 
-export KPX_IMAGE="nexus3.o-ran-sc.org:10001/o-ran-sc/nonrtric-plt-ranpm-pm-file-converter:1.0.1"
+export KPX_IMAGE="nexus3.o-ran-sc.org:10001/o-ran-sc/nonrtric-plt-ranpm-pm-file-converter:1.1.1"
 pull_image $KPX_IMAGE
 
 export AUTH_TOKEN_IMAGE=nexus3.o-ran-sc.org:10001/o-ran-sc/nonrtric-plt-auth-token-fetch:1.1.1
