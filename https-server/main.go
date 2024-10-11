@@ -1,5 +1,6 @@
 //  ============LICENSE_START===============================================
 //  Copyright (C) 2023 Nordix Foundation. All rights reserved.
+//  Copyright (C) 2023-2024 OpenInfra Foundation Europe. All rights reserved.
 //  ========================================================================
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -22,6 +23,7 @@ import (
 	"bytes"
 	"compress/gzip"
 	"io"
+	"math/rand"
 	"net/http"
 	"os"
 	"runtime"
@@ -48,6 +50,8 @@ const file_template = "pm-template.xml.gz"
 var always_return_file = os.Getenv("ALWAYS_RETURN")
 var generated_files_start_time = os.Getenv("GENERATED_FILE_START_TIME")
 var generated_files_timezone = os.Getenv("GENERATED_FILE_TIMEZONE")
+var random_min_value, min_value_error = strconv.Atoi(os.Getenv("RANDOM_MIN_NUMBER"))
+var random_max_value, max_value_error = strconv.Atoi(os.Getenv("RANDOM_MAX_NUMBER"))
 
 var unzipped_template = ""
 
@@ -211,16 +215,21 @@ func generatedfiles(w http.ResponseWriter, req *http.Request) {
 		nodename := id[30:]
 		nodename = strings.Split(nodename, ".")[0]
 
+		//Generating random number
+		random_value := rand.Intn(random_max_value-random_min_value+1) + random_min_value
+
 		template_string := strings.Clone(unzipped_template)
 
 		log.Debug("Replacing BEGINTIME with: ", begintime)
 		log.Debug("Replacing ENDTIME with: ", endtime)
+		log.Debug("Replacing RANDOM_CTR_VALUE with: ", strconv.Itoa(int(random_value)))
 		log.Debug("Replacing CTR_VALUE with: ", strconv.Itoa(int(file_index)))
 		log.Debug("Replacing NODE_NAME with: ", nodename)
 
 		template_string = strings.Replace(template_string, "BEGINTIME", begintime, -1)
 		template_string = strings.Replace(template_string, "ENDTIME", endtime, -1)
 
+		template_string = strings.Replace(template_string, "RANDOM_CTR_VALUE", strconv.Itoa(int(random_value)), -1)
 		template_string = strings.Replace(template_string, "CTR_VALUE", strconv.Itoa(int(file_index)), -1)
 
 		template_string = strings.Replace(template_string, "NODE_NAME", nodename, -1)
@@ -256,6 +265,13 @@ func main() {
 	//log.SetLevel(log.TraceLevel)
 
 	log.Info("Server starting...")
+
+	if min_value_error != nil {
+		random_min_value = 1
+	}
+	if max_value_error != nil {
+		random_max_value = 10
+	}
 
 	rtr := mux.NewRouter()
 	rtr.HandleFunc("/files/{fileid}", files)

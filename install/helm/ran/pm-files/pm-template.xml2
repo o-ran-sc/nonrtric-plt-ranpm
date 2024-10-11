@@ -656,6 +656,7 @@
       <measType p="162">pmCounterNumber252Qos</measType>
       <measType p="163">pmCounterNumber254</measType>
       <measType p="164">pmCounterNumber254Qos</measType>
+      <measType p="165">pmRadioThpVolUl</measType>
       <measValue measObjLdn="ManagedElement=NODE_NAME,GNBDUFunction=1,NRCellDU=32">
         <r p="1">CTR_VALUE</r>
         <r p="2">CTR_VALUE</r>
@@ -821,6 +822,7 @@
         <r p="162">CTR_VALUE</r>
         <r p="163">CTR_VALUE</r>
         <r p="164">CTR_VALUE</r>
+        <r p="165">RANDOM_CTR_VALUE</r>
       </measValue>
       <measValue measObjLdn="ManagedElement=NODE_NAME,GNBDUFunction=1,NRCellDU=31">
         <r p="1">CTR_VALUE</r>
@@ -987,6 +989,7 @@
         <r p="162">CTR_VALUE</r>
         <r p="163">CTR_VALUE</r>
         <r p="164">CTR_VALUE</r>
+        <r p="165">RANDOM_CTR_VALUE</r>
       </measValue>
       <measValue measObjLdn="ManagedElement=NODE_NAME,GNBDUFunction=1,NRCellDU=2">
         <r p="1">CTR_VALUE</r>
@@ -1153,6 +1156,7 @@
         <r p="162">CTR_VALUE</r>
         <r p="163">CTR_VALUE</r>
         <r p="164">CTR_VALUE</r>
+        <r p="165">RANDOM_CTR_VALUE</r>
       </measValue>
       <measValue measObjLdn="ManagedElement=NODE_NAME,GNBDUFunction=1,NRCellDU=1">
         <r p="1">CTR_VALUE</r>
@@ -1319,6 +1323,7 @@
         <r p="162">CTR_VALUE</r>
         <r p="163">CTR_VALUE</r>
         <r p="164">CTR_VALUE</r>
+        <r p="165">RANDOM_CTR_VALUE</r>
       </measValue>
     </measInfo>
     <measInfo measInfoId="PM=1,PmGroup=NRSectorCarrier_GNBDU">

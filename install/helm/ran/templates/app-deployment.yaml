@@ -86,6 +86,12 @@ spec:
         # Shall include +/- sign for the timezone value
         - name: GENERATED_FILE_TIMEZONE
           value: "+0100"
+        # Minimum random number to get generated
+        - name: RANDOM_MIN_NUMBER
+          value: "2"
+        # Maximum random number to get generated
+        - name: RANDOM_MAX_NUMBER
+          value: "20"
         volumeMounts:
         - name: cert-vol
           mountPath: /certs

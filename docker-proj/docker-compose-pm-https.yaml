@@ -1,5 +1,6 @@
 #  ============LICENSE_START===============================================
 #  Copyright (C) 2023 Nordix Foundation. All rights reserved.
+#  Copyright (C) 2023-2024 OpenInfra Foundation Europe. All rights reserved.
 #  ========================================================================
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -30,6 +31,8 @@ services:
       ALWAYS_RETURN: /ne-files/pm.xml.gz
       GENERATED_FILE_START_TIME: "${START_TIME}"
       GENERATED_FILE_TIMEZONE:  "+0100"
+      RANDOM_MIN_NUMBER: "2"
+      RANDOM_MAX_NUMBER: "20"
     volumes:
     - ./ne-files:/ne-files:rw
     - ./config/https/template-files:/template-files
