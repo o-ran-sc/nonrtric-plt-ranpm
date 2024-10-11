@@ -28,6 +28,10 @@ The following env vars (all optional) may be set to control the behaviour of the
 
 - GENERATED_FILE_TIMEZONE - Time zone to be used for requested files from the url `/generatedfiles/<file-id>`. Example: "+0100"
 
+- RANDOM_MIN_NUMBER - Minimum possible random number to generate random number
+
+- RANDOM_MAX_NUMBER - Maximum possible random number to generate random number
+
 If generated files shall be used, load the file pm-template.xml.gz to the /template-files dir in the container.
 
 Configure the following for desired behaviour
@@ -59,6 +63,7 @@ Configure the following for desired behaviour
 ## License
 
 Copyright (C) 2023 Nordix Foundation. All rights reserved.
+Copyright (C) 2023-2024 OpenInfra Foundation Europe. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
