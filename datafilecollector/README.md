@@ -40,5 +40,5 @@ https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-ranpm/en/latest/overvie
 
 ## License
 
-Copyright (C) 2018-2019 NOKIA Intellectual Property, 2018-2023 Nordix Foundation. All rights reserved.
+Copyright (C) 2023-2025 OpenInfra Foundation Europe. All rights reserved, Copyright (C) 2018-2019 NOKIA Intellectual Property, 2018-2023 Nordix Foundation. All rights reserved.
 [License](http://www.apache.org/licenses/LICENSE-2.0)

@@ -1,5 +1,6 @@
 /*-
  * ============LICENSE_START======================================================================
+ * Copyright (C) 2023-2025 OpenInfra Foundation Europe. All rights reserved.
  * Copyright (C) 2018-2023 Nordix Foundation. All rights reserved.
  * Copyright (C) 2020-2022 Nokia. All rights reserved.
  * ===============================================================================================
@@ -35,9 +36,10 @@ import org.oran.datafile.http.DfcHttpClient;
 import org.oran.datafile.http.DfcHttpsClient;
 import org.oran.datafile.http.HttpsClientConnectionManagerUtil;
 import org.oran.datafile.model.Counters;
+import org.oran.datafile.model.DefaultFileReadyMessage;
 import org.oran.datafile.model.FileData;
 import org.oran.datafile.model.FilePublishInformation;
-import org.oran.datafile.model.FileReadyMessage;
+import org.oran.datafile.model.TS28532FileReadyMessage;
 import org.oran.datafile.oauth2.SecurityContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -72,7 +74,6 @@ public class FileCollector {
      * @param fileData data about the file to collect.
      * @param numRetries the number of retries if the publishing fails
      * @param firstBackoff the time to delay the first retry
-     * @param contextMap context for logging.
      * @return the data needed to publish the file.
      */
     public Mono<FilePublishInformation> collectFile(FileData fileData, long numRetries, Duration firstBackoff) {
@@ -96,7 +97,11 @@ public class FileCollector {
     }
 
     private Mono<Optional<FilePublishInformation>> tryCollectFile(FileData fileData) {
-        logger.trace("starting to collectFile {}", fileData.fileInfo.name);
+        String fileName = fileData.defaultFileInfo.name;
+        if(!(appConfig.getFileReadyMessageClass() == null || appConfig.getFileReadyMessageClass().isEmpty())) {
+            fileName = fileData.ts28532FileInfo.fileName();
+        }
+        logger.trace("starting to collectFile {}", fileName);
 
         final String remoteFile = fileData.remoteFilePath();
         final Path localFile = fileData.getLocalFilePath(this.appConfig);
@@ -109,16 +114,16 @@ public class FileCollector {
             return Mono.just(Optional.of(createFilePublishInformation(fileData)));
         } catch (NonRetryableDatafileTaskException nre) {
             logger.warn("Failed to download file, not retryable: {} {}, reason: {}", fileData.sourceName(),
-                fileData.fileInfo.name, nre.getMessage());
+                fileName, nre.getMessage());
             incFailedAttemptsCounter(fileData);
             return Mono.just(Optional.empty()); // Give up
         } catch (DatafileTaskException e) {
-            logger.warn("Failed to download file: {} {}, reason: {}", fileData.sourceName(), fileData.fileInfo.name,
+            logger.warn("Failed to download file: {} {}, reason: {}", fileData.sourceName(), fileName,
                 e.getMessage());
             incFailedAttemptsCounter(fileData);
             return Mono.error(e);
         } catch (Exception throwable) {
-            logger.warn("Failed to close client: {} {}, reason: {}", fileData.sourceName(), fileData.fileInfo.name,
+            logger.warn("Failed to close client: {} {}, reason: {}", fileData.sourceName(), fileName,
                 throwable.getMessage(), throwable);
             return Mono.just(Optional.of(createFilePublishInformation(fileData)));
         }
@@ -148,21 +153,39 @@ public class FileCollector {
     }
 
     public FilePublishInformation createFilePublishInformation(FileData fileData) {
-        FileReadyMessage.MessageMetaData metaData = fileData.messageMetaData;
-        return FilePublishInformation.builder() //
-            .productName(metaData.productName()) //
-            .vendorName(metaData.vendorName()) //
-            .lastEpochMicrosec(metaData.lastEpochMicrosec) //
-            .sourceName(metaData.sourceName) //
-            .startEpochMicrosec(metaData.startEpochMicrosec) //
-            .timeZoneOffset(metaData.timeZoneOffset) //
-            .name(metaData.sourceName + "/" + fileData.fileInfo.name) //
-            .compression(fileData.fileInfo.hashMap.compression) //
-            .fileFormatType(fileData.fileInfo.hashMap.fileFormatType) //
-            .fileFormatVersion(fileData.fileInfo.hashMap.fileFormatVersion) //
-            .changeIdentifier(fileData.messageMetaData.changeIdentifier) //
-            .objectStoreBucket(this.appConfig.isS3Enabled() ? this.appConfig.getS3Bucket() : null) //
-            .build();
+        if(appConfig.getFileReadyMessageClass() == null || appConfig.getFileReadyMessageClass().isEmpty()) {
+            DefaultFileReadyMessage.MessageMetaData metaData = fileData.messageMetaData;
+            return FilePublishInformation.builder() //
+                    .productName(metaData.productName()) //
+                    .vendorName(metaData.vendorName()) //
+                    .lastEpochMicrosec(metaData.lastEpochMicrosec) //
+                    .sourceName(metaData.sourceName) //
+                    .startEpochMicrosec(metaData.startEpochMicrosec) //
+                    .timeZoneOffset(metaData.timeZoneOffset) //
+                    .name(metaData.sourceName + "/" + fileData.defaultFileInfo.name) //
+                    .compression(fileData.defaultFileInfo.hashMap.compression) //
+                    .fileFormatType(fileData.defaultFileInfo.hashMap.fileFormatType) //
+                    .fileFormatVersion(fileData.defaultFileInfo.hashMap.fileFormatVersion) //
+                    .changeIdentifier(fileData.messageMetaData.changeIdentifier) //
+                    .objectStoreBucket(this.appConfig.isS3Enabled() ? this.appConfig.getS3Bucket() : null) //
+                    .build();
+        } else {
+            TS28532FileReadyMessage.MessageMetaData metaData = fileData.ts28532MessageMetaData;
+            return FilePublishInformation.builder() //
+                    .productName(metaData.productName()) //
+                    .vendorName(metaData.vendorName()) //
+                    .lastEpochMicrosec(metaData.lastEpochMicrosec) //
+                    .sourceName(metaData.sourceName) //
+                    .startEpochMicrosec(metaData.startEpochMicrosec) //
+                    .timeZoneOffset(metaData.timeZoneOffset) //
+                    .name(metaData.sourceName + "/" + fileData.ts28532FileInfo.fileName()) //
+                    .compression(fileData.ts28532FileInfo.fileCompression) //
+                    .fileFormatType(fileData.ts28532FileInfo.fileFormat) //
+                    .fileFormatVersion(fileData.ts28532FileInfo.fileDataType) //
+                    .changeIdentifier(fileData.messageMetaData.reportingEntityName) //
+                    .objectStoreBucket(this.appConfig.isS3Enabled() ? this.appConfig.getS3Bucket() : null) //
+                    .build();
+        }
     }
 
     protected SftpClient createSftpClient(FileData fileData) {
