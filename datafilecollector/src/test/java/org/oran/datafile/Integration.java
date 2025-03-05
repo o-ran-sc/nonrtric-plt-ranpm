@@ -2,7 +2,8 @@
  * ========================LICENSE_START=================================
  * O-RAN-SC
  * %%
- * Copyright (C) 2020-2023 NordixFoundation
+ * Copyright (C) 2020-2023 Nordix Foundation
+ * Copyright (C) 2025 OpenInfra Foundation Europe. All rights reserved.
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,10 +45,10 @@ import org.oran.datafile.configuration.AppConfig;
 import org.oran.datafile.datastore.DataStore;
 import org.oran.datafile.datastore.DataStore.Bucket;
 import org.oran.datafile.model.Counters;
+import org.oran.datafile.model.DefaultFileReadyMessage;
 import org.oran.datafile.model.FileData;
 import org.oran.datafile.model.FilePublishInformation;
-import org.oran.datafile.model.FileReadyMessage;
-import org.oran.datafile.model.FileReadyMessage.MessageMetaData;
+import org.oran.datafile.model.DefaultFileReadyMessage.MessageMetaData;
 import org.oran.datafile.oauth2.SecurityContext;
 import org.oran.datafile.tasks.CollectAndReportFiles;
 import org.oran.datafile.tasks.FileCollector;
@@ -297,7 +298,7 @@ class Integration {
         }
     }
 
-    FileReadyMessage.Event event(String fileName) {
+    DefaultFileReadyMessage.Event event(String fileName) {
         MessageMetaData messageMetaData = MessageMetaData.builder() //
             .lastEpochMicrosec(LAST_EPOCH_MICROSEC) //
             .sourceName(SOURCE_NAME) //
@@ -306,7 +307,7 @@ class Integration {
             .changeIdentifier(CHANGE_IDENTIFIER) //
             .eventName("Noti_RnNode-Ericsson_FileReady").build();
 
-        FileReadyMessage.FileInfo fileInfo = FileReadyMessage.FileInfo //
+        DefaultFileReadyMessage.FileInfo fileInfo = DefaultFileReadyMessage.FileInfo //
             .builder() //
             .fileFormatType(FILE_FORMAT_TYPE) //
             .location(LOCATION) //
@@ -314,34 +315,34 @@ class Integration {
             .compression(GZIP_COMPRESSION) //
             .build();
 
-        FileReadyMessage.ArrayOfNamedHashMap arrayOfNamedHashMap = FileReadyMessage.ArrayOfNamedHashMap //
+        DefaultFileReadyMessage.ArrayOfNamedHashMap arrayOfNamedHashMap = DefaultFileReadyMessage.ArrayOfNamedHashMap //
             .builder() //
             .name(fileName) //
             .hashMap(fileInfo) //
             .build();
 
-        List<FileReadyMessage.ArrayOfNamedHashMap> arrayOfNamedHashMapList = new ArrayList<>();
+        List<DefaultFileReadyMessage.ArrayOfNamedHashMap> arrayOfNamedHashMapList = new ArrayList<>();
         arrayOfNamedHashMapList.add(arrayOfNamedHashMap);
 
-        FileReadyMessage.NotificationFields notificationFields = FileReadyMessage.NotificationFields //
+        DefaultFileReadyMessage.NotificationFields notificationFields = DefaultFileReadyMessage.NotificationFields //
             .builder().notificationFieldsVersion("notificationFieldsVersion") //
             .changeType(CHANGE_TYPE).changeIdentifier(CHANGE_IDENTIFIER) //
             .arrayOfNamedHashMap(arrayOfNamedHashMapList) //
             .build();
 
-        return FileReadyMessage.Event.builder() //
+        return DefaultFileReadyMessage.Event.builder() //
             .commonEventHeader(messageMetaData) //
             .notificationFields(notificationFields).build();
     }
 
-    private FileReadyMessage fileReadyMessage(String fileName) {
-        FileReadyMessage message = FileReadyMessage.builder() //
+    private DefaultFileReadyMessage fileReadyMessage(String fileName) {
+        DefaultFileReadyMessage message = DefaultFileReadyMessage.builder() //
             .event(event(fileName)) //
             .build();
         return message;
     }
 
-    private FileReadyMessage fileReadyMessage() {
+    private DefaultFileReadyMessage fileReadyMessage() {
         return fileReadyMessage(PM_FILE_NAME);
     }
 

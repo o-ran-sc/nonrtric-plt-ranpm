@@ -1,5 +1,6 @@
 /*-
  * ============LICENSE_START======================================================================
+ * Copyright (C) 2023-2025 OpenInfra Foundation Europe. All rights reserved.
  * Copyright (C) 2018, 2020 NOKIA Intellectual Property, 2018-2023 Nordix Foundation. All rights reserved.
  * ===============================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -39,9 +40,11 @@ import org.oran.datafile.datastore.DataStore.Bucket;
 import org.oran.datafile.exceptions.DatafileTaskException;
 import org.oran.datafile.http.HttpsClientConnectionManagerUtil;
 import org.oran.datafile.model.Counters;
+import org.oran.datafile.model.DefaultFileReadyMessage;
 import org.oran.datafile.model.FileData;
 import org.oran.datafile.model.FilePublishInformation;
 import org.oran.datafile.model.FileReadyMessage;
+import org.oran.datafile.model.TS28532FileReadyMessage;
 import org.oran.datafile.oauth2.SecurityContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -142,7 +145,7 @@ public class CollectAndReportFiles {
             .parallel(noOfWorkerThreads) // Each FileReadyMessage in a separate thread
             .runOn(scheduler) //
             .doOnNext(fileReadyMessage -> counters.threadPoolQueueSize.decrementAndGet()) //
-            .flatMap(fileReadyMessage -> Flux.fromIterable(FileData.createFileData(fileReadyMessage)), true, 1) //
+            .flatMap(fileReadyMessage -> Flux.fromIterable(FileData.createFileData(fileReadyMessage, appConfig.getFileReadyMessageClass())), true, 1) //
             .flatMap(this::filterNotFetched, false, 1, 1) //
             .flatMap(this::fetchFile, false, 1, 1) //
             .flatMap(data -> reportFetchedFile(data, appConfig.getCollectedFileTopic()), false, 1) //
@@ -282,9 +285,15 @@ public class CollectAndReportFiles {
 
     Mono<FileReadyMessage> parseReceivedFileReadyMessage(KafkaTopicListener.DataFromTopic data) {
         try {
-            FileReadyMessage msg = gson.fromJson(data.value, FileReadyMessage.class);
-            logger.debug("Received: {}", msg);
-            return Mono.just(msg);
+            if(appConfig.getFileReadyMessageClass() == null || appConfig.getFileReadyMessageClass().isEmpty()) {
+                DefaultFileReadyMessage msg = gson.fromJson(data.value, DefaultFileReadyMessage.class);
+                logger.debug("Received: {}", msg);
+                return Mono.just(msg);
+            } else {
+                TS28532FileReadyMessage msg = gson.fromJson(data.value, TS28532FileReadyMessage.class);
+                logger.debug("Received: {}", msg);
+                return Mono.just(msg);
+            }
         } catch (Exception e) {
             logger.warn("Could not parse received: {}, reason: {}", data.value, e.getMessage());
             return Mono.empty();

@@ -1,6 +1,7 @@
 /*-
  * ============LICENSE_START=======================================================
  *  Copyright (C) 2019-2023 Nordix Foundation.
+ *  Copyright (C) 2023-2025 OpenInfra Foundation Europe. All rights reserved.
  * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,10 +53,9 @@ class FileDataTest {
 
     @Test
     void testSourceName() {
-        FileReadyMessage.MessageMetaData metaData = new FileReadyMessage.MessageMetaData(
-            "sourceName", "otherField1", "otherField2", "otherField3", 42, "field5", "field6",
-            "field7", "field8", 123456789L, 987654321L, "field11", "field12"
-        );
+        DefaultFileReadyMessage.MessageMetaData metaData = new DefaultFileReadyMessage.MessageMetaData("sourceName",
+                "otherField1", "otherField2", "otherField3", 42, "field5", "field6", "field7", "field8", 123456789L,
+                987654321L, "field11", "field12");
         FileData fileData = FileData.builder().messageMetaData(metaData).build();
 
         assertEquals("field8", fileData.sourceName());
@@ -63,45 +63,48 @@ class FileDataTest {
 
     @Test
     void testName() {
-        FileReadyMessage.MessageMetaData metaData = new FileReadyMessage.MessageMetaData(
-            "sourceName", "otherField1", "otherField2", "otherField3", 42, "field5", "field6",
-            "field7", "field8", 123456789L, 987654321L, "field11", "field12"
-        );
+        DefaultFileReadyMessage.MessageMetaData metaData = new DefaultFileReadyMessage.MessageMetaData("sourceName",
+                "otherField1", "otherField2", "otherField3", 42, "field5", "field6", "field7", "field8", 123456789L,
+                987654321L, "field11", "field12");
         FileData fileData = FileData.builder().messageMetaData(metaData).build();
 
-        FileReadyMessage.FileInfo fileInfo = new FileReadyMessage.FileInfo("name", "location", "hashMapField", "");
-        FileReadyMessage.ArrayOfNamedHashMap arrayOfNamedHashMap = new FileReadyMessage.ArrayOfNamedHashMap("someString", fileInfo);
-        fileData.fileInfo = arrayOfNamedHashMap;
+        DefaultFileReadyMessage.FileInfo fileInfo = new DefaultFileReadyMessage.FileInfo("name", "location", "hashMapField",
+                "");
+        DefaultFileReadyMessage.ArrayOfNamedHashMap arrayOfNamedHashMap = new DefaultFileReadyMessage.ArrayOfNamedHashMap(
+                "someString", fileInfo);
+        fileData.defaultFileInfo = arrayOfNamedHashMap;
 
         assertEquals("field8/someString", fileData.name());
     }
 
     @Test
     void testRemoteFilePath() {
-        FileReadyMessage.MessageMetaData metaData = new FileReadyMessage.MessageMetaData(
-            "sourceName", "otherField1", "otherField2", "otherField3", 42, "field5", "field6",
-            "field7", "field8", 123456789L, 987654321L, "field11", "field12"
-        );
+        DefaultFileReadyMessage.MessageMetaData metaData = new DefaultFileReadyMessage.MessageMetaData("sourceName",
+                "otherField1", "otherField2", "otherField3", 42, "field5", "field6", "field7", "field8", 123456789L,
+                987654321L, "field11", "field12");
         FileData fileData = FileData.builder().messageMetaData(metaData).build();
 
-        FileReadyMessage.FileInfo fileInfo = new FileReadyMessage.FileInfo("name", "ftp://example.com/remote/file.txt", "hashMapField", "");
-        FileReadyMessage.ArrayOfNamedHashMap arrayOfNamedHashMap = new FileReadyMessage.ArrayOfNamedHashMap("someString", fileInfo);
-        fileData.fileInfo = arrayOfNamedHashMap;
+        DefaultFileReadyMessage.FileInfo fileInfo = new DefaultFileReadyMessage.FileInfo("name",
+                "ftp://example.com/remote/file.txt", "hashMapField", "");
+        DefaultFileReadyMessage.ArrayOfNamedHashMap arrayOfNamedHashMap = new DefaultFileReadyMessage.ArrayOfNamedHashMap(
+                "someString", fileInfo);
+        fileData.defaultFileInfo = arrayOfNamedHashMap;
 
         assertEquals("/remote/file.txt", fileData.remoteFilePath());
     }
 
     @Test
     void testScheme() {
-        FileReadyMessage.MessageMetaData metaData = new FileReadyMessage.MessageMetaData(
-            "sourceName", "otherField1", "otherField2", "otherField3", 42, "field5", "field6",
-            "field7", "field8", 123456789L, 987654321L, "field11", "field12"
-        );
+        DefaultFileReadyMessage.MessageMetaData metaData = new DefaultFileReadyMessage.MessageMetaData("sourceName",
+                "otherField1", "otherField2", "otherField3", 42, "field5", "field6", "field7", "field8", 123456789L,
+                987654321L, "field11", "field12");
         FileData fileData = FileData.builder().messageMetaData(metaData).build();
 
-        FileReadyMessage.FileInfo fileInfo = new FileReadyMessage.FileInfo("name", "http://example.com/file.txt", "hashMapField", "");
-        FileReadyMessage.ArrayOfNamedHashMap arrayOfNamedHashMap = new FileReadyMessage.ArrayOfNamedHashMap("someString", fileInfo);
-        fileData.fileInfo = arrayOfNamedHashMap;
+        DefaultFileReadyMessage.FileInfo fileInfo = new DefaultFileReadyMessage.FileInfo("name",
+                "http://example.com/file.txt", "hashMapField", "");
+        DefaultFileReadyMessage.ArrayOfNamedHashMap arrayOfNamedHashMap = new DefaultFileReadyMessage.ArrayOfNamedHashMap(
+                "someString", fileInfo);
+        fileData.defaultFileInfo = arrayOfNamedHashMap;
 
         assertEquals(FileData.Scheme.HTTP, fileData.scheme());
     }
@@ -110,15 +113,16 @@ class FileDataTest {
     void testGetLocalFilePath() {
         AppConfig config = new AppConfig();
         config.setCollectedFilesPath("/local/path");
-        FileReadyMessage.MessageMetaData metaData = new FileReadyMessage.MessageMetaData(
-            "sourceName", "otherField1", "otherField2", "otherField3", 42, "field5", "field6",
-            "field7", "field8", 123456789L, 987654321L, "field11", "field12"
-        );
+        DefaultFileReadyMessage.MessageMetaData metaData = new DefaultFileReadyMessage.MessageMetaData("sourceName",
+                "otherField1", "otherField2", "otherField3", 42, "field5", "field6", "field7", "field8", 123456789L,
+                987654321L, "field11", "field12");
         FileData fileData = FileData.builder().messageMetaData(metaData).build();
 
-        FileReadyMessage.FileInfo fileInfo = new FileReadyMessage.FileInfo("name", "http://example.com/file.txt", "hashMapField", "");
-        FileReadyMessage.ArrayOfNamedHashMap arrayOfNamedHashMap = new FileReadyMessage.ArrayOfNamedHashMap("someString", fileInfo);
-        fileData.fileInfo = arrayOfNamedHashMap;
+        DefaultFileReadyMessage.FileInfo fileInfo = new DefaultFileReadyMessage.FileInfo("name",
+                "http://example.com/file.txt", "hashMapField", "");
+        DefaultFileReadyMessage.ArrayOfNamedHashMap arrayOfNamedHashMap = new DefaultFileReadyMessage.ArrayOfNamedHashMap(
+                "someString", fileInfo);
+        fileData.defaultFileInfo = arrayOfNamedHashMap;
 
         Path expectedPath = Paths.get("/local/path/field8/someString");
         Path actualPath = fileData.getLocalFilePath(config);
@@ -130,15 +134,16 @@ class FileDataTest {
         // Arrange
         AppConfig config = new AppConfig();
         config.setCollectedFilesPath("/local/path");
-        FileReadyMessage.MessageMetaData metaData = new FileReadyMessage.MessageMetaData(
-            "sourceName", "otherField1", "otherField2", "otherField3", 42, "field5", "field6",
-            "field7", "field8", 123456789L, 987654321L, "field11", "field12"
-        );
+        DefaultFileReadyMessage.MessageMetaData metaData = new DefaultFileReadyMessage.MessageMetaData("sourceName",
+                "otherField1", "otherField2", "otherField3", 42, "field5", "field6", "field7", "field8", 123456789L,
+                987654321L, "field11", "field12");
         FileData fileData = FileData.builder().messageMetaData(metaData).build();
 
-        FileReadyMessage.FileInfo fileInfo = new FileReadyMessage.FileInfo("name", "http://username:password@example.com:8080/path?query1=value1&query2=value2", "hashMapField", "");
-        FileReadyMessage.ArrayOfNamedHashMap arrayOfNamedHashMap = new FileReadyMessage.ArrayOfNamedHashMap("someString", fileInfo);
-        fileData.fileInfo = arrayOfNamedHashMap;
+        DefaultFileReadyMessage.FileInfo fileInfo = new DefaultFileReadyMessage.FileInfo("name",
+                "http://username:password@example.com:8080/path?query1=value1&query2=value2", "hashMapField", "");
+        DefaultFileReadyMessage.ArrayOfNamedHashMap arrayOfNamedHashMap = new DefaultFileReadyMessage.ArrayOfNamedHashMap(
+                "someString", fileInfo);
+        fileData.defaultFileInfo = arrayOfNamedHashMap;
 
         // Act
         FileServerData result = fileData.fileServerData();
@@ -153,15 +158,16 @@ class FileDataTest {
         // Arrange
         AppConfig config = new AppConfig();
         config.setCollectedFilesPath("/local/path");
-        FileReadyMessage.MessageMetaData metaData = new FileReadyMessage.MessageMetaData(
-            "sourceName", "otherField1", "otherField2", "otherField3", 42, "field5", "field6",
-            "field7", "field8", 123456789L, 987654321L, "field11", "field12"
-        );
+        DefaultFileReadyMessage.MessageMetaData metaData = new DefaultFileReadyMessage.MessageMetaData("sourceName",
+                "otherField1", "otherField2", "otherField3", 42, "field5", "field6", "field7", "field8", 123456789L,
+                987654321L, "field11", "field12");
         FileData fileData = FileData.builder().messageMetaData(metaData).build();
 
-        FileReadyMessage.FileInfo fileInfo = new FileReadyMessage.FileInfo("name", "http://username@example.com:8080/path?query1=value1&query2=value2#rawFragment", "hashMapField", "");
-        FileReadyMessage.ArrayOfNamedHashMap arrayOfNamedHashMap = new FileReadyMessage.ArrayOfNamedHashMap("someString", fileInfo);
-        fileData.fileInfo = arrayOfNamedHashMap;
+        DefaultFileReadyMessage.FileInfo fileInfo = new DefaultFileReadyMessage.FileInfo("name",
+                "http://username@example.com:8080/path?query1=value1&query2=value2#rawFragment", "hashMapField", "");
+        DefaultFileReadyMessage.ArrayOfNamedHashMap arrayOfNamedHashMap = new DefaultFileReadyMessage.ArrayOfNamedHashMap(
+                "someString", fileInfo);
+        fileData.defaultFileInfo = arrayOfNamedHashMap;
 
         // Act
         FileServerData result = fileData.fileServerData();
@@ -175,15 +181,16 @@ class FileDataTest {
         // Arrange
         AppConfig config = new AppConfig();
         config.setCollectedFilesPath("/local/path");
-        FileReadyMessage.MessageMetaData metaData = new FileReadyMessage.MessageMetaData(
-            "sourceName", "otherField1", "otherField2", "otherField3", 42, "field5", "field6",
-            "field7", "field8", 123456789L, 987654321L, "field11", "field12"
-        );
+        DefaultFileReadyMessage.MessageMetaData metaData = new DefaultFileReadyMessage.MessageMetaData("sourceName",
+                "otherField1", "otherField2", "otherField3", 42, "field5", "field6", "field7", "field8", 123456789L,
+                987654321L, "field11", "field12");
         FileData fileData = FileData.builder().messageMetaData(metaData).build();
 
-        FileReadyMessage.FileInfo fileInfo = new FileReadyMessage.FileInfo("name", "http://example.com:8080/path?query1=value1&query2=value2", "hashMapField", "");
-        FileReadyMessage.ArrayOfNamedHashMap arrayOfNamedHashMap = new FileReadyMessage.ArrayOfNamedHashMap("someString", fileInfo);
-        fileData.fileInfo = arrayOfNamedHashMap;
+        DefaultFileReadyMessage.FileInfo fileInfo = new DefaultFileReadyMessage.FileInfo("name",
+                "http://example.com:8080/path?query1=value1&query2=value2", "hashMapField", "");
+        DefaultFileReadyMessage.ArrayOfNamedHashMap arrayOfNamedHashMap = new DefaultFileReadyMessage.ArrayOfNamedHashMap(
+                "someString", fileInfo);
+        fileData.defaultFileInfo = arrayOfNamedHashMap;
 
         FileServerData result = fileData.fileServerData();
         assertEquals("example.com", result.getServerAddress());
@@ -194,15 +201,16 @@ class FileDataTest {
         // Arrange
         AppConfig config = new AppConfig();
         config.setCollectedFilesPath("/local/path");
-        FileReadyMessage.MessageMetaData metaData = new FileReadyMessage.MessageMetaData(
-            "sourceName", "otherField1", "otherField2", "otherField3", 42, "field5", "field6",
-            "field7", "field8", 123456789L, 987654321L, "field11", "field12"
-        );
+        DefaultFileReadyMessage.MessageMetaData metaData = new DefaultFileReadyMessage.MessageMetaData("sourceName",
+                "otherField1", "otherField2", "otherField3", 42, "field5", "field6", "field7", "field8", 123456789L,
+                987654321L, "field11", "field12");
         FileData fileData = FileData.builder().messageMetaData(metaData).build();
 
-        FileReadyMessage.FileInfo fileInfo = new FileReadyMessage.FileInfo("name", "abcxyz://example.com:8080/path?query1=value1&query2=value2", "hashMapField", "");
-        FileReadyMessage.ArrayOfNamedHashMap arrayOfNamedHashMap = new FileReadyMessage.ArrayOfNamedHashMap("someString", fileInfo);
-        fileData.fileInfo = arrayOfNamedHashMap;
+        DefaultFileReadyMessage.FileInfo fileInfo = new DefaultFileReadyMessage.FileInfo("name",
+                "abcxyz://example.com:8080/path?query1=value1&query2=value2", "hashMapField", "");
+        DefaultFileReadyMessage.ArrayOfNamedHashMap arrayOfNamedHashMap = new DefaultFileReadyMessage.ArrayOfNamedHashMap(
+                "someString", fileInfo);
+        fileData.defaultFileInfo = arrayOfNamedHashMap;
 
         // Act
         FileData.Scheme result = fileData.scheme();
@@ -210,45 +218,25 @@ class FileDataTest {
     }
 
     @Test
-    void testCreateFileData(){
+    void testCreateFileData() {
 
-        FileReadyMessage.MessageMetaData metaData = new FileReadyMessage.MessageMetaData(
-            "sourceName", "otherField1", "otherField2", "otherField3", 42, "field5", "field6",
-            "field7", "field8", 123456789L, 987654321L, "field11", "field12"
-        );
+        DefaultFileReadyMessage.MessageMetaData metaData = new DefaultFileReadyMessage.MessageMetaData("sourceName",
+                "otherField1", "otherField2", "otherField3", 42, "field5", "field6", "field7", "field8", 123456789L,
+                987654321L, "field11", "field12");
 
-        FileReadyMessage fileReadyMessage = FileReadyMessage.builder()
-            .event(
-                FileReadyMessage.Event.builder()
-                    .commonEventHeader(metaData)
-                    .notificationFields(
-                        FileReadyMessage.NotificationFields.builder()
-                            .notificationFieldsVersion("1.0")
-                            .changeType("Add")
-                            .changeIdentifier("Change123")
-                            .arrayOfNamedHashMap(
-                                Collections.singletonList(
-                                    FileReadyMessage.ArrayOfNamedHashMap.builder()
-                                        .name("File1")
-                                        .hashMap(
-                                            FileReadyMessage.FileInfo.builder()
-                                                .fileFormatType("Text")
-                                                .location("ftp://example.com/files/file.txt")
-                                                .fileFormatVersion("1.0")
-                                                .compression("None")
-                                                .build()
-                                        )
-                                        .build()
-                                )
-                            )
-                            .build()
-                    )
-                    .build()
-            )
-            .build();
+        DefaultFileReadyMessage defaultFileReadyMessage = DefaultFileReadyMessage.builder()
+                .event(DefaultFileReadyMessage.Event.builder().commonEventHeader(metaData).notificationFields(
+                        DefaultFileReadyMessage.NotificationFields.builder().notificationFieldsVersion("1.0")
+                                .changeType("Add").changeIdentifier("Change123").arrayOfNamedHashMap(
+                                        Collections.singletonList(
+                                                DefaultFileReadyMessage.ArrayOfNamedHashMap.builder().name("File1").hashMap(
+                                                        DefaultFileReadyMessage.FileInfo.builder().fileFormatType("Text")
+                                                                .location("ftp://example.com/files/file.txt")
+                                                                .fileFormatVersion("1.0").compression("None").build()).build()))
+                                .build()).build()).build();
 
-        Iterable<FileData> fileDataIterable = FileData.createFileData(fileReadyMessage);
-        FileReadyMessage.MessageMetaData messageMetaData = fileDataIterable.iterator().next().messageMetaData;
+        Iterable<FileData> fileDataIterable = FileData.createFileData(defaultFileReadyMessage, null);
+        DefaultFileReadyMessage.MessageMetaData messageMetaData = fileDataIterable.iterator().next().messageMetaData;
 
         assertEquals("field8", messageMetaData.sourceName);
     }
