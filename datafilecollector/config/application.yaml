@@ -32,6 +32,9 @@ app:
    # If specified, and authorization token will be loaded from file and inserted in each HTTP header when using HTTP/HTTPS.
    # If the file name is empty, no authorization token is used
   auth-token-file:
+  # If specified, this value will be used as a class to map the fileready event from kafka
+  # If this is empty, default filereadymessage class will be used
+  file-ready-message-class:
   kafka:
     # KAFKA boostrap servers.
     # several redundant boostrap servers can be specified, separated by a comma ','.

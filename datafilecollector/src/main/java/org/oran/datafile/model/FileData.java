@@ -2,6 +2,7 @@
  * ============LICENSE_START=======================================================
  *  Copyright (C) 2019-2023 Nordix Foundation.
  *  Copyright (C) 2021 Nokia. All rights reserved.
+ *  Copyright (C) 2023-2025 OpenInfra Foundation Europe. All rights reserved.
  * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -87,16 +88,34 @@ public class FileData {
     private static final Logger logger = LoggerFactory.getLogger(FileData.class);
 
     @SuppressWarnings("java:S1104")
-    public FileReadyMessage.ArrayOfNamedHashMap fileInfo;
+    public DefaultFileReadyMessage.ArrayOfNamedHashMap defaultFileInfo;
 
     @SuppressWarnings("java:S1104")
-    public FileReadyMessage.MessageMetaData messageMetaData;
+    public TS28532FileReadyMessage.FileInfo ts28532FileInfo;
 
-    public static Iterable<FileData> createFileData(FileReadyMessage msg) {
+    @SuppressWarnings("java:S1104")
+    public DefaultFileReadyMessage.MessageMetaData messageMetaData;
+
+    @SuppressWarnings("java:S1104")
+    public TS28532FileReadyMessage.MessageMetaData ts28532MessageMetaData;
+
+    private String fileReadyMessageClass;
+
+    public static Iterable<FileData> createFileData(FileReadyMessage msg, String fileReadyMessageClass) {
         Collection<FileData> res = new ArrayList<>();
-        for (FileReadyMessage.ArrayOfNamedHashMap arr : msg.event.notificationFields.arrayOfNamedHashMap) {
-            FileData data = FileData.builder().fileInfo(arr).messageMetaData(msg.event.commonEventHeader).build();
-            res.add(data);
+
+        if(fileReadyMessageClass == null || fileReadyMessageClass.isEmpty()) {
+            DefaultFileReadyMessage defaultMsg = (DefaultFileReadyMessage) msg;
+            for (DefaultFileReadyMessage.ArrayOfNamedHashMap arr : defaultMsg.event.notificationFields.arrayOfNamedHashMap) {
+                FileData data = FileData.builder().defaultFileInfo(arr).fileReadyMessageClass(fileReadyMessageClass).messageMetaData(defaultMsg.event.commonEventHeader).build();
+                res.add(data);
+            }
+        } else {
+            TS28532FileReadyMessage ts28532DefaultMsg = (TS28532FileReadyMessage) msg;
+            for (TS28532FileReadyMessage.FileInfo arr : ts28532DefaultMsg.event.stndDefinedFields.data.fileInfoList) {
+                FileData data = FileData.builder().ts28532FileInfo(arr).fileReadyMessageClass(fileReadyMessageClass).ts28532MessageMetaData(ts28532DefaultMsg.event.commonEventHeader).build();
+                res.add(data);
+            }
         }
         return res;
     }
@@ -107,11 +126,19 @@ public class FileData {
      * @return the name of the PNF, must be unique in the network
      */
     public String sourceName() {
-        return messageMetaData.sourceName;
+        if(fileReadyMessageClass == null || fileReadyMessageClass.isEmpty()) {
+            return this.messageMetaData.sourceName;
+        } else {
+            return this.ts28532MessageMetaData.sourceName;
+        }
     }
 
     public String name() {
-        return this.messageMetaData.sourceName + "/" + fileInfo.name;
+        if(fileReadyMessageClass == null || fileReadyMessageClass.isEmpty()) {
+            return this.messageMetaData.sourceName + "/" + defaultFileInfo.name;
+        } else {
+            return this.ts28532MessageMetaData.sourceName + "/" + ts28532FileInfo.fileName();
+        }
     }
 
     /**
@@ -120,16 +147,24 @@ public class FileData {
      * @return the path to the file on the PNF.
      */
     public String remoteFilePath() {
-        return URI.create(fileInfo.hashMap.location).getPath();
+        return getLocationURI().getPath();
     }
 
     public Scheme scheme() {
-        URI uri = URI.create(fileInfo.hashMap.location);
+        URI uri = getLocationURI();
         try {
             return Scheme.getSchemeFromString(uri.getScheme());
         } catch (Exception e) {
             logger.warn("Could noit get scheme :{}", e.getMessage());
             return Scheme.FTPES;
+        }
+    }
+
+    private URI getLocationURI() {
+        if(fileReadyMessageClass == null || fileReadyMessageClass.isEmpty()) {
+            return URI.create(defaultFileInfo.hashMap.location);
+        } else {
+            return URI.create(ts28532FileInfo.fileLocation);
         }
     }
 
@@ -139,7 +174,11 @@ public class FileData {
      * @return the path to the locally stored file.
      */
     public Path getLocalFilePath(AppConfig config) {
-        return Paths.get(config.getCollectedFilesPath(), this.messageMetaData.sourceName, fileInfo.name);
+        if(fileReadyMessageClass == null || fileReadyMessageClass.isEmpty()) {
+            return Paths.get(config.getCollectedFilesPath(), this.messageMetaData.sourceName, defaultFileInfo.name);
+        } else {
+            return Paths.get(config.getCollectedFilesPath(), this.ts28532MessageMetaData.sourceName, ts28532FileInfo.fileName());
+        }
     }
 
     /**
@@ -150,7 +189,7 @@ public class FileData {
      *         from.
      */
     public FileServerData fileServerData() {
-        URI uri = URI.create(fileInfo.hashMap.location);
+        URI uri = getLocationURI();
         Optional<String[]> userInfo = getUserNameAndPasswordIfGiven(uri.getUserInfo());
 
         FileServerDataBuilder builder = FileServerData.builder() //
