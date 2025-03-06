@@ -2,6 +2,7 @@
 
 #  ============LICENSE_START===============================================
 #  Copyright (C) 2023 Nordix Foundation. All rights reserved.
+#  Copyright (C) 2023-2025 OpenInfra Foundation Europe. All rights reserved.
 #  ========================================================================
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -67,7 +68,7 @@ check_images(){
 export KEYCLOAK_IMAGE=quay.io/keycloak/keycloak:20.0.1
 pull_image $KEYCLOAK_IMAGE
 
-export OPA_IMAGE=openpolicyagent/opa:latest-envoy
+export OPA_IMAGE=openpolicyagent/opa:0.70.0-envoy-17
 pull_image $OPA_IMAGE
 
 export BUNDLE_IMAGE=nginx:1.21
