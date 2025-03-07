@@ -2,6 +2,7 @@
  * ============LICENSE_START======================================================================
  * Copyright (C) 2018, 2020-2022 Nokia. All rights reserved.
  * Copyright (C) 2018-2023 Nordix Foundation. All rights reserved.
+ * Copyright (C) 2023-2025 OpenInfra Foundation Europe. All rights reserved.
  * ===============================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -105,6 +106,10 @@ public class AppConfig {
     @Value("${app.number-of-worker-treads:200}")
     @Getter
     private int noOfWorkerThreads;
+
+    @Value("${app.file-ready-message-class:}")
+    @Getter
+    private String fileReadyMessageClass;
 
     @Value("${app.kafka.ssl.key-store-location}")
     private String kafkaKeyStoreLocation;

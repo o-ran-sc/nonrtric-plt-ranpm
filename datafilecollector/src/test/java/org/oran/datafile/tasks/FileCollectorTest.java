@@ -1,5 +1,6 @@
 /*-
  * ============LICENSE_START======================================================================
+ * Copyright (C) 2023-2025 OpenInfra Foundation Europe. All rights reserved.
  * Copyright (C) 2018-2023 Nordix Foundation. All rights reserved.
  * Copyright (C) 2020-2022 Nokia. All rights reserved.
  * ===============================================================================================
@@ -46,9 +47,9 @@ import org.oran.datafile.ftp.SftpClient;
 import org.oran.datafile.http.DfcHttpClient;
 import org.oran.datafile.http.DfcHttpsClient;
 import org.oran.datafile.model.Counters;
+import org.oran.datafile.model.DefaultFileReadyMessage;
 import org.oran.datafile.model.FileData;
 import org.oran.datafile.model.FilePublishInformation;
-import org.oran.datafile.model.FileReadyMessage;
 import org.oran.datafile.oauth2.SecurityContext;
 import reactor.test.StepVerifier;
 
@@ -113,8 +114,8 @@ class FileCollectorTest {
 
     static final SecurityContext securityContext = new SecurityContext("");
 
-    FileReadyMessage.Event event(String location) {
-        FileReadyMessage.MessageMetaData messageMetaData = FileReadyMessage.MessageMetaData.builder() //
+    DefaultFileReadyMessage.Event event(String location) {
+        DefaultFileReadyMessage.MessageMetaData messageMetaData = DefaultFileReadyMessage.MessageMetaData.builder() //
             .lastEpochMicrosec(LAST_EPOCH_MICROSEC) //
             .sourceName(SOURCE_NAME) //
             .startEpochMicrosec(START_EPOCH_MICROSEC) //
@@ -122,7 +123,7 @@ class FileCollectorTest {
             .changeIdentifier(CHANGE_IDENTIFIER) //
             .eventName("Noti_NrRadio-Ericsson_FileReady").build();
 
-        FileReadyMessage.FileInfo fileInfo = FileReadyMessage.FileInfo //
+        DefaultFileReadyMessage.FileInfo fileInfo = DefaultFileReadyMessage.FileInfo //
             .builder() //
             .fileFormatType(FILE_FORMAT_TYPE) //
             .location(location) //
@@ -130,33 +131,33 @@ class FileCollectorTest {
             .compression(GZIP_COMPRESSION) //
             .build();
 
-        FileReadyMessage.ArrayOfNamedHashMap arrayOfNamedHashMap = FileReadyMessage.ArrayOfNamedHashMap //
+        DefaultFileReadyMessage.ArrayOfNamedHashMap arrayOfNamedHashMap = DefaultFileReadyMessage.ArrayOfNamedHashMap //
             .builder().name(PM_FILE_NAME) //
             .hashMap(fileInfo).build();
 
-        List<FileReadyMessage.ArrayOfNamedHashMap> arrayOfNamedHashMapList = new ArrayList<>();
+        List<DefaultFileReadyMessage.ArrayOfNamedHashMap> arrayOfNamedHashMapList = new ArrayList<>();
         arrayOfNamedHashMapList.add(arrayOfNamedHashMap);
 
-        FileReadyMessage.NotificationFields notificationFields = FileReadyMessage.NotificationFields //
+        DefaultFileReadyMessage.NotificationFields notificationFields = DefaultFileReadyMessage.NotificationFields //
             .builder().notificationFieldsVersion("notificationFieldsVersion") //
             .changeType(CHANGE_TYPE).changeIdentifier(CHANGE_IDENTIFIER) //
             .arrayOfNamedHashMap(arrayOfNamedHashMapList) //
             .build();
 
-        return FileReadyMessage.Event.builder() //
+        return DefaultFileReadyMessage.Event.builder() //
             .commonEventHeader(messageMetaData) //
             .notificationFields(notificationFields).build();
     }
 
-    private FileReadyMessage fileReadyMessage(String location) {
-        FileReadyMessage message = FileReadyMessage.builder() //
+    private DefaultFileReadyMessage fileReadyMessage(String location) {
+        DefaultFileReadyMessage message = DefaultFileReadyMessage.builder() //
             .event(event(location)) //
             .build();
         return message;
     }
 
     private FileData createFileData(String location) {
-        return FileData.createFileData(fileReadyMessage(location)).iterator().next();
+        return FileData.createFileData(fileReadyMessage(location), null).iterator().next();
     }
 
     private FilePublishInformation createExpectedFilePublishInformation(String location) {
