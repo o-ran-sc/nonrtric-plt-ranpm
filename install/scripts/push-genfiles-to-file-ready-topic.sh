@@ -2,6 +2,7 @@
 
 #  ============LICENSE_START===============================================
 #  Copyright (C) 2023 Nordix Foundation. All rights reserved.
+#  Copyright (C) 2023-2025 OpenInfra Foundation Europe. All rights reserved.
 #  ========================================================================
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -30,12 +31,13 @@ FILE_EXT=$4
 TYPE=$5
 SRV_COUNT=$6
 HIST=$7
+FILE_READY_FORMAT=${8:-file-ready}
 
 print_usage() {
-    echo "Usage: push-genfiles-to-file-ready-topic.sh <node-count> <num-of-events> <node-name-base> <file-extension> sftp|ftpes|https <num-servers> [hist]"
+    echo "Usage: push-genfiles-to-file-ready-topic.sh <node-count> <num-of-events> <node-name-base> <file-extension> sftp|ftpes|https <num-servers> [hist] <file-ready-format>"
     exit 1
 }
-if [ $# -lt 6 ] || [ $# -gt 7 ]; then
+if [ $# -lt 6 ] || [ $# -gt 8 ]; then
     print_usage
 fi
 
@@ -69,7 +71,7 @@ fi
 chmod +x kafka-client-send-genfiles-file-ready.sh
 kubectl cp kafka-client-send-genfiles-file-ready.sh nonrtric/kafka-client:/home/appuser
 
-kubectl exec kafka-client -n nonrtric -- bash -c './kafka-client-send-genfiles-file-ready.sh file-ready '$NODE_COUNT' '$EVT_COUNT' '$NODE_NAME_BASE' '$FILE_EXT' '$TYPE' '$SRV_COUNT' '$HIST
+kubectl exec kafka-client -n nonrtric -- bash -c './kafka-client-send-genfiles-file-ready.sh '$FILE_READY_FORMAT' '$NODE_COUNT' '$EVT_COUNT' '$NODE_NAME_BASE' '$FILE_EXT' '$TYPE' '$SRV_COUNT' '$HIST
 
 echo done
 

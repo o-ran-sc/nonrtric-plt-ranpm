@@ -2,6 +2,7 @@
 
 #  ============LICENSE_START===============================================
 #  Copyright (C) 2023 Nordix Foundation. All rights reserved.
+#  Copyright (C) 2023-2025 OpenInfra Foundation Europe. All rights reserved.
 #  ========================================================================
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -70,6 +71,8 @@ PUSHMSG=""
 if [ $VARIANT == "ves" ]; then
     PUSHMSG="to ves-collector"
 elif [ $VARIANT == "file-ready" ]; then
+    PUSHMSG="to file-ready topic"
+elif [ $VARIANT == "file-ready-ts28532" ]; then
     PUSHMSG="to file-ready topic"
 fi
 
@@ -140,6 +143,8 @@ for (( i=0; i<$EVT_COUNT; i++)); do
             fi
             if [ $VARIANT == "ves" ]; then
                 EVT='{"commonEventHeader":{"domain":"notification","sequence":0,"eventName":"Noti_RnNode-Ericsson_FileReady","eventId":"FileReady_'$TCNTR'","priority":"Normal","version":"4.0.1","vesEventListenerVersion":"7.0.1","sourceName":"'$NO'","reportingEntityName":"'$NO'","lastEpochMicrosec":'$CURTIMEMS',"startEpochMicrosec":'$STTIMEMS',"timeZoneOffset":"UTC'$TIMEZONE'"},"notificationFields":{"notificationFieldsVersion":"2.0","changeType":"FileReady","changeIdentifier":"PM_MEAS_FILES","arrayOfNamedHashMap":[{"name":"'$FN'","hashMap":{"fileFormatType":"org.3GPP.32.435#measCollec","location":"'$URL'","fileFormatVersion":"V10","compression":"gzip"}}]}}'
+            elif [ $VARIANT == "file-ready-ts28532" ]; then
+                EVT='{"event":{"commonEventHeader":{"reportingEntityId":"","nfNamingCode":"001","timeZoneOffset":"UTC'$TIMEZONE'","version":"4.1","vesEventListenerVersion":"7.2.1","domain":"stndDefined","eventId":"ManagedElement=pynts-o-du-o1_stndDefined","eventName":"stndDefined_PyNTS_FileReady","eventType":"PyNTS_FileReady","sequence":0,"priority":"Low","reportingEntityName":"ManagementElement=pynts-o-du-o1","sourceId":"ManagementElement=pynts-o-du-o1","sourceName":"'$NO'","startEpochMicrosec":1737029100022212,"lastEpochMicrosec":1737029100022212,"nfVendorName":"pynts","stndDefinedNamespace":"3GPP-PerformanceAssurance"},"stndDefinedFields":{"schemaReference":"https://forge.3gpp.org/rep/sa5/MnS/blob/Rel-18/OpenAPI/TS28532_FileDataReportingMnS.yaml#components/schemas/NotifyFileReady","stndDefinedFieldsVersion":"1.0","data":{"href":"href1","notificationType":"notifyFileReady","fileInfoList":[{"fileSize":1288,"fileExpirationTime":"2025-01-16T12:08:00.017Z","fileCompression":"no","fileFormat":"xml","fileDataType":"Performance","fileLocation":"'$URL'","fileReadyTime":"2025-01-16T12:05:00.022Z"}],"additionalText":"Have fun!","notificationId":1,"eventTime":"2025-01-16T12:05:00.022Z","systemDN":"ManagedElement=pynts-o-du-o1"}}}}'
             else
                 EVT='{"event":{"commonEventHeader":{"sequence":0,"eventName":"Noti_RnNode-Ericsson_FileReady","sourceName":"'$NO'","lastEpochMicrosec":'$CURTIMEMS',"startEpochMicrosec":'$STTIMEMS',"timeZoneOffset":"UTC'$TIMEZONE'","changeIdentifier":"PM_MEAS_FILES"},"notificationFields":{"notificationFieldsVersion":"notificationFieldsVersion","changeType":"FileReady","changeIdentifier":"PM_MEAS_FILES","arrayOfNamedHashMap":[{"name":"'$FN'","hashMap":{"fileFormatType":"org.3GPP.32.435#measCollec","location":"'$URL'","fileFormatVersion":"V10","compression":"gzip"}}]}}}'
             fi
@@ -179,6 +184,8 @@ for (( i=0; i<$EVT_COUNT; i++)); do
             fi
             if [ $VARIANT == "ves" ]; then
                 EVT='{"commonEventHeader":{"domain":"notification","sequence":0,"eventName":"Noti_RnNode-Ericsson_FileReady","eventId":"FileReady_'$TCNTR'","priority":"Normal","version":"4.0.1","vesEventListenerVersion":"7.0.1","sourceName":"'$NO'","reportingEntityName":"'$NO'","lastEpochMicrosec":'$CURTIMEMS',"startEpochMicrosec":'$STTIMEMS',"timeZoneOffset":"UTC'$TIMEZONE'"},"notificationFields":{"notificationFieldsVersion":"2.0","changeType":"FileReady","changeIdentifier":"PM_MEAS_FILES","arrayOfNamedHashMap":[{"name":"'$FN'","hashMap":{"fileFormatType":"org.3GPP.32.435#measCollec","location":"'$URL'","fileFormatVersion":"V10","compression":"gzip"}}]}}'
+            elif [ $VARIANT == "file-ready-ts28532" ]; then
+                EVT='{"event":{"commonEventHeader":{"reportingEntityId":"","nfNamingCode":"001","timeZoneOffset":"UTC'$TIMEZONE'","version":"4.1","vesEventListenerVersion":"7.2.1","domain":"stndDefined","eventId":"ManagedElement=pynts-o-du-o1_stndDefined","eventName":"stndDefined_PyNTS_FileReady","eventType":"PyNTS_FileReady","sequence":0,"priority":"Low","reportingEntityName":"ManagementElement=pynts-o-du-o1","sourceId":"ManagementElement=pynts-o-du-o1","sourceName":"'$NO'","startEpochMicrosec":1737029100022212,"lastEpochMicrosec":1737029100022212,"nfVendorName":"pynts","stndDefinedNamespace":"3GPP-PerformanceAssurance"},"stndDefinedFields":{"schemaReference":"https://forge.3gpp.org/rep/sa5/MnS/blob/Rel-18/OpenAPI/TS28532_FileDataReportingMnS.yaml#components/schemas/NotifyFileReady","stndDefinedFieldsVersion":"1.0","data":{"href":"href1","notificationType":"notifyFileReady","fileInfoList":[{"fileSize":1288,"fileExpirationTime":"2025-01-16T12:08:00.017Z","fileCompression":"no","fileFormat":"xml","fileDataType":"Performance","fileLocation":"'$URL'","fileReadyTime":"2025-01-16T12:05:00.022Z"}],"additionalText":"Have fun!","notificationId":1,"eventTime":"2025-01-16T12:05:00.022Z","systemDN":"ManagedElement=pynts-o-du-o1"}}}}'
             else
                 EVT='{"event":{"commonEventHeader":{"sequence":0,"eventName":"Noti_RnNode-Ericsson_FileReady","sourceName":"'$NO'","lastEpochMicrosec":'$CURTIMEMS',"startEpochMicrosec":'$STTIMEMS',"timeZoneOffset":"UTC'$TIMEZONE'","changeIdentifier":"PM_MEAS_FILES"},"notificationFields":{"notificationFieldsVersion":"notificationFieldsVersion","changeType":"FileReady","changeIdentifier":"PM_MEAS_FILES","arrayOfNamedHashMap":[{"name":"'$FN'","hashMap":{"fileFormatType":"org.3GPP.32.435#measCollec","location":"'$URL'","fileFormatVersion":"V10","compression":"gzip"}}]}}}'
             fi
