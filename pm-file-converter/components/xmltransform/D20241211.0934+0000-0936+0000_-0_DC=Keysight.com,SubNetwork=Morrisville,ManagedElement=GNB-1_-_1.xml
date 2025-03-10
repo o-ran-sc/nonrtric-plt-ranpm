@@ -1,0 +1,1478 @@
+<?xml-stylesheet type="text/xsl" href="measData.xsl"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<measDataFile xmlns="http://www.3gpp.org/ftp/specs/archive/28_series/28.532#measData" xsi:schemaLocation="http://www.3gpp.org/ftp/specs/archive/28_series/28.532#measData schema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<fileHeader fileFormatVersion="28.532 V16.0.0" dnPrefix="DC=Keysight.com,SubNetwork=Morrisville" vendorName="Keysight">
+		<fileSender senderName="ManagedElement=GNB-1" senderType="ORAN Node" />
+		<measData beginTime="2024-12-11T09:34:00+00:00" />
+	</fileHeader>
+	<measData>
+		<measEntity localDn="ManagedElement=GNB-1" />
+		<measInfo measInfoId="5.1.1.1.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.AirIfDelayDl</measType>
+			<measType p="2">DRB.AirIfDelayDl.01</measType>
+			<measType p="3">DRB.AirIfDelayDl.010003e8</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.1.3">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.AirIfDelayUl</measType>
+			<measType p="2">DRB.AirIfDelayUl.01</measType>
+			<measType p="3">DRB.AirIfDelayUl.010003e8</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.10.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.EstabAtt</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.10.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.EstabSucc</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.23.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.MaxActiveUeDl</measType>
+			<measType p="2">DRB.MaxActiveUeDl.01</measType>
+			<measType p="3">DRB.MaxActiveUeDl.010003e8</measType>
+			<measType p="4">DRB.MaxActiveUeDl.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.23.4">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.MaxActiveUeUl</measType>
+			<measType p="2">DRB.MaxActiveUeUl.01</measType>
+			<measType p="3">DRB.MaxActiveUeUl.010003e8</measType>
+			<measType p="4">DRB.MaxActiveUeUl.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.23.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.MeanActiveUeDl</measType>
+			<measType p="2">DRB.MeanActiveUeDl.01</measType>
+			<measType p="3">DRB.MeanActiveUeDl.010003e8</measType>
+			<measType p="4">DRB.MeanActiveUeDl.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.23.3">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.MeanActiveUeUl</measType>
+			<measType p="2">DRB.MeanActiveUeUl.01</measType>
+			<measType p="3">DRB.MeanActiveUeUl.010003e8</measType>
+			<measType p="4">DRB.MeanActiveUeUl.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.2.1.1.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.PdcpSduVolumeDL</measType>
+			<measType p="2">DRB.PdcpSduVolumeDL.01</measType>
+			<measType p="3">DRB.PdcpSduVolumeDL.010003e8</measType>
+			<measType p="4">DRB.PdcpSduVolumeDL.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.2.1.2.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.PdcpSduVolumeUL</measType>
+			<measType p="2">DRB.PdcpSduVolumeUL.01</measType>
+			<measType p="3">DRB.PdcpSduVolumeUL.010003e8</measType>
+			<measType p="4">DRB.PdcpSduVolumeUL.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.10.3">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.RelActNbr</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.1.4">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.RlcDelayUl</measType>
+			<measType p="2">DRB.RlcDelayUl.01</measType>
+			<measType p="3">DRB.RlcDelayUl.010003e8</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.3.3.3">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.RlcSduDelayDl.01</measType>
+			<measType p="2">DRB.RlcSduDelayDl.010003e8</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">1198.000000</r>
+				<r p="2">1198.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.10.4">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.SessionTime</measType>
+			<measType p="2">DRB.SessionTime.01</measType>
+			<measType p="3">DRB.SessionTime.010003e8</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">11084.000000</r>
+				<r p="2">11084.000000</r>
+				<r p="3">11084.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.3.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.UEThpDl</measType>
+			<measType p="2">DRB.UEThpDl.01</measType>
+			<measType p="3">DRB.UEThpDl.010003e8</measType>
+			<measType p="4">DRB.UEThpDl.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.3.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.UEThpUl</measType>
+			<measType p="2">DRB.UEThpUl.01</measType>
+			<measType p="3">DRB.UEThpUl.010003e8</measType>
+			<measType p="4">DRB.UEThpUl.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.6.1.7">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">MM.HoExeInterReq</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=2">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=3">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=4">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.6.1.8">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">MM.HoExeInterSucc</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=2">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=3">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=4">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.6.2.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">MM.HoExeIntraReq</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=2">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=3">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=4">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.6.2.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">MM.HoExeIntraSucc</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=0">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.6.1.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">MM.HoPrepInterReq</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=2">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=3">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=4">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.6.1.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">MM.HoPrepInterSucc</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=2">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=3">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=4">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.6.1.4">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">MM.HoResAlloInterReq</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=2">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=3">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=4">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.6.1.5">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">MM.HoResAlloInterSucc</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=2">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=3">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=4">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.19.2.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">PEE.AvgPower</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1">
+				<r p="1">25.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.19.3">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">PEE.Energy</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1">
+				<r p="1">21780</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.19.2.3">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">PEE.MaxPower</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1">
+				<r p="1">25.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.19.2.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">PEE.MinPower</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1">
+				<r p="1">25.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.3.6.1.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">QosFlow.PdcpPduVolumeDL</measType>
+			<measType p="2">QosFlow.PdcpPduVolumeDL.01</measType>
+			<measType p="3">QosFlow.PdcpPduVolumeDL.010003e8</measType>
+			<measType p="4">QosFlow.PdcpPduVolumeDL.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUUPFunction=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.3.6.1.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">QosFlow.PdcpPduVolumeUL</measType>
+			<measType p="2">QosFlow.PdcpPduVolumeUL.01</measType>
+			<measType p="3">QosFlow.PdcpPduVolumeUL.010003e8</measType>
+			<measType p="4">QosFlow.PdcpPduVolumeUL.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUUPFunction=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.3.6.2.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">QosFlow.PdcpSduVolumeDL</measType>
+			<measType p="2">QosFlow.PdcpSduVolumeDL.01</measType>
+			<measType p="3">QosFlow.PdcpSduVolumeDL.010003e8</measType>
+			<measType p="4">QosFlow.PdcpSduVolumeDL.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUUPFunction=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.3.6.2.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">QosFlow.PdcpSduVolumeUL</measType>
+			<measType p="2">QosFlow.PdcpSduVolumeUL.01</measType>
+			<measType p="3">QosFlow.PdcpSduVolumeUL.010003e8</measType>
+			<measType p="4">QosFlow.PdcpSduVolumeUL.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUUPFunction=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.4.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRC.ConnMax</measType>
+			<measType p="2">RRC.ConnMax.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.4.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRC.ConnMean</measType>
+			<measType p="2">RRC.ConnMean.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.17.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRC.ReEstabAtt</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.17.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRC.ReEstabSuccWithUeContext</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.17.3">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRC.ReEstabSuccWithoutUeContext</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.2.9">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRU.MaxPrbUsedDl</measType>
+			<measType p="2">RRU.MaxPrbUsedDl.01</measType>
+			<measType p="3">RRU.MaxPrbUsedDl.010003e8</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.2.10">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRU.MaxPrbUsedUl</measType>
+			<measType p="2">RRU.MaxPrbUsedUl.01</measType>
+			<measType p="3">RRU.MaxPrbUsedUl.010003e8</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.2.6">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRU.PrbAvailDl</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">14.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.2.8">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRU.PrbAvailUl</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">14.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.2.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRU.PrbTotDl</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.2.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRU.PrbTotUl</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.2.5">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRU.PrbUsedDl</measType>
+			<measType p="2">RRU.PrbUsedDl.01</measType>
+			<measType p="3">RRU.PrbUsedDl.010003e8</measType>
+			<measType p="4">RRU.PrbUsedDl.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.2.7">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRU.PrbUsedUl</measType>
+			<measType p="2">RRU.PrbUsedUl.01</measType>
+			<measType p="3">RRU.PrbUsedUl.010003e8</measType>
+			<measType p="4">RRU.PrbUsedUl.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.5.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">SM.PDUSessionSetupReq</measType>
+			<measType p="2">SM.PDUSessionSetupReq.010003e8</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.5.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:34:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">SM.PDUSessionSetupSucc</measType>
+			<measType p="2">SM.PDUSessionSetupSucc.010003e8</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.1.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.AirIfDelayDl</measType>
+			<measType p="2">DRB.AirIfDelayDl.01</measType>
+			<measType p="3">DRB.AirIfDelayDl.010003e8</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.1.3">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.AirIfDelayUl</measType>
+			<measType p="2">DRB.AirIfDelayUl.01</measType>
+			<measType p="3">DRB.AirIfDelayUl.010003e8</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.10.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.EstabAtt</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.10.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.EstabSucc</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.23.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.MaxActiveUeDl</measType>
+			<measType p="2">DRB.MaxActiveUeDl.01</measType>
+			<measType p="3">DRB.MaxActiveUeDl.010003e8</measType>
+			<measType p="4">DRB.MaxActiveUeDl.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.23.4">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.MaxActiveUeUl</measType>
+			<measType p="2">DRB.MaxActiveUeUl.01</measType>
+			<measType p="3">DRB.MaxActiveUeUl.010003e8</measType>
+			<measType p="4">DRB.MaxActiveUeUl.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.23.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.MeanActiveUeDl</measType>
+			<measType p="2">DRB.MeanActiveUeDl.01</measType>
+			<measType p="3">DRB.MeanActiveUeDl.010003e8</measType>
+			<measType p="4">DRB.MeanActiveUeDl.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.23.3">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.MeanActiveUeUl</measType>
+			<measType p="2">DRB.MeanActiveUeUl.01</measType>
+			<measType p="3">DRB.MeanActiveUeUl.010003e8</measType>
+			<measType p="4">DRB.MeanActiveUeUl.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.2.1.1.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.PdcpSduVolumeDL</measType>
+			<measType p="2">DRB.PdcpSduVolumeDL.01</measType>
+			<measType p="3">DRB.PdcpSduVolumeDL.010003e8</measType>
+			<measType p="4">DRB.PdcpSduVolumeDL.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.2.1.2.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.PdcpSduVolumeUL</measType>
+			<measType p="2">DRB.PdcpSduVolumeUL.01</measType>
+			<measType p="3">DRB.PdcpSduVolumeUL.010003e8</measType>
+			<measType p="4">DRB.PdcpSduVolumeUL.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.10.3">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.RelActNbr</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.1.4">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.RlcDelayUl</measType>
+			<measType p="2">DRB.RlcDelayUl.01</measType>
+			<measType p="3">DRB.RlcDelayUl.010003e8</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.3.3.3">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.RlcSduDelayDl.01</measType>
+			<measType p="2">DRB.RlcSduDelayDl.010003e8</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">1198.000000</r>
+				<r p="2">1198.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.10.4">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.SessionTime</measType>
+			<measType p="2">DRB.SessionTime.01</measType>
+			<measType p="3">DRB.SessionTime.010003e8</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">12650.000000</r>
+				<r p="2">12650.000000</r>
+				<r p="3">12650.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.3.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.UEThpDl</measType>
+			<measType p="2">DRB.UEThpDl.01</measType>
+			<measType p="3">DRB.UEThpDl.010003e8</measType>
+			<measType p="4">DRB.UEThpDl.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.3.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">DRB.UEThpUl</measType>
+			<measType p="2">DRB.UEThpUl.01</measType>
+			<measType p="3">DRB.UEThpUl.010003e8</measType>
+			<measType p="4">DRB.UEThpUl.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.6.1.7">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">MM.HoExeInterReq</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=2">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=3">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=4">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.6.1.8">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">MM.HoExeInterSucc</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=2">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=3">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=4">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.6.2.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">MM.HoExeIntraReq</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=2">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=3">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=4">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.6.2.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">MM.HoExeIntraSucc</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=0">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.6.1.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">MM.HoPrepInterReq</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=2">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=3">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=4">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.6.1.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">MM.HoPrepInterSucc</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=2">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=3">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=4">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.6.1.4">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">MM.HoResAlloInterReq</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=2">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=3">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=4">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.6.1.5">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">MM.HoResAlloInterSucc</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=2">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=3">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1,NRCellRelation=4">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+			<measValue measObjLdn="">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.19.2.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">PEE.AvgPower</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1">
+				<r p="1">25.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.19.3">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">PEE.Energy</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1">
+				<r p="1">20856</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.19.2.3">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">PEE.MaxPower</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1">
+				<r p="1">25.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.19.2.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">PEE.MinPower</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1">
+				<r p="1">25.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.3.6.1.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">QosFlow.PdcpPduVolumeDL</measType>
+			<measType p="2">QosFlow.PdcpPduVolumeDL.01</measType>
+			<measType p="3">QosFlow.PdcpPduVolumeDL.010003e8</measType>
+			<measType p="4">QosFlow.PdcpPduVolumeDL.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUUPFunction=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.3.6.1.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">QosFlow.PdcpPduVolumeUL</measType>
+			<measType p="2">QosFlow.PdcpPduVolumeUL.01</measType>
+			<measType p="3">QosFlow.PdcpPduVolumeUL.010003e8</measType>
+			<measType p="4">QosFlow.PdcpPduVolumeUL.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUUPFunction=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.3.6.2.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">QosFlow.PdcpSduVolumeDL</measType>
+			<measType p="2">QosFlow.PdcpSduVolumeDL.01</measType>
+			<measType p="3">QosFlow.PdcpSduVolumeDL.010003e8</measType>
+			<measType p="4">QosFlow.PdcpSduVolumeDL.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUUPFunction=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.3.6.2.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">QosFlow.PdcpSduVolumeUL</measType>
+			<measType p="2">QosFlow.PdcpSduVolumeUL.01</measType>
+			<measType p="3">QosFlow.PdcpSduVolumeUL.010003e8</measType>
+			<measType p="4">QosFlow.PdcpSduVolumeUL.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUUPFunction=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.4.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRC.ConnMax</measType>
+			<measType p="2">RRC.ConnMax.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.4.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRC.ConnMean</measType>
+			<measType p="2">RRC.ConnMean.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.17.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRC.ReEstabAtt</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.17.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRC.ReEstabSuccWithUeContext</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.17.3">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRC.ReEstabSuccWithoutUeContext</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.2.9">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRU.MaxPrbUsedDl</measType>
+			<measType p="2">RRU.MaxPrbUsedDl.01</measType>
+			<measType p="3">RRU.MaxPrbUsedDl.010003e8</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.2.10">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRU.MaxPrbUsedUl</measType>
+			<measType p="2">RRU.MaxPrbUsedUl.01</measType>
+			<measType p="3">RRU.MaxPrbUsedUl.010003e8</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.2.6">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRU.PrbAvailDl</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">14.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.2.8">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRU.PrbAvailUl</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">14.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.2.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRU.PrbTotDl</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.2.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRU.PrbTotUl</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.2.5">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRU.PrbUsedDl</measType>
+			<measType p="2">RRU.PrbUsedDl.01</measType>
+			<measType p="3">RRU.PrbUsedDl.010003e8</measType>
+			<measType p="4">RRU.PrbUsedDl.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.2.7">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">RRU.PrbUsedUl</measType>
+			<measType p="2">RRU.PrbUsedUl.01</measType>
+			<measType p="3">RRU.PrbUsedUl.010003e8</measType>
+			<measType p="4">RRU.PrbUsedUl.226F04</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBDUFunction=1,NRCellDU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<r p="3">0.000000</r>
+				<r p="4">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.5.1">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">SM.PDUSessionSetupReq</measType>
+			<measType p="2">SM.PDUSessionSetupReq.010003e8</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+		<measInfo measInfoId="5.1.1.5.2">
+			<job jobId="0" />
+			<granPeriod duration="PT60S" endTime="2024-12-11T09:35:23+00:00" />
+			<repPeriod duration="PT120S" />
+			<measType p="1">SM.PDUSessionSetupSucc</measType>
+			<measType p="2">SM.PDUSessionSetupSucc.010003e8</measType>
+			<measValue measObjLdn="ManagedElement=GNB-1,GNBCUCPFunction=1,NRCellCU=1">
+				<r p="1">0.000000</r>
+				<r p="2">0.000000</r>
+				<suspect>false</suspect>
+			</measValue>
+		</measInfo>
+	</measData>
+	<fileFooter>
+		<measData endTime="2024-12-11T09:36:00+00:00" />
+	</fileFooter>
+</measDataFile>
