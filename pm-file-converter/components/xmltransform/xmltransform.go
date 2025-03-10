@@ -4,6 +4,7 @@
 //      O-RAN-SC
 //      %%
 //      Copyright (C) 2023: Nordix Foundation
+//      Copyright (C) 2023-2025 OpenInfra Foundation Europe. All rights reserved.
 //      %%
 //      Licensed under the Apache License, Version 2.0 (the "License");
 //      you may not use this file except in compliance with the License.
@@ -26,18 +27,28 @@ import (
 	"encoding/xml"
 	"errors"
 	"fmt"
-	jsoniter "github.com/json-iterator/go"
-	log "github.com/sirupsen/logrus"
 	"io"
 	"main/common/dataTypes"
 	"net/http"
+	"os"
 	"strconv"
 	"time"
+
+	jsoniter "github.com/json-iterator/go"
+	log "github.com/sirupsen/logrus"
 )
 
 //lint:ignore S117
 func xmlToJsonConv(fBytevalue *[]byte, xfeh *dataTypes.XmlFileEventHeader) ([]byte, error) {
-	var f dataTypes.MeasCollecFile
+	var datatypeformat = os.Getenv("DATA_TYPE_FORMAT")
+
+	var f interface{}
+	if datatypeformat == "" {
+		f = &dataTypes.MeasCollecFile{}
+	} else {
+		f = &dataTypes.MeasDataFile{}
+	}
+
 	start := time.Now()
 	err := xml.Unmarshal(*fBytevalue, &f)
 	if err != nil {
@@ -51,32 +62,64 @@ func xmlToJsonConv(fBytevalue *[]byte, xfeh *dataTypes.XmlFileEventHeader) ([]by
 	pmfile.Event.Perf3GppFields.Perf3GppFieldsVersion = "1.0"
 	pmfile.Event.Perf3GppFields.MeasDataCollection.GranularityPeriod = 900
 	pmfile.Event.Perf3GppFields.MeasDataCollection.MeasuredEntityUserName = ""
-	pmfile.Event.Perf3GppFields.MeasDataCollection.MeasuredEntityDn = f.FileHeader.FileSender.LocalDn
-	pmfile.Event.Perf3GppFields.MeasDataCollection.MeasuredEntitySoftwareVersion = f.MeasData.ManagedElement.SwVersion
 
-	for _, it := range f.MeasData.MeasInfo {
-		var mili dataTypes.MeasInfoList
-		mili.MeasInfoID.SMeasInfoID = it.MeasInfoId
-		for _, jt := range it.MeasType {
-			mili.MeasTypes.SMeasTypesList = append(mili.MeasTypes.SMeasTypesList, jt.Text)
-		}
-		for _, jt := range it.MeasValue {
-			var mv dataTypes.MeasValues
-			mv.MeasObjInstID = jt.MeasObjLdn
-			mv.SuspectFlag = jt.Suspect
-			if jt.Suspect == "" {
-				mv.SuspectFlag = "false"
+	switch v := f.(type) {
+	case *dataTypes.MeasCollecFile:
+		pmfile.Event.Perf3GppFields.MeasDataCollection.MeasuredEntityDn = v.FileHeader.FileSender.LocalDn
+		pmfile.Event.Perf3GppFields.MeasDataCollection.MeasuredEntitySoftwareVersion = v.MeasData.ManagedElement.SwVersion
+		for _, it := range v.MeasData.MeasInfo {
+			var mili dataTypes.MeasInfoList
+			mili.MeasInfoID.SMeasInfoID = it.MeasInfoId
+			for _, jt := range it.MeasType {
+				mili.MeasTypes.SMeasTypesList = append(mili.MeasTypes.SMeasTypesList, jt.Text)
 			}
-			for _, kt := range jt.R {
-				ni, _ := strconv.Atoi(kt.P)
-				nv := kt.Text
-				mr := dataTypes.MeasResults{ni, nv}
-				mv.MeasResultsList = append(mv.MeasResultsList, mr)
+			for _, jt := range it.MeasValue {
+				var mv dataTypes.MeasValues
+				mv.MeasObjInstID = jt.MeasObjLdn
+				mv.SuspectFlag = jt.Suspect
+				if jt.Suspect == "" {
+					mv.SuspectFlag = "false"
+				}
+				for _, kt := range jt.R {
+					ni, _ := strconv.Atoi(kt.P)
+					nv := kt.Text
+					mr := dataTypes.MeasResults{ni, nv}
+					mv.MeasResultsList = append(mv.MeasResultsList, mr)
+				}
+				mili.MeasValuesList = append(mili.MeasValuesList, mv)
 			}
-			mili.MeasValuesList = append(mili.MeasValuesList, mv)
-		}
 
-		pmfile.Event.Perf3GppFields.MeasDataCollection.SMeasInfoList = append(pmfile.Event.Perf3GppFields.MeasDataCollection.SMeasInfoList, mili)
+			pmfile.Event.Perf3GppFields.MeasDataCollection.SMeasInfoList = append(pmfile.Event.Perf3GppFields.MeasDataCollection.SMeasInfoList, mili)
+		}
+	case *dataTypes.MeasDataFile:
+		pmfile.Event.Perf3GppFields.MeasDataCollection.MeasuredEntityDn = v.FileHeader.FileSender.SenderName
+		pmfile.Event.Perf3GppFields.MeasDataCollection.MeasuredEntitySoftwareVersion = "N/A"
+		for _, it := range v.MeasData.MeasInfo {
+			var mili dataTypes.MeasInfoList
+			mili.MeasInfoID.SMeasInfoID = it.MeasInfoId
+			for _, jt := range it.MeasType {
+				mili.MeasTypes.SMeasTypesList = append(mili.MeasTypes.SMeasTypesList, jt.Text)
+			}
+			for _, jt := range it.MeasValue {
+				var mv dataTypes.MeasValues
+				mv.MeasObjInstID = jt.MeasObjLdn
+				mv.SuspectFlag = jt.Suspect
+				if jt.Suspect == "" {
+					mv.SuspectFlag = "false"
+				}
+				for _, kt := range jt.R {
+					ni, _ := strconv.Atoi(kt.P)
+					nv := kt.Text
+					mr := dataTypes.MeasResults{ni, nv}
+					mv.MeasResultsList = append(mv.MeasResultsList, mr)
+				}
+				mili.MeasValuesList = append(mili.MeasValuesList, mv)
+			}
+
+			pmfile.Event.Perf3GppFields.MeasDataCollection.SMeasInfoList = append(pmfile.Event.Perf3GppFields.MeasDataCollection.SMeasInfoList, mili)
+		}
+	default:
+		return nil, errors.New("Unexpected file type")
 	}
 
 	pmfile.Event.Perf3GppFields.MeasDataCollection.GranularityPeriod = 900

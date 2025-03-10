@@ -4,6 +4,7 @@
 //      O-RAN-SC
 //      %%
 //      Copyright (C) 2023: Nordix Foundation
+//      Copyright (C) 2023-2025 OpenInfra Foundation Europe. All rights reserved.
 //      %%
 //      Licensed under the Apache License, Version 2.0 (the "License");
 //      you may not use this file except in compliance with the License.
@@ -21,7 +22,8 @@
 package dataTypes
 
 import (
-        "encoding/xml"
+	"encoding/xml"
+
 	"github.com/confluentinc/confluent-kafka-go/kafka"
 )
 
@@ -109,6 +111,66 @@ type MeasCollecFile struct {
 			Text    string `xml:",chardata"`
 			EndTime string `xml:"endTime,attr"`
 		} `xml:"measCollec"`
+	} `xml:"fileFooter"`
+}
+
+// Data type for the new input XML file
+type MeasDataFile struct {
+	XMLName        xml.Name `xml:"measDataFile"`
+	Text           string   `xml:",chardata"`
+	Xmlns          string   `xml:"xmlns,attr"`
+	Xsi            string   `xml:"xsi,attr"`
+	SchemaLocation string   `xml:"schemaLocation,attr"`
+	FileHeader     struct {
+		Text              string `xml:",chardata"`
+		FileFormatVersion string `xml:"fileFormatVersion,attr"`
+		VendorName        string `xml:"vendorName,attr"`
+		FileSender        struct {
+			Text        string `xml:",chardata"`
+			SenderName  string `xml:"senderName,attr"`
+			ElementType string `xml:"elementType,attr"`
+		} `xml:"fileSender"`
+		MeasDataCollection struct {
+			Text      string `xml:",chardata"`
+			BeginTime string `xml:"beginTime,attr"`
+		} `xml:"measDataCollection"`
+	} `xml:"fileHeader"`
+	MeasData struct {
+		Text       string `xml:",chardata"`
+		MeasEntity struct {
+			Text      string `xml:",chardata"`
+			LocalDn   string `xml:"localDn,attr"`
+			SwVersion string `xml:"swVersion,attr"`
+		} `xml:"measEntity"`
+		MeasInfo []struct {
+			Text       string `xml:",chardata"`
+			MeasInfoId string `xml:"measInfoId,attr"`
+			GranPeriod struct {
+				Text     string `xml:",chardata"`
+				Duration string `xml:"duration,attr"`
+				EndTime  string `xml:"endTime,attr"`
+			} `xml:"granPeriod"`
+			MeasType []struct {
+				Text string `xml:",chardata"`
+				P    string `xml:"p,attr"`
+			} `xml:"measType"`
+			MeasValue []struct {
+				Text       string `xml:",chardata"`
+				MeasObjLdn string `xml:"measObjLdn,attr"`
+				R          []struct {
+					Text string `xml:",chardata"`
+					P    string `xml:"p,attr"`
+				} `xml:"r"`
+				Suspect string `xml:"suspect"`
+			} `xml:"measValue"`
+		} `xml:"measInfo"`
+	} `xml:"measData"`
+	FileFooter struct {
+		Text            string `xml:",chardata"`
+		MeasDataClosure struct {
+			Text    string `xml:",chardata"`
+			EndTime string `xml:"endTime,attr"`
+		} `xml:"measDataClosure"`
 	} `xml:"fileFooter"`
 }
 
