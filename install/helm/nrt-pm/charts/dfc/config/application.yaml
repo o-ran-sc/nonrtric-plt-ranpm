@@ -50,8 +50,10 @@ app:
   number-of-worker-treads: 50
    # If the file name is empty, no authorization token is used
   auth-token-file: /token-cache/jwt.txt
-  # If specified, this value will be used as a class to map the fileready event from kafka
-  # If this is empty, default filereadymessage class will be used
+  # This controls the format used for processing the file-ready messages
+  # Example values:
+  #   file-ready-message-class: "" (empty) -> Default format(org.oran.datafile.model.DefaultFileReadyMessage)
+  #   file-ready-message-class: "TS28532" (Not empty) -> org.oran.datafile.model.TS28532FileReadyMessage
   file-ready-message-class:
    # KAFKA boostrap servers. This is only needed if there are Information Types that uses a kafkaInputTopic
   # several redundant boostrap servers can be specified, separated by a comma ','.
