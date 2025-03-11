@@ -1,6 +1,6 @@
 #  ============LICENSE_START===============================================
 #  Copyright (C) 2020-2023 Nordix Foundation. All rights reserved.
-#  Copyright (C) 2023 OpenInfra Foundation Europe. All rights reserved.
+#  Copyright (C) 2023-2025 OpenInfra Foundation Europe. All rights reserved.
 #  ========================================================================
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -56,6 +56,8 @@ spec:
 
         - name: KAFKA_SERVER
           value: kafka-1-kafka-bootstrap.nonrtric:9097
+        - name: DATA_TYPE_FORMAT
+          value: ""
         - name: ICS
           value: informationservice.nonrtric:8083
         - name: SELF
