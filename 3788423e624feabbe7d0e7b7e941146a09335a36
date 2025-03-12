@@ -48,6 +48,30 @@
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd0be18e_42e6b095",
+        "filename": "install/helm/nrt-pm/charts/dfc/config/application.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2025-03-12T14:30:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54fab15e_718627d3",
+      "range": {
+        "startLine": 53,
+        "startChar": 18,
+        "endLine": 53,
+        "endChar": 42
+      },
+      "revId": "3788423e624feabbe7d0e7b7e941146a09335a36",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca3dc46a_afeee03d",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Sample values provided",
       "parentUuid": "ca3dc46a_afeee03d",
+      "range": {
+        "startLine": 59,
+        "startChar": 16,
+        "endLine": 59,
+        "endChar": 32
+      },
+      "revId": "3788423e624feabbe7d0e7b7e941146a09335a36",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76c7e440_e6088b5d",
+        "filename": "install/helm/nrt-pm/charts/kafka-producer-pm-xml2json/templates/app-statefulset.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2025-03-12T14:30:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7c64568_c51b7060",
       "range": {
         "startLine": 59,
         "startChar": 16,
