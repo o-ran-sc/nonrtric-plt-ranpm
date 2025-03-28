@@ -16,6 +16,23 @@
       "message": "Thanks @srao@linuxfoundation.org\nWe\u0027re investigating how to merge these changes in another review - coming soon ... We would like to maintain the original functionality, and include this too, so the current change is not suitable for merging as is. \nWe\u0027ll ask you to review the new review when ready,",
       "revId": "e250345a09c32821e0be10d1831ec9c6eafb7aec",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "620f2804_4345292d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2025-03-28T11:58:03Z",
+      "side": 1,
+      "message": "This functionality has been included in the main DFC functionality now, so this review can be abandoned I think. \nThanks for this :-) \n\nhttps://gerrit.o-ran-sc.org/r/c/nonrtric/plt/ranpm/+/14217?usp\u003dsearch\nhttps://gerrit.o-ran-sc.org/r/c/nonrtric/plt/ranpm/+/14223?usp\u003dsearch\nhttps://gerrit.o-ran-sc.org/r/c/nonrtric/plt/ranpm/+/14235?usp\u003dsearch\nhttps://lf-o-ran-sc.atlassian.net/browse/NONRTRIC-1047\nhttps://lf-o-ran-sc.atlassian.net/browse/NONRTRIC-1048",
+      "revId": "e250345a09c32821e0be10d1831ec9c6eafb7aec",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }
