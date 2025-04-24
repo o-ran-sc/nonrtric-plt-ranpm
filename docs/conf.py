@@ -25,7 +25,7 @@ branch = 'latest'
 subsitesbranch = 'latest' # set this to latest for the first build on a new branch. Then change in next commit. 
 icsbranch = 'latest' 
 
-baseurl = 'https://docs.o-ran-sc.org/projects/'
+baseurl = 'https://docs.o-ran-sc.org/projects'
 selfurl = '%s/o-ran-sc-nonrtric-plt-ranpm/en/%s' %(baseurl, branch)
 subsitesurl = '%s/o-ran-sc-nonrtric-plt-ranpm/en/%s' %(baseurl, subsitesbranch)
 icsurl = '%s/o-ran-sc-nonrtric-plt-informationcoordinatorservice/en/%s' %(baseurl, subsitesbranch)
