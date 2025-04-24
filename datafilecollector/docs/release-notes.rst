@@ -1,7 +1,7 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
 .. Copyright (C) 2023 Nordix Foundation. All rights reserved. 
-.. Copyright (C) 2023 OpenInfra Foundation Europe. All rights reserved. 
+.. Copyright (C) 2023-2025 OpenInfra Foundation Europe. All rights reserved. 
 
 =============
 Release-Notes
@@ -21,6 +21,9 @@ Version history Non-RT RIC - RAN PM - PM Data File Collector
 |            |          |                  |                    |
 +------------+----------+------------------+--------------------+
 | 2023-12-15 |          | John Keeney      | I Release          |
+|            |          |                  |                    |
++------------+----------+------------------+--------------------+
+| 2025-04-24 |          | John Keeney      | L Pre-Release      |
 |            |          |                  |                    |
 +------------+----------+------------------+--------------------+
 
@@ -67,5 +70,27 @@ I Release
 +-----------------------------+---------------------------------------------------+
 | **Purpose of the delivery** | nonrtric-plt-ranpm-datafilecollector:1.1.0        |
 |                             |     Improved test coverage, code quality & 3PPs   |
+|                             |                                                   |
++-----------------------------+---------------------------------------------------+
+
+L Pre-Release
+-------------
++-----------------------------+---------------------------------------------------+
+| **Project**                 | Non-RT RIC RAN PM                                 |
+|                             |                                                   |
++-----------------------------+---------------------------------------------------+
+| **Repo/commit-ID**          | nonrtric/plt/ranpm/                               |
+|                             | cadc164c7076cb4ef5b17dc5efee42edaf3f2d64          |
+|                             |                                                   |
++-----------------------------+---------------------------------------------------+
+| **Release designation**     | L Pre-Release                                     |
+|                             |                                                   |
++-----------------------------+---------------------------------------------------+
+| **Release date**            | 2025-04-24                                        |
+|                             |                                                   |
++-----------------------------+---------------------------------------------------+
+| **Purpose of the delivery** | nonrtric-plt-ranpm-datafilecollector:1.2.0        |
+|                             |     Add support for updated 3GPP file-ready event |
+|                             |      and 5G PM file format                        |
 |                             |                                                   |
 +-----------------------------+---------------------------------------------------+
