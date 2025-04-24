@@ -1,10 +1,10 @@
 ---
 distribution_type: container
-container_release_tag: 1.1.0
+container_release_tag: 1.2.0
 container_pull_registry: nexus3.o-ran-sc.org:10004
 container_push_registry: nexus3.o-ran-sc.org:10002
 project: nonrtric
-ref: c6e2de2842d688e9086f01aff56b786369273ad5
+ref: cadc164c7076cb4ef5b17dc5efee42edaf3f2d64
 containers:
     - name: nonrtric-plt-ranpm-datafilecollector
-      version: 1.1.0
+      version: 1.2.0
