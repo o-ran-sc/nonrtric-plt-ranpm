@@ -197,9 +197,31 @@ jobs:
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
+  call-sonarcloud-scan:
+    runs-on: ubuntu-latest
+    needs: notify
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.GERRIT_BRANCH }}
+          submodules: "true"
+      - name: Run SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.build.sourceEncoding=UTF-8
+            -Dsonar.organization=o-ran-sc
+            -Dsonar.projectBaseDir=.
+            -Dsonar.projectKey=o-ran-sc_nonrtric-plt-ranpm
+            -Dsonar.projectName=nonrtric-plt-ranpm
+            -Dsonar.sources=.
+            -Dsonar.verbose=true
+
   report-status:
     if: ${{ always() }}
-    needs: [notify, call-prescan-sonarcloud, run-maven-sonar-pmproducer, run-maven-sonar-influxlogger, run-maven-sonar-datafilecollector]
+    needs: [notify, call-prescan-sonarcloud, run-maven-sonar-pmproducer, run-maven-sonar-influxlogger, run-maven-sonar-datafilecollector, call-sonarcloud-scan]
     runs-on: ubuntu-latest
     steps:
       - name: Get workflow conclusion
