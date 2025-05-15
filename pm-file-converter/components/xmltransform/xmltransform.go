@@ -52,6 +52,7 @@ func xmlToJsonConv(fBytevalue *[]byte, xfeh *dataTypes.XmlFileEventHeader) ([]by
 	start := time.Now()
 	err := xml.Unmarshal(*fBytevalue, &f)
 	if err != nil {
+		log.Error("Error unmarshalling xml file: ", err)
 		return nil, errors.New("Cannot unmarshal xml-file")
 	}
 	log.Debug("Unmarshal xml file XmlFileEvent: ", time.Since(start).String())
@@ -144,6 +145,7 @@ func xmlToJsonConv(fBytevalue *[]byte, xfeh *dataTypes.XmlFileEventHeader) ([]by
 	log.Debug("Marshal json : ", time.Since(start).String())
 
 	if err != nil {
+		log.Error("Cannot marshal converted json ", err)
 		return nil, errors.New("Cannot marshal converted json")
 	}
 	return json, nil
