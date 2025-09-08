@@ -89,7 +89,7 @@ pull_image $DMAAP_IMAGE
 export VES_COLLECTOR_IMAGE=nexus3.onap.org:10002/onap/org.onap.dcaegen2.collectors.ves.vescollector:1.12.3
 pull_image $VES_COLLECTOR_IMAGE
 
-export ICS_IMAGE="nexus3.o-ran-sc.org:10001/o-ran-sc/nonrtric-plt-informationcoordinatorservice:1.5.0"
+export ICS_IMAGE="nexus3.o-ran-sc.org:10001/o-ran-sc/nonrtric-plt-informationcoordinatorservice:1.6.1"
 pull_image $ICS_IMAGE
 
 export DMAAPADP_IMAGE="nexus3.o-ran-sc.org:10001/o-ran-sc/nonrtric-plt-pmproducer:1.0.1"
