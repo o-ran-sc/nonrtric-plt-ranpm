@@ -1,4 +1,10 @@
-# O-RAN-SC Non-RealTime RIC Influx Logger
+# O-RAN-SC Non-RealTime RIC Influx Logger (Experimental O-RAN-SC Module)
+
+![Status: Not for Production](https://img.shields.io/badge/status-not--for--production-red)
+![Status: Experimental](https://img.shields.io/badge/CVE%20Support-none-lightgrey)
+
+> [!WARNING]
+> This repository is pre-spec and not intended for production use. No CVE remediation or production guarantees apply.
 
 
 This product receives PM data and stores it in an influx datbase. 

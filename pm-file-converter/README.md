@@ -1,5 +1,11 @@
 
-## PM Data Producer
+## PM Data Producer (Experimental O-RAN-SC Module)
+
+![Status: Not for Production](https://img.shields.io/badge/status-not--for--production-red)
+![Status: Experimental](https://img.shields.io/badge/CVE%20Support-none-lightgrey)
+
+> [!WARNING]
+> This repository is pre-spec and not intended for production use. No CVE remediation or production guarantees apply.
 
 The latest documentation can be found here:
 https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-ranpm/en/latest/pm-file-converter/index.html

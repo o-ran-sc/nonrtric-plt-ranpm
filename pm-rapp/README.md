@@ -1,6 +1,12 @@
 
 
-## Basic rAPP for demo purpose
+## Basic rAPP for demo purpose (Experimental O-RAN-SC Module)
+
+![Status: Not for Production](https://img.shields.io/badge/status-not--for--production-red)
+![Status: Experimental](https://img.shields.io/badge/CVE%20Support-none-lightgrey)
+
+> [!WARNING]
+> This repository is pre-spec and not intended for production use. No CVE remediation or production guarantees apply.
 
 ### Manual build, tag and push to image repo
 

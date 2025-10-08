@@ -1,5 +1,11 @@
 
-## Https server to simulate a RAN node for file download over https
+## Https server to simulate a RAN node for file download over https (Experimental O-RAN-SC Module)
+
+![Status: Not for Production](https://img.shields.io/badge/status-not--for--production-red)
+![Status: Experimental](https://img.shields.io/badge/CVE%20Support-none-lightgrey)
+
+> [!WARNING]
+> This repository is pre-spec and not intended for production use. No CVE remediation or production guarantees apply.
 
 ### General
 
