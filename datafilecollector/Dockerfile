@@ -3,6 +3,7 @@
 #  Copyright (C) 2023 Nordix Foundation.
 #  Copyright (C) 2020 Nokia.
 #  Copyright (C) 2021 Samsung Electronics.
+#  Copyright (C) 2023-2025 OpenInfra Foundation Europe. All rights reserved.
 # ================================================================================
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,7 +20,8 @@
 # SPDX-License-Identifier: Apache-2.0
 # ============LICENSE_END=========================================================
 #
-FROM openjdk:17-jdk as jre-build
+FROM nexus3.o-ran-sc.org:10001/amazoncorretto:17.0.17 AS jre-build
+RUN yum install -y binutils
 
 RUN $JAVA_HOME/bin/jlink \
 --verbose \
@@ -30,8 +32,8 @@ RUN $JAVA_HOME/bin/jlink \
 --compress=2 \
 --output /customjre
 
-# Use debian base image (same as openjdk uses)
-FROM debian:11-slim
+# Use debian base image
+FROM nexus3.o-ran-sc.org:10001/debian:11-slim
 
 ENV JAVA_HOME=/jre
 ENV PATH="${JAVA_HOME}/bin:${PATH}"
