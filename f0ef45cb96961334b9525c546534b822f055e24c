@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e91bef1b_a91bc9c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2025-12-15T15:33:17Z",
+      "side": 1,
+      "message": "Will not re-release. \nThis change affects devs doing new builds. \nExisting images still works OK. (even if very old) \n(Note - no CI jobs for l-release branch. Version roll needed before adding any jobs, or releasing from l-release)",
+      "revId": "f0ef45cb96961334b9525c546534b822f055e24c",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
