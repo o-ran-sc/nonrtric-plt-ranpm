@@ -16,6 +16,23 @@
       "message": "stage-release",
       "revId": "9227354e6d2c468d3c5055b8249fc03101633920",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5666469e_f322601e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2025-12-15T15:34:37Z",
+      "side": 1,
+      "message": "Will not re-release. No significant functional change. \nThis change only affects devs doing new builds. \nExisting images still works OK. (even if very old)",
+      "revId": "9227354e6d2c468d3c5055b8249fc03101633920",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ],
   "submitRequirementResults": [
