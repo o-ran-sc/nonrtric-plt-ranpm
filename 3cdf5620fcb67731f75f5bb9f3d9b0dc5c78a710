@@ -16,6 +16,23 @@
       "message": "recheck",
       "revId": "3cdf5620fcb67731f75f5bb9f3d9b0dc5c78a710",
       "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "feddc367_521a1220",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000103
+      },
+      "writtenOn": "2026-05-06T14:49:53Z",
+      "side": 1,
+      "message": "Removes all jobs for sub-sites :-(",
+      "revId": "3cdf5620fcb67731f75f5bb9f3d9b0dc5c78a710",
+      "serverId": "84e4e190-e623-4c37-9eda-58b1937c1b53"
     }
   ]
 }
