@@ -1,6 +1,6 @@
 #  ============LICENSE_START===============================================
 #  Copyright (C) 2021-2023 Nordix Foundation. All rights reserved.
-#  Copyright (C) 2023 OpenInfra Foundation Europe. All rights reserved.
+#  Copyright (C) 2023-2026 OpenInfra Foundation Europe. All rights reserved.
 #  ========================================================================
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -18,6 +18,11 @@
 
 from docs_conf.conf import *
 
+import os
+import sys
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'docs', '_extensions'))
+
 #branch configuration
 
 branch = 'latest'
@@ -28,23 +33,20 @@ linkcheck_ignore = [
     'http://localhost.*',
     'http://127.0.0.1.*',
     'https://gerrit.o-ran-sc.org.*',
-    './pm-producer-api.html', #Generated file that doesn't exist at link check.
+    './pm-producer-api.html',  # Generated file that doesn't exist at link check.
 ]
 
-extensions = ['sphinxcontrib.redoc', 'sphinx.ext.intersphinx',]
+extensions = ['sphinx.ext.intersphinx', 'redoc_gen',]
 
-redoc = [
-            {
-                'name': 'PM Producer API',
-                'page': 'pm-producer-api',
-                'spec': '../api/api.json',
-                'embed': True,
-            }
-        ]
+redoc_pages = [
+    {
+        'page': 'pm-producer-api',
+        'title': 'PM Producer API',
+        'spec': os.path.join(os.path.dirname(__file__), '..', 'api', 'api.json'),
+    },
+]
 
-redoc_uri = 'https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js'
-
-#intershpinx mapping with other projects
+#intersphinx mapping with other projects
 intersphinx_mapping = {}
 
 intersphinx_mapping['nonrtric'] = ('https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric/en/%s' % branch, None)

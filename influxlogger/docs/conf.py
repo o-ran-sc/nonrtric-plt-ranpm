@@ -1,6 +1,6 @@
 #  ============LICENSE_START===============================================
 #  Copyright (C) 2021-2023 Nordix Foundation. All rights reserved.
-#  Copyright (C) 2023 OpenInfra Foundation Europe. All rights reserved.
+#  Copyright (C) 2023-2026 OpenInfra Foundation Europe. All rights reserved.
 #  ========================================================================
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -18,29 +18,31 @@
 
 from docs_conf.conf import *
 
+import os
+import sys
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'docs', '_extensions'))
+
 branch = 'latest'
 
 linkcheck_ignore = [
     'http://localhost.*',
     'http://127.0.0.1.*',
     'https://gerrit.o-ran-sc.org.*',
-    './pmlog-api.html', #Generated file that doesn't exist at link check.
+    './pmlog-api.html',  # Generated file that doesn't exist at link check.
 ]
 
-extensions = ['sphinx.ext.intersphinx','sphinxcontrib.redoc', 'sphinx.ext.autosectionlabel',]
+extensions = ['sphinx.ext.intersphinx', 'sphinx.ext.autosectionlabel', 'redoc_gen',]
 
-redoc = [
-            {
-                'name': 'Influx Logger API',
-                'page': 'pmlog-api',
-                'spec': '../api/pmlog-api.json',
-                'embed': True,
-            }
-        ]
+redoc_pages = [
+    {
+        'page': 'pmlog-api',
+        'title': 'Influx Logger API',
+        'spec': os.path.join(os.path.dirname(__file__), '..', 'api', 'pmlog-api.json'),
+    },
+]
 
-redoc_uri = 'https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js'
-
-#intershpinx mapping with other projects
+#intersphinx mapping with other projects
 intersphinx_mapping = {}
 
 intersphinx_mapping['nonrtric'] = ('https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric/en/%s' % branch, None)
