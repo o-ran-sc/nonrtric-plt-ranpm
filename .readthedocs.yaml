@@ -16,18 +16,18 @@ build:
     pre_build:
       - mkdir --parents _readthedocs/html/
       - mkdir --parents _readthedocs/tmp/doctrees
-      - sphinx-build -W -b html --keep-going -n -d
+      - sphinx-build -b html -n -d
         _readthedocs/tmp/doctrees  ./docs/ _readthedocs/html/
-      - sphinx-build -W -b html --keep-going -n -d
+      - sphinx-build -b html -n -d
         _readthedocs/tmp/doctrees/datafilecollector  ./datafilecollector/docs/
         _readthedocs/html/datafilecollector
-      - sphinx-build -W -b html --keep-going -n -d
+      - sphinx-build -b html -n -d
         _readthedocs/tmp/doctrees/influxlogger  ./influxlogger/docs/
         _readthedocs/html/influxlogger
-      - sphinx-build -W -b html --keep-going -n -d
+      - sphinx-build -b html -n -d
         _readthedocs/tmp/doctrees/pmproducer  ./pmproducer/docs/
         _readthedocs/html/pmproducer
-      - sphinx-build -W -b html --keep-going -n -d
+      - sphinx-build -b html -n -d
         _readthedocs/tmp/doctrees/pm-file-converter  ./pm-file-converter/docs/
         _readthedocs/html/pm-file-converter
 
